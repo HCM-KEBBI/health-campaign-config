@@ -246,7 +246,7 @@ serviceMaps:
           fromTopic: save-sheet-data
           isTransaction: true
           queryMaps:
-              - query: INSERT INTO health.eg_cm_campaign_data(campaignnumber, "type",uniqueidentifier,data,uniqueidafterprocess, "status") VALUES (?,?,?,?,?,?);
+              - query: INSERT INTO eg_cm_campaign_data(campaignnumber, "type",uniqueidentifier,data,uniqueidafterprocess, "status") VALUES (?,?,?,?,?,?);
                 basePath: datas.*
                 jsonMaps:
                     - jsonPath: $.datas.*.campaignNumber
@@ -264,7 +264,7 @@ serviceMaps:
           fromTopic: update-sheet-data
           isTransaction: true
           queryMaps:
-              - query: UPDATE health.eg_cm_campaign_data SET data = ?,uniqueidafterprocess = ?, "status" = ? WHERE uniqueidentifier = ? AND "type" = ? AND campaignnumber = ?;
+              - query: UPDATE eg_cm_campaign_data SET data = ?,uniqueidafterprocess = ?, "status" = ? WHERE uniqueidentifier = ? AND "type" = ? AND campaignnumber = ?;
                 basePath: datas.*
                 jsonMaps:
                     - jsonPath: $.datas.*.data
@@ -282,7 +282,7 @@ serviceMaps:
           fromTopic: save-mapping-data
           isTransaction: true
           queryMaps:
-              - query: INSERT INTO health.eg_cm_campaign_mapping_data(campaignnumber,"type",uniqueIdentifierForData,boundaryCode,mappingId,"status") VALUES (?,?,?,?,?,?);
+              - query: INSERT INTO eg_cm_campaign_mapping_data(campaignnumber,"type",uniqueIdentifierForData,boundaryCode,mappingId,"status") VALUES (?,?,?,?,?,?);
                 basePath: datas.*
                 jsonMaps:
                     - jsonPath: $.datas.*.campaignNumber
@@ -298,7 +298,7 @@ serviceMaps:
           fromTopic: update-mapping-data
           isTransaction: true
           queryMaps:
-              - query: UPDATE health.eg_cm_campaign_mapping_data SET mappingId = ?, "status" = ? WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
+              - query: UPDATE eg_cm_campaign_mapping_data SET mappingId = ?, "status" = ? WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
                 basePath: datas.*
                 jsonMaps:
                     - jsonPath: $.datas.*.mappingId
@@ -314,7 +314,7 @@ serviceMaps:
           fromTopic: delete-mapping-data
           isTransaction: true
           queryMaps:
-              - query: DELETE FROM health.eg_cm_campaign_mapping_data WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
+              - query: DELETE FROM eg_cm_campaign_mapping_data WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
                 basePath: datas.*
                 jsonMaps:
                     - jsonPath: $.datas.*.uniqueIdentifierForData
@@ -328,7 +328,7 @@ serviceMaps:
           fromTopic: save-process-data
           isTransaction: true
           queryMaps:
-              - query: INSERT INTO health.eg_cm_campaign_process_data(campaignnumber,processName, "status") VALUES (?,?,?);
+              - query: INSERT INTO eg_cm_campaign_process_data(campaignnumber,processName, "status") VALUES (?,?,?);
                 basePath: processes.*
                 jsonMaps:
                     - jsonPath: $.processes.*.campaignNumber
@@ -341,7 +341,7 @@ serviceMaps:
           fromTopic: update-process-data
           isTransaction: true
           queryMaps:
-              - query: UPDATE health.eg_cm_campaign_process_data SET "status" = ? WHERE campaignnumber = ? AND processName = ?;
+              - query: UPDATE eg_cm_campaign_process_data SET "status" = ? WHERE campaignnumber = ? AND processName = ?;
                 basePath: processes.*
                 jsonMaps:
                     - jsonPath: $.processes.*.status
