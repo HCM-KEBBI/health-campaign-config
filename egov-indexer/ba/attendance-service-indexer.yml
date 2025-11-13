@@ -1,0 +1,85 @@
+ServiceMaps:
+  serviceName: attendance-service
+  version: 1.0.0
+  mappings:
+  - topic: ba-save-attendance
+    configKey: INDEX
+    indexes:
+    - name: ba-attendance-index-v1
+      type: attendance
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: ba-update-attendance
+    configKey: INDEX
+    indexes:
+    - name: ba-attendance-index-v1
+      type: attendance
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: ba-save-attendee
+    configKey: INDEX
+    indexes:
+    - name: ba-attendee-index-v1
+      type: attendee
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: ba-update-attendee
+    configKey: INDEX
+    indexes:
+    - name: ba-attendee-index-v1
+      type: attendee
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: ba-save-staff
+    configKey: INDEX
+    indexes:
+    - name: ba-staff-index-v1
+      type: staff
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: ba-update-staff
+    configKey: INDEX
+    indexes:
+    - name: ba-staff-index-v1
+      type: staff
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: ba-transformer-save-attendance-register
+    configKey: INDEX
+    indexes:
+    - name: ba-transformed-attendance-register-index-v1
+      type: attendance-register
+      id: $.attendanceRegister.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.attendanceRegister.auditDetails.lastModifiedTime
+  - topic: ba-transformer-save-attendance-log
+    configKey: INDEX
+    indexes:
+    - name: ba-attendance-log-index-v1
+      type: attendance-log
+      id: $.attendanceLog.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.attendanceLog.auditDetails.lastModifiedTime
+  - topic: ba-update-attendance-log
+    configKey: INDEX
+    indexes:
+    - name: ba-attendance-log-index-v1
+      type: attendance-log
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.time
