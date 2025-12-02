@@ -697,7 +697,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-administration-successful-national",
+                  "pageName": "ke-administration-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -723,7 +723,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -1148,7 +1148,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -1692,7 +1692,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-administration-successful-national",
+                  "pageName": "ke-administration-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -1718,7 +1718,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -2142,7 +2142,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -3023,7 +3023,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-successful-national",
+                  "pageName": "ke-spray-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -3049,7 +3049,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-unsuccessful-national",
+                  "pageName": "ke-spray-unsuccessful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -3075,7 +3075,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -3997,7 +3997,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -4673,7 +4673,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-successful-national",
+                  "pageName": "ke-spray-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -4699,7 +4699,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-unsuccessful-national",
+                  "pageName": "ke-spray-unsuccessful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -4725,7 +4725,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -5615,7 +5615,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -6457,7 +6457,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "ba-administration-successful-national",
+                  "pageName": "ke-administration-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -6483,7 +6483,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "ba-administration-unsuccessful-national",
+                  "pageName": "ke-administration-unsuccessful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -6509,7 +6509,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -7475,7 +7475,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -8088,7 +8088,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "ba-administration-successful-national",
+                  "pageName": "ke-administration-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -8114,7 +8114,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "ba-administration-unsuccessful-national",
+                  "pageName": "ke-administration-unsuccessful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -8140,7 +8140,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "smc",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -9074,7 +9074,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -9808,7 +9808,7 @@
                   "name": "DASHBOARD_MAP_SUCCESSFUL_ADMINISTRATIONS",
                   "code": "",
                   "moduleName": "iccd-maps",
-                  "pageName": "ba-successful-administrations-map",
+                  "pageName": "ke-successful-administrations-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -9834,7 +9834,7 @@
                   "name": "DASHBOARD_MAP_UNSUCCESSFUL_ADMINISTRATIONS",
                   "code": "",
                   "moduleName": "iccd-maps",
-                  "pageName": "ba-unsuccessful-administrations-map",
+                  "pageName": "ke-unsuccessful-administrations-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -9860,7 +9860,7 @@
                   "name": "DASHBOARD_MAPS_CHECKLIST_FILLED",
                   "code": "",
                   "moduleName": "iccd-maps",
-                  "pageName": "ba-checklist-filled-map",
+                  "pageName": "ke-checklist-filled-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -10843,7 +10843,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "iccd",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -13010,7 +13010,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-administration-successful-national",
+                  "pageName": "ke-administration-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -13036,7 +13036,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -13484,7 +13484,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -14028,7 +14028,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-administration-successful-national",
+                  "pageName": "ke-administration-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -14054,7 +14054,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -14478,7 +14478,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15359,7 +15359,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-successful-national",
+                  "pageName": "ke-spray-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15385,7 +15385,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-unsuccessful-national",
+                  "pageName": "ke-spray-unsuccessful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15411,7 +15411,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -16333,7 +16333,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -17009,7 +17009,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-successful-national",
+                  "pageName": "ke-spray-successful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -17035,7 +17035,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-spray-unsuccessful-national",
+                  "pageName": "ke-spray-unsuccessful-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -17061,7 +17061,7 @@
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-checklists-fill-national",
+                  "pageName": "ke-checklists-fill-national",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -17951,7 +17951,7 @@
                   "name": "DSS_HEALTH_CUSTOM_CHART",
                   "code": "",
                   "moduleName": "irs",
-                  "pageName": "ba-custom-chart",
+                  "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
