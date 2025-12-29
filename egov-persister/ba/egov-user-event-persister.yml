@@ -83,7 +83,7 @@ serviceMaps:
       - jsonPath: $.events.*.auditDetails.lastModifiedBy
       - jsonPath: $.events.*.auditDetails.lastModifiedTime
       - jsonPath: $.events.*.id
-    - query: DELETE FROM eg_usrevents_recepnt_event_registry WHERE eventid = ?;
+    - query: DELETE FROM ba.eg_usrevents_recepnt_event_registry WHERE eventid = ?;
       basePath: events.*
       jsonMaps:
       - jsonPath: $.events.*.id

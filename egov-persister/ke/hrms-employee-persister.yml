@@ -140,7 +140,7 @@ serviceMaps:
     fromTopic: ke-update-hrms-employee
     isTransaction: true
     queryMaps:
-    - query: DELETE from eg_hrms_employee WHERE uuid=?
+    - query: DELETE from ke.eg_hrms_employee WHERE uuid=?
       basePath: Employees.*
       jsonMaps:
       - jsonPath: $.Employees.*.uuid

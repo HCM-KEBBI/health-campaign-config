@@ -195,7 +195,7 @@ serviceMaps:
       fromTopic: ke-delete-dhis2-job
       isTransaction: true
       queryMaps:
-        - query: DELETE FROM eg_scheduler_job_history WHERE jobID=?;
+        - query: DELETE FROM ke.eg_scheduler_job_history WHERE jobID=?;
           basePath: $.Job
           jsonMaps:
             - jsonPath: $.Job.jobID
