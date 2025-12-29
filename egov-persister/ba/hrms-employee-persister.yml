@@ -137,7 +137,7 @@ serviceMaps:
   - version: 1.0
     name: hrms
     description: Persists employee details in the table
-    fromTopic: ba-update-hrms-employee
+    fromTopic: ba-egov-hrms-update
     isTransaction: true
     queryMaps:
     - query: DELETE from ba.eg_hrms_employee WHERE uuid=?
