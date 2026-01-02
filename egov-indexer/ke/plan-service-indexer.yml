@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: plan-service
   version: 1.0.0
   mappings:
-    - topic: save-plan
+    - topic: ke-save-plan
       configKey: INDEX
       indexes:
-        - name: plan-index-v1
+        - name: ke-plan-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -16,10 +16,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: update-plan
+    - topic: ke-update-plan
       configKey: INDEX
       indexes:
-        - name: plan-index-v1
+        - name: ke-plan-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -30,10 +30,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: bulk-update-plan
+    - topic: ke-bulk-update-plan
       configKey: INDEX
       indexes:
-        - name: plan-index-v1
+        - name: ke-plan-index-v1
           type: general
           id: $.id
           isBulk: true
@@ -45,10 +45,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: save-plan-facility
+    - topic: ke-save-plan-facility
       configKey: INDEX
       indexes:
-        - name: plan-facility-index-v1
+        - name: ke-plan-facility-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -59,10 +59,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: update-plan-facility
+    - topic: ke-update-plan-facility
       configKey: INDEX
       indexes:
-        - name: plan-facility-index-v1
+        - name: ke-plan-facility-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime

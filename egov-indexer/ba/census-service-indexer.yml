@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: census-service
   version: 1.0.0
   mappings:
-    - topic: census-create-topic
+    - topic: ba-census-create-topic
       configKey: INDEX
       indexes:
-        - name: census-index-v1
+        - name: ba-census-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -16,10 +16,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: census-update-topic
+    - topic: ba-census-update-topic
       configKey: INDEX
       indexes:
-        - name: census-index-v1
+        - name: ba-census-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -30,10 +30,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: census-bulk-update-topic
+    - topic: ba-census-bulk-update-topic
       configKey: INDEX
       indexes:
-        - name: census-index-v1
+        - name: ba-census-index-v1
           type: general
           id: $.id
           isBulk: true
