@@ -1,5 +1,5 @@
 {
-    "key": "health-bill-payment",
+    "key": "health-bill-payment-ke",
     "config": {
         "pageSize": "A4",
         "pageOrientation": "landscape",
@@ -52,7 +52,7 @@
                 "style": "table-style",
                 "table": {
                     "headerRows": 1,
-                    "widths": ["4%", "11%", "9%", "11%", "13%", "7%", "4%", "4%", "4%", "5%", "7%", "5%", "5%", "5%", "6%"],
+                    "widths": ["4%", "11%", "11%", "11%", "15%", "8%", "5%", "5%", "7%", "7%", "8%", "8%"],
                     "body": [
                         [
                             {
@@ -101,23 +101,11 @@
                             },
                             {
                                 "style": "table-header",
-                                "text": "{{total_label_table_header_wage}}"
-                            },
-                            {
-                                "style": "table-header",
-                                "text": "{{total_label_table_header_food}}"
-                            },
-                            {
-                                "style": "table-header",
-                                "text": "{{total_label_table_header_transportation}}"
-                            },
-                            {
-                                "style": "table-header",
                                 "text": "{{label_table_header_total_amount_to_pay}}"
                             }
                         ],
-                        "{{#billDetails}}[{\"text\":\"{{slNo}}\",\"style\":\"sl-no\"},{\"text\":\"{{individualName}}\",\"style\":\"table-content-text\"},{\"text\":\"{{role}}\",\"style\":\"table-content-text\"},{\"text\":\"{{locality}}\",\"style\":\"table-content-text\"},{\"text\":\"{{idNumber}}\",\"style\":\"table-content-text\"},{\"text\":\"{{mobileNumber}}\",\"style\":\"table-content-text\"},{\"text\":\"{{wageAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{foodAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{transportAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalWages}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalNumberOfDays}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalwageAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalfoodAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalTransportAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalAmount}}\",\"style\":\"table-content-number\"}]{{/billDetails}}",
-                        [{},{},{},{},{},{},{},{},{},{},{ "text": "{{label_table_footer_total_amount}}", "style": "totalRow"},{ "text": "{{totalWageAmount}}", "style": "totalRowAmount"},{ "text": "{{totalFoodAmount}}", "style": "totalRowAmount"},{ "text": "{{totalTransportAmount}}", "style": "totalRowAmount"}, { "text": "{{totalAmount}}", "style": "totalRowAmount" }]
+                        "{{#billDetails}}[{\"text\":\"{{slNo}}\",\"style\":\"sl-no\"},{\"text\":\"{{individualName}}\",\"style\":\"table-content-text\"},{\"text\":\"{{role}}\",\"style\":\"table-content-text\"},{\"text\":\"{{locality}}\",\"style\":\"table-content-text\"},{\"text\":\"{{idNumber}}\",\"style\":\"table-content-text\"},{\"text\":\"{{mobileNumber}}\",\"style\":\"table-content-text\"},{\"text\":\"{{wageAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{foodAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{transportAmount}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalWages}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalNumberOfDays}}\",\"style\":\"table-content-number\"},{\"text\":\"{{totalAmount}}\",\"style\":\"table-content-number\"}]{{/billDetails}}",
+                        [{},{},{},{},{},{},{},{},{},{},{ "text": "{{label_table_footer_total_amount}}", "style": "totalRow" }, { "text": "{{totalAmount}}", "style": "totalRowAmount" }]
                     ]
                 }
             },
