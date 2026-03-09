@@ -4689,7 +4689,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -4738,6 +4738,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -4757,6 +4760,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -4776,7 +4782,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -4818,6 +4824,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -4828,6 +4837,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -4845,7 +4857,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.administrationStatus.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -4870,6 +4882,9 @@
     "action": "",
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals"
     ],
@@ -4886,7 +4901,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"selectedType\":\"Data.administrationStatus.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -4921,6 +4936,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals"
         ],
@@ -4930,6 +4948,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals"
     ],
@@ -4947,7 +4968,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"selectedType\":\"Data.administrationStatus.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -4982,6 +5003,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals"
         ],
@@ -4991,6 +5015,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals"
     ],
@@ -5008,7 +5035,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"selectedType\":\"Data.administrationStatus.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5043,6 +5070,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals"
         ],
@@ -5052,6 +5082,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals"
     ],
@@ -5068,7 +5101,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.administrationStatus.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5093,6 +5126,9 @@
     "action": "",
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals"
     ],
@@ -5108,7 +5144,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.administrationStatus.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5133,6 +5169,9 @@
     "action": "",
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals"
     ],
@@ -5148,7 +5187,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5197,6 +5236,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -5216,6 +5258,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -5235,7 +5280,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5277,6 +5322,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -5287,6 +5335,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -5306,7 +5357,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5355,6 +5406,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -5374,6 +5428,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -5393,7 +5450,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5435,6 +5492,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -5445,6 +5505,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -5463,7 +5526,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5512,6 +5575,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -5531,6 +5597,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -5550,7 +5619,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -5592,6 +5661,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -5602,6 +5674,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -21841,7 +21916,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -23254,7 +23329,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -24016,7 +24091,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -24765,7 +24840,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"administrativeProvince\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"locality\":\"Data.boundaryHierarchy.locality.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -33304,6 +33379,27 @@
       },
       {
         "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-side-effect-index-v1",
@@ -33332,6 +33428,9 @@
     "action": "",
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -33350,6 +33449,27 @@
         "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"campaignNumber\": \"campaignNumber\"}",
         "indexName": "ba-population-coverage-summary-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"province\",\"size\":500},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"total_population_refused\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -33392,6 +33512,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -33402,6 +33525,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -33420,6 +33546,27 @@
         "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"province\": \"province\", \"campaignNumber\": \"campaignNumber\"}",
         "indexName": "ba-population-coverage-summary-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Beneficiary Refused\":{\"sum\":{\"field\":\"total_population_refused\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
       },
       {
         "module": "COMMON",
@@ -33451,6 +33598,9 @@
     "action": "",
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -33469,6 +33619,27 @@
         "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"province\": \"province\", \"campaignNumber\": \"campaignNumber\"}",
         "indexName": "ba-population-coverage-summary-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"district\",\"size\":500},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"total_population_refused\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -33511,6 +33682,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -33521,6 +33695,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -33538,7 +33715,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.administrationStatus.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -33570,6 +33747,9 @@
     "action": "",
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -33587,7 +33767,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"selectedType\": \"Data.administrationStatus.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -33629,6 +33809,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -33639,6 +33822,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -35847,6 +36033,27 @@
       },
       {
         "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
         "dateRefField": "Data.sideEffect.auditDetails.createdTime",
         "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-side-effect-index-v1",
@@ -35892,6 +36099,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -35911,6 +36121,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -35931,7 +36144,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -35980,6 +36193,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -35999,6 +36215,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -36018,7 +36237,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36067,6 +36286,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36086,6 +36308,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -36105,7 +36330,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"locality\": \"Data.boundaryHierarchy.locality.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36154,6 +36379,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36173,6 +36401,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible",
@@ -36192,6 +36423,27 @@
         "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"province\": \"province\", \"campaignNumber\": \"campaignNumber\"}",
         "indexName": "ba-population-coverage-summary-datewise-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"district\"},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"total_population_refused\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36233,6 +36485,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36243,6 +36498,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -36262,7 +36520,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36304,6 +36562,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36314,6 +36575,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -36332,7 +36596,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36374,6 +36638,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36384,6 +36651,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -36402,7 +36672,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"locality\": \"Data.boundaryHierarchy.locality.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36444,6 +36714,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36454,6 +36727,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -36856,6 +37132,27 @@
       },
       {
         "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+        "indexName": "ba-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
         "dateRefField": "Data.sideEffect.auditDetails.createdTime",
         "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"selectedType\": \"Data.sideEffect.additionalFields.schema.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-side-effect-index-v1",
@@ -36894,6 +37191,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36904,6 +37204,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -36922,7 +37225,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"selectedType\": \"Data.administrationStatus.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -36964,6 +37267,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -36974,6 +37280,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -36992,7 +37301,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"selectedType\": \"Data.administrationStatus.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -37034,6 +37343,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -37044,6 +37356,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -37062,7 +37377,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"selectedType\": \"Data.administrationStatus.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"locality\": \"Data.boundaryHierarchy.locality.keyword\",  \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -37104,6 +37419,9 @@
         "actionName": "SumComputedField",
         "fields": [
           "Beneficiary Refused",
+          "Beneficiary Died",
+          "Beneficiary Migrated",
+          "Beneficiary Absent",
           "Total Side Effects",
           "Total Referrals",
           "Total Ineligible"
@@ -37114,6 +37432,9 @@
     ],
     "aggregationPaths": [
       "Beneficiary Refused",
+      "Beneficiary Died",
+      "Beneficiary Migrated",
+      "Beneficiary Absent",
       "Total Side Effects",
       "Total Referrals",
       "Total Ineligible"
@@ -37314,7 +37635,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -37544,7 +37865,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -37774,7 +38095,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
@@ -38004,7 +38325,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"administrativeProvince\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"locality\": \"Data.boundaryHierarchy.locality.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"terms\":{\"Data.administrationStatus.keyword\":[\"BENEFICIARY_REFUSED\",\"BENEFICIARY_DIED\",\"BENEFICIARY_MIGRATED\",\"BENEFICIARY_ABSENT\"]}}]}},\"aggs\":{\"Beneficiary Refused\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}},\"aggs\":{\"Beneficiary Refused\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Died\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}},\"aggs\":{\"Beneficiary Died\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Migrated\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}},\"aggs\":{\"Beneficiary Migrated\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}},\"Beneficiary Absent\":{\"filter\":{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}},\"aggs\":{\"Beneficiary Absent\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.village.keyword\",\"size\":500},\"aggs\":{\"Refused non delivery count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
