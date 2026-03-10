@@ -12,30 +12,31 @@
                 "alignment": "center",
                 "fillColor": "#FCE5CD",
                 "table": {
-                        "widths": ["100%"],
-                        "body": [
-                            [
-                                { "text": "{{reportTitle}}"}
-                            ]
+                    "widths": ["100%"],
+                    "body": [
+                        [
+                            { "text": "{{reportTitle}}"}
                         ]
-                    }
+                    ]
+                }
             },
             {
                 "style": "table-style",
                 "fillColor": "#ECFFDC",
                 "table": {
-                    "widths": [
-                        "25%",
-                        "25%",
-                        "25%",
-                        "25%"
-                    ],
+                    "widths": ["22%","28%","25%","25%"],
                     "body": [
                         [
                             { "text": "{{label_campaign_name}}", "style": "subheader", "margin": [0, 0, 0, 0] },
                             { "text": "{{campaignName}}" },
                             { "text": "{{label_total_amount_to_process}}", "style": "subheader", "margin": [0, 0, 0, 0] },
                             { "text": "{{totalAmount}}", "style": "subheaderNumer" }
+                        ],
+                        [
+                            { "text": "{{label_billing_period}}", "style": "subheader", "margin": [0, 0, 0, 0] },
+                            { "text": "{{billingPeriodLabel}}" },
+                            { "text": "{{label_billing_period_range}}", "style": "subheader", "margin": [0, 0, 0, 0] },
+                            { "text": "{{billingPeriodDateRange}}" }
                         ],
                         [
                             {},
@@ -45,9 +46,9 @@
                         ]
                     ]
                 }
-              
+
             },
-        
+
             {
                 "style": "table-style",
                 "table": {
@@ -147,27 +148,27 @@
         "footer": "(function(currentPage, pageCount) { return { text: 'Page ' + currentPage + ' of ' + pageCount, alignment: 'right', margin: [0, 0, 20, 0] }; })",
         "styles": {
             "header": {
-              "fontSize": 16,
-              "bold": true
+                "fontSize": 16,
+                "bold": true
             },
             "subheader": {
-              "fontSize": 12,
-              "bold": true
+                "fontSize": 12,
+                "bold": true
             },
             "subheaderNumer": {
-              "fontSize": 12,
-              "bold": true,
-              "alignment": "right"
+                "fontSize": 12,
+                "bold": true,
+                "alignment": "right"
             },
             "table-style": {
                 "margin": [0, 0, 0, 0]
             },
             "table-header": {
-              "bold": true,
-              "fontSize": 10,
-              "color": "black",
-              "fillColor": "#c9daf8",
-              "alignment": "center"
+                "bold": true,
+                "fontSize": 10,
+                "color": "black",
+                "fillColor": "#c9daf8",
+                "alignment": "center"
             },
             "sl-no": {
                 "fillColor": "#d4d4d4",
@@ -197,6 +198,6 @@
                 "alignment": "left",
                 "fontSize": 10
             }
-          }
+        }
     }
 }
