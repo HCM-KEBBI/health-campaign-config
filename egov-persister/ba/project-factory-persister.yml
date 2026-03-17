@@ -7,29 +7,28 @@ serviceMaps:
       fromTopic: ba-create-resource-details
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_resource_details(id, "status", tenantId, fileStoreId,processedFileStoreId,"action", campaignId,"type", createdBy, createdTime, lastModifiedBy, lastModifiedTime, additionalDetails, hierarchytype, parentresourceid, filename, isactive) VALUES (?, ?,?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO ba.eg_cm_resource_details (id, tenantid, campaignid, type, parentresourceid, filestoreid, processedfilestoreid, filename, "status", "action", isactive, hierarchytype, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.ResourceDetails
           jsonMaps:
             - jsonPath: $.ResourceDetails.id
-            - jsonPath: $.ResourceDetails.status
             - jsonPath: $.ResourceDetails.tenantId
-            - jsonPath: $.ResourceDetails.fileStoreId
-            - jsonPath: $.ResourceDetails.processedFileStoreId
-            - jsonPath: $.ResourceDetails.action
             - jsonPath: $.ResourceDetails.campaignId
             - jsonPath: $.ResourceDetails.type
-            - jsonPath: $.ResourceDetails.auditDetails.createdBy
-            - jsonPath: $.ResourceDetails.auditDetails.createdTime
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedBy
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.ResourceDetails.parentResourceId
+            - jsonPath: $.ResourceDetails.fileStoreId
+            - jsonPath: $.ResourceDetails.processedFileStoreId
+            - jsonPath: $.ResourceDetails.filename
+            - jsonPath: $.ResourceDetails.status
+            - jsonPath: $.ResourceDetails.action
+            - jsonPath: $.ResourceDetails.isActive
+            - jsonPath: $.ResourceDetails.hierarchyType
             - jsonPath: $.ResourceDetails.additionalDetails
               type: JSON
               dbType: JSONB
-            - jsonPath: $.ResourceDetails.hierarchyType
-            - jsonPath: $.ResourceDetails.parentResourceId
-            - jsonPath: $.ResourceDetails.filename
-            - jsonPath: $.ResourceDetails.isActive
-
+            - jsonPath: $.ResourceDetails.auditDetails.createdBy
+            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.ResourceDetails.auditDetails.createdTime
+            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedTime
 
 
     - version: 1.0
@@ -38,18 +37,21 @@ serviceMaps:
       fromTopic: ba-update-resource-details
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_resource_details SET "status" = ?, processedFileStoreId = ?, lastModifiedBy = ?, lastModifiedTime = ?,additionalDetails = ?, filename = ?, isactive = ? WHERE id = ?;
+        - query: UPDATE ba.eg_cm_resource_details SET "status" = ?, "action" = ?, isactive = ?, filestoreid = ?, processedfilestoreid = ?, filename = ?, hierarchytype = ?, additionaldetails = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE id = ?;
           basePath: $.ResourceDetails
           jsonMaps:
             - jsonPath: $.ResourceDetails.status
+            - jsonPath: $.ResourceDetails.action
+            - jsonPath: $.ResourceDetails.isActive
+            - jsonPath: $.ResourceDetails.fileStoreId
             - jsonPath: $.ResourceDetails.processedFileStoreId
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedBy
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.ResourceDetails.filename
+            - jsonPath: $.ResourceDetails.hierarchyType
             - jsonPath: $.ResourceDetails.additionalDetails
               type: JSON
               dbType: JSONB
-            - jsonPath: $.ResourceDetails.filename
-            - jsonPath: $.ResourceDetails.isActive
+            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedTime
             - jsonPath: $.ResourceDetails.id
 
 
@@ -370,57 +372,3 @@ serviceMaps:
             - jsonPath: $.processes.*.auditDetails.lastModifiedTime
             - jsonPath: $.processes.*.campaignNumber
             - jsonPath: $.processes.*.processName
-
-
-    - version: 1.0
-      name: CreateResourceDetailsApi
-      description: Create resource detail record in eg_cm_resource_details (dedicated resource API)
-      fromTopic: ba-create-resource-details
-      isTransaction: true
-      queryMaps:
-        - query: INSERT INTO ba.eg_cm_resource_details (id, tenantid, campaignid, type, parentresourceid, filestoreid, processedfilestoreid, filename, status, action, isactive, hierarchytype, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
-          basePath: $.ResourceDetails
-          jsonMaps:
-            - jsonPath: $.ResourceDetails.id
-            - jsonPath: $.ResourceDetails.tenantId
-            - jsonPath: $.ResourceDetails.campaignId
-            - jsonPath: $.ResourceDetails.type
-            - jsonPath: $.ResourceDetails.parentResourceId
-            - jsonPath: $.ResourceDetails.fileStoreId
-            - jsonPath: $.ResourceDetails.processedFileStoreId
-            - jsonPath: $.ResourceDetails.filename
-            - jsonPath: $.ResourceDetails.status
-            - jsonPath: $.ResourceDetails.action
-            - jsonPath: $.ResourceDetails.isActive
-            - jsonPath: $.ResourceDetails.hierarchyType
-            - jsonPath: $.ResourceDetails.additionalDetails
-              type: JSON
-              dbType: JSONB
-            - jsonPath: $.ResourceDetails.auditDetails.createdBy
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedBy
-            - jsonPath: $.ResourceDetails.auditDetails.createdTime
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedTime
-
-
-    - version: 1.0
-      name: UpdateResourceDetailsApi
-      description: Update resource detail record in eg_cm_resource_details (dedicated resource API)
-      fromTopic: ba-update-resource-details
-      isTransaction: true
-      queryMaps:
-        - query: UPDATE ba.eg_cm_resource_details SET status = ?, action = ?, isactive = ?, filestoreid = ?, processedfilestoreid = ?, filename = ?, hierarchytype = ?, additionaldetails = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE id = ?;
-          basePath: $.ResourceDetails
-          jsonMaps:
-            - jsonPath: $.ResourceDetails.status
-            - jsonPath: $.ResourceDetails.action
-            - jsonPath: $.ResourceDetails.isActive
-            - jsonPath: $.ResourceDetails.fileStoreId
-            - jsonPath: $.ResourceDetails.processedFileStoreId
-            - jsonPath: $.ResourceDetails.filename
-            - jsonPath: $.ResourceDetails.hierarchyType
-            - jsonPath: $.ResourceDetails.additionalDetails
-              type: JSON
-              dbType: JSONB
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedBy
-            - jsonPath: $.ResourceDetails.auditDetails.lastModifiedTime
-            - jsonPath: $.ResourceDetails.id
