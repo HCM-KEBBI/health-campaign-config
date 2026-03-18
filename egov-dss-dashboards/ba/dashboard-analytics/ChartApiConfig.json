@@ -33864,13 +33864,6 @@
         "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"campaignNumber\": \"campaignNumber\"}",
         "indexName": "ba-population-coverage-summary",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Total distribution\":{\"terms\":{\"field\":\"province\",\"size\":500},\"aggs\":{\"Total distribution count\":{\"sum\":{\"field\":\"total_administered_resources\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "ba-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"Distribution Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"},\"aggs\":{\"Overall Distribution Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -33885,8 +33878,6 @@
       "Population Target",
       "Overall Population Target",
       "Total distribution count",
-      "Distribution Target",
-      "Overall Distribution Target",
       "End Date",
       "Start Date"
     ],
