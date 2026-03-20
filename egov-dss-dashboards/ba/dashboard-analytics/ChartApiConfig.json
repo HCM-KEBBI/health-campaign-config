@@ -63492,7 +63492,7 @@
         "indexName": "ba-project-staff-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "usersInfoTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.userName.keyword\":{\"value\":\"bi-uat*\"}}},{\"term\":{\"Data.role.keyword\":{\"value\":\"DISTRIBUTOR\"}}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\"]}"
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\"]}"
       },
       {
         "module": "COMMON",
@@ -63501,7 +63501,7 @@
         "indexName": "ba-user-sync-index-v1",
         "transformData": "termsAggregation",
         "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.syncedUserName.keyword\":{\"value\":\"bi-uat*\"}}},{\"term\":{\"Data.role.keyword\":{\"value\":\"DISTRIBUTOR\"}}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\"]}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\"]}}}}}}}"
       }
     ],
     "chartType": "rawResponse",
@@ -63589,7 +63589,7 @@
         "indexName": "ba-project-task-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "taskTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.geoPoint\"}}],\"must_not\":[{\"range\":{\"Data.locationAccuracy\":{\"gte\":5}}}]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex\"]}"
+        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[],\"must_not\":[]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex\"]}"
       },
       {
         "module": "COMMON",
@@ -63598,7 +63598,7 @@
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[{\n    \"terms\": {\n      \"Data.reason.keyword\": [\n        \"RETURNED\"\n      ]\n    }\n  }]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.pkhysicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
+        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.pkhysicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
       }
     ],
     "chartType": "rawResponse",
