@@ -63219,6 +63219,11 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
+
+
+
+
+
     "individualUsersInfo": {
     "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
     "queries": [
@@ -63492,7 +63497,7 @@
         "indexName": "ba-project-staff-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "usersInfoTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\"]}"
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\", \"Data.nameOfUser\"]}"
       },
       {
         "module": "COMMON",
@@ -63501,7 +63506,7 @@
         "indexName": "ba-user-sync-index-v1",
         "transformData": "termsAggregation",
         "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\"]}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\",\"Data.nameOfUser\"]}}}}}}}"
       }
     ],
     "chartType": "rawResponse",
@@ -63511,6 +63516,7 @@
           {
             "userId": "Data.userId",
             "userName": "Data.userName",
+            "nameOfUser": "Data.nameOfUser",
             "role": "Data.role",
             "province": "Data.boundaryHierarchy.province",
             "district": "Data.boundaryHierarchy.district"
@@ -63523,6 +63529,7 @@
           {
             "userId": "key",
             "userName": "LatestDoc.hits.hits[0]._source.Data.syncedUserName",
+            "nameOfUser": "LatestDoc.hits.hits[0]._source.Data.nameOfUser",
             "role": "LatestDoc.hits.hits[0]._source.Data.role",
             "province": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.province",
             "district": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.district",
@@ -63551,12 +63558,13 @@
           {
             "userId": "usersInfoTransformer.userId ? usersInfoTransformer.userId : termsSampleTransformer.userId",
             "userName": "usersInfoTransformer.userName ? usersInfoTransformer.userName : termsSampleTransformer.userName",
+            "nameOfUser": "usersInfoTransformer.nameOfUser ? usersInfoTransformer.nameOfUser : termsSampleTransformer.nameOfUser",
             "role": "usersInfoTransformer.role ? usersInfoTransformer.role: termsSampleTransformer.role",
             "province": "usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province",
             "district": "usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district",
             "totalRecords": "termsSampleTransformer.totalRecords",
             "latestSyncTime": "termsSampleTransformer.latestSyncTime",
-            "active": "termsSampleTransformer.active",
+            "active": "termsSampleTransformer.active ? termsSampleTransformer.active : 'INACTIVE'",
             "fullLocation": "concat(usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province, ' - ', usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district)"
           }
         ]
