@@ -63681,7 +63681,7 @@
     "insight": {},
     "_comment": " "
   },
-    "commodityStockSummary": {
+  "commodityStockSummary": {
     "chartName": "DSS_COMMODITY_STOCK_SUMMARY",
     "queries": [
       {
@@ -63732,6 +63732,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
+      "stockDataTransformer",
       "by_event_type",
       "by_product",
       "unique_facilities",
@@ -63787,6 +63788,15 @@
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{}",
+        "indexName": "ba-project-staff-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "totalManagersTransformer",
+        "aggrQuery": "{\"size\":1,\"_source\":[\"Data.userId\"],\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"WAREHOUSE_MANAGER\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"total_users\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "syncedManagersTransformer",
@@ -63795,6 +63805,13 @@
     ],
     "chartType": "rawResponse",
     "transform": {
+      "totalManagersTransformer": {
+        "transformationMappings": [
+          {
+            "totalManagers": "total_users.value"
+          }
+        ]
+      },
       "syncedManagersTransformer": {
         "transformationMappings": [
           {
@@ -63824,9 +63841,11 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "syncedManagers"
+      "totalManagers",
+      "syncedManagers",
+      "syncRate"
     ],
     "insight": {},
-    "_comment": "Unique warehouse managers who have synced at least once. Queries ba-user-sync-index-v1 for records with existing syncedUserId and role=WAREHOUSE_MANAGER. Returns cardinality of Data.syncedUserId.keyword. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card (synced warehouses, sync rate). The syncRate is computed client-side as round((syncedManagers / totalManagers) * 100)."
+    "_comment": "Warehouse manager sync rate. Queries ba-project-staff-index-v1 for total WAREHOUSE_MANAGER count and ba-user-sync-index-v1 for unique synced managers. Merges to compute syncRate = (syncedManagers / totalManagers) * 100. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card."
   }
 }
