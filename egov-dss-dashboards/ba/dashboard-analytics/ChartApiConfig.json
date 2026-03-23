@@ -63680,5 +63680,153 @@
     ],
     "insight": {},
     "_comment": " "
+  },
+    "commodityStockSummary": {
+    "chartName": "DSS_COMMODITY_STOCK_SUMMARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
+        "indexName": "ba-stock-index-v1",
+        "transformData": "rawDocumentsWithAggs",
+        "transformKey": "stockDataTransformer",
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.*\"],\"aggs\":{\"by_event_type\":{\"terms\":{\"field\":\"Data.eventType.keyword\",\"size\":20},\"aggs\":{\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"by_product\":{\"terms\":{\"field\":\"Data.productName.keyword\",\"size\":100},\"aggs\":{\"by_event_type\":{\"terms\":{\"field\":\"Data.eventType.keyword\",\"size\":20},\"aggs\":{\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"unique_facilities\":{\"cardinality\":{\"field\":\"Data.facilityId.keyword\"}},\"by_facility\":{\"terms\":{\"field\":\"Data.facilityId.keyword\",\"size\":500},\"aggs\":{\"facility_name\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":1}},\"by_event_type\":{\"terms\":{\"field\":\"Data.eventType.keyword\",\"size\":20},\"aggs\":{\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}},\"by_projectId\":{\"terms\":{\"field\":\"Data.projectId.keyword\",\"size\":20}},\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "stockDataTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.id",
+            "clientReferenceId": "Data.clientReferenceId",
+            "productVariantId": "Data.productVariant",
+            "transactionType": "Data.eventType",
+            "quantity": "Data.physicalCount",
+            "projectId": "Data.projectId",
+            "campaignId": "Data.campaignId",
+            "facilityId": "Data.facilityId",
+            "facilityName": "Data.facilityName",
+            "transactingFacilityId": "Data.transactingFacilityId",
+            "transactingFacilityName": "Data.transactingFacilityName",
+            "facilityType": "Data.facilityType",
+            "transactingFacilityType": "Data.transactingFacilityType",
+            "productName": "Data.productName",
+            "userName": "Data.userName",
+            "createdTime": "Data.createdTime",
+            "dateOfEntry": "Data.dateOfEntry"
+          }
+        ]
+      }
+    },
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [
+      {
+        "key": "campaignId"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "by_event_type",
+      "by_product",
+      "unique_facilities",
+      "by_facility",
+      "by_projectId",
+      "total_quantity"
+    ],
+    "insight": {},
+    "_comment": "Stock summary for commodity dashboard. Fetches all stock transactions from ba-stock-index-v1 filtered by campaignId. Returns raw hits (transformed to stock API shape) plus aggregations: by_event_type (RECEIVED/DISPATCHED/RETURNED/DAMAGED with quantity sums), by_product (per-product event type + quantity breakdown), unique_facilities (cardinality), by_facility (per-facility event type breakdown with facility name), by_projectId, and total_quantity. Used by useKibanaStockSearch.js → useStockData.js → CommodityDashboard.js for both TransactionSummaryTab and StockSummaryTab."
+  },
+
+  "commodityWarehouseManagerTotal": {
+    "chartName": "DSS_COMMODITY_WAREHOUSE_MANAGER_TOTAL",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{}",
+        "indexName": "ba-project-staff-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "totalManagersTransformer",
+        "aggrQuery": "{\"size\":1,\"_source\":[\"Data.userId\"],\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"WAREHOUSE_MANAGER\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"total_users\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "totalManagersTransformer": {
+        "transformationMappings": [
+          {
+            "totalManagers": "total_users.value"
+          }
+        ]
+      }
+    },
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "totalManagers"
+    ],
+    "insight": {},
+    "_comment": "Total warehouse managers assigned. Queries ba-project-staff-index-v1 for all users with role=WAREHOUSE_MANAGER that have a country boundary hierarchy entry. Returns value_count of Data.userId.keyword. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card (total warehouses)."
+  },
+
+  "commodityWarehouseManagerSynced": {
+    "chartName": "DSS_COMMODITY_WAREHOUSE_MANAGER_SYNCED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{}",
+        "indexName": "ba-user-sync-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "syncedManagersTransformer",
+        "aggrQuery": "{\"size\":1,\"_source\":[\"Data.syncedUserId\"],\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\"]}}]}},\"aggs\":{\"unique_synced_users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "syncedManagersTransformer": {
+        "transformationMappings": [
+          {
+            "syncedManagers": "unique_synced_users.value"
+          }
+        ]
+      }
+    },
+    "merges": [
+      {
+        "mergeType": "linear",
+        "mergeKey": "combinedSyncStats",
+        "flatten": true,
+        "datasets": [],
+        "outputMappings": [
+          {
+            "syncRate": "multiply(divide(syncedManagers, totalManagers), 100)"
+          }
+        ]
+      }
+    ],
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "syncedManagers"
+    ],
+    "insight": {},
+    "_comment": "Unique warehouse managers who have synced at least once. Queries ba-user-sync-index-v1 for records with existing syncedUserId and role=WAREHOUSE_MANAGER. Returns cardinality of Data.syncedUserId.keyword. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card (synced warehouses, sync rate). The syncRate is computed client-side as round((syncedManagers / totalManagers) * 100)."
   }
 }
