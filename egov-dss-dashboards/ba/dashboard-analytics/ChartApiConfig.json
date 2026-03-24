@@ -63289,7 +63289,7 @@
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "activeUsersTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.@timestamp\":{\"lte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"lte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
       },
       {
         "module": "COMMON",
@@ -63506,7 +63506,7 @@
         "indexName": "ba-user-sync-index-v1",
         "transformData": "termsAggregation",
         "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\",\"Data.nameOfUser\"]}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.syncedTimeStamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\",\"Data.nameOfUser\"]}}}}}}}"
       }
     ],
     "chartType": "rawResponse",
