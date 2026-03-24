@@ -63686,10 +63686,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "Data.dateOfEntry",
         "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
         "indexName": "ba-stock-index-v1",
-        "transformData": "rawDocuments",
+        "transformData": "rawDocumentsWithAggs",
         "transformKey": "stockDataTransformer",
         "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.*\"],\"aggs\":{\"by_event_type\":{\"terms\":{\"field\":\"Data.eventType.keyword\",\"size\":20},\"aggs\":{\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"by_product\":{\"terms\":{\"field\":\"Data.productName.keyword\",\"size\":100},\"aggs\":{\"by_event_type\":{\"terms\":{\"field\":\"Data.eventType.keyword\",\"size\":20},\"aggs\":{\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"unique_facilities\":{\"cardinality\":{\"field\":\"Data.facilityId.keyword\"}},\"by_facility\":{\"terms\":{\"field\":\"Data.facilityId.keyword\",\"size\":500},\"aggs\":{\"facility_name\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":1}},\"by_event_type\":{\"terms\":{\"field\":\"Data.eventType.keyword\",\"size\":20},\"aggs\":{\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}},\"by_projectId\":{\"terms\":{\"field\":\"Data.projectId.keyword\",\"size\":20}},\"total_quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}"
       }
@@ -63714,6 +63714,7 @@
             "transactingFacilityType": "Data.transactingFacilityType",
             "productName": "Data.productName",
             "userName": "Data.userName",
+            "nameOfUser": "Data.nameOfUser",
             "createdTime": "Data.createdTime",
             "dateOfEntry": "Data.dateOfEntry"
           }
@@ -63750,7 +63751,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{}",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
         "indexName": "ba-project-staff-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "totalManagersTransformer",
@@ -63771,7 +63772,11 @@
     "valueType": "number",
     "showLabel": true,
     "drillChart": "none",
-    "filterKeys": [],
+    "filterKeys": [
+      {
+        "key": "campaignId"
+      }
+    ],
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
@@ -63787,7 +63792,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{}",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
         "indexName": "ba-project-staff-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "totalManagersTransformer",
@@ -63795,8 +63800,8 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{}",
+        "dateRefField": "Data.syncedTimeStamp",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "syncedManagersTransformer",
@@ -63837,7 +63842,11 @@
     "valueType": "number",
     "showLabel": true,
     "drillChart": "none",
-    "filterKeys": [],
+    "filterKeys": [
+      {
+        "key": "campaignId"
+      }
+    ],
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
