@@ -24,7 +24,7 @@ ServiceMaps:
       jsonPath: $
       customJsonMapping:
         indexMapping:
-          Data: {}
+          Data: { additionalDetails: {} }
         fieldMapping:
         - inJsonPath: $.referral.clientAuditDetails.createdBy
           outJsonPath: $.Data.syncedUserId
@@ -50,8 +50,8 @@ ServiceMaps:
           outJsonPath: $.Data.campaignNumber
         - inJsonPath: $.campaignId
           outJsonPath: $.Data.campaignId
-        - inJsonPath: $.additionalDetails
-          outJsonPath: $.Data.additionalDetails
+        - inJsonPath: $.additionalDetails.cycleIndex
+          outJsonPath: $.Data.additionalDetails.cycleIndex
       timeStampField: $.referral.auditDetails.lastModifiedTime
   - topic: ba-delete-referral-topic
     configKey: INDEX
