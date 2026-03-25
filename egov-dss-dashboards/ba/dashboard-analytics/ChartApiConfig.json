@@ -63276,7 +63276,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", {\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-staff-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "usersCountTransformer",
@@ -63285,7 +63285,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "activeUsersTransformer",
@@ -63294,7 +63294,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "taskRecordCountTransformer",
@@ -63303,7 +63303,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "stockRecordCountTransformer",
@@ -63381,7 +63381,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.syncedUserId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"userName\": \"Data.syncedUserName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "lastSyncTimeTransformer",
@@ -63390,7 +63390,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "taskRecordCountTransformer",
@@ -63399,7 +63399,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "stockRecordCountTransformer",
@@ -63408,7 +63408,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "latestGpsTransformer",
@@ -63417,7 +63417,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-transformed-errors-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "failedRecordCountTransformer",
@@ -63501,7 +63501,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-staff-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "usersInfoTransformer",
@@ -63510,7 +63510,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "termsAggregation",
         "transformKey": "termsSampleTransformer",
@@ -63605,7 +63605,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "taskTransformer",
@@ -63614,7 +63614,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockTransformer",
@@ -63623,7 +63623,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.userId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"userName\": \"Data.userName.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-transformed-errors-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "errorTransformer",
