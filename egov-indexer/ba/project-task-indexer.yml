@@ -50,4 +50,6 @@ ServiceMaps:
           outJsonPath: $.Data.campaignNumber
         - inJsonPath: $.campaignId
           outJsonPath: $.Data.campaignId
+        - inJsonPath: $.additionalDetails.cycleIndex
+          outJsonPath: $.Data.additionalDetails.cycleIndex
       timeStampField: $.createdTime
