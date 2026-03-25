@@ -26,6 +26,8 @@ ServiceMaps:
         indexMapping:
           Data: {}
         fieldMapping:
+        - inJsonPath: $.id
+          outJsonPath: $.Data.checklistId
         - inJsonPath: $.createdBy
           outJsonPath: $.Data.syncedUserId
         - inJsonPath: $.userName
@@ -44,10 +46,12 @@ ServiceMaps:
           outJsonPath: $.Data.@timestamp
         - inJsonPath: $.taskDates
           outJsonPath: $.Data.taskDates
-        - inJsonPath: $.userAddress
-          outJsonPath: $.Data.userAddress
-        - inJsonPath: $.additionalDetails
-          outJsonPath: $.Data.additionalDetails
+        - inJsonPath: $.geoPoint
+          outJsonPath: $.Data.geoPoint
+        - inJsonPath: $.campaignNumber
+          outJsonPath: $.Data.campaignNumber
+        - inJsonPath: $.campaignId
+          outJsonPath: $.Data.campaignId
       timeStampField: $.createdTime
   - topic: ba-transformer-producer-hfreferral-fever-index-topic
     configKey: INDEX

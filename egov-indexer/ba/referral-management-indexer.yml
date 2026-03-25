@@ -46,8 +46,10 @@ ServiceMaps:
           outJsonPath: $.Data.taskDates
         - inJsonPath: $.syncedDate
           outJsonPath: $.Data.syncedDate
-        - inJsonPath: $.userAddress
-          outJsonPath: $.Data.userAddress
+        - inJsonPath: $.campaignNumber
+          outJsonPath: $.Data.campaignNumber
+        - inJsonPath: $.campaignId
+          outJsonPath: $.Data.campaignId
       timeStampField: $.referral.auditDetails.lastModifiedTime
   - topic: ba-delete-referral-topic
     configKey: INDEX
