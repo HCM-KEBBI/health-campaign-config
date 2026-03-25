@@ -52,8 +52,8 @@ ServiceMaps:
           outJsonPath: $.Data.campaignNumber
         - inJsonPath: $.campaignId
           outJsonPath: $.Data.campaignId
-        - inJsonPath: $.additionalDetails.cycleIndex
-          outJsonPath: $.Data.additionalDetails.cycleIndex
+        - inJsonPath: $.additionalDetails
+          outJsonPath: $.Data.additionalDetails
       timeStampField: $.createdTime
   - topic: ba-transformer-producer-hfreferral-fever-index-topic
     configKey: INDEX
