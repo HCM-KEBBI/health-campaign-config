@@ -63824,5 +63824,120 @@
     ],
     "insight": {},
     "_comment": "Warehouse manager sync rate. Queries ba-project-staff-index-v1 for total WAREHOUSE_MANAGER count and ba-user-sync-index-v1 for unique synced managers. Merges to compute syncRate = (syncedManagers / totalManagers) * 100. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card."
+  },
+    "commodityFacilityStockBalance": {
+    "chartName": "DSS_COMMODITY_FACILITY_STOCK_BALANCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.dateOfEntry",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
+        "indexName": "ba-stock-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "stockBalanceTransformer",
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\"]}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "stockBalanceTransformer": {
+        "transformationMappings": [
+          {
+            "facilityId": "Data.facilityId",
+            "transactingFacilityId": "Data.transactingFacilityId",
+            "transactionType": "Data.eventType",
+            "quantity": "Data.physicalCount",
+            "productVariantId": "Data.productVariant",
+            "productName": "Data.productName",
+            "stockEntryType": "Data.additionalDetails.stockEntryType",
+            "facilityName": "Data.facilityName",
+            "transactingFacilityName": "Data.transactingFacilityName",
+            "id": "Data.id",
+            "dateOfEntry": "Data.dateOfEntry",
+            "createdTime": "Data.createdTime",
+            "nameOfUser": "Data.nameOfUser",
+            "userName": "Data.userName"
+          }
+        ]
+      }
+    },
+    "filterKeys": [
+      {
+        "key": "campaignId"
+      }
+    ],
+    "documentType": "_doc",
+    "aggregationPaths": [
+      "stockBalanceTransformer"
+    ],
+    "_comment": "Raw stock transactions with stockEntryType for per-facility balance computation"
+  },
+  "commodityFacilityStockByFacility": {
+    "chartName": "DSS_COMMODITY_FACILITY_STOCK_BY_FACILITY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.dateOfEntry",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\", \"facilityId\": \"Data.facilityId.keyword\"}",
+        "indexName": "ba-stock-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "facilityStockTransformer",
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.dateOfEntry",
+        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\", \"facilityId\": \"Data.transactingFacilityId.keyword\"}",
+        "indexName": "ba-stock-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "transactingStockTransformer",
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\"]}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "facilityStockTransformer": {
+        "transformationMappings": [
+          {
+            "facilityId": "Data.facilityId",
+            "transactingFacilityId": "Data.transactingFacilityId",
+            "transactionType": "Data.eventType",
+            "quantity": "Data.physicalCount",
+            "productVariantId": "Data.productVariant",
+            "productName": "Data.productName",
+            "stockEntryType": "Data.additionalDetails.stockEntryType",
+            "facilityName": "Data.facilityName",
+            "transactingFacilityName": "Data.transactingFacilityName",
+            "id": "Data.id"
+          }
+        ]
+      },
+      "transactingStockTransformer": {
+        "transformationMappings": [
+          {
+            "facilityId": "Data.facilityId",
+            "transactingFacilityId": "Data.transactingFacilityId",
+            "transactionType": "Data.eventType",
+            "quantity": "Data.physicalCount",
+            "productVariantId": "Data.productVariant",
+            "productName": "Data.productName",
+            "stockEntryType": "Data.additionalDetails.stockEntryType",
+            "facilityName": "Data.facilityName",
+            "transactingFacilityName": "Data.transactingFacilityName",
+            "id": "Data.id"
+          }
+        ]
+      }
+    },
+    "filterKeys": [
+      { "key": "campaignId" },
+      { "key": "facilityId" }
+    ],
+    "documentType": "_doc",
+    "aggregationPaths": [
+      "facilityStockTransformer",
+      "transactingStockTransformer"
+    ],
+    "_comment": "Two queries: facilityId filter hits Data.facilityId (RECEIPT/ISSUED), same filter hits Data.transactingFacilityId (REJECTED/RETURNED back to facility). Combine on frontend with dedup by id."
   }
 }
