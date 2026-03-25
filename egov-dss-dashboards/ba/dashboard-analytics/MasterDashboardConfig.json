@@ -9407,7 +9407,7 @@
                         "actionTypes": {
                           "type": "dropdown",
                           "filterFields": ["actionType"],
-                          "options": ["Stock", "Delivery", "Complaints"]
+                          "options": ["Stock", "Delivery", "Complaints", "Error Record"]
                         },
                         "outcome": {
                           "type": "dropdown",
