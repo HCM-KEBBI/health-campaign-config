@@ -63393,7 +63393,7 @@
         "indexName": "ba-transformed-errors-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "errorTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{}]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
       }
     ],
     "chartType": "rawResponse",
