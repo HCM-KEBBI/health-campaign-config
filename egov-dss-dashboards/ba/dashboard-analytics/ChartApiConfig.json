@@ -63547,7 +63547,7 @@
         "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-transformer-pgr-services",
         "transformData": "linearAggregation",
-        "transformKey": "complaintsRecordCountTransformer"
+        "transformKey": "complaintsRecordCountTransformer",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
       }
     ],
