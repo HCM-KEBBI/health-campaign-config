@@ -19,7 +19,7 @@ ServiceMaps:
       timeStampField: $.service.auditDetails.lastModifiedTime
     - name: ba-user-sync-index-v1
       type: users
-      id: $.id
+      id: $.service.serviceRequestId
       isBulk: true
       jsonPath: $
       customJsonMapping:
