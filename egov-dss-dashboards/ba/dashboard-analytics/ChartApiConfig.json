@@ -63468,7 +63468,7 @@
         "joinKey": "userId",
         "joinType": "concat",
         "clearDatasets": [
-          "mergedUsersRecordTaskStockSummary1",
+          "mergedUsersRecordTaskStockSummary",
           "complaintsTransformer"
         ]
       },
@@ -63480,7 +63480,7 @@
         "joinKey": "userId",
         "joinType": "concat",
         "clearDatasets": [
-          "mergedUsersRecordTaskStockSummary",
+          "mergedUsersRecordSummary1",
           "errorTransformer"
         ]
       }
