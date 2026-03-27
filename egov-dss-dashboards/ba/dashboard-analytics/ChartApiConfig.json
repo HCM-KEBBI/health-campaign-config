@@ -63379,7 +63379,7 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "Data.auditDetails.createdTime",
+        "dateRefField": "Data.service.auditDetails.createdTime",
         "requestQueryMap": "{\"userId\": \"Data.service.auditDetials.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-transformer-pgr-services",
         "transformData": "rawDocuments",
