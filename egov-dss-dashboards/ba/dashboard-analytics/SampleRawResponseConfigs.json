@@ -1,424 +1,11 @@
 {
-  "testUserPerformance": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-project-task-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "taskTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.geoPoint\"}}],\"must_not\":[{\"range\":{\"Data.locationAccuracy\":{\"gte\":5}}}]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-household-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "linearSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTER\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.additionalDetails.status.keyword\":\"CLOSED_HOUSEHOLD\"}},{\"terms\":{\"Data.additionalDetails.communityKey.keyword\":[\"refugee_camps\",\"special_groups\"]}}]}},\"aggs\":{\"DateRange visits\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-household-index-v1",
-        "transformData": "termsAggregation",
-        "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.userName.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}}}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "taskTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.taskId",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Delivery'",
-            "longitude": "Data.geoPoint[0]",
-            "latitude": "Data.geoPoint[1]",
-            "detail": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? `Delivered ${Data.quantity} ${Data.productName}` : ''",
-            "gps": "Data.geoPoint[1] && Data.geoPoint[0]? `${Data.geoPoint[1]}, ${Data.geoPoint[0]}` : '-'",
-            "testNumber": "1000",
-            "geoPointLength": "size(Data.geoPoint)",
-            "date": "formatDate(Data.@timestamp, 'dd-MM-yyyy')",
-            "dateTime": "formatDate(Data.@timestamp, 'dd-MM-yyyy HH:mm:ss')",
-            "statusUpper": "toUpperCase(Data.administrationStatus)",
-            "statusLower": "toLowerCase(Data.administrationStatus)",
-            "rssDelivery": "concat(Data.productName, ' ', Data.taskType)",
-            "shortProductName": "substr(Data.productName, 0, 3)",
-            "cleanStatus": "replace(Data.administrationStatus, '_', ' ')",
-            "geoPointsJoin": "join(Data.geoPoint, ', ')",
-            "coalesce": "coalesce(Data.villageName, Data.boundaryHierarchy.subHills, 'Unknown')",
-            "quantityStr": "toString(Data.quantity)",
-            "cycleNumber": "toNumber(Data.additionalDetails.cycleIndex)",
-            "active": "true",
-            "outcome": "Data.administrationStatus1 || '-'",
-            "accuraryStatus": "Data.quantity <= 3 ? 'HIGH' : 'NORMAL'",
-            "formattedDate": "Data.@timestamp ? formatDate(Data.@timestamp, 'yyyy-MM-dd') : '-'"
-          },
-          {
-            "id1": "Data.taskId",
-            "timestamp1": "Data.@timestamp",
-            "actionType1": "'Delivery'",
-            "longitude1": "Data.geoPoint[0]",
-            "latitude1": "Data.geoPoint[1]"
-          }
-        ]
-      },
-      "linearSampleTransformer": {
-        "transformationMappings": [
-          {
-            "TotalDateRangeVisits": "FILTER.DateRange visits.value",
-            "FilteredDocCount": "FILTER.doc_count"
-          }
-        ]
-      },
-      "termsSampleTransformer": {
-        "bucketsPath": "Username.buckets",
-        "transformationMappings": [
-          {
-            "username": "key",
-            "totalRecords": "RecordTotal.value",
-            "latestSyncTime": "LatestSyncedTime.value_as_string",
-            "latestSyncEpoch": "toNumber(LatestSyncedTime.value)",
-            "docCount": "doc_count"
-          }
-        ]
-      }
-    },
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "taskTransformer"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "usersSummary": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "usersInfoTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.userName.keyword\":{\"value\":\"bi-uat*\"}}},{\"term\":{\"Data.role.keyword\":{\"value\":\"DISTRIBUTOR\"}}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "usersCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "activeUsersTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.@timestamp\":{\"lte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "transformData": "termsAggregation",
-        "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.syncedUserName.keyword\":{\"value\":\"bi-uat*\"}}},{\"term\":{\"Data.role.keyword\":{\"value\":\"DISTRIBUTOR\"}}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\"]}}}}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "usersCountTransformer": {
-        "transformationMappings": [
-          {
-            "totalUsersCreated": "Total Users Count.value"
-          }
-        ]
-      },
-      "activeUsersTransformer": {
-        "transformationMappings": [
-          {
-            "totalUsersActive": "Active Users.value"
-          }
-        ]
-      },
-      "usersInfoTransformer": {
-        "transformationMappings": [
-          {
-            "userId": "Data.userId",
-            "userName": "Data.userName",
-            "role": "Data.role",
-            "province": "Data.boundaryHierarchy.province",
-            "district": "Data.boundaryHierarchy.district"
-          }
-        ]
-      },
-      "termsSampleTransformer": {
-        "bucketsPath": "Username.buckets",
-        "transformationMappings": [
-          {
-            "userId": "key",
-            "userName": "LatestDoc.hits.hits[0]._source.Data.syncedUserName",
-            "role": "LatestDoc.hits.hits[0]._source.Data.role",
-            "province": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.province",
-            "district": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.district",
-            "totalRecords": "RecordTotal.value",
-            "latestSyncTime": "LatestSyncedTime.value_as_string",
-            "latestSyncEpoch": "toNumber(LatestSyncedTime.value)",
-            "active": "Last3Hours.doc_count > 0 ? 'ACTIVE' : 'INACTIVE'"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeKey": "mergedUsersSummary",
-        "baseDataset": "usersInfoTransformer",
-        "dataset": "termsSampleTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "full",
-        "clearDatasets": [
-          "usersInfoTransformer",
-          "termsSampleTransformer"
-        ],
-        "outputMappings": [
-          {
-            "userId": "usersInfoTransformer.userId ? usersInfoTransformer.userId : termsSampleTransformer.userId",
-            "userName": "usersInfoTransformer.userName ? usersInfoTransformer.userName : termsSampleTransformer.userName",
-            "role": "usersInfoTransformer.role ? usersInfoTransformer.role: termsSampleTransformer.role",
-            "province": "usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province",
-            "district": "usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district",
-            "totalRecords": "termsSampleTransformer.totalRecords",
-            "latestSyncTime": "termsSampleTransformer.latestSyncTime",
-            "active": "termsSampleTransformer.active",
-            "fullLocation": "concat(usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province, ' - ', usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district)"
-          }
-        ]
-      },
-      {
-        "mergeType": "linear",
-        "mergeKey": "combinedUserStats",
-        "flatten": true,
-        "datasets": [
-          "usersCountTransformer",
-          "activeUsersTransformer"
-        ],
-        "clearDatasets": [
-          "usersCountTransformer",
-          "activeUsersTransformer"
-        ],
-        "outputMappings": [
-          {
-            "totalUsersCreated": "usersCountTransformer.totalUsersCreated",
-            "totalUsersActive": "activeUsersTransformer.totalUsersActive",
-            "inactiveUsers": "subtract(usersCountTransformer.totalUsersCreated, activeUsersTransformer.totalUsersActive)",
-            "activePercentage": "multiply(divide(activeUsersTransformer.totalUsersActive, usersCountTransformer.totalUsersCreated), 100)"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "mergedUsersSummary",
-      "totalUsersCreated",
-      "totalUsersActive",
-      "inactiveUsers",
-      "activePercentage"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-
-  "individualUsersInfo": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "usersInfoTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.createdTime\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.boundaryHierarchy.province\",\"Data.boundaryHierarchy.district\",\"Data.role\",\"Data.projectType\"]}}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "usersInfoTransformer": {
-        "transformationMappings": [
-          {
-            "role": "LatestDoc.hits.hits[0]._source.Data.role",
-            "boundaryInfo": "concat(LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.province, '-', LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.district)",
-            "campaign": "LatestDoc.hits.hits[0]._source.Data.projectType"
-          }
-        ]
-      }
-    },
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "role",
-      "province",
-      "district",
-      "boundaryInfo",
-      "campaign"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "overallUsersMetrics": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "usersCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "activeUsersTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.@timestamp\":{\"lte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "taskRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-stock-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "stockRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "taskRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "taskRecordCount": "Task Records.value"
-          }
-        ]
-      },
-      "stockRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "stockRecordCount": "Stock Records.value"
-          }
-        ]
-      },
-      "usersCountTransformer": {
-        "transformationMappings": [
-          {
-            "totalUsersCreated": "Total Users Count.value"
-          }
-        ]
-      },
-      "activeUsersTransformer": {
-        "transformationMappings": [
-          {
-            "totalUsersActive": "Active Users.value"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeType": "linear",
-        "mergeKey": "combinedUserStats",
-        "flatten": true,
-        "datasets": [],
-        "outputMappings": [
-          {
-            "inactiveUsers": "subtract(totalUsersCreated, totalUsersActive)",
-            "totalRecordsCount": "add(taskRecordCount, stockRecordCount)"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "totalUsersCreated",
-      "totalUsersActive",
-      "totalRecordsCount",
-      "inactiveUsers"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
   "individualUsersMetrics": {
     "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.syncedUserId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "lastSyncTimeTransformer",
@@ -426,8 +13,8 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "taskRecordCountTransformer",
@@ -435,8 +22,8 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "stockRecordCountTransformer",
@@ -444,12 +31,30 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "latestGpsTransformer",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.geoPoint\",\"Data.syncedTimeStamp\"]}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-transformed-errors-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "failedRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Error Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-transformer-pgr-services",
+        "transformData": "linearAggregation",
+        "transformKey": "complaintsRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
       }
     ],
     "chartType": "rawResponse",
@@ -457,15 +62,21 @@
       "failedRecordCountTransformer": {
         "transformationMappings": [
           {
-            "failedRecordCount": "Task Records.value"
+            "failedRecordCount": "Error Records.value"
           }
         ]
       },
       "taskRecordCountTransformer": {
         "transformationMappings": [
           {
-            "taskRecordCount": "Task Records.value",
-            "failedRecordCount": "Task Records.value"
+            "taskRecordCount": "Task Records.value"
+          }
+        ]
+      },
+      "complaintsRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "complaintRecordCount": "Complaint Records.value"
           }
         ]
       },
@@ -499,7 +110,7 @@
         "datasets": [],
         "outputMappings": [
           {
-            "totalRecordsCount": "add(taskRecordCount, stockRecordCount)"
+            "totalRecordsCount": "add(complaintRecordCount, add(taskRecordCount, stockRecordCount))"
           }
         ]
       }
@@ -524,123 +135,44 @@
     "insight": {},
     "_comment": " "
   },
-  "usersSummaryTable": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "usersInfoTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.userName.keyword\":{\"value\":\"bi-uat*\"}}},{\"term\":{\"Data.role.keyword\":{\"value\":\"DISTRIBUTOR\"}}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "transformData": "termsAggregation",
-        "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.syncedUserName.keyword\":{\"value\":\"bi-uat*\"}}},{\"term\":{\"Data.role.keyword\":{\"value\":\"DISTRIBUTOR\"}}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district\"}}]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.@timestamp\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.@timestamp\":{\"gte\":\"now-200d\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.@timestamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.district\",\"Data.boundaryHierarchy.province\",\"Data.role\",\"Data.syncedTimeStamp\"]}}}}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "usersInfoTransformer": {
-        "transformationMappings": [
-          {
-            "userId": "Data.userId",
-            "userName": "Data.userName",
-            "role": "Data.role",
-            "province": "Data.boundaryHierarchy.province",
-            "district": "Data.boundaryHierarchy.district"
-          }
-        ]
-      },
-      "termsSampleTransformer": {
-        "bucketsPath": "Username.buckets",
-        "transformationMappings": [
-          {
-            "userId": "key",
-            "userName": "LatestDoc.hits.hits[0]._source.Data.syncedUserName",
-            "role": "LatestDoc.hits.hits[0]._source.Data.role",
-            "province": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.province",
-            "district": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.district",
-            "totalRecords": "RecordTotal.value",
-            "latestSyncTime": "LatestSyncedTime.value_as_string",
-            "latestSyncEpoch": "toNumber(LatestSyncedTime.value)",
-            "active": "Last3Hours.doc_count > 0 ? 'ACTIVE' : 'INACTIVE'"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeKey": "mergedUsersSummary",
-        "baseDataset": "usersInfoTransformer",
-        "dataset": "termsSampleTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "full",
-        "clearDatasets2": [],
-        "clearDatasets": [
-          "usersInfoTransformer",
-          "termsSampleTransformer"
-        ],
-        "outputMappings": [
-          {
-            "userId": "usersInfoTransformer.userId ? usersInfoTransformer.userId : termsSampleTransformer.userId",
-            "userName": "usersInfoTransformer.userName ? usersInfoTransformer.userName : termsSampleTransformer.userName",
-            "role": "usersInfoTransformer.role ? usersInfoTransformer.role: termsSampleTransformer.role",
-            "province": "usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province",
-            "district": "usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district",
-            "totalRecords": "termsSampleTransformer.totalRecords",
-            "latestSyncTime": "termsSampleTransformer.latestSyncTime",
-            "active": "termsSampleTransformer.active",
-            "fullLocation": "concat(usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province, ' - ', usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district)"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "mergedUsersSummary"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "mergedUsersSummary"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
   "usersRecordsSummaryTable": {
     "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-project-task-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "taskTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.geoPoint\"}}],\"must_not\":[{\"range\":{\"Data.locationAccuracy\":{\"gte\":5}}}]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex\"]}"
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[],\"must_not\":[]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex.keyword\"]}"
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"projectId\": \"Data.projectId.keyword\", \"createdBy\": \"Data.createdBy.keyword\"}",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[{\n    \"terms\": {\n      \"Data.reason.keyword\": [\n        \"RETURNED\"\n      ]\n    }\n  }]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.pkhysicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
+        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.physicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"userId\": \"Data.service.auditDetials.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-transformer-pgr-services",
+        "transformData": "rawDocuments",
+        "transformKey": "complaintsTransformer",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.service.serviceRequestId\",\"Data.service.serviceCode\",\"Data.service.description\",\"Data.service.applicationStatus\",\"Data.@timestamp\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-transformed-errors-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "errorTransformer",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
       }
     ],
     "chartType": "rawResponse",
@@ -668,33 +200,67 @@
             "outcome": "'SUCCESS'"
           }
         ]
+      },
+      "complaintsTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.service.serviceRequestId",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Complaint'",
+            "detail": "`Raised Complaint ${Data.service.serviceCode} which is in status ${Data.service.applicationStatus} with Description ${Data.service.description}`",
+            "gps": "'-'",
+            "outcome": "'COMPLAINT'"
+          }
+        ]
+      },
+      "errorTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.id",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Error Record'",
+            "detail": "Data.errorCategory",
+            "gps": "'-'",
+            "outcome": "'FAILED'"
+          }
+        ]
       }
     },
     "merges": [
       {
-        "mergeKey": "mergedUsersRecordSummary",
+        "mergeKey": "mergedUsersRecordTaskStockSummary",
         "baseDataset": "taskTransformer",
         "dataset": "stockTransformer",
         "baseKey": "userId",
         "joinKey": "userId",
         "joinType": "concat",
-        "clearDatasets2": [],
         "clearDatasets": [
           "taskTransformer",
           "stockTransformer"
-        ],
-        "outputMappings": [
-          {
-            "userId": "usersInfoTransformer.userId ? usersInfoTransformer.userId : termsSampleTransformer.userId",
-            "userName": "usersInfoTransformer.userName ? usersInfoTransformer.userName : termsSampleTransformer.userName",
-            "role": "usersInfoTransformer.role ? usersInfoTransformer.role: termsSampleTransformer.role",
-            "province": "usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province",
-            "district": "usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district",
-            "totalRecords": "termsSampleTransformer.totalRecords",
-            "latestSyncTime": "termsSampleTransformer.latestSyncTime",
-            "active": "termsSampleTransformer.active",
-            "fullLocation": "concat(usersInfoTransformer.province ? usersInfoTransformer.province: termsSampleTransformer.province, ' - ', usersInfoTransformer.district ? usersInfoTransformer.district : termsSampleTransformer.district)"
-          }
+        ]
+      },
+      {
+        "mergeKey": "mergedUsersRecordSummary1",
+        "baseDataset": "mergedUsersRecordTaskStockSummary",
+        "dataset": "complaintsTransformer",
+        "baseKey": "userId",
+        "joinKey": "userId",
+        "joinType": "concat",
+        "clearDatasets": [
+          "mergedUsersRecordTaskStockSummary",
+          "complaintsTransformer"
+        ]
+      },
+      {
+        "mergeKey": "mergedUsersRecordSummary",
+        "baseDataset": "mergedUsersRecordSummary1",
+        "dataset": "errorTransformer",
+        "baseKey": "userId",
+        "joinKey": "userId",
+        "joinType": "concat",
+        "clearDatasets": [
+          "mergedUsersRecordTaskStockSummary",
+          "errorTransformer"
         ]
       }
     ],
@@ -711,133 +277,6 @@
     "action": "",
     "aggregationPaths": [
       "mergedUsersRecordSummary"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-
-  "totalFieldWorkers": {
-    "chartName": "DSS_HEALTH_NATIONAL_TODAY_USED_QUANTITY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Total Users Count"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "activeUsers": {
-    "chartName": "DSS_HEALTH_NATIONAL_TODAY_USED_QUANTITY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"NAME\":{\"filter\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-200d\"}}}]}},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) { for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } }  return count;\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Unique Users Synced"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "notActiveUsersCount": {
-    "chartName": "DSS_HEALTH_NATIONAL_TODAY_USED_QUANTITY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"NAME\":{\"filter\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-200d\"}}}]}},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) { for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } }  return count * (-1);\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Total Users Count",
-      "Unique Users Synced"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "recordsCount": {
-    "chartName": "DSS_HEALTH_NATIONAL_TODAY_USED_QUANTITY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Task Records",
-      "Stock Records"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "lastSyncedTime": {
-    "chartName": "DSS_HEALTH_NATIONAL_TODAY_USED_QUANTITY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\"}",
-        "indexName": "ba-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"lastSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "lastSyncedTime"
     ],
     "insight": {},
     "_comment": " "
