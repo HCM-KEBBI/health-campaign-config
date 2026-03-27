@@ -63289,7 +63289,7 @@
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "activeUsersTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"lte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
       },
       {
         "module": "COMMON",
