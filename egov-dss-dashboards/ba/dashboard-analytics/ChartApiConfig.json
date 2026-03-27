@@ -63548,6 +63548,7 @@
         "indexName": "ba-transformer-pgr-services",
         "transformData": "linearAggregation",
         "transformKey": "complaintsRecordCountTransformer"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
       }
     ],
     "chartType": "rawResponse",
