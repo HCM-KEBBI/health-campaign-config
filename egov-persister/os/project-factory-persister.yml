@@ -4,10 +4,10 @@ serviceMaps:
     - version: 1.0
       name: CreateResourceDetails
       description: Create resource details in the eg_cm_resource_details table
-      fromTopic: ba-create-resource-details
+      fromTopic: os-create-resource-details
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_resource_details (id, tenantid, campaignid, type, parentresourceid, filestoreid, processedfilestoreid, filename, "status", "action", isactive, hierarchytype, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO os.eg_cm_resource_details (id, tenantid, campaignid, type, parentresourceid, filestoreid, processedfilestoreid, filename, "status", "action", isactive, hierarchytype, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.ResourceDetails
           jsonMaps:
             - jsonPath: $.ResourceDetails.id
@@ -34,10 +34,10 @@ serviceMaps:
     - version: 1.0
       name: UpdateResourceDetails
       description: Update resource details in the eg_cm_resource_details table
-      fromTopic: ba-update-resource-details
+      fromTopic: os-update-resource-details
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_resource_details SET "status" = ?, "action" = ?, isactive = ?, filestoreid = ?, processedfilestoreid = ?, filename = ?, hierarchytype = ?, additionaldetails = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE id = ?;
+        - query: UPDATE os.eg_cm_resource_details SET "status" = ?, "action" = ?, isactive = ?, filestoreid = ?, processedfilestoreid = ?, filename = ?, hierarchytype = ?, additionaldetails = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE id = ?;
           basePath: $.ResourceDetails
           jsonMaps:
             - jsonPath: $.ResourceDetails.status
@@ -58,10 +58,10 @@ serviceMaps:
     - version: 1.0
       name: CreateResourceActivity
       description: Create resource activity in the eg_cm_resource_activity table
-      fromTopic: ba-create-resource-activity
+      fromTopic: os-create-resource-activity
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_resource_activity (id, "status", retryCount,tenantId, type, url, requestPayload, responsePayload, createdBy, createdTime, lastModifiedBy, lastModifiedTime, additionalDetails, resourceDetailsId) VALUES (?, ?,?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?,?);
+        - query: INSERT INTO os.eg_cm_resource_activity (id, "status", retryCount,tenantId, type, url, requestPayload, responsePayload, createdBy, createdTime, lastModifiedBy, lastModifiedTime, additionalDetails, resourceDetailsId) VALUES (?, ?,?, ?, ?,  ?, ?, ?, ?, ?, ?, ?, ?,?);
           basePath: $.Activities.*
           jsonMaps:
             - jsonPath: $.Activities.*.id
@@ -89,10 +89,10 @@ serviceMaps:
     - version: 1.0
       name: CreateForGenerateApiResources
       description: Create Api resource in the eg_cm_generated_resource_details table
-      fromTopic: ba-create-generated-resource-details
+      fromTopic: os-create-generated-resource-details
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_generated_resource_details (id,filestoreid, type,"status",count,tenantid,hierarchyType, createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails,campaignid, locale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO os.eg_cm_generated_resource_details (id,filestoreid, type,"status",count,tenantid,hierarchyType, createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails,campaignid, locale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: generatedResource.*
           jsonMaps:
             - jsonPath: $.generatedResource.*.id
@@ -117,10 +117,10 @@ serviceMaps:
     - version: 1.0
       name: UpdateForGenerateApiResources
       description: Update Api resource in the eg_cm_generated_resource_details table
-      fromTopic: ba-update-generated-resource-details
+      fromTopic: os-update-generated-resource-details
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_generated_resource_details SET status = ?,count=?, lastModifiedby =? , lastModifiedtime = ? , fileStoreid= ?, additionalDetails= ? WHERE id= ?;
+        - query: UPDATE os.eg_cm_generated_resource_details SET status = ?,count=?, lastModifiedby =? , lastModifiedtime = ? , fileStoreid= ?, additionalDetails= ? WHERE id= ?;
           basePath: generatedResource.*
           jsonMaps:
             - jsonPath: $.generatedResource.*.status
@@ -137,7 +137,7 @@ serviceMaps:
     - version: 1.0
       name: CreateCampaignDetails
       description: Create campaign details in the eg_cm_campaign_details table
-      fromTopic: ba-save-project-campaign-details
+      fromTopic: os-save-project-campaign-details
       isTransaction: true
       isAuditEnabled: true
       module: HCM
@@ -146,7 +146,7 @@ serviceMaps:
       transactionCodeJsonPath: $.id
       auditAttributeBasePath: $.CampaignDetails
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_campaign_details(id, tenantId, "status","action",campaignName,projectType, campaignNumber,hierarchyType,boundaryCode, projectId,parentId,isActive,startDate,endDate, createdBy, createdTime, lastModifiedBy, lastModifiedTime, additionalDetails,campaignDetails) VALUES (?,?,?,?,?,?, ?,?, ?,?,?,?, ?, ?, ?, ?, ?, ?,?,?);
+        - query: INSERT INTO os.eg_cm_campaign_details(id, tenantId, "status","action",campaignName,projectType, campaignNumber,hierarchyType,boundaryCode, projectId,parentId,isActive,startDate,endDate, createdBy, createdTime, lastModifiedBy, lastModifiedTime, additionalDetails,campaignDetails) VALUES (?,?,?,?,?,?, ?,?, ?,?,?,?, ?, ?, ?, ?, ?, ?,?,?);
           basePath: $.CampaignDetails
           jsonMaps:
             - jsonPath: $.CampaignDetails.id
@@ -178,7 +178,7 @@ serviceMaps:
     - version: 1.0
       name: UpdateCampaignDetails
       description: Update campaign details in the eg_cm_campaign_details table
-      fromTopic: ba-update-project-campaign-details
+      fromTopic: os-update-project-campaign-details
       isTransaction: true
       isAuditEnabled: true
       module: HCM
@@ -187,7 +187,7 @@ serviceMaps:
       transactionCodeJsonPath: $.id
       auditAttributeBasePath: $.CampaignDetails
       queryMaps:
-        - query: UPDATE ba.eg_cm_campaign_details SET campaignName = ?, "status" = ?, action = ?, projectType = ?, hierarchyType = ?, boundaryCode = ?, projectId = ?, parentId = ?, isActive = ?,startDate=?,endDate=?, lastModifiedBy = ?, lastModifiedTime = ?, additionalDetails = ?, campaignDetails = ? WHERE id = ?;
+        - query: UPDATE os.eg_cm_campaign_details SET campaignName = ?, "status" = ?, action = ?, projectType = ?, hierarchyType = ?, boundaryCode = ?, projectId = ?, parentId = ?, isActive = ?,startDate=?,endDate=?, lastModifiedBy = ?, lastModifiedTime = ?, additionalDetails = ?, campaignDetails = ? WHERE id = ?;
           basePath: $.CampaignDetails
           jsonMaps:
             - jsonPath: $.CampaignDetails.campaignName
@@ -214,10 +214,10 @@ serviceMaps:
     - version: 1.0
       name: CreateProcessTrack
       description: Create process track in the eg_cm_campaign_process table
-      fromTopic: ba-save-process-track
+      fromTopic: os-save-process-track
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_campaign_process(id, campaignId, "type","status",details,createdtime, lastmodifiedtime,additionaldetails) VALUES (?,?,?,?,?,?,?,?);
+        - query: INSERT INTO os.eg_cm_campaign_process(id, campaignId, "type","status",details,createdtime, lastmodifiedtime,additionaldetails) VALUES (?,?,?,?,?,?,?,?);
           basePath: processDetails.*
           jsonMaps:
             - jsonPath: $.processDetails.*.id
@@ -236,10 +236,10 @@ serviceMaps:
     - version: 1.0
       name: UpdateProcessTrack
       description: Update process track in the eg_cm_campaign_process table
-      fromTopic: ba-update-process-track
+      fromTopic: os-update-process-track
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_campaign_process SET campaignId = ?, "type" = ?, "status" = ?,details = ?,createdtime = ?,lastmodifiedtime = ?,additionaldetails = ? WHERE id = ?;
+        - query: UPDATE os.eg_cm_campaign_process SET campaignId = ?, "type" = ?, "status" = ?,details = ?,createdtime = ?,lastmodifiedtime = ?,additionaldetails = ? WHERE id = ?;
           basePath: $.processDetails
           jsonMaps:
             - jsonPath: $.processDetails.campaignId
@@ -259,10 +259,10 @@ serviceMaps:
     - version: 1.0
       name: CreateSheetData
       description: Create sheet data in the eg_cm_campaign_data table
-      fromTopic: ba-save-sheet-data
+      fromTopic: os-save-sheet-data
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_campaign_data(campaignnumber, "type",uniqueidentifier,data,uniqueidafterprocess, "status") VALUES (?,?,?,?,?,?);
+        - query: INSERT INTO os.eg_cm_campaign_data(campaignnumber, "type",uniqueidentifier,data,uniqueidafterprocess, "status") VALUES (?,?,?,?,?,?);
           basePath: datas.*
           jsonMaps:
             - jsonPath: $.datas.*.campaignNumber
@@ -278,10 +278,10 @@ serviceMaps:
     - version: 1.0
       name: UpdateSheetData
       description: Update sheet data in the eg_cm_campaign_data table
-      fromTopic: ba-update-sheet-data
+      fromTopic: os-update-sheet-data
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_campaign_data SET data = ?,uniqueidafterprocess = ?, "status" = ? WHERE uniqueidentifier = ? AND "type" = ? AND campaignnumber = ?;
+        - query: UPDATE os.eg_cm_campaign_data SET data = ?,uniqueidafterprocess = ?, "status" = ? WHERE uniqueidentifier = ? AND "type" = ? AND campaignnumber = ?;
           basePath: datas.*
           jsonMaps:
             - jsonPath: $.datas.*.data
@@ -296,10 +296,10 @@ serviceMaps:
     - version: 1.0
       name: CreateMappingData
       description: Create mapping data in the eg_cm_campaign_mapping_data table
-      fromTopic: ba-save-mapping-data
+      fromTopic: os-save-mapping-data
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_campaign_mapping_data(campaignnumber,"type",uniqueIdentifierForData,boundaryCode,mappingId,"status") VALUES (?,?,?,?,?,?);
+        - query: INSERT INTO os.eg_cm_campaign_mapping_data(campaignnumber,"type",uniqueIdentifierForData,boundaryCode,mappingId,"status") VALUES (?,?,?,?,?,?);
           basePath: datas.*
           jsonMaps:
             - jsonPath: $.datas.*.campaignNumber
@@ -313,10 +313,10 @@ serviceMaps:
     - version: 1.0
       name: UpdateMappingData
       description: Update mapping data in the eg_cm_campaign_mapping_data table
-      fromTopic: ba-update-mapping-data
+      fromTopic: os-update-mapping-data
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_campaign_mapping_data SET mappingId = ?, "status" = ? WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
+        - query: UPDATE os.eg_cm_campaign_mapping_data SET mappingId = ?, "status" = ? WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
           basePath: datas.*
           jsonMaps:
             - jsonPath: $.datas.*.mappingId
@@ -329,10 +329,10 @@ serviceMaps:
     - version: 1.0
       name: DeleteMappingData
       description: Delete mapping data in the eg_cm_campaign_mapping_data table
-      fromTopic: ba-delete-mapping-data
+      fromTopic: os-delete-mapping-data
       isTransaction: true
       queryMaps:
-        - query: DELETE FROM ba.eg_cm_campaign_mapping_data WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
+        - query: DELETE FROM os.eg_cm_campaign_mapping_data WHERE uniqueIdentifierForData = ? AND campaignnumber = ? AND "type" = ? AND boundaryCode = ?;
           basePath: datas.*
           jsonMaps:
             - jsonPath: $.datas.*.uniqueIdentifierForData
@@ -344,10 +344,10 @@ serviceMaps:
     - version: 1.0
       name: CreateProcessData
       description: Create process data in the eg_cm_campaign_process_data table
-      fromTopic: ba-save-process-data
+      fromTopic: os-save-process-data
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO ba.eg_cm_campaign_process_data(campaignnumber,processName, "status", createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?,?,?,?,?,?,?);
+        - query: INSERT INTO os.eg_cm_campaign_process_data(campaignnumber,processName, "status", createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?,?,?,?,?,?,?);
           basePath: processes.*
           jsonMaps:
             - jsonPath: $.processes.*.campaignNumber
@@ -361,10 +361,10 @@ serviceMaps:
     - version: 1.0
       name: UpdateProcessData
       description: Update process data in the eg_cm_campaign_process_data table
-      fromTopic: ba-update-process-data
+      fromTopic: os-update-process-data
       isTransaction: true
       queryMaps:
-        - query: UPDATE ba.eg_cm_campaign_process_data SET "status" = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE campaignnumber = ? AND processName = ?;
+        - query: UPDATE os.eg_cm_campaign_process_data SET "status" = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE campaignnumber = ? AND processName = ?;
           basePath: processes.*
           jsonMaps:
             - jsonPath: $.processes.*.status
