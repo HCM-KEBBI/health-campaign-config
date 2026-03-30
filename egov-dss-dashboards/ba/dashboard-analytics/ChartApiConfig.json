@@ -63904,7 +63904,7 @@
     "insight": {},
     "_comment": "Warehouse manager sync rate. Queries ba-project-staff-index-v1 for total WAREHOUSE_MANAGER count and ba-user-sync-index-v1 for unique synced managers. Merges to compute syncRate = (syncedManagers / totalManagers) * 100. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card."
   },
-    "commodityFacilityStockBalance": {
+  "commodityFacilityStockBalance": {
     "chartName": "DSS_COMMODITY_FACILITY_STOCK_BALANCE",
     "queries": [
       {
@@ -63914,7 +63914,7 @@
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockBalanceTransformer",
-        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\"]}"
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\"]}"
       }
     ],
     "chartType": "rawResponse",
@@ -63929,6 +63929,7 @@
             "productVariantId": "Data.productVariant",
             "productName": "Data.productName",
             "stockEntryType": "Data.additionalDetails.stockEntryType",
+            "status": "Data.additionalDetails.status",
             "facilityName": "Data.facilityName",
             "transactingFacilityName": "Data.transactingFacilityName",
             "id": "Data.id",
@@ -63949,7 +63950,7 @@
     "aggregationPaths": [
       "stockBalanceTransformer"
     ],
-    "_comment": "Raw stock transactions with stockEntryType for per-facility balance computation"
+    "_comment": "Raw stock transactions with stockEntryType and status for per-facility balance computation"
   },
   "commodityFacilityStockByFacility": {
     "chartName": "DSS_COMMODITY_FACILITY_STOCK_BY_FACILITY",
