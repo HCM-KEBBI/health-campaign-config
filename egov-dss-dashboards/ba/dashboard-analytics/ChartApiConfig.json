@@ -63962,7 +63962,7 @@
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "facilityStockTransformer",
-        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\"]}"
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\"]}"
       },
       {
         "module": "COMMON",
@@ -63971,7 +63971,7 @@
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "transactingStockTransformer",
-        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\"]}"
+        "aggrQuery": "{\"size\":10000,\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\"]}"
       }
     ],
     "chartType": "rawResponse",
@@ -63986,6 +63986,7 @@
             "productVariantId": "Data.productVariant",
             "productName": "Data.productName",
             "stockEntryType": "Data.additionalDetails.stockEntryType",
+            "status": "Data.additionalDetails.status",
             "facilityName": "Data.facilityName",
             "transactingFacilityName": "Data.transactingFacilityName",
             "id": "Data.id"
@@ -64002,6 +64003,7 @@
             "productVariantId": "Data.productVariant",
             "productName": "Data.productName",
             "stockEntryType": "Data.additionalDetails.stockEntryType",
+            "status": "Data.additionalDetails.status",
             "facilityName": "Data.facilityName",
             "transactingFacilityName": "Data.transactingFacilityName",
             "id": "Data.id"
@@ -64018,6 +64020,6 @@
       "facilityStockTransformer",
       "transactingStockTransformer"
     ],
-    "_comment": "Two queries: facilityId filter hits Data.facilityId (RECEIPT/ISSUED), same filter hits Data.transactingFacilityId (REJECTED/RETURNED back to facility). Combine on frontend with dedup by id."
+    "_comment": "Two queries: facilityId and transactingFacilityId, with status for rejection detection"
   }
 }
