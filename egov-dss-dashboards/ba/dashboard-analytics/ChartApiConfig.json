@@ -63276,6 +63276,15 @@
         "transformData": "linearAggregation",
         "transformKey": "complaintsRecordCountTransformer",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.hfReferral.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-hf-referral-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "referralRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Referral Records\":{\"value_count\":{\"field\":\"Data.hfReferral.id.keyword\"}}}}"
       }
     ],
     "chartType": "rawResponse",
@@ -63321,6 +63330,13 @@
             "lastSyncTime": "LastSyncTime.value_as_string"
           }
         ]
+      },
+      "referralRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "referralRecordCount": "Referral Records.value"
+          }
+        ]
       }
     },
     "merges": [
@@ -63331,7 +63347,7 @@
         "datasets": [],
         "outputMappings": [
           {
-            "totalRecordsCount": "add(complaintRecordCount, add(taskRecordCount, stockRecordCount))"
+            "totalRecordsCount": "add(referralRecordCount,add(complaintRecordCount, add(taskRecordCount, stockRecordCount)))"
           }
         ]
       }
@@ -63394,10 +63410,31 @@
         "transformData": "rawDocuments",
         "transformKey": "errorTransformer",
         "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.hfReferral.clientAuditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-hf-referral-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "referralTransformer",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.hfReferral.id\",\"Data.hfReferral.beneficiaryId\",\"Data.hfReferral.symptom\",\"Data.@timestamp\"]}"
       }
     ],
     "chartType": "rawResponse",
     "transform": {
+      "referralTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.hfReferral.id",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Referral'",
+            "detail": "'${Data.hfReferral.beneficiaryId} is referred with ${Data.hfReferral.symptom}'",
+            "gps": "'-'",
+            "outcome": "BENEFICIARY_REFERRED"
+          }
+        ]
+      },
       "taskTransformer": {
         "transformationMappings": [
           {
@@ -63549,6 +63586,15 @@
         "transformData": "linearAggregation",
         "transformKey": "complaintsRecordCountTransformer",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.hfReferral.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ba-hf-referral-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "referralRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Referral Records\":{\"value_count\":{\"field\":\"Data.hfReferral.id.keyword\"}}}}"
       }
     ],
     "chartType": "rawResponse",
@@ -63587,6 +63633,13 @@
             "complaintRecordCount": "Complaint Records.value"
           }
         ]
+      },
+      "referralRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "referralRecordCount": "Referral Records.value"
+          }
+        ]
       }
     },
     "merges": [
@@ -63598,7 +63651,7 @@
         "outputMappings": [
           {
             "inactiveUsers": "subtract(totalUsersCreated, totalUsersActive)",
-            "totalRecordsCount": "add(complaintRecordCount,add(taskRecordCount, stockRecordCount))"
+            "totalRecordsCount": "add(referralRecordCount,add(complaintRecordCount,add(taskRecordCount,stockRecordCount)))"
           }
         ]
       }
