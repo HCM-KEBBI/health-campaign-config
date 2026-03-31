@@ -160,6 +160,8 @@ ServiceMaps:
             outJsonPath: $.Data.createdTime
           - inJsonPath: $.taskDates
             outJsonPath: $.Data.taskDates
+          - inJsonPath: $.@timestamp
+            outJsonPath: $.Data.syncedTimeStamp
           - inJsonPath: $.syncedDate
             outJsonPath: $.Data.syncedDate
           - inJsonPath: $.campaignNumber
