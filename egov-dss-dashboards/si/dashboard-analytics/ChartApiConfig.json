@@ -10839,140 +10839,128 @@
     "insight": {},
     "_comment": " "
   },
-  "distributorSyncSummaryDistrictSMC": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Distributors",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Distributors_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Distributors_Synced",
-          "Total_Distributors"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+ "distributorSyncSummaryDistrictSMC": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Distributors"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Distributors_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Distributors_Synced",
+        "Total_Distributors"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "distributorSyncSummaryProvinceSMC": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Distributors",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Distributors_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Distributors_Synced",
-          "Total_Distributors"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Distributors"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Distributors_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Distributors_Synced",
+        "Total_Distributors"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "entriesDoneByWMsApIRS": {
     "chartName": "DSS_HEALTH_ENTRIES_DONE_BY_WMS_AP",
     "queries": [
@@ -29080,417 +29068,381 @@
     "_comment": " "
   },
   "userSyncSummaryDistrictIRS": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Spray_Operators",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Spray_Operators_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Spray_Operators_Synced",
-          "Total_Spray_Operators"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Spray_Operators"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Spray_Operators_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Spray_Operators_Synced",
+        "Total_Spray_Operators"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "userSyncSummaryDistrictLLIN": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Users Created",
-      "Unique Users Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Users Created"
-        ],
-        "newField": "Total_Users_Created",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Users Synced"
-        ],
-        "newField": "Unique_Users_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Users_Synced",
-          "Total_Users_Created"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Users Created",
+    "Unique Users Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Users Created"
+      ],
+      "newField": "Total_Users_Created"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Users Synced"
+      ],
+      "newField": "Unique_Users_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Users_Synced",
+        "Total_Users_Created"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "userSyncSummaryDistrictSMC": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Distributors",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Distributors_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Distributors_Synced",
-          "Total_Distributors"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
-  "userSyncSummaryProvinceIRS": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Spray_Operators",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Spray_Operators_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Spray_Operators_Synced",
-          "Total_Spray_Operators"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"DISTRIBUTOR\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Distributors"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Distributors_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Distributors_Synced",
+        "Total_Distributors"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
+ "userSyncSummaryProvinceIRS": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Spray_Operators"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Spray_Operators_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Spray_Operators_Synced",
+        "Total_Spray_Operators"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "userSyncSummaryProvinceLLIN": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\",\"LOCAL_MONITOR\",\"NATIONAL_SUPERVISOR\",\"DISTRICT_SUPERVISOR\",\"PROVINCIAL_SUPERVISOR\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"NATIONAL_SUPERVISOR\"]}}]}},\"aggs\":{\"Total National Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\",\"LOCAL_MONITOR\",\"NATIONAL_SUPERVISOR\",\"DISTRICT_SUPERVISOR\",\"PROVINCIAL_SUPERVISOR\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Users Created",
-      "Unique Users Synced",
-      "Total National Users Created"
-    ],
-    "includeConstantColumns": [
-      "Total National Users Created"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Users Created",
-          "Total National Users Created"
-        ],
-        "newField": "Total_Users_Created",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Users Synced"
-        ],
-        "newField": "Unique_Users_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Users_Synced",
-          "Total_Users_Created"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
-  "userSyncSummaryProvinceSMC": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Distributors",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Distributors_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Distributors_Synced",
-          "Total_Distributors"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"NATIONAL_SUPERVISOR\"]}}]}},\"aggs\":{\"Total National Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Users Created",
+    "Unique Users Synced",
+    "Total National Users Created"
+  ],
+  "includeConstantColumns": [
+    "Total National Users Created"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Users Created",
+        "Total National Users Created"
+      ],
+      "newField": "Total_Users_Created"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Users Synced"
+      ],
+      "newField": "Unique_Users_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Users_Synced",
+        "Total_Users_Created"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
+ "userSyncSummaryProvinceSMC": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Distributors"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Distributors_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Distributors_Synced",
+        "Total_Distributors"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "vulnerablePopulationCoverageChildrenU5ApIRS": {
     "chartName": "DSS_HEALTH_VULNERABLE_POPULATION_COVERAGE_CHILDREN_U5_AP",
     "queries": [
@@ -35558,140 +35510,128 @@
     "_comment": " ",
     "kind": "drillDown"
   },
-  "userSyncSummaryProvinceICCD": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY_ICCD",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total FLWs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique FLWs Synced\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\",\"precision_threshold\":40000}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total FLWs",
-      "Unique FLWs Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total FLWs"
-        ],
-        "newField": "Total_FLW",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique FLWs Synced"
-        ],
-        "newField": "Unique_FLW_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_FLW_Synced",
-          "Total_FLW"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+ "userSyncSummaryProvinceICCD": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.Region.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total FLWs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.Region.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique FLWs Synced\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\",\"precision_threshold\":40000}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total FLWs",
+    "Unique FLWs Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total FLWs"
+      ],
+      "newField": "Total_FLW"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique FLWs Synced"
+      ],
+      "newField": "Unique_FLW_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_FLW_Synced",
+        "Total_FLW"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "userSyncSummaryDistrictICCD": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY_ICCD",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total FLWs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique FLWs Synced\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\",\"precision_threshold\":40000}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total FLWs",
-      "Unique FLWs Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total FLWs"
-        ],
-        "newField": "Total_FLW",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique FLWs Synced"
-        ],
-        "newField": "Unique_FLW_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_FLW_Synced",
-          "Total_FLW"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.Region.keyword\", \"district\": \"Data.boundaryHierarchy.District.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total FLWs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.Region.keyword\", \"district\": \"Data.boundaryHierarchy.District.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique FLWs Synced\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\",\"precision_threshold\":40000}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total FLWs",
+    "Unique FLWs Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total FLWs"
+      ],
+      "newField": "Total_FLW"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique FLWs Synced"
+      ],
+      "newField": "Unique_FLW_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_FLW_Synced",
+        "Total_FLW"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "administrationCoverageBarChartDistrictPercentICCD": {
     "chartName": "DSS_HEALTH_ADMINISTRATION_COVERAGE_DISTRICT_PERCENT_ICCD",
     "queries": [
@@ -50443,150 +50383,138 @@
     "insight": {},
     "_comment": " "
   },
-  "userSyncSummaryDistrictBednetsICCD": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Users Created",
-      "Unique Users Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Users Created"
-        ],
-        "newField": "Total_Users_Created",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Users Synced"
-        ],
-        "newField": "Unique_Users_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Users_Synced",
-          "Total_Users_Created"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
-  "userSyncSummaryProvinceBednetsICCD": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\",\"LOCAL_MONITOR\",\"NATIONAL_SUPERVISOR\",\"DISTRICT_SUPERVISOR\",\"PROVINCIAL_SUPERVISOR\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"NATIONAL_SUPERVISOR\"]}}]}},\"aggs\":{\"Total National Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\",\"LOCAL_MONITOR\",\"NATIONAL_SUPERVISOR\",\"DISTRICT_SUPERVISOR\",\"PROVINCIAL_SUPERVISOR\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Users Created",
-      "Unique Users Synced",
-      "Total National Users Created"
-    ],
-    "includeConstantColumns": [
-      "Total National Users Created"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Users Created",
-          "Total National Users Created"
-        ],
-        "newField": "Total_Users_Created",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Users Synced"
-        ],
-        "newField": "Unique_Users_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Users_Synced",
-          "Total_Users_Created"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+ "userSyncSummaryDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Users Created",
+    "Unique Users Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Users Created"
+      ],
+      "newField": "Total_Users_Created"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Users Synced"
+      ],
+      "newField": "Unique_Users_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Users_Synced",
+        "Total_Users_Created"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
+"userSyncSummaryProvinceBednetsICCD": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"NATIONAL_SUPERVISOR\"]}}]}},\"aggs\":{\"Total National Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTERS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Users Created",
+    "Unique Users Synced",
+    "Total National Users Created"
+  ],
+  "includeConstantColumns": [
+    "Total National Users Created"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Users Created",
+        "Total National Users Created"
+      ],
+      "newField": "Total_Users_Created"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Users Synced"
+      ],
+      "newField": "Unique_Users_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Users_Synced",
+        "Total_Users_Created"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "warehouseDistributionLatLongPointsBednetsICCD": {
     "chartName": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
     "queries": [
@@ -61987,140 +61915,128 @@
     "insight": {},
     "_comment": " "
   },
-  "userSyncSummaryDistrictIRSICCD": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Spray_Operators",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Spray_Operators_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Spray_Operators_Synced",
-          "Total_Spray_Operators"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+ "userSyncSummaryDistrictIRSICCD": {
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Spray_Operators"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Spray_Operators_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Spray_Operators_Synced",
+        "Total_Spray_Operators"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "userSyncSummaryProvinceIRSICCD": {
-    "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "xtable",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "DATA SYNC",
-    "filterForCurrentDay": true,
-    "excludedColumns": [
-      "S.N.",
-      "DATA SYNC",
-      "Total Spray Operators",
-      "Unique Spray Operators Synced"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Total Spray Operators"
-        ],
-        "newField": "Total_Spray_Operators",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Unique Spray Operators Synced"
-        ],
-        "newField": "Unique_Spray_Operators_Synced",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Unique_Spray_Operators_Synced",
-          "Total_Spray_Operators"
-        ],
-        "newField": "User_Sync_Rate",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": true,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_USER_SYNC_SUMMARY",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"WAREHOUSE_MANAGER\",\"HEALTH_FACILITY_WORKER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Total Spray Operators\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.role.keyword\":[\"DISTRIBUTOR\",\"WAREHOUSE_MANAGER\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Unique Spray Operators Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "DATA SYNC",
+  "filterForCurrentDay": false,
+  "excludedColumns": [
+    "S.N.",
+    "DATA SYNC",
+    "Total Spray Operators",
+    "Unique Spray Operators Synced"
+  ],
+  "computedFields": [
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Total Spray Operators"
+      ],
+      "newField": "Total_Spray_Operators"
+    },
+    {
+      "actionName": "AdditiveComputedField",
+      "fields": [
+        "Unique Spray Operators Synced"
+      ],
+      "newField": "Unique_Spray_Operators_Synced"
+    },
+    {
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "Unique_Spray_Operators_Synced",
+        "Total_Spray_Operators"
+      ],
+      "newField": "User_Sync_Rate"
+    }
+  ],
+  "insight": {},
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "_comment": " "
+},
   "vulnerablePopulationCoverageChildrenU5ApIRSICCD": {
     "chartName": "DSS_HEALTH_VULNERABLE_POPULATION_COVERAGE_CHILDREN_U5_AP",
     "queries": [
