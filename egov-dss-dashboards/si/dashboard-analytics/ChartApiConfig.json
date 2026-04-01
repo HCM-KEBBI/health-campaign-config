@@ -10288,99 +10288,117 @@
     "sort": "sortKeyAsc",
     "_comment": " "
   },
-  "daysInventoryStockLastsDistrictIRS": {
-    "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": false,
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "division",
-    "aggregationPaths": [
-      "No. of Days Stock Can Last",
-      "Target Per Day"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "daysInventoryStockLastsDistrictLLIN": {
-    "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": false,
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "division",
-    "aggregationPaths": [
-      "No. of Days Stock Can Last",
-      "Target Per Day"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+"daysInventoryStockLastsDistrictIRS": {
+  "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"IRS\",\"Bednet\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"IRS\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "actionName": "DivideComputedField",
+      "fields": [
+        "Stock",
+        "DailyTarget"
+      ],
+      "newField": "Days Inventory Can Last"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "aggregationPaths": [
+    "Stock",
+    "DailyTarget"
+  ],
+  "_comment": "FINAL FIXED: District-based, correct fields, stock/targetPerDay division"
+},
+ "daysInventoryStockLastsDistrictLLIN": {
+  "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "actionName": "DivideComputedField",
+      "fields": [
+        "Stock",
+        "DailyTarget"
+      ],
+      "newField": "Days Inventory Can Last"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "aggregationPaths": [
+    "Stock",
+    "DailyTarget"
+  ],
+  "_comment": "FINAL FIXED: LLIN district, wildcard PVAR*, correct fields, stock/targetPerDay"
+},
   "daysInventoryStockLastsDistrictSMC": {
-    "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": false,
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "division",
-    "aggregationPaths": [
-      "No. of Days Stock Can Last",
-      "Target Per Day"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"SMC\",\"Bednet\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"SMC\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "actionName": "DivideComputedField",
+      "fields": [
+        "Stock",
+        "DailyTarget"
+      ],
+      "newField": "Days Inventory Can Last"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "aggregationPaths": [
+    "Stock",
+    "DailyTarget"
+  ],
+  "_comment": "FINAL FIXED: SMC district, correct fields, stock/targetPerDay"
+},
   "daysInventoryStockLastsProvinceIRS": {
     "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
     "queries": [
@@ -10412,37 +10430,41 @@
     "insight": {},
     "_comment": " "
   },
-  "daysInventoryStockLastsProvinceLLIN": {
-  "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+"daysInventoryStockLastsProvinceLLIN": {
+  "chartName": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST_PROVINCE",
   "queries": [
     {
       "module": "COMMON",
-      "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
       "indexName": "si-stock-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}}]}},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}"
     },
     {
       "module": "COMMON",
-      "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
       "indexName": "si-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}}]}},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}"
     }
   ],
-  "chartType": "line",
-  "isCumulative": false,
-  "valueType": "number",
-  "drillChart": "none",
-  "documentType": "_doc",
-  "action": "division",
-  "sort": "sortKeyAsc",
-  "aggregationPaths": [
-    "AGGR>No. of Days Stock Can Last>Total Stock",
-    "AGGR>Target Per Day>SUM"
+  "chartType": "metric",
+  "computedFields": [
+    {
+      "actionName": "DivideComputedField",
+      "fields": [
+        "STOCK",
+        "VALUE"
+      ],
+      "newField": "Days Inventory Can Last"
+    }
   ],
-  "insight": {},
-  "_comment": " "
+  "valueType": "number",
+  "aggregationPaths": [
+    "STOCK",
+    "VALUE"
+  ],
+  "_comment": "FINAL FIXED: metric-compatible, no terms bucket, correct aggregation paths"
 },
   "daysInventoryStockLastsProvinceSMC": {
     "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
@@ -14380,165 +14402,162 @@
     "insight": {},
     "_comment": " "
   },
-  "inventoryStockInHandProvinceIRS": {
-    "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value*(-1)\"}}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "SumComputedField",
-        "fields": [
-          "Overall Target",
-          "Distributions by district"
-        ],
-        "newField": "Required Stock",
-        "_comments": ""
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "plotLabel": "none",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "computeMultiPaths": true,
-    "aggregationPaths": [
-      "Available Stock",
-      "Overall Target",
-      "Distributions by district"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "inventoryStockInHandProvinceLLIN": {
-    "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value*(-1)\"}}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "SumComputedField",
-        "fields": [
-          "Overall Target",
-          "Distributions by district"
-        ],
-        "newField": "Required Stock",
-        "_comments": ""
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "plotLabel": "none",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "computeMultiPaths": true,
-    "aggregationPaths": [
-      "Available Stock",
-      "Overall Target",
-      "Distributions by district"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "inventoryStockInHandProvinceSMC": {
-    "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
-        "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value*(-1)\"}}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "SumComputedField",
-        "fields": [
-          "Overall Target",
-          "Distributions by district"
-        ],
-        "newField": "Required Stock",
-        "_comments": ""
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "plotLabel": "none",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "computeMultiPaths": true,
-    "aggregationPaths": [
-      "Available Stock",
-      "Overall Target",
-      "Distributions by district"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+"inventoryStockInHandProvinceIRS": {
+  "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"IRS\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS - params.OS\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"IRS\"}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"IRS\"}},{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "SumComputedField",
+      "fields": [
+        "Overall Target",
+        "Distributions"
+      ],
+      "newField": "Required Stock"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "computeMultiPaths": true,
+  "aggregationPaths": [
+    "Available Stock",
+    "Overall Target",
+    "Distributions"
+  ],
+  "insight": {},
+  "_comment": "FINAL FIXED: Region-based aggregation, projectTypeId filter added, dateRefField fixed, field names corrected"
+},
+"inventoryStockInHandProvinceLLIN": {
+  "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"(params.IS != null ? params.IS : 0) - (params.OS != null ? params.OS : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "SumComputedField",
+      "fields": [
+        "Overall Target",
+        "Distributions"
+      ],
+      "newField": "Required Stock"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "computeMultiPaths": true,
+  "aggregationPaths": [
+    "Available Stock",
+    "Overall Target",
+    "Distributions"
+  ],
+  "insight": {},
+  "_comment": "FINAL FIXED: wildcard productVariant (PVAR*), Region aggregation, Bednet filter, null-safe stock calc"
+},
+ "inventoryStockInHandProvinceSMC": {
+  "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"SMC\",\"Bednet\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"(params.IS != null ? params.IS : 0) - (params.OS != null ? params.OS : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"SMC\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+      "indexName": "si-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"SMC\",\"Bednet\"]}},{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "SumComputedField",
+      "fields": [
+        "Overall Target",
+        "Distributions"
+      ],
+      "newField": "Required Stock"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "computeMultiPaths": true,
+  "aggregationPaths": [
+    "Available Stock",
+    "Overall Target",
+    "Distributions"
+  ],
+  "insight": {},
+  "_comment": "UPDATED: supports SMC + fallback data, null-safe stock calc, cycle preserved"
+},
   "InventorySummaryByAPIRS": {
     "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
     "queries": [
@@ -34493,36 +34512,42 @@
     "_comment": " "
   },
   "daysInventoryStockLastsDistrictICCD": {
-    "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT_ICCD",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": false,
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "division",
-    "aggregationPaths": [
-      "No. of Days Stock Can Last",
-      "Target Per Day"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+  "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "actionName": "DivideComputedField",
+      "fields": [
+        "Stock",
+        "DailyTarget"
+      ],
+      "newField": "Days Inventory Can Last"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "aggregationPaths": [
+    "Stock",
+    "DailyTarget"
+  ],
+  "_comment": "FINAL FIXED: ICCD district, campaign-aware, stock/targetPerDay"
+},
   "checklistCompletionRateDistrictICCD": {
     "chartName": "DSS_HEALTH_OVERVIEW_CHECKLISTS_COMPLETION_RATE_DISTRICT_ICCD",
     "queries": [
@@ -34642,59 +34667,58 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
-  "inventoryStockInHandProvinceICCD": {
-    "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE_ICCD",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value*(-1)\"}}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "SumComputedField",
-        "fields": [
-          "Overall Target",
-          "Distributions by district"
-        ],
-        "newField": "Required Stock",
-        "_comments": ""
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "plotLabel": "none",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "computeMultiPaths": true,
-    "aggregationPaths": [
-      "Available Stock",
-      "Overall Target",
-      "Distributions by district"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+ "inventoryStockInHandProvinceICCD": {
+  "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"(params.IS != null ? params.IS : 0) - (params.OS != null ? params.OS : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "SumComputedField",
+      "fields": [
+        "Overall Target",
+        "Distributions"
+      ],
+      "newField": "Required Stock"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "computeMultiPaths": true,
+  "aggregationPaths": [
+    "Available Stock",
+    "Overall Target",
+    "Distributions"
+  ],
+  "insight": {},
+  "_comment": "UPDATED: supports ICCD + fallback data, campaign + cycle preserved, null-safe stock calc"
+},
   "inventoryStockInHandDistrictICCD": {
     "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_DISTRICT_ICCD",
     "queries": [
@@ -45766,37 +45790,43 @@
     "insight": {},
     "_comment": " "
   },
-  "daysInventoryStockLastsDistrictBednetsICCD": {
-    "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": false,
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "division",
-    "aggregationPaths": [
-      "No. of Days Stock Can Last",
-      "Target Per Day"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+ "daysInventoryStockLastsDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"ICCD\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"ICCD\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "actionName": "DivideComputedField",
+      "fields": [
+        "Stock",
+        "DailyTarget"
+      ],
+      "newField": "Days Inventory Can Last"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "aggregationPaths": [
+    "Stock",
+    "DailyTarget"
+  ],
+  "_comment": "FINAL FIXED: ICCD + Bednet (PVAR*), district-level, stock/targetPerDay"
+},
   "daysInventoryStockLastsProvinceBednetsICCD": {
     "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
     "queries": [
@@ -46351,59 +46381,58 @@
     "insight": {},
     "_comment": " "
   },
-  "inventoryStockInHandProvinceBednetsICCD": {
-    "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value*(-1)\"}}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "SumComputedField",
-        "fields": [
-          "Overall Target",
-          "Distributions by district"
-        ],
-        "newField": "Required Stock",
-        "_comments": ""
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "plotLabel": "none",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "computeMultiPaths": true,
-    "aggregationPaths": [
-      "Available Stock",
-      "Overall Target",
-      "Distributions by district"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+ "inventoryStockInHandProvinceBednetsICCD": {
+  "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"(params.IS != null ? params.IS : 0) - (params.OS != null ? params.OS : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "SumComputedField",
+      "fields": [
+        "Overall Target",
+        "Distributions"
+      ],
+      "newField": "Required Stock"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "computeMultiPaths": true,
+  "aggregationPaths": [
+    "Available Stock",
+    "Overall Target",
+    "Distributions"
+  ],
+  "insight": {},
+  "_comment": "FINAL FIXED: wildcard PVAR*, ICCD+Bednet support, null-safe calc, campaign preserved"
+},
   "InventorySummaryByDistrictBednetsICCD": {
     "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
     "queries": [
@@ -56437,59 +56466,58 @@
     "insight": {},
     "_comment": " "
   },
-  "inventoryStockInHandProvinceIRSICCD": {
-    "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value*(-1)\"}}}}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "SumComputedField",
-        "fields": [
-          "Overall Target",
-          "Distributions by district"
-        ],
-        "newField": "Required Stock",
-        "_comments": ""
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "plotLabel": "none",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "computeMultiPaths": true,
-    "aggregationPaths": [
-      "Available Stock",
-      "Overall Target",
-      "Distributions by district"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+"inventoryStockInHandProvinceBednetsICCD": {
+  "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"(params.IS != null ? params.IS : 0) - (params.OS != null ? params.OS : 0)\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.startDate",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "si-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"ICCD\",\"Bednet\"]}},{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Distributions\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "SumComputedField",
+      "fields": [
+        "Overall Target",
+        "Distributions"
+      ],
+      "newField": "Required Stock"
+    }
+  ],
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "computeMultiPaths": true,
+  "aggregationPaths": [
+    "Available Stock",
+    "Overall Target",
+    "Distributions"
+  ],
+  "insight": {},
+  "_comment": "FINAL FIXED: supports ICCD + Bednet, wildcard PVAR*, null-safe stock calc, campaign preserved"
+},
   "InventorySummaryByAPIRSICCD": {
     "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
     "queries": [
@@ -63886,5 +63914,69 @@
       "transactingStockTransformer"
     ],
     "_comment": "Two queries: facilityId filter hits Data.facilityId (RECEIPT/ISSUED), same filter hits Data.transactingFacilityId (REJECTED/RETURNED back to facility). Combine on frontend with dedup by id."
+  },
+  "itnsDistributedSchools": {
+  "chartName": "DSS_HEALTH_ITNS_DISTRIBUTED_SCHOOLS",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "indexName": "si-project-task-index-v1",
+      "queryType": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "aggregationPaths": {
+        "Number of ITNs Distributed in Schools": "Total"
+      },
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.quantity\"}}]}},\"aggs\":{\"Total\":{\"sum\":{\"field\":\"Data.quantity\"}}}}"
+    }
+  ]
+  },
+  "studentsReached": {
+  "chartName": "DSS_HEALTH_STUDENTS_REACHED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "indexName": "si-project-task-index-v1",
+      "queryType": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "aggregationPaths": {
+        "Number of Students Reached": "Total"
+      },
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total\":{\"sum\":{\"script\":{\"source\":\"doc['Data.additionalDetails.totalPupilCount.keyword'].size()!=0 ? Integer.parseInt(doc['Data.additionalDetails.totalPupilCount.keyword'].value) : 0\",\"lang\":\"painless\"}}}}}"
+    }
+  ]
+  },
+  "schoolsCovered": {
+  "chartName": "DSS_HEALTH_SCHOOLS_COVERED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "indexName": "si-project-task-index-v1",
+      "queryType": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "aggregationPaths": {
+        "Number of Schools Covered": "Total"
+      },
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total\":{\"cardinality\":{\"field\":\"Data.additionalDetails.schoolId.keyword\"}}}}"
+    }
+  ]
+  },
+  "averageSchoolSize": {
+  "chartName": "DSS_HEALTH_AVERAGE_SCHOOL_SIZE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "indexName": "si-project-task-index-v1",
+      "queryType": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+      "aggregationPaths": {
+        "Average School Size": "Average"
+      },
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"TotalStudents\":{\"sum\":{\"script\":{\"source\":\"doc['Data.additionalDetails.totalPupilCount.keyword'].size()!=0 ? Integer.parseInt(doc['Data.additionalDetails.totalPupilCount.keyword'].value) : 0\",\"lang\":\"painless\"}}},\"TotalSchools\":{\"cardinality\":{\"field\":\"Data.additionalDetails.schoolId.keyword\"}},\"Average\":{\"bucket_script\":{\"buckets_path\":{\"students\":\"TotalStudents\",\"schools\":\"TotalSchools\"},\"script\":\"params.schools > 0 ? params.students / params.schools : 0\"}}}}"
+    }
+  ]
   }
 }
