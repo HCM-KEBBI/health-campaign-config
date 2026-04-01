@@ -8,71 +8,77 @@
       "style": "linear",
       "visualizations": [
         {
-  "row": 1,
-  "name": "DSS_ITN_SCHOOL_KPIS",
-  "vizArray": [
-    {
-      "id": 501,
-      "name": "DSS_HEALTH_ITNS_DISTRIBUTED_SCHOOLS",
-      "label": "ITNs Distributed",
-      "vizType": "metric",
-      "noUnit": true,
-      "isCollapsible": false,
-      "charts": [
+    "row": 1,
+    "name": "DSS_ITN_SCHOOL_KPIS_ROW1",
+    "vizArray": [
+      {
+        "id": 501,
+        "name": "DSS_HEALTH_ITNS_DISTRIBUTED_SCHOOLS",
+        "label": "ITNs Distributed",
+        "vizType": "metric",
+        "noUnit": true,
+        "isCollapsible": false,
+        "charts": [
+          {
+            "id": "itnsDistributedSchools",
+            "name": "DSS_HEALTH_ITNS_DISTRIBUTED_SCHOOLS",
+            "chartType": "metric"
+          }
+        ]
+      },
+      {
+        "id": 502,
+        "name": "DSS_HEALTH_SCHOOLS_COVERED",
+        "label": "Schools Covered",
+        "vizType": "metric",
+        "noUnit": true,
+        "isCollapsible": false,
+        "charts": [
+          {
+            "id": "schoolsCovered",
+            "name": "DSS_HEALTH_SCHOOLS_COVERED",
+            "chartType": "metric"
+          }
+        ]
+      }
+    ]
+        },
         {
-          "id": "itnsDistributedSchools",
-          "name": "DSS_HEALTH_ITNS_DISTRIBUTED_SCHOOLS",
-          "chartType": "metric"
-        }
-      ]
-    },
-    {
-      "id": 502,
-      "name": "DSS_HEALTH_SCHOOLS_COVERED",
-      "label": "Schools Covered",
-      "vizType": "metric",
-      "noUnit": true,
-      "isCollapsible": false,
-      "charts": [
-        {
-          "id": "schoolsCovered",
-          "name": "DSS_HEALTH_SCHOOLS_COVERED",
-          "chartType": "metric"
-        }
-      ]
-    },
-    {
-      "id": 503,
-      "name": "DSS_HEALTH_STUDENTS_REACHED",
-      "label": "Students Reached",
-      "vizType": "metric",
-      "noUnit": true,
-      "isCollapsible": false,
-      "charts": [
-        {
-          "id": "studentsReached",
-          "name": "DSS_HEALTH_STUDENTS_REACHED",
-          "chartType": "metric"
-        }
-      ]
-    },
-    {
-      "id": 504,
-      "name": "DSS_HEALTH_AVERAGE_SCHOOL_SIZE",
-      "label": "Avg School Size",
-      "vizType": "metric",
-      "noUnit": false,
-      "isCollapsible": false,
-      "charts": [
-        {
-          "id": "averageSchoolSize",
-          "name": "DSS_HEALTH_AVERAGE_SCHOOL_SIZE",
-          "chartType": "metric"
-        }
-      ]
-    }
-  ]
-},
+          "row": 2,
+          "name": "DSS_ITN_SCHOOL_KPIS_ROW2",
+          "vizArray": [
+            {
+              "id": 503,
+              "name": "DSS_HEALTH_STUDENTS_REACHED",
+              "label": "Students Reached",
+              "vizType": "metric",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "studentsReached",
+                  "name": "DSS_HEALTH_STUDENTS_REACHED",
+                  "chartType": "metric"
+                }
+              ]
+            },
+            {
+              "id": 504,
+              "name": "DSS_HEALTH_AVERAGE_SCHOOL_SIZE",
+              "label": "Avg School Size",
+              "vizType": "metric",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "averageSchoolSize",
+                  "name": "DSS_HEALTH_AVERAGE_SCHOOL_SIZE",
+                  "chartType": "metric"
+                }
+              ]
+            }
+          ]
+        },
         {
           "row": 1,
           "name": "DSS_NATIONAL_HEALTH",
