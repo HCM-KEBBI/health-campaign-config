@@ -6267,21 +6267,21 @@
   "_comment": "fixed",
   "kind": "drillDown"
 },
- "complaintsByStatusBreakdownProvincialLLIN": {
+"complaintsByStatusBreakdownProvincialLLIN": {
   "chartName": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_PROVINCIAL",
   "queries": [
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{}",
+      "requestQueryMap": "{\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
       "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"Open filter by Districts\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"PENDING_ASSIGNMENT\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"Resolved filter by Districts\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}]}},\"aggs\":{\"RESOLVED\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"Rejected filter by Districts\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}]}},\"aggs\":{\"REJECTED\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"query\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},\"aggs\":{\"Districts\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}}}"
     }
   ],
   "chartType": "bar",
   "isCumulative": false,
   "valueType": "number",
-  "plotLabel": "none",
+  "plotLabel": "District",
   "drillChart": "complaintsByStatusBreakdownDistrictLLIN",
   "filterKeys": [
     {
@@ -6291,12 +6291,12 @@
   "documentType": "_doc",
   "action": "",
   "aggregationPaths": [
-    "PENDING_ASSIGNMENT",
-    "RESOLVED",
-    "REJECTED"
+    "Districts",
+    "Status",
+    "Count"
   ],
   "insight": {},
-  "_comment": "fixed",
+  "_comment": "OPTIMIZED VERSION (single aggregation, faster, cleaner)",
   "kind": "drillDown"
 },
   "complaintsByStatusBreakdownProvincialSMC": {
@@ -7734,21 +7734,21 @@
   "_comment": "fixed",
   "kind": "drillDown"
 },
-  "complaintsByTypeBreakdownProvincialLLIN": {
+ "complaintsByTypeBreakdownProvincialLLIN": {
   "chartName": "DSS_HEALTH_COMPLAINTS_TYPE_BREAKDOWN_PROVINCIAL",
   "queries": [
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{}",
+      "requestQueryMap": "{\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
       "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"Other\":{\"filter\":{\"term\":{\"Data.service.serviceCode.keyword\":\"Other\"}},\"aggs\":{\"Other Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"PerformanceIssue\":{\"filter\":{\"term\":{\"Data.service.serviceCode.keyword\":\"PerformanceIssue\"}},\"aggs\":{\"PerformanceIssue Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"SecurityIssues\":{\"filter\":{\"term\":{\"Data.service.serviceCode.keyword\":\"SecurityIssues\"}},\"aggs\":{\"SecurityIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"DataIssues\":{\"filter\":{\"term\":{\"Data.service.serviceCode.keyword\":\"DataIssues\"}},\"aggs\":{\"DataIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"TechnicalIssues\":{\"filter\":{\"term\":{\"Data.service.serviceCode.keyword\":\"TechnicalIssues\"}},\"aggs\":{\"TechnicalIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}},\"UserAccountIssues\":{\"filter\":{\"term\":{\"Data.service.serviceCode.keyword\":\"UserAccountIssues\"}},\"aggs\":{\"UserAccountIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Districts\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\",\"size\":10,\"order\":{\"_count\":\"desc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}}}"
     }
   ],
   "chartType": "bar",
   "isCumulative": false,
   "valueType": "number",
-  "plotLabel": "none",
+  "plotLabel": "District",
   "drillChart": "complaintsByTypeBreakdownDistrictLLIN",
   "filterKeys": [
     {
@@ -7758,15 +7758,12 @@
   "documentType": "_doc",
   "action": "",
   "aggregationPaths": [
-    "Other",
-    "PerformanceIssue",
-    "SecurityIssues",
-    "DataIssues",
-    "TechnicalIssues",
-    "UserAccountIssues"
+    "Districts",
+    "Type",
+    "Count"
   ],
   "insight": {},
-  "_comment": "fixed",
+  "_comment": "FINAL OPTIMIZED VERSION (single aggregation, sorted, filtered)",
   "kind": "drillDown"
 },
  "complaintsByTypeBreakdownProvincialSMC": {
@@ -8293,26 +8290,27 @@
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
       "requestQueryMap": "{\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
       "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"% of Total Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Districts\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
       "requestQueryMap": "{\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
       "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Total Complaints\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}}}"
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Total\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
     }
   ],
   "chartType": "bar",
   "isCumulative": false,
   "valueType": "percentage",
-  "plotLabel": "none",
+  "plotLabel": "District",
   "drillChart": "ComplaintsShareByAPLLIN",
   "documentType": "_doc",
   "action": "divisionbyconstant",
   "aggregationPaths": [
-    "% of Total Complaints",
-    "Total Complaints"
+    "Districts",
+    "Count",
+    "Total"
   ],
   "filterKeys": [
     {
@@ -8320,7 +8318,7 @@
     }
   ],
   "insight": {},
-  "_comment": "final fixed"
+  "_comment": "FINAL CORRECT VERSION"
 },
   "ComplaintsShareByDistrictSMC": {
   "chartName": "DSS_HEALTH_COMPLAINTS_BY_BOUNDARY",
@@ -10302,34 +10300,28 @@
       "dateRefField": "Data.createdTime",
       "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
       "indexName": "si-stock-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"IRS\",\"Bednet\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "Data.startDate",
       "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
       "indexName": "si-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.projectTypeId.keyword\":[\"IRS\",\"Bednet\"]}},{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"terms\":{\"Data.targetType.keyword\":[\"INDIVIDUAL\",\"HOUSEHOLD\"]}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"DailyTarget\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
     }
   ],
   "chartType": "line",
   "computedFields": [
     {
       "actionName": "DivideComputedField",
-      "fields": [
-        "Stock",
-        "DailyTarget"
-      ],
+      "fields": ["Stock", "DailyTarget"],
       "newField": "Days Inventory Can Last"
     }
   ],
   "isCumulative": false,
   "valueType": "number",
-  "aggregationPaths": [
-    "Stock",
-    "DailyTarget"
-  ],
-  "_comment": "FINAL FIXED: District-based, correct fields, stock/targetPerDay division"
+  "aggregationPaths": ["Stock", "DailyTarget"],
+  "_comment": "FINAL CORRECT VERSION (Bednet only, IRS not present in data)"
 },
  "daysInventoryStockLastsDistrictLLIN": {
   "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
@@ -16353,7 +16345,7 @@
       "dateRefField": "Data.service.auditDetails.createdTime",
       "requestQueryMap": "{\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
       "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}},\"aggs\":{\"OpenComplaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"filters\":{\"filters\":{\"open_0_6h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff <= 21600000;\"}}},\"open_6_12h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 21600000 && diff <= 43200000;\"}}},\"open_12_24h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 43200000 && diff <= 86400000;\"}}},\"open_24_48h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 86400000 && diff <= 172800000;\"}}},\"open_gt_48h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 172800000;\"}}}}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"OpenComplaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"filters\":{\"filters\":{\"open_0_6h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff <= 21600000;\"}}},\"open_6_12h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 21600000 && diff <= 43200000;\"}}},\"open_12_24h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 43200000 && diff <= 86400000;\"}}},\"open_24_48h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 86400000 && diff <= 172800000;\"}}},\"open_gt_48h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 172800000;\"}}}}}}}}}}}"
     }
   ],
   "filterKeys": [
@@ -16374,6 +16366,7 @@
     "Count"
   ],
   "sort": "sortKeyAsc",
+  "_comment": "FINAL CORRECT VERSION (epoch time handled properly)",
   "kind": "drillDown"
 },
 "openComplaintsSummaryByDistrictSMC": {
