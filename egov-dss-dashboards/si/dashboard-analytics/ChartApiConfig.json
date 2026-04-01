@@ -16350,10 +16350,10 @@
   "queries": [
     {
       "module": "COMMON",
-      "dateRefField": "",
+      "dateRefField": "Data.service.auditDetails.createdTime",
       "requestQueryMap": "{\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
       "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}},\"aggs\":{\"Open complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints count\":{\"date_range\":{\"field\":\"Data.service.auditDetails.createdTime\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open since 6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open since 6h-12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open since 12h-24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open since 24h-48h\"},{\"to\":\"now-48h\",\"key\":\"open for more than 48h\"}]}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}},\"aggs\":{\"OpenComplaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"filters\":{\"filters\":{\"open_0_6h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff <= 21600000;\"}}},\"open_6_12h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 21600000 && diff <= 43200000;\"}}},\"open_12_24h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 43200000 && diff <= 86400000;\"}}},\"open_24_48h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 86400000 && diff <= 172800000;\"}}},\"open_gt_48h\":{\"script\":{\"script\":{\"source\":\"long now = new Date().getTime(); long diff = now - doc['Data.service.auditDetails.createdTime'].value; return diff > 172800000;\"}}}}}}}}}}}"
     }
   ],
   "filterKeys": [
@@ -16366,23 +16366,14 @@
   "valueType": "number",
   "drillChart": "openComplaintsSummaryByAPLLIN",
   "documentType": "_doc",
-  "action": "",
   "showFooter": true,
   "plotLabel": "District",
-  "excludedColumns": [],
-  "hideInsights": true,
-  "hideHeaderDenomination": true,
   "aggregationPaths": [
-    "open since 6h",
-    "open since 6h-12h",
-    "open since 12h-24h",
-    "open since 24h-48h",
-    "open for more than 48h"
+    "Open",
+    "OpenComplaints",
+    "Count"
   ],
-  "computedFields": [],
-  "insight": {},
   "sort": "sortKeyAsc",
-  "_comment": "FINAL PERFECT (Region filter + District aggregation + createdTime)",
   "kind": "drillDown"
 },
 "openComplaintsSummaryByDistrictSMC": {
