@@ -10421,42 +10421,38 @@
     "insight": {},
     "_comment": " "
   },
-"daysInventoryStockLastsProvinceLLIN": {
-  "chartName": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST_PROVINCE",
-  "queries": [
-    {
-      "module": "COMMON",
-      "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-      "indexName": "si-stock-index-v1",
-      "aggrQuery":"{\"size\":0,\"aggs\":{\"AGGR\":{\"terms\":{\"field\":\"Data.projectTypeId.keyword\",\"size\":10},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}"
-    },
-    {
-      "module": "COMMON",
-      "dateRefField": "Data.startDate",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-      "indexName": "si-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}}]}},\"aggs\":{\"VALUE\":{\"avg\":{\"field\":\"Data.targetPerDay\"}}}}}}"
-    }
-  ],
-  "chartType": "metric",
-  "computedFields": [
-    {
-      "actionName": "DivideComputedField",
-      "fields": [
-        "STOCK",
-        "VALUE"
-      ],
-      "newField": "Days Inventory Can Last"
-    }
-  ],
-  "valueType": "number",
-  "aggregationPaths": [
-    "STOCK",
-    "VALUE"
-  ],
-  "_comment": "FINAL FIXED: metric-compatible, no terms bucket, correct aggregation paths"
-},
+ "daysInventoryStockLastsProvinceLLIN": {
+    "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "si-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"No. of Days Stock Can Last\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "si-project-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "division",
+    "sort": "sortKeyAsc",
+    "aggregationPaths": [
+      "No. of Days Stock Can Last",
+      "Target Per Day"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
   "daysInventoryStockLastsProvinceSMC": {
     "chartName": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
     "queries": [
