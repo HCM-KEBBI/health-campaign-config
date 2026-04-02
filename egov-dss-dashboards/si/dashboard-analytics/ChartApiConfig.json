@@ -10430,7 +10430,7 @@
       "dateRefField": "Data.createdTime",
       "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
       "indexName": "si-stock-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}},{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}}]}},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"terms\":{\"field\":\"Data.projectTypeId.keyword\",\"size\":10},\"aggs\":{\"IN\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"OUT\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"STOCK\":{\"bucket_script\":{\"buckets_path\":{\"in\":\"IN>SUM\",\"out\":\"OUT>SUM\"},\"script\":\"(params.in != null ? params.in : 0) - (params.out != null ? params.out : 0)\"}}}}}}"
     },
     {
       "module": "COMMON",
