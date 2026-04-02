@@ -16326,46 +16326,46 @@
   "_comment": "FINAL CORRECT (removed district filter)",
   "kind": "drillDown"
 },
-  "openComplaintsSummaryByDistrictLLIN": {
-  "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
-  "queries": [
-    {
-      "module": "COMMON",
-      "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
-      "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"OpenComplaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"},\"missing\":\"UNKNOWN\"},\"aggs\":{\"OpenComplaintsCount\":{\"date_range\":{\"field\":\"Data.service.auditDetails.createdTime\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open_0_6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open_6_12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open_12_24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open_24_48h\"},{\"to\":\"now-48h\",\"key\":\"open_48h_plus\"}]}}}}}}}"
-    }
-  ],
-  "filterKeys": [
-    {
-      "key": "district",
-      "column": "OpenComplaints"
-    }
-  ],
-  "chartType": "xtable",
-  "valueType": "number",
-  "drillChart": "openComplaintsSummaryByAPLLIN",
-  "documentType": "_doc",
-  "action": "",
-  "showFooter": true,
-  "plotLabel": "OpenComplaints",
-  "excludedColumns": [],
-  "hideInsights": true,
-  "hideHeaderDenomination": true,
-  "aggregationPaths": [
-    "open_0_6h",
-    "open_6_12h",
-    "open_12_24h",
-    "open_24_48h",
-    "open_48h_plus"
-  ],
-  "computedFields": [],
-  "insight": {},
-  "sort": "sortKeyAsc",
-  "_comment": " ",
-  "kind": "drillDown"
-},
+ "openComplaintsSummaryByDistrictLLIN": {
+    "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
+        "indexName": "si-transformer-pgr-services",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"Open complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints count\":{\"date_range\":{\"field\":\"Data.@timestamp\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open since 6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open since 6h-12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open since 12h-24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open since 24h-48h\"},{\"to\":\"now-48h\",\"key\":\"open for more than 48h\"}]}}}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {
+        "key": "district",
+        "column": "Open complaints District"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "openComplaintsSummaryByAPLLIN",
+    "documentType": "_doc",
+    "action": "",
+    "showFooter": true,
+    "plotLabel": "Open complaints District",
+    "excludedColumns": [],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "aggregationPaths": [
+      "open since 6h",
+      "open since 6h-12h",
+      "open since 12h-24h",
+      "open since 24h-48h",
+      "open for more than 48h"
+    ],
+    "computedFields": [],
+    "insight": {},
+    "sort": "sortKeyAsc",
+    "_comment": " ",
+    "kind": "drillDown"
+  },
 "openComplaintsSummaryByDistrictSMC": {
   "chartName": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
   "queries": [
