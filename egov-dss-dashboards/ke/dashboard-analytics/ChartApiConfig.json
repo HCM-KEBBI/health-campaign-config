@@ -11434,7 +11434,7 @@
     "_comment": " ",
     "kind": "drillDown"
   },
-  "householdsCoverageBarchartByDistrictLLIN": {
+"householdsCoverageBarchartByDistrictLLIN": {
     "chartName": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
     "queries": [
       {
@@ -11485,7 +11485,7 @@
     "insight": {},
     "_comment": " ",
     "kind": "drillDown"
-  },
+  },  
   "householdsCoverageBarchartByLocalityIRS": {
     "kind": "drillDown",
     "chartName": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_LOCALITY",
@@ -17102,7 +17102,7 @@
     },
     "_comment": " "
   },
-  "overviewTotalPopulationCoveredLLIN": {
+"overviewTotalPopulationCoveredLLIN": {
     "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
     "queries": [
       {
@@ -17123,7 +17123,7 @@
     ],
     "insight": {},
     "_comment": " "
-  },
+  },  
   "overviewTotalPopulationCoveredSMC": {
     "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
     "queries": [
@@ -28205,7 +28205,7 @@
     },
     "_comment": " "
   },
-  "totalDistributionsTillTodayLLIN": {
+"  totalDistributionsTillTodayLLIN": {
     "chartName": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
     "queries": [
       {
@@ -28418,7 +28418,7 @@
     },
     "_comment": " "
   },
-  "totalHouseholdCoverageProvinceLLIN": {
+"totalHouseholdCoverageProvinceLLIN": {
     "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS_PROVINCE",
     "queries": [
       {
