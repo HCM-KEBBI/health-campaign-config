@@ -3,10 +3,10 @@ ServiceMaps:
   version: 1.0.0
   mappings:
     # ── INDEX: Save new scheduled notification to Elasticsearch ──
-    - topic: save-scheduled-notification-topic
+    - topic: ba-save-scheduled-notification-topic
       configKey: INDEX
       indexes:
-        - name: scheduled-notification-v1
+        - name: ba-scheduled-notification-v1
           type: general
           id: $.id
           isBulk: true
@@ -14,10 +14,10 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
 
     # ── INDEX: Update scheduled notification in Elasticsearch ──
-    - topic: update-scheduled-notification-topic
+    - topic: ba-update-scheduled-notification-topic
       configKey: INDEX
       indexes:
-        - name: scheduled-notification-v1
+        - name: ba-scheduled-notification-v1
           type: general
           id: $.id
           isBulk: true
@@ -25,10 +25,10 @@ ServiceMaps:
           timeStampField: $.auditDetails.lastModifiedTime
 
     # ── REINDEX: Re-index from Elasticsearch ──
-    - topic: scheduled-notification-v1
+    - topic: ba-scheduled-notification-v1
       configKey: REINDEX
       indexes:
-        - name: scheduled-notification-v1
+        - name: ba-scheduled-notification-v1
           type: general
           jsonPath: $.hits
           timeStampField: $.lastModifiedTime
