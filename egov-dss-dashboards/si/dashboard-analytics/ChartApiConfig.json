@@ -2843,35 +2843,34 @@
   "kind": "drillDown"
 },
 "averageResolutionTimeProvinceLLIN": {
-  "chartName": "DSS_HEALTH_COMPLAINTS_AVVERAGE_RESOLUTION_TIME_PROVINCE",
-  "kind": "drillDown",
-  "queries": [
-    {
-      "module": "COMMON",
-      "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
-      "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"Solved\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Resolution time in hours\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\",\"size\":500},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}},\"Created Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.createdTime\"}},\"Last Modified Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}},\"Difference of Time\":{\"bucket_script\":{\"buckets_path\":{\"CT\":\"Created Time\",\"LMT\":\"Last Modified Time\",\"CC\":\"Complaints Count\"},\"script\":\"params.CC > 0 ? (params.LMT-params.CT)/3600000/params.CC : 0\"}}}}}}}}"
-    }
-  ],
-  "chartType": "line",
-  "isCumulative": false,
-  "valueType": "number",
-  "drillChart": "averageResolutionTimeDistrictLLIN",
-  "documentType": "_doc",
-  "action": "",
-  "aggregationPaths": [
-    "Resolution time in hours"
-  ],
-  "filterKeys": [
-    {
-      "key": "province"
-    }
-  ],
-  "insight": {},
-  "_comment": "final fixed",
-  "kind": "drillDown"
-},
+    "chartName": "DSS_HEALTH_COMPLAINTS_AVVERAGE_RESOLUTION_TIME_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "si-transformer-pgr-services",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Solved filter's\":{\"filters\":{\"filters\":{\"NAME\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"RESOLVED\",\"REJECTED\"]}}]}}}},\"aggs\":{\"Resolution time in hours\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.auditDetails.createdTime\"}},\"Created Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.createdTime\"}},\"Last Modified Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}},\"Difference of Time\":{\"bucket_script\":{\"buckets_path\":{\"CT\":\"Created Time\",\"LMT\":\"Last Modified Time\",\"CC\":\"Complaints Count\"},\"script\":\"(params.LMT-params.CT)/3600000/params.CC\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "averageResolutionTimeDistrictLLIN",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Resolution time in hours"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " ",
+    "kind": "drillDown"
+  },
   "averageResolutionTimeProvinceSMC": {
   "chartName": "DSS_HEALTH_COMPLAINTS_AVVERAGE_RESOLUTION_TIME_PROVINCE",
   "kind": "drillDown",
@@ -4067,13 +4066,13 @@
     "insight": {},
     "_comment": " "
   },
-  "checklistCompletionRateOfDistrictSupervisorLLIN": {
+   "checklistCompletionRateOfDistrictSupervisorLLIN": {
     "chartName": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-service-task-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.supervisorLevel.keyword\":[\"DISTRICT_SUPERVISOR\"]}}]}},\"aggs\":{\"Checklist name\":{\"terms\":{\"field\":\"Data.checklistName.keyword\"},\"aggs\":{\"Checklist Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       }
@@ -4144,13 +4143,13 @@
     "insight": {},
     "_comment": " "
   },
-  "checklistCompletionRateOfNationalSupervisorLLIN": {
+ "checklistCompletionRateOfNationalSupervisorLLIN": {
     "chartName": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-service-task-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.supervisorLevel.keyword\":[\"NATIONAL_SUPERVISOR\"]}}]}},\"aggs\":{\"Checklist name\":{\"terms\":{\"field\":\"Data.checklistName.keyword\"},\"aggs\":{\"Checklist Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       }
@@ -4227,7 +4226,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-service-task-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.supervisorLevel.keyword\":[\"PROVINCIAL_SUPERVISOR\"]}}]}},\"aggs\":{\"Checklist name\":{\"terms\":{\"field\":\"Data.checklistName.keyword\"},\"aggs\":{\"Checklist Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       }
@@ -7739,7 +7738,7 @@
         "module": "COMMON",
         "dateRefField": "Data.service.auditDetails.lastModifiedTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\",\"selectedStack\":\"Data.service.serviceCode.keyword\"}",
-        "indexName": "ke-transformer-pgr-services",
+        "indexName": "si-transformer-pgr-services",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Other\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.serviceCode.keyword\":\"Other\"}}]}},\"aggs\":{\"Other Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"PerformanceIssue\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.serviceCode.keyword\":\"PerformanceIssue\"}}]}},\"aggs\":{\"PerformanceIssue Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"SecurityIssues\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.serviceCode.keyword\":\"SecurityIssues\"}}]}},\"aggs\":{\"SecurityIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"DataIssues\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.serviceCode.keyword\":\"DataIssues\"}}]}},\"aggs\":{\"DataIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"TechnicalIssues\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.serviceCode.keyword\":\"TechnicalIssues\"}}]}},\"aggs\":{\"TechnicalIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"UserAccountIssues\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.serviceCode.keyword\":\"UserAccountIssues\"}}]}},\"aggs\":{\"UserAccountIssues Count\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
       }
     ],
@@ -8283,42 +8282,43 @@
   "_comment": "final fixed"
 },
 "ComplaintsShareByDistrictLLIN": {
-  "chartName": "DSS_HEALTH_COMPLAINTS_BY_BOUNDARY",
-  "queries": [
-    {
-      "module": "COMMON",
-      "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
-      "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\n        \"size\": 0,\n        \"aggs\": {\n          \"AGGR\": {\n            \"filter\": {\n              \"bool\": {\n                \"must\": [\n                  {\n                    \"terms\": {\n                      \"Data.service.applicationStatus.keyword\": [\n                        \"PENDING_ASSIGNMENT\",\n                        \"RESOLVED\",\n                        \"REJECTED\"\n                      ]\n                    }\n                  },\n                  {\n                    \"exists\": {\n                      \"field\": \"Data.boundaryHierarchy.District.keyword\"\n                    }\n                  }\n                ]\n              }\n            },\n            \"aggs\": {\n              \"% of Total Complaints\": {\n                \"terms\": {\n                  \"field\": \"Data.boundaryHierarchy.District.keyword\",\n                  \"size\": 500,\n                  \"order\": { \"_key\": \"asc\" }\n                }\n              }\n            }\n          }\n        }\n      }"
-    },
-    {
-      "module": "COMMON",
-      "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
-      "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\n        \"size\": 0,\n        \"aggs\": {\n          \"AGGR\": {\n            \"filter\": {\n              \"bool\": {\n                \"must\": [\n                  {\n                    \"exists\": {\n                      \"field\": \"Data.service.id.keyword\"\n                    }\n                  }\n                ]\n              }\n            },\n            \"aggs\": {\n              \"Total Complaints\": {\n                \"value_count\": {\n                  \"field\": \"Data.service.id.keyword\"\n                }\n              }\n            }\n          }\n        }\n      }"
-    }
-  ],
-  "chartType": "line",
-  "isCumulative": false,
-  "valueType": "percentage",
-  "plotLabel": "none",
-  "drillChart": "ComplaintsShareByAPLLIN",
-  "documentType": "_doc",
-  "action": "divisionbyconstant",
-  "aggregationPaths": [
-    "% of Total Complaints",
-    "Total Complaints"
-  ],
-  "filterKeys": [
-    {
-      "key": "district"
-    }
-  ],
-  "insight": {},
-  "kind": "drillDown"
-},
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_BOUNDARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "si-transformer-pgr-services",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"% of Total Complaints\":{\"terms\":{\"order\":{\"_key\":\"asc\"},\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "si-transformer-pgr-services",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"\"]}}]}},\"aggs\":{\"Total Complaints\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "plotLabel": "none",
+    "drillChart": "ComplaintsShareByAPLLIN",
+    "documentType": "_doc",
+    "action": "divisionbyconstant",
+    "aggregationPaths": [
+      "% of Total Complaints",
+      "Total Complaints"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " ",
+    "kind": "drillDown"
+  },
   "ComplaintsShareByDistrictSMC": {
   "chartName": "DSS_HEALTH_COMPLAINTS_BY_BOUNDARY",
   "queries": [
@@ -14932,30 +14932,30 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Product Target\":{\"terms\":{\"size\":500,\"order\":{\"_key\":\"asc\"},\"field\":\"Data.boundaryHierarchy.district.keyword\"},\"aggs\":{\"Target per day\":{\"sum\":{\"field\":\"Data.targetPerDay\"}},\"Overall Target to Receive\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"Target for range\":{\"bucket_script\":{\"buckets_path\":{\"target\":\"Target per day\"},\"script\":\"(params.target)*365\"}},\"Target for days to last\":{\"bucket_script\":{\"buckets_path\":{\"target\":\"Target per day\"},\"script\":\"(params.target)*100\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Product Target\":{\"terms\":{\"size\":500,\"order\":{\"_key\":\"asc\"},\"field\":\"Data.boundaryHierarchy.District.keyword\"},\"aggs\":{\"Target per day\":{\"sum\":{\"field\":\"Data.targetPerDay\"}},\"Overall Target to Receive\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"Target for range\":{\"bucket_script\":{\"buckets_path\":{\"target\":\"Target per day\"},\"script\":\"(params.target)*365\"}},\"Target for days to last\":{\"bucket_script\":{\"buckets_path\":{\"target\":\"Target per day\"},\"script\":\"(params.target)*100\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Outgoing\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Outgoing\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -28993,22 +28993,22 @@
   "insight": {},
   "_comment": " "
 },
-  "userSyncRateByDistrictLLIN": {
+ "userSyncRateByDistrictLLIN": {
     "chartName": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Sync Rate Percentage\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Sync Rate Percentage\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Unique Users Synced\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500},\"aggs\":{\"Total Users Created\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
       }
     ],
     "chartType": "line",
@@ -29982,20 +29982,20 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
-  "warehouseDistributionLatLongPointsLLIN": {
+ "warehouseDistributionLatLongPointsLLIN": {
     "chartName": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"locationKey\":\"Data.boundaryHierarchy.province.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"locationKey\":\"Data.boundaryHierarchy.Region.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"POINTS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":100},\"aggs\":{\"LATITUDE\":{\"avg\":{\"field\":\"Data.latitude\"}},\"LONGITUDE\":{\"avg\":{\"field\":\"Data.longitude\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"POINTS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":100},\"aggs\":{\"LATITUDE\":{\"avg\":{\"field\":\"Data.latitude\"}},\"LONGITUDE\":{\"avg\":{\"field\":\"Data.longitude\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"locationKey\":\"Data.boundaryHierarchy.province.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"locationKey\":\"Data.boundaryHierarchy.Region.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"POINTS\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":1000000},\"aggs\":{\"LATITUDE\":{\"avg\":{\"field\":\"Data.latitude\"}},\"LONGITUDE\":{\"avg\":{\"field\":\"Data.longitude\"}}}}}}}}"
       }
