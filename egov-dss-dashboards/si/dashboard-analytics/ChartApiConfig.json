@@ -2842,7 +2842,7 @@
   "_comment": "final safe version",
   "kind": "drillDown"
 },
-"averageResolutionTimeProvinceLLIN": {
+ "averageResolutionTimeProvinceLLIN": {
     "chartName": "DSS_HEALTH_COMPLAINTS_AVVERAGE_RESOLUTION_TIME_PROVINCE",
     "queries": [
       {
@@ -28078,34 +28078,34 @@
     "kind": "drillDown"
   },
  "totalComplaintsRegisteredLLIN": {
-  "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
-  "queries": [
-    {
-      "module": "COMMON",
-      "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
-      "indexName": "si-transformer-pgr-services",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}}}}"
-    }
-  ],
-  "chartType": "pie",
-  "valueType": "number",
-  "showLabel": true,
-  "drillChart": "complaintsByTypeDrilldownLLIN",
-  "filterKeys": [
-    {
-      "key": "applicationStatus"
-    }
-  ],
-  "documentType": "_doc",
-  "action": "",
-  "aggregationPaths": [
-    "AGGR>Complaints Status"
-  ],
-  "insight": {},
-  "_comment": " ",
-  "kind": "drillDown"
-},
+    "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "si-transformer-pgr-services",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}}}}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "complaintsByTypeDrilldownLLIN",
+    "filterKeys": [
+      {
+        "key": "applicationStatus"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints Status"
+    ],
+    "insight": {},
+    "_comment": " ",
+    "kind": "drillDown"
+  },
   "totalComplaintsRegisteredSMC": {
     "chartName": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
     "queries": [
@@ -30134,16 +30134,16 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock Received Filter\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"Stock Received\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":1000},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}},\"Stock Dispatched Filter\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"Stock Dispatched\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":1000},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock Received Filter\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"Stock Received\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":1000},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}},\"Stock Dispatched Filter\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"Stock Dispatched\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":1000},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock in Hand\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock in Hand\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
       }
     ],
     "filterKeys": [],
@@ -30242,14 +30242,14 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock in Hand\":{\"terms\":{\"size\":500,\"field\":\"Data.facilityName.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock Received Filter\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"Stock Received\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":1000},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}},\"Stock Dispatched Filter\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"Stock Dispatched\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":1000},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}}}"
       }
@@ -30349,16 +30349,16 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Will last for\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Will last for\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}}}},\"aggs\":{\"Target Per Day\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}}}}}}"
       }
     ],
     "filterKeys": [],
@@ -30470,29 +30470,29 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
-  "warehouseDistributionLatLongTableStockStatusDistrictWiseProvincialBoardLLIN": {
+ "warehouseDistributionLatLongTableStockStatusDistrictWiseProvincialBoardLLIN": {
     "chartName": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock in Hand\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Stock in Hand\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"Overall Target\":{\"bucket_script\":{\"buckets_path\":{\"ot\":\"SUM\"},\"script\":\"params.ot * (-1)\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Region.keyword\"}}]}},\"aggs\":{\"Overall Target\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"Overall Target\":{\"bucket_script\":{\"buckets_path\":{\"ot\":\"SUM\"},\"script\":\"params.ot * (-1)\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\"}",
         "indexName": "si-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.district.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity']\"}}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributions\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Distributions by district\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.District.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Distributions\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity']\"}}}}}}}}}"
       }
     ],
     "filterKeys": [],
@@ -30617,9 +30617,9 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.Region.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
         "indexName": "si-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"match_phrase\":{\"Data.facilityType.keyword\":\"Monitor Local\"}}]}}}},\"aggs\":{\"No. of Warehouses\":{\"terms\":{\"size\":50000,\"field\":\"Data.boundaryHierarchy.district.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"CARDINALITY\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.facilityId.keyword\"},\"init_script\":\"state.list=[]\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}],\"must_not\":[{\"match_phrase\":{\"Data.facilityType.keyword\":\"Monitor Local\"}}]}}}},\"aggs\":{\"No. of Warehouses\":{\"terms\":{\"size\":50000,\"field\":\"Data.boundaryHierarchy.District.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"CARDINALITY\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.facilityId.keyword\"},\"init_script\":\"state.list=[]\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
       }
     ],
     "filterKeys": [],
