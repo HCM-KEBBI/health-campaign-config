@@ -2842,7 +2842,7 @@
   "_comment": "final safe version",
   "kind": "drillDown"
 },
- "averageResolutionTimeProvinceLLIN": {
+  "averageResolutionTimeProvinceLLIN": {
     "chartName": "DSS_HEALTH_COMPLAINTS_AVVERAGE_RESOLUTION_TIME_PROVINCE",
     "queries": [
       {
