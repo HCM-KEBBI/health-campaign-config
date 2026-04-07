@@ -18098,6 +18098,74 @@
           ]
         }
       ]
+    },
+    {
+      "name": "DSS_HEALTH_NOTIFICATION_DASHBOARD_HEADING",
+      "id": "health-notification-dashboard",
+      "isActive": "",
+      "style": "linear",
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_NOTIFICATION_KPI",
+          "vizArray": [
+            {
+              "id": 1001,
+              "name": "DSS_HEALTH_TOTAL_SCHEDULED",
+              "label": "DSS_HEALTH_TOTAL_SCHEDULED",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalScheduledNotifications",
+                  "name": "DSS_HEALTH_TOTAL_SCHEDULED_NOTIFICATIONS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 1002,
+              "name": "DSS_HEALTH_SCHEDULED_TODAY",
+              "label": "DSS_HEALTH_SCHEDULED_TODAY",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "scheduledTodayNotifications",
+                  "name": "DSS_HEALTH_SCHEDULED_TODAY_NOTIFICATIONS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 1003,
+              "name": "DSS_HEALTH_TOTAL_SENT",
+              "label": "DSS_HEALTH_TOTAL_SENT",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalSentNotifications",
+                  "name": "DSS_HEALTH_TOTAL_SENT_NOTIFICATIONS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
