@@ -9177,10 +9177,70 @@
         },
         {
           "row": 2,
-          "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
+          "name": "DSS_HEALTH_NOTIFICATION_KPI",
           "vizArray": [
             {
               "id": 704,
+              "name": "DSS_HEALTH_TOTAL_SCHEDULED",
+              "label": "DSS_HEALTH_TOTAL_SCHEDULED",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalScheduledNotifications",
+                  "name": "DSS_HEALTH_TOTAL_SCHEDULED_NOTIFICATIONS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+             {
+              "id": 705,
+              "name": "DSS_HEALTH_SCHEDULED_TODAY",
+              "label": "DSS_HEALTH_SCHEDULED_TODAY",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "scheduledTodayNotifications",
+                  "name": "DSS_HEALTH_SCHEDULED_TODAY_NOTIFICATIONS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 706,
+              "name": "DSS_HEALTH_TOTAL_SENT",
+              "label": "DSS_HEALTH_TOTAL_SENT",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalSentNotifications",
+                  "name": "DSS_HEALTH_TOTAL_SENT_NOTIFICATIONS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
+          "vizArray": [
+            {
+              "id": 707,
               "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
               "label": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
               "vizType": "heatmap",
@@ -9198,7 +9258,7 @@
               ]
             },
             {
-              "id": 705,
+              "id": 708,
               "name": "DSS_HEALTH_INTERVENTION_COVERAGE_HEATMAP",
               "label": "DSS_HEALTH_INTERVENTION_COVERAGE_HEATMAP",
               "vizType": "heatmap",
@@ -9218,11 +9278,11 @@
           ]
         },
         {
-          "row": 3,
+          "row": 4,
           "name": "DSS_NATIONAL_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 706,
+              "id": 709,
               "name": "DSS_HEALTH_TOTAL_POPULATION_REFUSED",
               "label": "DSS_HEALTH_TOTAL_POPULATION_REFUSED",
               "vizType": "chart",
@@ -9240,7 +9300,7 @@
               ]
             },
             {
-              "id": 707,
+              "id": 710,
               "name": "DSS_HEALTH_POPULATION_NOT_ADMINISTERED_BY_REASON",
               "label": "DSS_HEALTH_POPULATION_NOT_ADMINISTERED_BY_REASON",
               "vizType": "chart",
@@ -9260,11 +9320,11 @@
           ]
         },
         {
-          "row": 4,
+          "row": 5,
           "name": "DSS_COVERAGE_BY_PROVINCE",
           "vizArray": [
             {
-              "id": 708,
+              "id": 711,
               "name": "DSS_COVERAGE_BY_PROVINCE",
               "label": "DSS_COVERAGE_BY_PROVINCE",
               "vizType": "stacked-table",
@@ -18090,74 +18150,6 @@
                   "moduleName": "irs",
                   "pageName": "ba-custom-chart",
                   "chartType": "kibanaComponent",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "DSS_HEALTH_NOTIFICATION_DASHBOARD_HEADING",
-      "id": "health-notification-dashboard",
-      "isActive": "",
-      "style": "linear",
-      "visualizations": [
-        {
-          "row": 1,
-          "name": "DSS_HEALTH_NOTIFICATION_KPI",
-          "vizArray": [
-            {
-              "id": 1001,
-              "name": "DSS_HEALTH_TOTAL_SCHEDULED",
-              "label": "DSS_HEALTH_TOTAL_SCHEDULED",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalScheduledNotifications",
-                  "name": "DSS_HEALTH_TOTAL_SCHEDULED_NOTIFICATIONS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 1002,
-              "name": "DSS_HEALTH_SCHEDULED_TODAY",
-              "label": "DSS_HEALTH_SCHEDULED_TODAY",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "scheduledTodayNotifications",
-                  "name": "DSS_HEALTH_SCHEDULED_TODAY_NOTIFICATIONS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 1003,
-              "name": "DSS_HEALTH_TOTAL_SENT",
-              "label": "DSS_HEALTH_TOTAL_SENT",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalSentNotifications",
-                  "name": "DSS_HEALTH_TOTAL_SENT_NOTIFICATIONS",
-                  "code": "",
-                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }

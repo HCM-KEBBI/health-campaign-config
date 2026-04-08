@@ -43,10 +43,6 @@
         {
           "name": "District Health Dashboard LLIN",
           "id": "district-health-dashboard-llin"
-        },
-        {
-          "name": "Health Notification Dashboard",
-          "id": "health-notification-dashboard"
         }
       ]
     },
