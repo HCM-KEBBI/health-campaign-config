@@ -13,32 +13,6 @@
           "name": "DSS_NATIONAL_HEALTH",
           "vizArray": [
             {
-              "id": 101,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "todaysVisitsLLIN",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsLLIN",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 102,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -96,24 +70,6 @@
           "row": 2,
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
@@ -206,48 +162,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetProvinceLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -338,24 +252,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredProvinceLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
               "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -368,30 +264,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByDistrictLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -427,34 +299,6 @@
           "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdHouseholdsCoveredChartProvincePercentLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartProvinceLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -523,43 +367,7 @@
           "row": 3,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapProvinceLLIN",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapProvinceLLIN",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
+
             {
               "id": 218,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
@@ -1200,48 +1008,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetDistrictLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -1332,24 +1098,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredDistrictLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
               "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -1362,30 +1110,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByAPLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -1421,34 +1145,6 @@
           "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictPercentLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -1517,43 +1213,6 @@
           "row": 3,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapDistrictLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapDistrictLLIN",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapDistrictLLIN",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
             {
               "id": 218,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
@@ -2164,32 +1823,6 @@
           "name": "DSS_NATIONAL_HEALTH",
           "vizArray": [
             {
-              "id": 101,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "todaysVisitsLLIN",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsLLIN",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 102,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -2247,24 +1880,6 @@
           "row": 2,
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
@@ -2357,48 +1972,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetProvinceLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -2489,24 +2062,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredProvinceLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
               "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -2519,30 +2074,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByDistrictLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -2578,34 +2109,6 @@
           "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdHouseholdsCoveredChartProvincePercentLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartProvinceLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -2674,43 +2177,6 @@
           "row": 3,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapProvinceLLIN",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapProvinceLLIN",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
             {
               "id": 218,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
@@ -3351,48 +2817,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetDistrictLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -3483,24 +2907,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredDistrictLLIN",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
               "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -3513,30 +2919,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByAPLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -3572,34 +2954,6 @@
           "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictPercentLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictLLIN",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -3668,43 +3022,6 @@
           "row": 3,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapDistrictLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapDistrictLLIN",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapDistrictLLIN",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
             {
               "id": 218,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
@@ -4399,24 +3716,6 @@
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
               "label": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
@@ -4525,48 +3824,6 @@
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdSprayedWithinDateRangeIRS",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_SPRAYED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalSprayedIRS",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_SPRAYED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdSprayedTargetProvinceIRS",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_SPRAYED_PROVINCE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceIRS",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_SPRAYED_PROVINCE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
@@ -4696,30 +3953,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByDistrictIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 4,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
@@ -4816,58 +4049,6 @@
                   "tabName": "NUMBER"
                 }
               ]
-            },
-            {
-              "id": 212,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapProvinceIRS",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_REGISTRATION_SPRAY",
-          "vizArray": [
-            {
-              "id": 213,
-              "name": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "label": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "sprayedHousesByVulnerabilityBreakdownInProvinceIRS",
-                  "name": "DSS_HEALTH_SPRAYED_HOUSES_BY_VULNERABILITY_BREAKDOWN_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
             }
           ]
         },
@@ -4937,34 +4118,6 @@
           "row": 5,
           "name": "DSS_HEALTH_REGISTRATION_SPRAY",
           "vizArray": [
-            {
-              "id": 270,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "housesNotSprayedDistrictPercentIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_DISTRICT_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "housesNotSprayedDistrictIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 271,
               "name": "DSS_HEALTH_TOTAL_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
@@ -6176,48 +5329,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 301,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdSprayedWithinDateRangeIRS",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_SPRAYED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalSprayedIRS",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_SPRAYED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdSprayedTargetDistrictIRS",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_SPRAYED_DISTRICT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictIRS",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS_DISTRICT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 302,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -6346,30 +5457,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 306,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByAPIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 4,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
@@ -6466,58 +5553,6 @@
                   "tabName": "NUMBER"
                 }
               ]
-            },
-            {
-              "id": 312,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapDistrictIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapDistrictIRS",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_REGISTRATION_SPRAY",
-          "vizArray": [
-            {
-              "id": 313,
-              "name": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "label": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "sprayedHousesByVulnerabilityBreakdownInDistrictIRS",
-                  "name": "DSS_HEALTH_SPRAYED_HOUSES_BY_VULNERABILITY_BREAKDOWN_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
             }
           ]
         },
@@ -6587,34 +5622,6 @@
           "row": 5,
           "name": "DSS_HEALTH_REGISTRATION_SPRAY",
           "vizArray": [
-            {
-              "id": 370,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "housesNotSprayedAPPercentIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_AP_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "housesNotSprayedAPIRS",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_AP",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 371,
               "name": "DSS_HEALTH_TOTAL_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
@@ -7872,24 +6879,6 @@
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapSMC",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_ADMINISTRATION_COVERAGE_HEATMAP",
               "label": "DSS_HEALTH_ADMINISTRATION_COVERAGE_HEATMAP",
@@ -8023,48 +7012,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitedWithinDateRangeSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitedSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitedTargetProvinceSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_CHILDREN_ADMINISTERED",
               "label": "DSS_HEALTH_CHILDREN_ADMINISTERED",
@@ -8185,30 +7132,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_CHILDREN_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_CHILDREN_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "childrenCoverageRankingBarchartByDistrictSMC",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -8352,34 +7275,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "NUMBER"
-                }
-              ]
-            },
-            {
-              "id": 212,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceSMC",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapProvinceSMC",
-                  "name": "DSS_HEALTH_ADMINISTRATION_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "CHILDREN"
                 }
               ]
             }
@@ -9654,48 +8549,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 301,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitedWithinDateRangeSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitedSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitedTargetDistrictSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictSMC",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 302,
               "name": "DSS_HEALTH_CHILDREN_ADMINISTERED",
               "label": "DSS_HEALTH_CHILDREN_ADMINISTERED",
@@ -9816,30 +8669,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 306,
-              "name": "DSS_HEALTH_CHILDREN_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_CHILDREN_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "childrenCoverageRankingBarchartByAPSMC",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -9983,34 +8812,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "NUMBER"
-                }
-              ]
-            },
-            {
-              "id": 312,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapDistrictSMC",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapDistrictSMC",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "CHILDREN"
                 }
               ]
             }
@@ -11627,48 +10428,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 709,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitedWithinDateRangeICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdVisitedICCD",
-                  "name": "DSS_HEALTH_TOTAL_HOUSEHOLD_VISITED_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitedTargetProvinceICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITED_PROVINCE_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_PROVINCE_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 710,
               "name": "DSS_HEALTH_POPULATION_ADMINISTERED",
               "label": "DSS_HEALTH_POPULATION_ADMINISTERED",
@@ -13191,48 +11950,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 765,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitedWithinDateRangeICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdVisitedICCD",
-                  "name": "DSS_HEALTH_TOTAL_HOUSEHOLD_VISITED_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitedTargetProvinceICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITED_PROVINCE_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_PROVINCE_ICCD",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 766,
               "name": "DSS_HEALTH_POPULATION_ADMINISTERED",
               "label": "DSS_HEALTH_POPULATION_ADMINISTERED",
@@ -13479,25 +12196,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "NUMBER"
-                }
-              ]
-            },
-            {
-              "id": 758,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "populationCoverageHeatMapDistrictICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT_ICCD",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
                 }
               ]
             }
@@ -14645,32 +13343,6 @@
           "name": "DSS_NATIONAL_HEALTH",
           "vizArray": [
             {
-              "id": 101,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "todaysVisitsBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_VISITED_TODAY",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 102,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -14728,24 +13400,6 @@
           "row": 2,
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
@@ -14813,48 +13467,6 @@
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
@@ -14946,24 +13558,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
               "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -14976,30 +13570,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -15059,34 +13629,6 @@
           "row": 2,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdHouseholdsCoveredChartProvincePercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -15155,43 +13697,6 @@
           "row": 4,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
             {
               "id": 218,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
@@ -15856,48 +14361,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -15988,24 +14451,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
               "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -16018,30 +14463,6 @@
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
                   "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByAPBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -16077,34 +14498,6 @@
           "row": 1,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictPercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
@@ -16173,43 +14566,6 @@
           "row": 3,
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
-            {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
             {
               "id": 218,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
@@ -16904,24 +15260,6 @@
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
               "label": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
@@ -17030,48 +15368,6 @@
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdSprayedWithinDateRangeIRSICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_SPRAYED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalSprayedIRSICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_SPRAYED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdSprayedTargetProvinceIRSICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_SPRAYED_PROVINCE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageProvinceIRSICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_SPRAYED_PROVINCE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 202,
               "name": "DSS_HEALTH_POPULATION_COVERED",
@@ -17201,30 +15497,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByDistrictIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 4,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
@@ -17321,58 +15593,6 @@
                   "tabName": "NUMBER"
                 }
               ]
-            },
-            {
-              "id": 212,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapProvinceIRSICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_REGISTRATION_SPRAY",
-          "vizArray": [
-            {
-              "id": 213,
-              "name": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "label": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "sprayedHousesByVulnerabilityBreakdownInProvinceIRSICCD",
-                  "name": "DSS_HEALTH_SPRAYED_HOUSES_BY_VULNERABILITY_BREAKDOWN_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
             }
           ]
         },
@@ -17442,34 +15662,6 @@
           "row": 5,
           "name": "DSS_HEALTH_REGISTRATION_SPRAY",
           "vizArray": [
-            {
-              "id": 270,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "housesNotSprayedDistrictPercentIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_DISTRICT_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "housesNotSprayedDistrictIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 271,
               "name": "DSS_HEALTH_TOTAL_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
@@ -18681,48 +16873,6 @@
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 301,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdSprayedWithinDateRangeIRSICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_SPRAYED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalSprayedIRSICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_HOUSEHOLD_SPRAYED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdSprayedTargetDistrictIRSICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_SPRAYED_DISTRICT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictIRSICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS_DISTRICT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 302,
               "name": "DSS_HEALTH_POPULATION_COVERED",
               "label": "DSS_HEALTH_POPULATION_COVERED",
@@ -18851,30 +17001,6 @@
           ]
         },
         {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 306,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByAPIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 4,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
@@ -18971,58 +17097,6 @@
                   "tabName": "NUMBER"
                 }
               ]
-            },
-            {
-              "id": 312,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapDistrictIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLD"
-                },
-                {
-                  "id": "populationCoverageHeatMapDistrictIRSICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_REGISTRATION_SPRAY",
-          "vizArray": [
-            {
-              "id": 313,
-              "name": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "label": "DSS_HEALTH_HOUSEHOLD_SPRAYED_WITH_VULNERABLE_POPULATION",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "sprayedHousesByVulnerabilityBreakdownInDistrictIRSICCD",
-                  "name": "DSS_HEALTH_SPRAYED_HOUSES_BY_VULNERABILITY_BREAKDOWN_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
             }
           ]
         },
@@ -19092,34 +17166,6 @@
           "row": 5,
           "name": "DSS_HEALTH_REGISTRATION_SPRAY",
           "vizArray": [
-            {
-              "id": 370,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "housesNotSprayedAPPercentIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_AP_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "housesNotSprayedAPIRSICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_NOT_SPRAYED_BY_REASON_AP",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
             {
               "id": 371,
               "name": "DSS_HEALTH_TOTAL_HOUSEHOLDS_NOT_SPRAYED_BY_REASON",
