@@ -64074,5 +64074,72 @@
       "transactingStockTransformer"
     ],
     "_comment": "Two queries: facilityId and transactingFacilityId, with status for rejection detection"
+  },
+  "totalScheduledNotifications": {
+    "chartName": "DSS_HEALTH_TOTAL_SCHEDULED_NOTIFICATIONS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{}",
+        "indexName": "ba-scheduled-notification-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Total Scheduled\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"isDeleted\": false}}]}}, \"aggs\": {\"count\": {\"value_count\": {\"field\": \"id.keyword\"}}}}}}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Scheduled"
+    ],
+    "insight": {},
+    "_comment": "Total scheduled notifications (all time)"
+  },
+  "scheduledTodayNotifications": {
+    "chartName": "DSS_HEALTH_SCHEDULED_TODAY_NOTIFICATIONS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "scheduledAt",
+        "requestQueryMap": "{}",
+        "indexName": "ba-scheduled-notification-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Scheduled Today\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"isDeleted\": false}}]}}, \"aggs\": {\"count\": {\"value_count\": {\"field\": \"id.keyword\"}}}}}}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "filterForCurrentDay": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Scheduled Today"
+    ],
+    "insight": {},
+    "_comment": "Total notifications scheduled for today"
+  },
+  "totalSentNotifications": {
+    "chartName": "DSS_HEALTH_TOTAL_SENT_NOTIFICATIONS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{}",
+        "indexName": "ba-scheduled-notification-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Total Sent\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"status.keyword\": \"SENT\"}}, {\"term\": {\"isDeleted\": false}}]}}, \"aggs\": {\"count\": {\"value_count\": {\"field\": \"id.keyword\"}}}}}}"
+      }
+    ],
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Total Sent"
+    ],
+    "insight": {},
+    "_comment": "Total notifications with status SENT"
   }
 }
