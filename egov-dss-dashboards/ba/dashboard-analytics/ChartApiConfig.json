@@ -64105,7 +64105,7 @@
         "dateRefField": "scheduledAt",
         "requestQueryMap": "{}",
         "indexName": "ba-scheduled-notification-v1",
-        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Scheduled Today\": {\"value_count\": {\"field\": \"id.keyword\"}}}}"
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Scheduled Today\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"isDeleted\": false}}]}}, \"aggs\": {\"count\": {\"value_count\": {\"field\": \"id.keyword\"}}}}}}"
       }
     ],
     "chartType": "metric",
@@ -64128,7 +64128,7 @@
         "dateRefField": "",
         "requestQueryMap": "{}",
         "indexName": "ba-scheduled-notification-v1",
-        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Total Sent\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"status.keyword\": \"SENT\"}}]}}, \"aggs\": {\"count\": {\"value_count\": {\"field\": \"id.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"Total Sent\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"status.keyword\": \"SENT\"}}, {\"term\": {\"isDeleted\": false}}]}}, \"aggs\": {\"count\": {\"value_count\": {\"field\": \"id.keyword\"}}}}}}"
       }
     ],
     "chartType": "metric",
