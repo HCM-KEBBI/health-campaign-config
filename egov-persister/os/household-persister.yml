@@ -14,10 +14,9 @@ serviceMaps:
     auditAttributeBasePath: $.*
     queryMaps:
     - query: INSERT INTO os.HOUSEHOLD(id, tenantId, clientReferenceId, numberOfMembers,
-        addressId, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime,
+        addressId, additionalDetails, householdType, createdBy, lastModifiedBy, createdTime, lastModifiedTime,
         rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy,
-        clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-        ?);
+        clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.*
       jsonMaps:
       - jsonPath: $.*.id
@@ -28,6 +27,7 @@ serviceMaps:
       - jsonPath: $.*.additionalFields
         type: JSON
         dbType: JSONB
+      - jsonPath: $.*.householdType
       - jsonPath: $.*.auditDetails.createdBy
       - jsonPath: $.*.auditDetails.lastModifiedBy
       - jsonPath: $.*.auditDetails.createdTime
