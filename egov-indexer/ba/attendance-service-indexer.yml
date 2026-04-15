@@ -2,60 +2,24 @@ ServiceMaps:
   serviceName: attendance-service
   version: 1.0.0
   mappings:
-  - topic: ba-save-attendance
-    configKey: INDEX
-    indexes:
-    - name: ba-attendance-index-v1
-      type: attendance
-      id: $.id
-      isBulk: true
-      jsonPath: $.*
-      timeStampField: $.auditDetails.createdTime
-  - topic: ba-update-attendance
-    configKey: INDEX
-    indexes:
-    - name: ba-attendance-index-v1
-      type: attendance
-      id: $.id
-      isBulk: true
-      jsonPath: $.*
-      timeStampField: $.auditDetails.lastModifiedTime
-  - topic: ba-save-attendee
+  - topic: ba-transformer-producer-attendee-index
     configKey: INDEX
     indexes:
     - name: ba-attendee-index-v1
       type: attendee
-      id: $.id
+      id: $.attendee.id
       isBulk: true
       jsonPath: $.*
-      timeStampField: $.auditDetails.createdTime
-  - topic: ba-update-attendee
-    configKey: INDEX
-    indexes:
-    - name: ba-attendee-index-v1
-      type: attendee
-      id: $.id
-      isBulk: true
-      jsonPath: $.*
-      timeStampField: $.auditDetails.lastModifiedTime
-  - topic: ba-save-staff
+      timeStampField: $.attendee.auditDetails.createdTime
+  - topic: ba-transformer-producer-attendance-staff-index
     configKey: INDEX
     indexes:
     - name: ba-staff-index-v1
       type: staff
-      id: $.id
+      id: $.staff.id
       isBulk: true
       jsonPath: $.*
-      timeStampField: $.auditDetails.createdTime
-  - topic: ba-update-staff
-    configKey: INDEX
-    indexes:
-    - name: ba-staff-index-v1
-      type: staff
-      id: $.id
-      isBulk: true
-      jsonPath: $.*
-      timeStampField: $.auditDetails.lastModifiedTime
+      timeStampField: $.staff.auditDetails.createdTime
   - topic: ba-transformer-save-attendance-register
     configKey: INDEX
     indexes:
@@ -74,12 +38,3 @@ ServiceMaps:
       isBulk: true
       jsonPath: $.*
       timeStampField: $.attendanceLog.auditDetails.lastModifiedTime
-  - topic: ba-update-attendance-log
-    configKey: INDEX
-    indexes:
-    - name: ba-attendance-log-index-v1
-      type: attendance-log
-      id: $.id
-      isBulk: true
-      jsonPath: $.*
-      timeStampField: $.time
