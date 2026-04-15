@@ -10,6 +10,12 @@ ServiceMaps:
       id: $.attendee.id
       isBulk: true
       jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
       timeStampField: $.attendee.auditDetails.createdTime
   - topic: ba-transformer-producer-attendance-staff-index
     configKey: INDEX
@@ -19,6 +25,12 @@ ServiceMaps:
       id: $.staff.id
       isBulk: true
       jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
       timeStampField: $.staff.auditDetails.createdTime
   - topic: ba-transformer-save-attendance-register
     configKey: INDEX
@@ -28,6 +40,12 @@ ServiceMaps:
       id: $.attendanceRegister.id
       isBulk: true
       jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
       timeStampField: $.attendanceRegister.auditDetails.lastModifiedTime
   - topic: ba-transformer-save-attendance-log
     configKey: INDEX
@@ -37,4 +55,10 @@ ServiceMaps:
       id: $.attendanceLog.id
       isBulk: true
       jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+          - inJsonPath: $
+            outJsonPath: $.Data
       timeStampField: $.attendanceLog.auditDetails.lastModifiedTime
