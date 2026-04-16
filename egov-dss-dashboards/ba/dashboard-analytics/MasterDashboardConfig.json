@@ -9364,6 +9364,117 @@
       "visualizations": [
         {
           "row": 1,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10000,
+              "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+              "label": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceOverviewBanner",
+                  "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10001,
+              "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
+              "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendeesMarkedPresentPercent",
+                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                },
+                {
+                  "id": "attendeesMarkedPresent",
+                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_NUMBER",
+                  "code": "",
+                  "chartType": "sideBySideBar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                }
+              ]
+            },
+            {
+              "id": 10002,
+              "name": "DSS_HEALTH_ATTENDANCE_TEAMS",
+              "label": "DSS_HEALTH_ATTENDANCE_TEAMS",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "teamsActivePercent",
+                  "name": "DSS_HEALTH_ATTENDANCE_TEAMS_ACTIVE_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                },
+                {
+                  "id": "teamsActive",
+                  "name": "DSS_HEALTH_ATTENDANCE_TEAMS_ACTIVE",
+                  "code": "",
+                  "chartType": "sideBySideBar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10003,
+              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceSummary",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "row": 1,
           "name": "DSS_HEALTH_USER_ACTIVITY",
           "vizArray": [
             {
