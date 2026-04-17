@@ -64517,7 +64517,7 @@
       },
       {
         "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
+        "actionName": "AdditiveComputedField",
         "fields": [
           "Attendees Attended Once With Signature"
         ],
@@ -64526,7 +64526,7 @@
       },
       {
         "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
+        "actionName": "PercentageComputedField",
         "fields": [
           "Attendees Attended Once With Signature",
           "Attendees Attended Once"
