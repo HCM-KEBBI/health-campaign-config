@@ -63851,7 +63851,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-staff-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "totalManagersTransformer",
@@ -63892,7 +63892,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-project-staff-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "totalManagersTransformer",
@@ -63901,7 +63901,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.syncedTimeStamp",
-        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-user-sync-index-v1",
         "transformData": "linearAggregation",
         "transformKey": "syncedManagersTransformer",
@@ -63963,7 +63963,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.dateOfEntry",
-        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockBalanceTransformer",
@@ -64011,7 +64011,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.dateOfEntry",
-        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\", \"facilityId\": \"Data.facilityId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"facilityId\": \"Data.facilityId.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "facilityStockTransformer",
@@ -64020,7 +64020,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.dateOfEntry",
-        "requestQueryMap": "{\"campaignId\": \"Data.campaignId.keyword\", \"facilityId\": \"Data.transactingFacilityId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"facilityId\": \"Data.transactingFacilityId.keyword\"}",
         "indexName": "ba-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "transactingStockTransformer",
