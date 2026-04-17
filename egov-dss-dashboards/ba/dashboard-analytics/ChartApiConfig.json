@@ -64419,6 +64419,7 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "ba-attendance-log-index-v1",
+        "aggregationFilterPath": "aggregations.NAME.buckets.key,aggregations.NAME.buckets.Low Attendance",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"NAME\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}}]}},\"aggs\":{\"Less Attended Attendees\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.COUNTRY.keyword\",\"size\":100},\"aggs\":{\"by_user\":{\"terms\":{\"field\":\"Data.attendanceLog.userName.keyword\",\"size\":10000},\"aggs\":{\"active_count\":{\"filter\":{\"term\":{\"Data.attendanceLog.status.keyword\":\"ACTIVE\"}}},\"inactive_count\":{\"filter\":{\"term\":{\"Data.attendanceLog.status.keyword\":\"INACTIVE\"}}},\"attendance_ratio_check\":{\"bucket_script\":{\"buckets_path\":{\"active\":\"active_count._count\",\"inactive\":\"inactive_count._count\"},\"script\":\"params.active <= params.inactive ? 1 : 0\"}},\"keep_only_low_attendance_users\":{\"bucket_selector\":{\"buckets_path\":{\"active\":\"active_count._count\",\"inactive\":\"inactive_count._count\"},\"script\":\"params.active <= params.inactive\"}}}},\"Low Attendance\":{\"sum_bucket\":{\"buckets_path\":\"by_user>attendance_ratio_check\"}}}}}}}}"
       }
     ],
