@@ -9370,7 +9370,7 @@
               "id": 10000,
               "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
               "label": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
-              "vizType": "bannercard",
+              "vizType": "bannercard-nonsync",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -9392,6 +9392,30 @@
           "vizArray": [
             {
               "id": 10001,
+              "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+              "label": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+              "vizType": "bannercard-nonsync",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceRecordsBanner",
+                  "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10002,
               "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
               "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
               "vizType": "chart",
@@ -9419,7 +9443,7 @@
               ]
             },
             {
-              "id": 10002,
+              "id": 10003,
               "name": "DSS_HEALTH_ATTENDANCE_TEAMS",
               "label": "DSS_HEALTH_ATTENDANCE_TEAMS",
               "vizType": "chart",
@@ -9449,11 +9473,35 @@
           ]
         },
         {
-          "row": 3,
+          "row": 4,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
-              "id": 10003,
+              "id": 10004,
+              "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
+              "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendeesMarkedPresentAbsent",
+                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10005,
               "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
               "label": "DSS_HEALTH_ATTENDANCE_SUMMARY",
               "vizType": "chart",
@@ -9473,11 +9521,11 @@
           ]
         },
         {
-          "row": 4,
+          "row": 6,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
-              "id": 10003,
+              "id": 10006,
               "name": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
               "label": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
               "vizType": "chart",
