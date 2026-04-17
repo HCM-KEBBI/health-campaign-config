@@ -9449,7 +9449,7 @@
           ]
         },
         {
-          "row": 1,
+          "row": 3,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9463,6 +9463,30 @@
                 {
                   "id": "attendanceSummary",
                   "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10003,
+              "name": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
+              "label": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "proofOfWork",
+                  "name": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
