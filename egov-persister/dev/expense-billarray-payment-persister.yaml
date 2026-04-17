@@ -315,15 +315,17 @@ serviceMaps:
       fromTopic: dev-save-expense-payment-db
       queryMaps:
         - query: INSERT INTO dev.eg_expense_payment(id, tenantid, netpayableamount, netpaidamount,
-            status, createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            paymentnumber, status, referencestatus, createdby, createdtime, lastmodifiedby,
+            lastmodifiedtime, additionaldetails) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.payment
           jsonMaps:
             - jsonPath: $.payment.id
             - jsonPath: $.payment.tenantId
             - jsonPath: $.payment.netPayableAmount
             - jsonPath: $.payment.netPaidAmount
+            - jsonPath: $.payment.paymentNumber
             - jsonPath: $.payment.status
+            - jsonPath: $.payment.referenceStatus
             - jsonPath: $.payment.auditDetails.createdBy
             - jsonPath: $.payment.auditDetails.createdTime
             - jsonPath: $.payment.auditDetails.lastModifiedBy
@@ -331,22 +333,64 @@ serviceMaps:
             - jsonPath: $.payment.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT INTO dev.eg_expense_bill_payment(paymentid, billid, tenantid) VALUES (?, ?, ?);
+        - query: INSERT INTO dev.eg_expense_payment_bill(id, tenantid, paymentid, billid,
+            totalamount, totalpaidamount, status, createdby, createdtime, lastmodifiedby,
+            lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.payment.bills.*
           jsonMaps:
-            - jsonPath: $.payment.id
             - jsonPath: $.payment.bills.*.id
             - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.id
+            - jsonPath: $.payment.bills.*.billId
+            - jsonPath: $.payment.bills.*.totalAmount
+            - jsonPath: $.payment.bills.*.totalPaidAmount
+            - jsonPath: $.payment.bills.*.status
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
+        - query: INSERT INTO dev.eg_expense_payment_billdetail(id, tenantid, billdetailid,
+            paymentbillid, totalamount, totalpaidamount, status, createdby, createdtime,
+            lastmodifiedby, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.payment.bills.*.billDetails.*
+          jsonMaps:
+            - jsonPath: $.payment.bills.*.billDetails.*.id
+            - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.bills.*.billDetails.*.billDetailId
+            - jsonPath: $.payment.bills[?({id} in @.billDetails[*].id)].id
+            - jsonPath: $.payment.bills.*.billDetails.*.totalAmount
+            - jsonPath: $.payment.bills.*.billDetails.*.totalPaidAmount
+            - jsonPath: $.payment.bills.*.billDetails.*.status
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
+        - query: INSERT INTO dev.eg_expense_payment_lineitem(id, tenantid, paymentbilldetailid,
+            lineitemid, paidamount, status, createdby, createdtime, lastmodifiedby,
+            lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.payment.bills.*.billDetails.*.payableLineItems.*
+          jsonMaps:
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.id
+            - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.bills.*.billDetails[?({id} in @.payableLineItems[*].id)].id
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.lineItemId
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.paidAmount
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.status
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
     - version: 1.0
       name: Payment update
       description: update payment status in dev.eg_expense_payment
       fromTopic: dev-update-expense-payment-db
       queryMaps:
-        - query: UPDATE dev.eg_expense_payment SET status=?, lastmodifiedby=?, lastmodifiedtime=?,
-            additionaldetails=? WHERE id=? AND tenantid=?;
+        - query: UPDATE dev.eg_expense_payment SET status=?, referencestatus=?, lastmodifiedby=?,
+            lastmodifiedtime=?, additionaldetails=? WHERE id=? AND tenantid=?;
           basePath: $.payment
           jsonMaps:
             - jsonPath: $.payment.status
+            - jsonPath: $.payment.referenceStatus
             - jsonPath: $.payment.auditDetails.lastModifiedBy
             - jsonPath: $.payment.auditDetails.lastModifiedTime
             - jsonPath: $.payment.additionalDetails

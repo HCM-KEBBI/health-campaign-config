@@ -300,15 +300,88 @@ serviceMaps:
       - jsonPath: $.bill.billDetails.*.payableLineItems.*.additionalDetails
         type: JSON
         dbType: JSONB
+    - version: 1.0
+      name: Payment create
+      description: create payment in os.eg_expense_payment
+      fromTopic: os-expense-payment-create
+      queryMaps:
+        - query: INSERT INTO os.eg_expense_payment(id, tenantid, netpayableamount, netpaidamount,
+            paymentnumber, status, referencestatus, createdby, createdtime, lastmodifiedby,
+            lastmodifiedtime, additionaldetails) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.payment
+          jsonMaps:
+            - jsonPath: $.payment.id
+            - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.netPayableAmount
+            - jsonPath: $.payment.netPaidAmount
+            - jsonPath: $.payment.paymentNumber
+            - jsonPath: $.payment.status
+            - jsonPath: $.payment.referenceStatus
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
+            - jsonPath: $.payment.additionalDetails
+              type: JSON
+              dbType: JSONB
+        - query: INSERT INTO os.eg_expense_payment_bill(id, tenantid, paymentid, billid,
+            totalamount, totalpaidamount, status, createdby, createdtime, lastmodifiedby,
+            lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.payment.bills.*
+          jsonMaps:
+            - jsonPath: $.payment.bills.*.id
+            - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.id
+            - jsonPath: $.payment.bills.*.billId
+            - jsonPath: $.payment.bills.*.totalAmount
+            - jsonPath: $.payment.bills.*.totalPaidAmount
+            - jsonPath: $.payment.bills.*.status
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
+        - query: INSERT INTO os.eg_expense_payment_billdetail(id, tenantid, billdetailid,
+            paymentbillid, totalamount, totalpaidamount, status, createdby, createdtime,
+            lastmodifiedby, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.payment.bills.*.billDetails.*
+          jsonMaps:
+            - jsonPath: $.payment.bills.*.billDetails.*.id
+            - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.bills.*.billDetails.*.billDetailId
+            - jsonPath: $.payment.bills[?({id} in @.billDetails[*].id)].id
+            - jsonPath: $.payment.bills.*.billDetails.*.totalAmount
+            - jsonPath: $.payment.bills.*.billDetails.*.totalPaidAmount
+            - jsonPath: $.payment.bills.*.billDetails.*.status
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
+        - query: INSERT INTO os.eg_expense_payment_lineitem(id, tenantid, paymentbilldetailid,
+            lineitemid, paidamount, status, createdby, createdtime, lastmodifiedby,
+            lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.payment.bills.*.billDetails.*.payableLineItems.*
+          jsonMaps:
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.id
+            - jsonPath: $.payment.tenantId
+            - jsonPath: $.payment.bills.*.billDetails[?({id} in @.payableLineItems[*].id)].id
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.lineItemId
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.paidAmount
+            - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.status
+            - jsonPath: $.payment.auditDetails.createdBy
+            - jsonPath: $.payment.auditDetails.createdTime
+            - jsonPath: $.payment.auditDetails.lastModifiedBy
+            - jsonPath: $.payment.auditDetails.lastModifiedTime
   - version: 1.0
     name: Payment update
     description: update payment status in os.eg_expense_payment
     fromTopic: os-expense-payment-update-health
     queryMaps:
-    - query: UPDATE os.eg_expense_payment SET status=?, lastmodifiedby=?, lastmodifiedtime=?, additionaldetails=? WHERE id=? AND tenantid=?;
+    - query: UPDATE os.eg_expense_payment SET status=?, referencestatus=?, lastmodifiedby=?,
+        lastmodifiedtime=?, additionaldetails=? WHERE id=? AND tenantid=?;
       basePath: $.payment
       jsonMaps:
       - jsonPath: $.payment.status
+      - jsonPath: $.payment.referenceStatus
       - jsonPath: $.payment.auditDetails.lastModifiedBy
       - jsonPath: $.payment.auditDetails.lastModifiedTime
       - jsonPath: $.payment.additionalDetails
@@ -343,6 +416,79 @@ serviceMaps:
       - jsonPath: $.payment.bills.*.billDetails.*.payableLineItems.*.id
       - jsonPath: $.payment.bills.*.billDetails[?({id} in @.payableLineItems[*].id)].id
       - jsonPath: $.payment.tenantId
+    - version: 1.0
+      name: bill verification task create
+      description: create bill verification task in os.eg_expense_task
+      fromTopic: os-expense-bill-task
+      queryMaps:
+        - query: INSERT INTO os.eg_expense_task (id, status, type, bill_id, bill_detail_id, tenant_id, created_by, created_time, last_modified_by, last_modified_time, additional_details) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          basePath: $.task
+          jsonMaps:
+            - jsonPath: $.task.id
+            - jsonPath: $.task.status
+            - jsonPath: $.task.type
+            - jsonPath: $.task.billId
+            - jsonPath: $.task.billDetailId
+            - jsonPath: $.task.tenantId
+            - jsonPath: $.task.auditDetails.createdBy
+            - jsonPath: $.task.auditDetails.createdTime
+            - jsonPath: $.task.auditDetails.lastModifiedBy
+            - jsonPath: $.task.auditDetails.lastModifiedTime
+            - jsonPath: $.task.additionalDetails
+              type: JSON
+              dbType: JSONB
+
+    - version: 1.0
+      name: bill verification task details create
+      description: create bill verification task details in os.eg_expense_task_details
+      fromTopic: os-expense-bill-task-details
+      queryMaps:
+        - query: INSERT INTO os.eg_expense_task_details (id, tenant_id, bill_id, bill_details_id, payee_id, task_id, reference_id, response_message, status, reason_for_failure, created_by, created_time, last_modified_by, last_modified_time, additional_details) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          basePath: $
+          jsonMaps:
+            - jsonPath: $.id
+            - jsonPath: $.tenantId
+            - jsonPath: $.billId
+            - jsonPath: $.billDetailsId
+            - jsonPath: $.payeeId
+            - jsonPath: $.taskId
+            - jsonPath: $.referenceId
+            - jsonPath: $.responseMessage
+            - jsonPath: $.status
+            - jsonPath: $.reasonForFailure
+            - jsonPath: $.auditDetails.createdBy
+            - jsonPath: $.auditDetails.createdTime
+            - jsonPath: $.auditDetails.lastModifiedBy
+            - jsonPath: $.auditDetails.lastModifiedTime
+            - jsonPath: $.additionalDetails
+              type: JSON
+              dbType: JSONB
+    - version: 1.0
+      name: task status update
+      description: update task status in os.eg_expense_task
+      fromTopic: os-expense-task-status-update
+      queryMaps:
+        - query: UPDATE os.eg_expense_task SET status=? WHERE id=?;
+          basePath: $
+          jsonMaps:
+            - jsonPath: $.status
+            - jsonPath: $.id
+
+    - version: 1.0
+      name: task details update
+      description: update task details in os.eg_expense_task_details
+      fromTopic: os-expense-task-details-update
+      queryMaps:
+        - query: UPDATE os.eg_expense_task_details SET status=?,reason_for_failure=?,response_message=?,additional_details=? WHERE id=?;
+          basePath: $
+          jsonMaps:
+            - jsonPath: $.status
+            - jsonPath: $.reasonForFailure
+            - jsonPath: $.responseMessage
+            - jsonPath: $.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.id
   - version: 1.0
     name: Bill Transaction Report Save
     description: create bill transaction report in os.eg_expense_bill_transaction_report
