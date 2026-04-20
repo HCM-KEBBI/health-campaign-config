@@ -9364,6 +9364,103 @@
       "visualizations": [
         {
           "row": 1,
+          "name": "DSS_HEALTH_DEVICE_SWITCH",
+          "vizArray": [
+            {
+              "id": 10000,
+              "name": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
+              "label": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
+              "vizType": "bannercard-nonsync",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "deviceSwitchBanner",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_DEVICE_SWITCH",
+          "vizArray": [
+            {
+              "id": 10000,
+              "name": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
+              "label": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
+              "vizType": "table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "deviceSwitchReasonsNumberOfDevices",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_DEVICE_SWITCH",
+          "vizArray": [
+            {
+              "id": 10000,
+              "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
+              "label": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
+              "vizType": "table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "usersWithNumberOfDevices",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_DEVICE_SWITCH",
+          "vizArray": [
+            {
+              "id": 10000,
+              "name": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
+              "label": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
+              "vizType": "table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dayWiseDeviceSwitched",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "row": 1,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9526,6 +9623,54 @@
           "vizArray": [
             {
               "id": 10006,
+              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceSummaryBySupervisor",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10007,
+              "name": "DSS_HEALTH_ATTENDANCE_SIGNATURE_SUMMARY",
+              "label": "DSS_HEALTH_ATTENDANCE_SIGNATURE_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceSignatureSummary",
+                  "name": "DSS_HEALTH_ATTENDANCE_SIGNATURE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10008,
               "name": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
               "label": "DSS_HEALTH_ATTENDANCE_PROOF_OF_WORK",
               "vizType": "chart",

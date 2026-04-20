@@ -64519,20 +64519,6 @@
         "dateRefField": "",
         "requestQueryMap": "",
         "indexName": "ba-attendance-log-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}},{\"exists\":{\"field\":\"Data.attendanceLog.additionalDetails.signatureData\"}}]}},\"aggs\":{\"Attendees Present Atleast Once with signature\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500},\"aggs\":{\"Attendees Attended Once With Signature\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "",
-        "indexName": "ba-attendance-log-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}}],\"must_not\":[{\"exists\":{\"field\":\"Data.attendanceLog.additionalDetails.signatureData\"}}]}},\"aggs\":{\"Attendees Present Atleast Once without signature\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500},\"aggs\":{\"Attendees Attended Once Without Signature\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "",
-        "indexName": "ba-attendance-log-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"Attendees Present Atleast Once\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500},\"aggs\":{\"Negative Attendees Attended Once\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count * (-1);\"}},\"Negative Teams Took Attendance Once\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.attendanceLog.registerId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count * (-1);\"}}}}}}}}"
       },
       {
@@ -64634,34 +64620,6 @@
           "Total Attendees Count"
         ],
         "newField": "Attended Workers Percent",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Attendees Attended Once With Signature"
-        ],
-        "newField": "Attendees With Signature",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "Attendees Attended Once With Signature",
-          "Attendees Attended Once"
-        ],
-        "newField": "Percent Attendees With Signature",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Attendees Attended Once Without Signature"
-        ],
-        "newField": "Attendees Without Signature",
         "_comments": ""
       },
       {
@@ -64852,5 +64810,301 @@
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "_comment": " "
+  },
+  "attendanceSignatureSummary": {
+    "chartName": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-attendance-log-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"Attendees Present Atleast Once\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500},\"aggs\":{\"Attendees Attended Once\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}},\"Teams Took Attendance Once\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.attendanceLog.registerId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-attendance-log-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}},{\"exists\":{\"field\":\"Data.attendanceLog.additionalDetails.signatureData\"}}]}},\"aggs\":{\"Attendees Present Atleast Once with signature\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500},\"aggs\":{\"Attendees Attended Once With Signature\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-attendance-log-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}}],\"must_not\":[{\"exists\":{\"field\":\"Data.attendanceLog.additionalDetails.signatureData\"}}]}},\"aggs\":{\"Attendees Present Atleast Once without signature\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500},\"aggs\":{\"Attendees Attended Once Without Signature\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {
+        "key": "COUNTRY",
+        "column": "Attendance Summary by Country"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Attendance Summary by Country",
+    "excludedColumns": [
+      "S.N.",
+      "DATA SYNC",
+      "Total Registers Count",
+      "Teams Took Attendance Once",
+      "Negative Teams Took Attendance Once",
+      "Total Attendees Count",
+      "Attendees Attended Once",
+      "Negative Attendees Attended Once",
+      "Attendees Attended Once With Signature",
+      "Attendees Attended Once Without Signature",
+      "Low Attendance"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Attendees Attended Once"
+        ],
+        "newField": "Attended Workers",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Attendees Attended Once With Signature"
+        ],
+        "newField": "Attendees With Signature",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Attendees Attended Once With Signature",
+          "Attendees Attended Once"
+        ],
+        "newField": "Percent Attendees With Signature",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Attendees Attended Once Without Signature"
+        ],
+        "newField": "Attendees Without Signature",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "attendanceSummaryBySupervisor": {
+    "chartName": "DSS_HEALTH_ATTENDANCE_NESTED_XTABLE_SAMPLE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-attendance-log-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"ENTRY FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}}]}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":10},\"aggs\":{\"State\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.state.keyword\",\"size\":100},\"aggs\":{\"users\":{\"terms\":{\"field\":\"Data.attendanceTakerUserName.keyword\",\"size\":10000},\"aggs\":{\"Attendance Date\":{\"date_histogram\":{\"field\":\"Data.attendanceTime\",\"fixed_interval\":\"1d\",\"format\":\"yyyy-MM-dd\"},\"aggs\":{\"Present\":{\"filter\":{\"term\":{\"Data.attendanceLog.status.keyword\":\"ACTIVE\"}},\"aggs\":{\"Present Count\":{\"value_count\":{\"field\":\"Data.attendanceLog.id.keyword\"}}}},\"Absent\":{\"filter\":{\"term\":{\"Data.attendanceLog.status.keyword\":\"INACTIVE\"}},\"aggs\":{\"Absent Count\":{\"value_count\":{\"field\":\"Data.attendanceLog.id.keyword\"}}}}}}}}}}}}}}}}"
+      }
+    ],
+    "chartType": "xtableNested",
+    "drillChart": "none",
+    "plotLabel": "Attendance Summary (Nested)",
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+
+    "headerJoiner": " | ",
+
+    "bucketHierarchy": [
+      { "aggName": "Country", "plotName": "Country" },
+      { "aggName": "State", "plotName": "State" },
+      { "aggName": "users", "plotName": "UserName" },
+      { "aggName": "Attendance Date", "plotName": "Date" }
+    ],
+    "metricPaths": [
+      { "name": "Present Count", "path": "Present.Present Count.value", "valueType": "number" },
+      { "name": "Absent Count", "path": "Absent.Absent Count.value", "valueType": "number" }
+    ],
+    "computedFields": [
+      { "actionName": "PercentageComputedField", "fields": ["Present Count", "Absent Count"], "newField": "Present %", "postAggregationTheory": "" }
+    ],
+    "splitMetricsPaths": ["Attendance Date"],
+    "ignoreSplitMetricPaths": ["Present %"]
+  },
+  "usersWithNumberOfDevices": {
+    "chartName": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-user-action-other-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"DEVICE FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.userAction.beneficiaryTag.keyword\":{\"value\":\"DEVICE_SWITCH\"}}}]}},\"aggs\":{\"Boundary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"Device Switch Count\":{\"value_count\":{\"field\":\"Data.userAction.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-user-action-other-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.userAction.beneficiaryTag.keyword\":{\"value\":\"DEVICE_SWITCH\"}}}]}},\"aggs\":{\"Boundary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"Unique Users Switched Device\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) {  for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-user-action-other-index-v1",
+        "aggregationFilterPath": "aggregations.filtered.Boundary.buckets.key,aggregations.filtered.Boundary.buckets.Users more than two devices",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"filtered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.userAction.beneficiaryTag.keyword\":\"DEVICE_SWITCH\"}}]}},\"aggs\":{\"Boundary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"users\":{\"terms\":{\"field\":\"Data.userName.keyword\",\"size\":10000},\"aggs\":{\"user_flag\":{\"bucket_script\":{\"buckets_path\":{\"count\":\"_count\"},\"script\":\"params.count > 2 ? 1 : 0\"}}}},\"Users more than two devices\":{\"sum_bucket\":{\"buckets_path\":\"users>user_flag\"}}}}}}}}"
+      }
+    ],
+    "filterKeys": [],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "DATA SYNC",
+    "excludedColumns": [
+      "S.N.",
+      "DATA SYNC",
+      "Device Switch Count",
+      "Unique Users Switched Device",
+      "Users more than two devices"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Device Switch Count"
+        ],
+        "newField": "Total Device Switch Count",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Unique Users Switched Device"
+        ],
+        "newField": "Users Switched Device",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Users more than two devices"
+        ],
+        "newField": "Users with two plus devices",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": " "
+  },
+  "usersWithNumberOfDevices": {
+    "chartName": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-user-action-other-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"DEVICE FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.userAction.beneficiaryTag.keyword\":{\"value\":\"DEVICE_SWITCH\"}}}]}},\"aggs\":{\"Boundary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"UserName\":{\"terms\":{\"field\":\"Data.userName.keyword\"},\"aggs\":{\"Device Switch Count\":{\"value_count\":{\"field\":\"Data.userAction.id.keyword\"}}}}}}}}}}"
+      }
+    ],
+    "chartType": "xtableNested",
+    "drillChart": "none",
+    "plotLabel": "Device Switch User Summary (Nested)",
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+
+    "headerJoiner": " | ",
+
+    "bucketHierarchy": [
+      { "aggName": "Boundary", "plotName": "Country" },
+      { "aggName": "UserName", "plotName": "UserName" }
+    ],
+    "metricPaths": [
+      { "name": "Device Switch Count", "path": "Device Switch Count.value", "valueType": "number" }
+    ],
+    "computedFields": [
+    ],
+    "splitMetricsPaths": [],
+    "ignoreSplitMetricPaths": []
+  },
+  "deviceSwitchReasonsNumberOfDevices": {
+    "chartName": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-user-action-other-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"DEVICE FILTER\":{\"filter\":{\"term\":{\"Data.userAction.beneficiaryTag.keyword\":\"DEVICE_SWITCH\"}},\"aggs\":{\"Boundary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"Switch Reasons\":{\"filters\":{\"filters\":{\"PHONE_BATTERY_DIED\":{\"term\":{\"Data.additionalDetails.DEVICE_SWITCH_REASON.keyword\":\"PHONE_BATTERY_DIED\"}},\"PHONE_LOST_OR_STOLEN\":{\"term\":{\"Data.additionalDetails.DEVICE_SWITCH_REASON.keyword\":\"PHONE_LOST_OR_STOLEN\"}},\"PHONE_TECHNICAL_ISSUE\":{\"term\":{\"Data.additionalDetails.DEVICE_SWITCH_REASON.keyword\":\"PHONE_TECHNICAL_ISSUE\"}},\"PHONE_PERMANENTLY_DAMAGED\":{\"term\":{\"Data.additionalDetails.DEVICE_SWITCH_REASON.keyword\":\"PHONE_PERMANENTLY_DAMAGED\"}},\"PHONE_STORAGE_FULL\":{\"term\":{\"Data.additionalDetails.DEVICE_SWITCH_REASON.keyword\":\"PHONE_STORAGE_FULL\"}}},\"other_bucket\":true,\"other_bucket_key\":\"OTHER\"},\"aggs\":{\"Device Switch Count\":{\"value_count\":{\"field\":\"Data.userAction.id.keyword\"}}}}}}}}}}"
+      }
+    ],
+    "chartType": "xtableNested",
+    "drillChart": "none",
+    "plotLabel": "Device Switch User Summary (Nested)",
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+
+    "headerJoiner": " | ",
+
+    "bucketHierarchy": [
+      { "aggName": "Boundary", "plotName": "Country" },
+      { "aggName": "Switch Reasons", "plotName": "Reason" }
+    ],
+    "metricPaths": [
+      { "name": "Device Switch Count", "path": "Device Switch Count.value", "valueType": "number" }
+    ],
+    "computedFields": [
+    ],
+    "splitMetricsPaths": ["Switch Reasons"],
+    "ignoreSplitMetricPaths": []
+  },
+  "dayWiseDeviceSwitched": {
+    "chartName": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-user-action-other-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"DEVICE FILTER\":{\"filter\":{\"term\":{\"Data.userAction.beneficiaryTag.keyword\":\"DEVICE_SWITCH\"}},\"aggs\":{\"Boundary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"Day\":{\"date_histogram\":{\"field\":\"Data.@timestamp\",\"fixed_interval\":\"1d\",\"format\":\"yyyy-MM-dd\"},\"aggs\":{\"Device Switch Count\":{\"value_count\":{\"field\":\"Data.userAction.id.keyword\"}}}}}}}}}}"
+      }
+    ],
+    "chartType": "xtableNested",
+    "drillChart": "none",
+    "plotLabel": "Device Switch Day Summary (Nested)",
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+
+    "headerJoiner": " | ",
+
+    "bucketHierarchy": [
+      { "aggName": "Boundary", "plotName": "Country" },
+      { "aggName": "Day", "plotName": "Day" }
+    ],
+    "metricPaths": [
+      { "name": "Device Switch Count", "path": "Device Switch Count.value", "valueType": "number" }
+    ],
+    "computedFields": [
+    ],
+    "splitMetricsPaths": ["Day"],
+    "ignoreSplitMetricPaths": []
   }
 }
