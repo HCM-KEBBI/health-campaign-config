@@ -64940,7 +64940,7 @@
     "splitMetricsPaths": ["Attendance Date"],
     "ignoreSplitMetricPaths": ["Present %"]
   },
-  "usersWithNumberOfDevices": {
+  "deviceSwitchBanner": {
     "chartName": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
     "queries": [
       {
