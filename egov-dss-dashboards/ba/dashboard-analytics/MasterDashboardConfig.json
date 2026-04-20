@@ -9394,7 +9394,7 @@
               "id": 11001,
               "name": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
               "label": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
-              "vizType": "table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -9418,7 +9418,7 @@
               "id": 11002,
               "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
               "label": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
-              "vizType": "table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -9442,7 +9442,7 @@
               "id": 11003,
               "name": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
               "label": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
-              "vizType": "table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
