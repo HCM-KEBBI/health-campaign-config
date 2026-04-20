@@ -9367,7 +9367,7 @@
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
-              "id": 10000,
+              "id": 11000,
               "name": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
               "label": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
               "vizType": "bannercard-nonsync",
@@ -9391,7 +9391,7 @@
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
-              "id": 10000,
+              "id": 11001,
               "name": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
               "label": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
               "vizType": "table",
@@ -9415,7 +9415,7 @@
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
-              "id": 10000,
+              "id": 11002,
               "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
               "label": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
               "vizType": "table",
@@ -9439,7 +9439,7 @@
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
-              "id": 10000,
+              "id": 11003,
               "name": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
               "label": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY",
               "vizType": "table",
