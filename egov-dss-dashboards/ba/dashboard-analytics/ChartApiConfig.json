@@ -64608,8 +64608,8 @@
     ],
     "filterKeys": [
       {
-        "key": "COUNTRY",
-        "column": "Attendance Summary by Country"
+        "key": "country",
+        "column": "Country"
       }
     ],
     "chartType": "xtable",
@@ -64617,7 +64617,7 @@
     "drillChart": "none",
     "documentType": "_doc",
     "action": "",
-    "plotLabel": "Attendance Summary by Country",
+    "plotLabel": "Country",
     "excludedColumns": [
       "S.N.",
       "DATA SYNC",
