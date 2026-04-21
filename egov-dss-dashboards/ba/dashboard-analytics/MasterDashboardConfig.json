@@ -9575,8 +9575,8 @@
           "vizArray": [
             {
               "id": 10004,
-              "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
-              "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT",
+              "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+              "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
