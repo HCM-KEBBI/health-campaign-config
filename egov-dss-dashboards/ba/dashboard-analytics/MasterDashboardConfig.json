@@ -9370,7 +9370,7 @@
               "id": 11000,
               "name": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
               "label": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
-              "vizType": "bannercard-nonsync",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -9378,7 +9378,7 @@
                   "id": "deviceSwitchBanner",
                   "name": "DSS_HEALTH_DEVICE_SWITCH_OVERVIEW",
                   "code": "",
-                  "chartType": "table",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -9388,6 +9388,48 @@
         },
         {
           "row": 2,
+          "name": "DSS_HEALTH_DEVICE_SWITCH",
+          "vizArray": [
+            {
+              "id": 11004,
+              "name": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON_PIE",
+              "label": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON_PIE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "deviceSwitchByReasonPieChart",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_REASON",
+                  "code": "",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 11005,
+              "name": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY_TREND",
+              "label": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY_TREND",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "deviceSwitchByDayLineChart",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_DAY_TREND",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
@@ -9411,7 +9453,7 @@
           ]
         },
         {
-          "row": 3,
+          "row": 4,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
@@ -9423,19 +9465,38 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "usersWithNumberOfDevices",
+                  "id": "usersWithNumberOfDevicesNationalSupervisor",
                   "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "NATIONAL_SUPERVISOR"
+                },
+                {
+                  "id": "usersWithNumberOfDevicesWarehouseManager",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "WAREHOUSE_MANAGER"
+                },
+                {
+                  "id": "usersWithNumberOfDevicesDistributor",
+                  "name": "DSS_HEALTH_DEVICE_SWITCH_BY_USER",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "DISTRIBUTOR"
                 }
               ]
             }
           ]
         },
         {
-          "row": 4,
+          "row": 5,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
@@ -9467,7 +9528,7 @@
               "id": 10000,
               "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
               "label": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
-              "vizType": "bannercard-nonsync",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -9475,7 +9536,7 @@
                   "id": "attendanceOverviewBanner",
                   "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
                   "code": "",
-                  "chartType": "table",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -9488,20 +9549,39 @@
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
-              "id": 10001,
-              "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
-              "label": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
-              "vizType": "bannercard-nonsync",
+              "id": 10005,
+              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "attendanceRecordsBanner",
-                  "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+                  "id": "attendanceSummary",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "CUMULATIVE"
+                },
+                {
+                  "id": "attendanceSummaryMorning",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "MORNING"
+                },
+                {
+                  "id": "attendanceSummaryEvening",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "EVENING"
                 }
               ]
             }
@@ -9540,6 +9620,97 @@
               ]
             },
             {
+              "id": 10004,
+              "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+              "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendeesMarkedPresentAbsent",
+                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "CUMULATIVE"
+                },
+                {
+                  "id": "attendeesMarkedPresentAbsentMorning",
+                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "MORNING"
+                },
+                {
+                  "id": "attendeesMarkedPresentAbsentEvening",
+                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "EVENING"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10009,
+              "name": "DSS_HEALTH_ATTENDANCE_AVERAGE_TAKEN",
+              "label": "DSS_HEALTH_ATTENDANCE_AVERAGE_TAKEN",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "averageAttendanceTaken",
+                  "name": "DSS_HEALTH_ATTENDANCE_AVERAGE_TAKEN",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10006,
+              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceSummaryBySupervisor",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
               "id": 10003,
               "name": "DSS_HEALTH_ATTENDANCE_TEAMS",
               "label": "DSS_HEALTH_ATTENDANCE_TEAMS",
@@ -9570,79 +9741,31 @@
           ]
         },
         {
-          "row": 4,
-          "name": "DSS_HEALTH_ATTENDANCE",
-          "vizArray": [
-            {
-              "id": 10004,
-              "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
-              "label": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "attendeesMarkedPresentAbsent",
-                  "name": "DSS_HEALTH_ATTENDANCE_WORKERS_PRESENT_ABSENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 5,
-          "name": "DSS_HEALTH_ATTENDANCE",
-          "vizArray": [
-            {
-              "id": 10005,
-              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
-              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "attendanceSummary",
-                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 6,
-          "name": "DSS_HEALTH_ATTENDANCE",
-          "vizArray": [
-            {
-              "id": 10006,
-              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
-              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "attendanceSummaryBySupervisor",
-                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 7,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10001,
+              "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+              "label": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceRecordsBanner",
+                  "name": "DSS_HEALTH_ATTENDANCE_OVERVIEW",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 8,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9659,14 +9782,33 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "CUMULATIVE"
+                },
+                {
+                  "id": "attendanceSignatureSummaryMorning",
+                  "name": "DSS_HEALTH_ATTENDANCE_SIGNATURE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "MORNING"
+                },
+                {
+                  "id": "attendanceSignatureSummaryEvening",
+                  "name": "DSS_HEALTH_ATTENDANCE_SIGNATURE_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "EVENING"
                 }
               ]
             }
           ]
         },
         {
-          "row": 8,
+          "row": 9,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
