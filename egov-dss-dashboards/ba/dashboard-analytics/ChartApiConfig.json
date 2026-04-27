@@ -66273,7 +66273,7 @@
     ],
     "metricPaths": [
       {
-        "name": "Total Device Switch Count",
+        "name": "Device Switch Count",
         "path": "Device Switch Count.value",
         "valueType": "number"
       }
@@ -66316,7 +66316,7 @@
     ],
     "metricPaths": [
       {
-        "name": "Device Switch Count",
+        "name": "Total Device Switch Count",
         "path": "Device Switch Count.value",
         "valueType": "number"
       }
@@ -66365,7 +66365,7 @@
     ],
     "metricPaths": [
       {
-        "name": "Device Switch Count",
+        "name": "Total Device Switch Count",
         "path": "Device Switch Count.value",
         "valueType": "number"
       }
@@ -66418,7 +66418,7 @@
     ],
     "metricPaths": [
       {
-        "name": "Device Switch Count",
+        "name": "Total Device Switch Count",
         "path": "Device Switch Count.value",
         "valueType": "number"
       }
@@ -66610,7 +66610,7 @@
         },
         "colorRules": {
           "type": "constant",
-          "color": "#C84C0E"
+          "color": "#0B4B66"
         }
       },
       {
@@ -66624,23 +66624,8 @@
           "online": "totalUsersActive"
         },
         "colorRules": {
-          "type": "range",
-          "valuePath": "inactiveUsers",
-          "ranges": [
-            {
-              "lte": 100,
-              "color": "#FDD835"
-            },
-            {
-              "gte": 101,
-              "lte": 500,
-              "color": "#FB8C00"
-            },
-            {
-              "gt": 500,
-              "color": "#2E7D32"
-            }
-          ]
+          "type": "constant",
+          "color": "#C84C0E"
         }
       }
     ],
