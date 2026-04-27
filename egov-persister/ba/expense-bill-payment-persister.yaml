@@ -529,4 +529,30 @@ serviceMaps:
             - jsonPath: $.additionalDetails
               type: JSON
               dbType: JSONB
+    - version: 1.0
+      name: bill detail status update
+      description: update bill detail status in ba.eg_expense_billdetail only — does not touch eg_expense_bill
+      fromTopic: ba-expense-billdetail-update
+      isAuditEnabled: true
+      module: BILL
+      objecIdJsonPath: $.bill.id
+      tenantIdJsonPath: $.bill.tenantId
+      auditAttributeBasePath: $.bill
+      queryMaps:
+        - query: UPDATE ba.eg_expense_billdetail SET status=?, paymentstatus=?, totalamount=?,
+            totalpaidamount=?, lastmodifiedby=?, lastmodifiedtime=?, additionaldetails=?
+            WHERE id=? AND tenantid=?;
+          basePath: $.bill.billDetails.*
+          jsonMaps:
+            - jsonPath: $.bill.billDetails.*.status
+            - jsonPath: $.bill.billDetails.*.paymentStatus
+            - jsonPath: $.bill.billDetails.*.totalAmount
+            - jsonPath: $.bill.billDetails.*.totalPaidAmount
+            - jsonPath: $.bill.billDetails.*.auditDetails.lastModifiedBy
+            - jsonPath: $.bill.billDetails.*.auditDetails.lastModifiedTime
+            - jsonPath: $.bill.billDetails.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.bill.billDetails.*.id
+            - jsonPath: $.bill.billDetails.*.tenantId
             - jsonPath: $.id
