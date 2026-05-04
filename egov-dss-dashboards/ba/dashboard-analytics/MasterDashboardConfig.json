@@ -9364,6 +9364,144 @@
       "visualizations": [
         {
           "row": 1,
+          "name": "DSS_HEALTH_PAYMENTS",
+          "vizArray": [
+            {
+              "id": 12000,
+              "name": "DSS_HEALTH_PAYMENTS_OVERVIEW",
+              "label": "DSS_HEALTH_PAYMENTS_OVERVIEW",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsOverviewBanner",
+                  "name": "DSS_HEALTH_PAYMENTS_OVERVIEW",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_PAYMENTS",
+          "vizArray": [
+            {
+              "id": 12001,
+              "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsBillsByCountryBarChart",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 12002,
+              "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS",
+              "label": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsBillsByStatusDonutChart",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS",
+                  "code": "",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_PAYMENTS",
+          "vizArray": [
+            {
+              "id": 12003,
+              "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS_SIDEBYSIDE",
+              "label": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS_SIDEBYSIDE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsBillsByStatusSideBySideBarChart",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS_SIDEBYSIDE",
+                  "code": "",
+                  "chartType": "sideBySideBar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_PAYMENTS",
+          "vizArray": [
+            {
+              "id": 12004,
+              "name": "DSS_HEALTH_PAYMENTS_SUMMARY",
+              "label": "DSS_HEALTH_PAYMENTS_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsCountrySummaryTable",
+                  "name": "DSS_HEALTH_PAYMENTS_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_PAYMENTS",
+          "vizArray": [
+            {
+              "id": 12005,
+              "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY",
+              "label": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsBillDetailCountrySummaryTable",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
           "vizArray": [
             {
@@ -9969,7 +10107,7 @@
             }
           ]
         },
-        
+
         {
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",

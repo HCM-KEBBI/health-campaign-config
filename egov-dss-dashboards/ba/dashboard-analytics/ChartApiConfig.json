@@ -67044,5 +67044,391 @@
     ],
     "insight": {},
     "_comment": " "
+  },
+  "paymentsOverviewBanner": {
+    "chartName": "DSS_HEALTH_PAYMENTS_OVERVIEW",
+    "queries": [
+      {
+        "key": "paymentsBillsCount",
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}",
+        "select": {
+          "billsCount": "Bills.value"
+        }
+      },
+      {
+        "key": "paymentsPayablesEdited",
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"reviewed_total\":{\"filter\":{\"term\":{\"Data.billWfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}},\"edited\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.billWfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},{\"term\":{\"Data.billDetailEdited\":true}},{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}}]}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}",
+        "select": {
+          "payablesEditedDistinctCount": "edited.count.value",
+          "payablesTotalDistinctCount": "reviewed_total.count.value"
+        }
+      },
+      {
+        "key": "paymentsPayeeEdited",
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"total\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"edited\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.billDetailEdited\":true}},{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}}]}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}}}}",
+        "select": {
+          "payeeEditedDistinctCount": "edited.count.value",
+          "payeeTotalDistinctCount": "total.value"
+        }
+      }
+    ],
+    "chartType": "rawResponse",
+    "valueType": "number",
+    "merges": [
+      {
+        "mergeType": "linear",
+        "mergeKey": "paymentsOverviewMetrics",
+        "flatten": true,
+        "datasets": [],
+        "outputMappings": [
+          {
+            "payablesEditedPercent": "multiply(divide(payablesEditedDistinctCount, payablesTotalDistinctCount), 100)",
+            "payeeEditedPercent": "multiply(divide(payeeEditedDistinctCount, payeeTotalDistinctCount), 100)"
+          }
+        ]
+      }
+    ],
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "billsCount",
+      "payablesEditedPercent",
+      "payeeEditedPercent"
+    ],
+    "cardsList": [
+      {
+        "id": "billsCount",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILLS_COUNT",
+        "valuePath": "billsCount",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "billsCount"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "payeeEditedPercent",
+        "labelKey": "DSS_HEALTH_PAYMENTS_PAYEE_EDITED_PERCENT",
+        "valuePath": "payeeEditedPercent",
+        "valueType": "PERCENTAGE",
+        "descriptionParams": {
+          "count": "payeeEditedPercent"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "payablesEditedPercent",
+        "labelKey": "DSS_HEALTH_PAYMENTS_PAYABLES_EDITED_PERCENT",
+        "valuePath": "payablesEditedPercent",
+        "valueType": "PERCENTAGE",
+        "descriptionParams": {
+          "count": "payablesEditedPercent"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": "Payments overview cards (attendanceOverviewBanner-style)"
+  },
+  "paymentsBillsByCountryBarChart": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLS_BY_COUNTRY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Bills By Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Bills By Country"
+    ],
+    "sort": "sortKeyAsc",
+    "insight": {},
+    "_comment": "Bills count by country"
+  },
+  "paymentsBillsByStatusDonutChart": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.wfStatusInfo.currentStatus.keyword\"}},\"aggs\":{\"Bills By Status\":{\"terms\":{\"field\":\"Data.wfStatusInfo.currentStatus.keyword\",\"size\":50},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Bills By Status"
+    ],
+    "insight": {},
+    "_comment": "Bills count split by current status"
+  },
+  "paymentsBillsByStatusSideBySideBarChart": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS_SIDEBYSIDE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"PENDING_VERIFICATION\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Pending Verification\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"FULLY_VERIFIED\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Fully Verified\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Reviewed\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "COUNTRY",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Pending Verification",
+      "Fully Verified",
+      "Reviewed"
+    ],
+    "sort": "sortKeyAsc",
+    "filterKeys": [
+      {
+        "key": "country"
+      }
+    ],
+    "insight": {},
+    "_comment": "Side-by-side counts for 3 bill statuses"
+  },
+  "paymentsCountrySummaryTable": {
+    "chartName": "DSS_HEALTH_PAYMENTS_COUNTRY_SUMMARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}},\"Pending Verification Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"PENDING_VERIFICATION\"}},\"aggs\":{\"Pending Verification Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Fully Verified Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"FULLY_VERIFIED\"}},\"aggs\":{\"Fully Verified Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Reviewed Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"Reviewed Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Avg Verification Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.PENDING_VERIFICATION_TO_VERIFICATION_IN_PROGRESS\"}},\"Avg Review Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.UNDER_REVIEW_TO_REVIEW_IN_PROGRESS\"}}}}}}}}"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Country",
+    "showFooter": true,
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "excludedColumns": [
+      "S.N.",
+      "Pending Verification Bills",
+      "Fully Verified Bills",
+      "Reviewed Bills",
+      "Avg Verification Time",
+      "Avg Review Time",
+      "Count"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Pending Verification Bills"
+        ],
+        "newField": "PENDING_VERIFICATION",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Fully Verified Bills"
+        ],
+        "newField": "FULLY_VERIFIED",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Reviewed Bills"
+        ],
+        "newField": "REVIEWED",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Avg Verification Time"
+        ],
+        "newField": "Average time taken for verification",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Avg Review Time"
+        ],
+        "newField": "Average time taken for review",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "sort": "sortKeyAsc",
+    "_comment": "Country summary for bills + avg status transition times"
+  },
+  "paymentsBillDetailCountrySummaryTable": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLDETAIL_COUNTRY_SUMMARY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"Reviewed Bills\":{\"filter\":{\"term\":{\"Data.billWfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"Reviewed Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"Payables Updated Bills\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.billWfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}}]}},\"aggs\":{\"Payables Updated Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"Payee Updated BillDetails\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"Payee Updated BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}}}}}"
+      }
+    ],
+    "action": "",
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "plotLabel": "Country",
+    "showFooter": true,
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "excludedColumns": [
+      "S.N.",
+      "Total Bills",
+      "BillDetails",
+      "Reviewed Bills",
+      "Payables Updated Bills",
+      "Payee Updated BillDetails",
+      "Count"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Bills"
+        ],
+        "newField": "Total bills",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "BillDetails"
+        ],
+        "newField": "BillDetails Count",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Reviewed Bills"
+        ],
+        "newField": "REVIEWED bills",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Payables Updated Bills"
+        ],
+        "newField": "Count Payables Updated Bills",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Payables Updated Bills",
+          "Reviewed Bills"
+        ],
+        "newField": "PaymentReviewer edited percent payables",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Payee Updated BillDetails"
+        ],
+        "newField": "Payee updated billDetails",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Payee Updated BillDetails",
+          "BillDetails"
+        ],
+        "newField": "Payee updated percent billDetails",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "sort": "sortKeyAsc",
+    "_comment": "Billdetail country summary + edit percentages"
   }
 }
