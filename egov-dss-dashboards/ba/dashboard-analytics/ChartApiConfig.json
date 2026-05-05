@@ -64410,6 +64410,14 @@
         "aggregationFilterPath": "aggregations.NAME.buckets.key,aggregations.NAME.buckets.Low Attendance",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"NAME\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}}]}},\"aggs\":{\"Less Attended Attendees\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":100},\"aggs\":{\"by_user\":{\"terms\":{\"field\":\"Data.attendanceLog.userName.keyword\",\"size\":10000},\"aggs\":{\"active_count\":{\"filter\":{\"term\":{\"Data.attendanceLog.status.keyword\":\"ACTIVE\"}}},\"inactive_count\":{\"filter\":{\"term\":{\"Data.attendanceLog.status.keyword\":\"INACTIVE\"}}},\"attendance_ratio_check\":{\"bucket_script\":{\"buckets_path\":{\"active\":\"active_count._count\",\"inactive\":\"inactive_count._count\"},\"script\":\"params.active <= params.inactive ? 1 : 0\"}},\"keep_only_low_attendance_users\":{\"bucket_selector\":{\"buckets_path\":{\"active\":\"active_count._count\",\"inactive\":\"inactive_count._count\"},\"script\":\"params.active <= params.inactive\"}}}},\"Low Attendance\":{\"sum_bucket\":{\"buckets_path\":\"by_user>attendance_ratio_check\"}}}}}}}}"
       }
+      ,
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "",
+        "indexName": "ba-attendance-log-index-v1,ba-transformed-attendance-register-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"PresentUsers\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"_index\":\"ba-attendance-log-index-v1\"}},{\"terms\":{\"Data.attendanceLog.type.keyword\":[\"ENTRY\"]}},{\"terms\":{\"Data.attendanceLog.status.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.userName.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) state.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for(shardList in states) { if(shardList != null) { for(key in shardList) { if(!uniqueValueMap.containsKey(key)) { count +=1; uniqueValueMap.put(key, key); } } } } return count;\"}}}},\"TotalWorkers\":{\"filter\":{\"term\":{\"_index\":\"ba-transformed-attendance-register-index-v1\"}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.attendeesCount\"}}}},\"AverageTaken\":{\"bucket_script\":{\"buckets_path\":{\"p\":\"PresentUsers>Count.value\",\"t\":\"TotalWorkers>Count.value\"},\"script\":\"params.t > 0 ? params.p / params.t : 0\"}}}}}}}}"
+      }
     ],
     "filterKeys": [
       {
@@ -64434,7 +64442,9 @@
       "Negative Attendees Attended Once",
       "Attendees Attended Once With Signature",
       "Attendees Attended Once Without Signature",
-      "Low Attendance"
+      "Low Attendance",
+      "PresentUsers",
+      "TotalWorkers"
     ],
     "computedFields": [
       {
@@ -64510,6 +64520,15 @@
           "Low Attendance"
         ],
         "newField": "Low Attendance LTE 50",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "AverageTaken"
+        ],
+        "newField": "Average Taken",
         "_comments": ""
       }
     ],
@@ -67045,8 +67064,8 @@
     "insight": {},
     "_comment": " "
   },
-  "paymentsOverviewBanner": {
-    "chartName": "DSS_HEALTH_PAYMENTS_OVERVIEW",
+  "paymentsGeneratedOverviewBanner": {
+    "chartName": "DSS_HEALTH_PAYMENTS_OVERVIEW_GENERATED",
     "queries": [
       {
         "key": "paymentsBillsCount",
@@ -67061,60 +67080,44 @@
         }
       },
       {
-        "key": "paymentsPayablesEdited",
+        "key": "paymentsBillDetailsCount",
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
         "indexName": "ba-transform-billdetail-index-v1",
         "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"reviewed_total\":{\"filter\":{\"term\":{\"Data.billWfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}},\"edited\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.billWfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},{\"term\":{\"Data.billDetailEdited\":true}},{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}}]}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}",
         "select": {
-          "payablesEditedDistinctCount": "edited.count.value",
-          "payablesTotalDistinctCount": "reviewed_total.count.value"
+          "billDetailsCount": "BillDetails.value"
         }
       },
       {
-        "key": "paymentsPayeeEdited",
+        "key": "paymentsBillAmountGenerated",
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "ba-transform-billdetail-index-v1",
+        "indexName": "ba-transform-bill-index-v1",
         "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"total\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"edited\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.billDetailEdited\":true}},{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}}]}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}}}}",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"BillDetails\":{\"nested\":{\"path\":\"Data.bill.billDetails\"},\"aggs\":{\"BillAmount\":{\"sum\":{\"field\":\"Data.bill.billDetails.totalAmount\"}}}}}}",
         "select": {
-          "payeeEditedDistinctCount": "edited.count.value",
-          "payeeTotalDistinctCount": "total.value"
+          "billAmountGenerated": "BillDetails.BillAmount.value"
         }
       }
     ],
     "chartType": "rawResponse",
     "valueType": "number",
-    "merges": [
-      {
-        "mergeType": "linear",
-        "mergeKey": "paymentsOverviewMetrics",
-        "flatten": true,
-        "datasets": [],
-        "outputMappings": [
-          {
-            "payablesEditedPercent": "multiply(divide(payablesEditedDistinctCount, payablesTotalDistinctCount), 100)",
-            "payeeEditedPercent": "multiply(divide(payeeEditedDistinctCount, payeeTotalDistinctCount), 100)"
-          }
-        ]
-      }
-    ],
     "drillChart": "none",
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
       "billsCount",
-      "payablesEditedPercent",
-      "payeeEditedPercent"
+      "billDetailsCount",
+      "billAmountGenerated"
     ],
     "cardsList": [
       {
         "id": "billsCount",
-        "labelKey": "DSS_HEALTH_PAYMENTS_BILLS_COUNT",
+        "labelKey": "DSS_HEALTH_PAYMENTS_TOTAL_BILLS_GENERATED",
         "valuePath": "billsCount",
         "valueType": "NUMBER",
         "descriptionParams": {
@@ -67126,12 +67129,12 @@
         }
       },
       {
-        "id": "payeeEditedPercent",
-        "labelKey": "DSS_HEALTH_PAYMENTS_PAYEE_EDITED_PERCENT",
-        "valuePath": "payeeEditedPercent",
-        "valueType": "PERCENTAGE",
+        "id": "billDetailsCount",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILLDETAILS_GENERATED",
+        "valuePath": "billDetailsCount",
+        "valueType": "NUMBER",
         "descriptionParams": {
-          "count": "payeeEditedPercent"
+          "count": "billDetailsCount"
         },
         "colorRules": {
           "type": "constant",
@@ -67139,12 +67142,12 @@
         }
       },
       {
-        "id": "payablesEditedPercent",
-        "labelKey": "DSS_HEALTH_PAYMENTS_PAYABLES_EDITED_PERCENT",
-        "valuePath": "payablesEditedPercent",
-        "valueType": "PERCENTAGE",
+        "id": "billAmountGenerated",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILL_AMOUNT_GENERATED",
+        "valuePath": "billAmountGenerated",
+        "valueType": "NUMBER",
         "descriptionParams": {
-          "count": "payablesEditedPercent"
+          "count": "billAmountGenerated"
         },
         "colorRules": {
           "type": "constant",
@@ -67155,7 +67158,110 @@
     "insight": {},
     "hideInsights": true,
     "hideHeaderDenomination": true,
-    "_comment": "Payments overview cards (attendanceOverviewBanner-style)"
+    "_comment": "Payments generated overview cards (3 metrics)"
+  },
+  "paymentsEditedOverviewBanner": {
+    "chartName": "DSS_HEALTH_PAYMENTS_OVERVIEW_EDITED",
+    "queries": [
+      {
+        "key": "paymentsEditedCounts",
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"totalBills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"reviewerEditedBills\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"totalBillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"generatorEditedBillDetails\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}",
+        "select": {
+          "reviewerBillsEditedDistinctCount": "reviewerEditedBills.count.value",
+          "reviewerBillsTotalDistinctCount": "totalBills.value",
+          "generatorBillDetailsEditedDistinctCount": "generatorEditedBillDetails.count.value",
+          "generatorBillDetailsTotalDistinctCount": "totalBillDetails.value"
+        }
+      }
+    ],
+    "chartType": "rawResponse",
+    "valueType": "number",
+    "merges": [
+      {
+        "mergeType": "linear",
+        "mergeKey": "paymentsEditedOverviewMetrics",
+        "flatten": true,
+        "datasets": [],
+        "outputMappings": [
+          {
+            "reviewerBillsEditedPercent": "multiply(divide(reviewerBillsEditedDistinctCount, reviewerBillsTotalDistinctCount), 100)",
+            "generatorBillDetailsEditedPercent": "multiply(divide(generatorBillDetailsEditedDistinctCount, generatorBillDetailsTotalDistinctCount), 100)"
+          }
+        ]
+      }
+    ],
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "reviewerBillsEditedDistinctCount",
+      "reviewerBillsEditedPercent",
+      "generatorBillDetailsEditedDistinctCount",
+      "generatorBillDetailsEditedPercent"
+    ],
+    "cardsList": [
+      {
+        "id": "reviewerBillsEditedDistinctCount",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILLS_EDITED_BY_PAYMENT_REVIEWER",
+        "valuePath": "reviewerBillsEditedDistinctCount",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "reviewerBillsEditedDistinctCount"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "reviewerBillsEditedPercent",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILLS_EDITED_PERCENT_BY_PAYMENT_REVIEWER",
+        "valuePath": "reviewerBillsEditedPercent",
+        "valueType": "PERCENTAGE",
+        "descriptionParams": {
+          "count": "reviewerBillsEditedPercent"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "generatorBillDetailsEditedDistinctCount",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILLDETAILS_EDITED_BY_BILL_GENERATOR",
+        "valuePath": "generatorBillDetailsEditedDistinctCount",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "generatorBillDetailsEditedDistinctCount"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "generatorBillDetailsEditedPercent",
+        "labelKey": "DSS_HEALTH_PAYMENTS_BILLDETAILS_EDITED_PERCENT_BY_BILL_GENERATOR",
+        "valuePath": "generatorBillDetailsEditedPercent",
+        "valueType": "PERCENTAGE",
+        "descriptionParams": {
+          "count": "generatorBillDetailsEditedPercent"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "_comment": "Payments edited overview cards (4 metrics)"
   },
   "paymentsBillsByCountryBarChart": {
     "chartName": "DSS_HEALTH_PAYMENTS_BILLS_BY_COUNTRY",
@@ -67181,6 +67287,57 @@
     "sort": "sortKeyAsc",
     "insight": {},
     "_comment": "Bills count by country"
+  },
+  "paymentsBillDetailsByCountryBarChart": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLDETAILS_BY_COUNTRY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"BillDetails By Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "BillDetails By Country"
+    ],
+    "sort": "sortKeyAsc",
+    "insight": {},
+    "_comment": "Billdetails distinct count by country"
+  },
+  "paymentsBillAmountBreakupPieChart": {
+    "chartName": "DSS_HEALTH_PAYMENTS_AMOUNT_BREAKUP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"BillDetails\":{\"nested\":{\"path\":\"Data.bill.billDetails\"},\"aggs\":{\"PayableLineItems\":{\"nested\":{\"path\":\"Data.bill.billDetails.payableLineItems\"},\"aggs\":{\"PER_DAY\":{\"filter\":{\"term\":{\"Data.bill.billDetails.payableLineItems.headCode.keyword\":\"PER_DAY\"}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.bill.billDetails.payableLineItems.amount\"}}}},\"FOOD\":{\"filter\":{\"term\":{\"Data.bill.billDetails.payableLineItems.headCode.keyword\":\"FOOD\"}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.bill.billDetails.payableLineItems.amount\"}}}},\"FEES\":{\"filter\":{\"term\":{\"Data.bill.billDetails.payableLineItems.headCode.keyword\":\"FEES\"}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.bill.billDetails.payableLineItems.amount\"}}}},\"TRAVEL\":{\"filter\":{\"term\":{\"Data.bill.billDetails.payableLineItems.headCode.keyword\":\"TRAVEL\"}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.bill.billDetails.payableLineItems.amount\"}}}}}}}}}}"
+      }
+    ],
+    "chartType": "pie",
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "PER_DAY",
+      "FOOD",
+      "TRAVEL",
+      "FEES"
+    ],
+    "insight": {},
+    "_comment": "Bill amount breakup sum split"
   },
   "paymentsBillsByStatusDonutChart": {
     "chartName": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS",
@@ -67227,6 +67384,13 @@
         "dateRefField": "",
         "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
         "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"UNDER_REVIEW\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Under Review\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Reviewed\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
       }
     ],
@@ -67240,6 +67404,7 @@
     "aggregationPaths": [
       "Pending Verification",
       "Fully Verified",
+      "Under Review",
       "Reviewed"
     ],
     "sort": "sortKeyAsc",
@@ -67249,7 +67414,7 @@
       }
     ],
     "insight": {},
-    "_comment": "Side-by-side counts for 3 bill statuses"
+    "_comment": "Side-by-side counts for 4 bill statuses"
   },
   "paymentsCountrySummaryTable": {
     "chartName": "DSS_HEALTH_PAYMENTS_COUNTRY_SUMMARY",
@@ -67259,7 +67424,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
         "indexName": "ba-transform-bill-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}},\"Pending Verification Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"PENDING_VERIFICATION\"}},\"aggs\":{\"Pending Verification Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Fully Verified Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"FULLY_VERIFIED\"}},\"aggs\":{\"Fully Verified Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Reviewed Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"Reviewed Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Avg Verification Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.PENDING_VERIFICATION_TO_VERIFICATION_IN_PROGRESS\"}},\"Avg Review Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.UNDER_REVIEW_TO_REVIEW_IN_PROGRESS\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}},\"Pending Verification Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"PENDING_VERIFICATION\"}},\"aggs\":{\"Pending Verification Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Fully Verified Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"FULLY_VERIFIED\"}},\"aggs\":{\"Fully Verified Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Under Review Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"UNDER_REVIEW\"}},\"aggs\":{\"Under Review Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Reviewed Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"Reviewed Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Avg Verification Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.PENDING_VERIFICATION_TO_VERIFICATION_IN_PROGRESS\"}},\"Avg Review Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.UNDER_REVIEW_TO_REVIEW_IN_PROGRESS\"}}}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -67275,6 +67440,7 @@
       "S.N.",
       "Pending Verification Bills",
       "Fully Verified Bills",
+      "Under Review Bills",
       "Reviewed Bills",
       "Avg Verification Time",
       "Avg Review Time",
@@ -67297,6 +67463,15 @@
           "Fully Verified Bills"
         ],
         "newField": "FULLY_VERIFIED",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Under Review Bills"
+        ],
+        "newField": "UNDER_REVIEW",
         "_comments": ""
       },
       {
@@ -67430,5 +67605,186 @@
     "insight": {},
     "sort": "sortKeyAsc",
     "_comment": "Billdetail country summary + edit percentages"
+  }
+  ,
+  "paymentsBillDetailCountrySummaryTableGeneratorEdits": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLDETAIL_COUNTRY_SUMMARY_GENERATOR",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"Bills Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"Bills Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"BillDetails Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"BillDetails Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}}}}}"
+      }
+    ],
+    "action": "",
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "plotLabel": "Country",
+    "showFooter": true,
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "excludedColumns": [
+      "S.N.",
+      "Total Bills",
+      "BillDetails",
+      "Bills Edited",
+      "BillDetails Edited",
+      "Count"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Bills"
+        ],
+        "newField": "Total bills",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "BillDetails"
+        ],
+        "newField": "BillDetails Count",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Bills Edited"
+        ],
+        "newField": "Bills edited",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Bills Edited",
+          "Total Bills"
+        ],
+        "newField": "% bills edited",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "BillDetails Edited"
+        ],
+        "newField": "BillDetails edited",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "BillDetails Edited",
+          "BillDetails"
+        ],
+        "newField": "% billdetails edited",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "sort": "sortKeyAsc",
+    "_comment": "Billdetail country summary (generator edits via payeeUpdatedAtEpochMs)"
+  },
+  "paymentsBillDetailCountrySummaryTableReviewerEdits": {
+    "chartName": "DSS_HEALTH_PAYMENTS_BILLDETAIL_COUNTRY_SUMMARY_REVIEWER",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billdetail-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"Bills Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}},\"aggs\":{\"Bills Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"BillDetails Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}},\"aggs\":{\"BillDetails Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}}}}}"
+      }
+    ],
+    "action": "",
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "plotLabel": "Country",
+    "showFooter": true,
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "excludedColumns": [
+      "S.N.",
+      "Total Bills",
+      "BillDetails",
+      "Bills Edited",
+      "BillDetails Edited",
+      "Count"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Bills"
+        ],
+        "newField": "Total bills",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "BillDetails"
+        ],
+        "newField": "BillDetails Count",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Bills Edited"
+        ],
+        "newField": "Bills edited",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Bills Edited",
+          "Total Bills"
+        ],
+        "newField": "% bills edited",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "BillDetails Edited"
+        ],
+        "newField": "BillDetails edited",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "BillDetails Edited",
+          "BillDetails"
+        ],
+        "newField": "% billdetails edited",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "sort": "sortKeyAsc",
+    "_comment": "Billdetail country summary (reviewer edits via payablesUpdatedAtEpochMs)"
   }
 }

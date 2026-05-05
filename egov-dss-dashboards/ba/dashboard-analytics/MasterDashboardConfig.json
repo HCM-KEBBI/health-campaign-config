@@ -9375,8 +9375,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "paymentsOverviewBanner",
-                  "name": "DSS_HEALTH_PAYMENTS_OVERVIEW",
+                  "id": "paymentsGeneratedOverviewBanner",
+                  "name": "DSS_HEALTH_PAYMENTS_OVERVIEW_GENERATED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -9390,24 +9390,6 @@
           "row": 2,
           "name": "DSS_HEALTH_PAYMENTS",
           "vizArray": [
-            {
-              "id": 12001,
-              "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
-              "label": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "paymentsBillsByCountryBarChart",
-                  "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 12002,
               "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS",
@@ -9425,6 +9407,24 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 12007,
+              "name": "DSS_HEALTH_PAYMENTS_AMOUNT_BREAKUP",
+              "label": "DSS_HEALTH_PAYMENTS_AMOUNT_BREAKUP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsBillAmountBreakupPieChart",
+                  "name": "DSS_HEALTH_PAYMENTS_AMOUNT_BREAKUP",
+                  "code": "",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
@@ -9432,6 +9432,34 @@
           "row": 3,
           "name": "DSS_HEALTH_PAYMENTS",
           "vizArray": [
+            {
+              "id": 12001,
+              "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsBillsByCountryBarChart",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "BILLS"
+                },
+                {
+                  "id": "paymentsBillDetailsByCountryBarChart",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLDETAILS_BY_BOUNDARY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "BILLDETAILS"
+                }
+              ]
+            },
             {
               "id": 12003,
               "name": "DSS_HEALTH_PAYMENTS_BILLS_BY_STATUS_SIDEBYSIDE",
@@ -9481,6 +9509,30 @@
           "name": "DSS_HEALTH_PAYMENTS",
           "vizArray": [
             {
+              "id": 12006,
+              "name": "DSS_HEALTH_PAYMENTS_OVERVIEW_EDITED",
+              "label": "DSS_HEALTH_PAYMENTS_OVERVIEW_EDITED",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "paymentsEditedOverviewBanner",
+                  "name": "DSS_HEALTH_PAYMENTS_OVERVIEW_EDITED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_PAYMENTS",
+          "vizArray": [
+            {
               "id": 12005,
               "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY",
               "label": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY",
@@ -9489,17 +9541,28 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "paymentsBillDetailCountrySummaryTable",
-                  "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY",
+                  "id": "paymentsBillDetailCountrySummaryTableGeneratorEdits",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY_GENERATOR_EDITS",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "GENERATOR_EDITS"
+                },
+                {
+                  "id": "paymentsBillDetailCountrySummaryTableReviewerEdits",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY_REVIEWER_EDITS",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "REVIEWER_EDITS"
                 }
               ]
             }
           ]
         },
+        
         {
           "row": 1,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
@@ -9720,6 +9783,8 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "EVENING"
+                },
+                {
                 }
               ]
             }
@@ -9727,6 +9792,30 @@
         },
         {
           "row": 3,
+          "name": "DSS_HEALTH_ATTENDANCE",
+          "vizArray": [
+            {
+              "id": 10006,
+              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "attendanceSummaryBySupervisor",
+                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9797,55 +9886,7 @@
           ]
         },
         {
-          "row": 4,
-          "name": "DSS_HEALTH_ATTENDANCE",
-          "vizArray": [
-            {
-              "id": 10009,
-              "name": "DSS_HEALTH_ATTENDANCE_AVERAGE_TAKEN",
-              "label": "DSS_HEALTH_ATTENDANCE_AVERAGE_TAKEN",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "averageAttendanceTaken",
-                  "name": "DSS_HEALTH_ATTENDANCE_AVERAGE_TAKEN",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 5,
-          "name": "DSS_HEALTH_ATTENDANCE",
-          "vizArray": [
-            {
-              "id": 10006,
-              "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
-              "label": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "attendanceSummaryBySupervisor",
-                  "name": "DSS_HEALTH_ATTENDANCE_SUMMARY_BY_TAKER",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 6,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9879,7 +9920,7 @@
           ]
         },
         {
-          "row": 7,
+          "row": 6,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9903,7 +9944,7 @@
           ]
         },
         {
-          "row": 8,
+          "row": 7,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
@@ -9946,7 +9987,7 @@
           ]
         },
         {
-          "row": 9,
+          "row": 8,
           "name": "DSS_HEALTH_ATTENDANCE",
           "vizArray": [
             {
