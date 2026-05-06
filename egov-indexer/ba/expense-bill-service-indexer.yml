@@ -34,3 +34,19 @@ ServiceMaps:
                 outJsonPath: $.Data
           timeStampField: $.billDetail.auditDetails.lastModifiedTime
 
+    - topic: ba-transformer-billreport-index-topic
+      configKey: INDEX
+      indexes:
+        - name: ba-transform-billreport-index-v1
+          type: billreport
+          id: $.billReport.id
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data: { }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.billReport.auditDetails.lastModifiedTime
+

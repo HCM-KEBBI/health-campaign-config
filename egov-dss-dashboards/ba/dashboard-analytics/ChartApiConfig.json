@@ -67102,6 +67102,19 @@
         "select": {
           "billAmountGenerated": "BillDetails.BillAmount.value"
         }
+      },
+      {
+        "key": "paymentsPaymentAdvisoryMetrics",
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-billreport-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Payment Advisory\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.billReport.type.keyword\":\"PAYMENT_ADVISORY_EXCEL\"}},{\"term\":{\"Data.billReport.status.keyword\":\"GENERATED\"}},{\"exists\":{\"field\":\"Data.billReport.fileStoreId\"}}]}},\"aggs\":{\"Generated Count\":{\"value_count\":{\"field\":\"Data.billReport.id.keyword\"}},\"Avg Generation Time\":{\"avg\":{\"field\":\"Data.billReportGenerationTime\"}}}}}}",
+        "select": {
+          "paymentAdvisoryGeneratedCount": "Payment Advisory.Generated Count.value",
+          "paymentAdvisoryAvgGenerationTime": "Payment Advisory.Avg Generation Time.value"
+        }
       }
     ],
     "chartType": "rawResponse",
@@ -67112,7 +67125,9 @@
     "aggregationPaths": [
       "billsCount",
       "billDetailsCount",
-      "billAmountGenerated"
+      "billAmountGenerated",
+      "paymentAdvisoryGeneratedCount",
+      "paymentAdvisoryAvgGenerationTime"
     ],
     "cardsList": [
       {
@@ -67153,12 +67168,38 @@
           "type": "constant",
           "color": "#0B4B66"
         }
+      },
+      {
+        "id": "paymentAdvisoryGeneratedCount",
+        "labelKey": "DSS_HEALTH_PAYMENTS_PAYMENT_ADVISORY_GENERATED",
+        "valuePath": "paymentAdvisoryGeneratedCount",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "paymentAdvisoryGeneratedCount"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "paymentAdvisoryAvgGenerationTime",
+        "labelKey": "DSS_HEALTH_PAYMENTS_PAYMENT_ADVISORY_AVG_GENERATION_TIME",
+        "valuePath": "paymentAdvisoryAvgGenerationTime",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "paymentAdvisoryAvgGenerationTime"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
       }
     ],
     "insight": {},
     "hideInsights": true,
     "hideHeaderDenomination": true,
-    "_comment": "Payments generated overview cards (3 metrics)"
+    "_comment": "Payments generated overview cards (5 metrics)"
   },
   "paymentsEditedOverviewBanner": {
     "chartName": "DSS_HEALTH_PAYMENTS_OVERVIEW_EDITED",
@@ -67167,7 +67208,7 @@
         "key": "paymentsEditedCounts",
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "requestQueryMap": "",
         "indexName": "ba-transform-billdetail-index-v1",
         "transformData": "linearAggregation",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"totalBills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"reviewerEditedBills\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"totalBillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"generatorEditedBillDetails\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"count\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}",
@@ -67392,6 +67433,13 @@
         "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
         "indexName": "ba-transform-bill-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Reviewed\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "ba-transform-bill-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEW_IN_PROGRESS\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Review In Progress\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}}}}}}"
       }
     ],
     "chartType": "line",
@@ -67405,7 +67453,8 @@
       "Pending Verification",
       "Fully Verified",
       "Under Review",
-      "Reviewed"
+      "Reviewed",
+      "Review In Progress"
     ],
     "sort": "sortKeyAsc",
     "filterKeys": [
@@ -67414,7 +67463,7 @@
       }
     ],
     "insight": {},
-    "_comment": "Side-by-side counts for 4 bill statuses"
+    "_comment": "Side-by-side counts for 5 bill statuses"
   },
   "paymentsCountrySummaryTable": {
     "chartName": "DSS_HEALTH_PAYMENTS_COUNTRY_SUMMARY",
@@ -67422,9 +67471,9 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "requestQueryMap": "",
         "indexName": "ba-transform-bill-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}},\"Pending Verification Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"PENDING_VERIFICATION\"}},\"aggs\":{\"Pending Verification Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Fully Verified Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"FULLY_VERIFIED\"}},\"aggs\":{\"Fully Verified Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Under Review Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"UNDER_REVIEW\"}},\"aggs\":{\"Under Review Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Reviewed Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"Reviewed Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Avg Verification Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.PENDING_VERIFICATION_TO_VERIFICATION_IN_PROGRESS\"}},\"Avg Review Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.UNDER_REVIEW_TO_REVIEW_IN_PROGRESS\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}},\"Pending Verification Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"PENDING_VERIFICATION\"}},\"aggs\":{\"Pending Verification Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Fully Verified Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"FULLY_VERIFIED\"}},\"aggs\":{\"Fully Verified Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Under Review Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"UNDER_REVIEW\"}},\"aggs\":{\"Under Review Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Reviewed Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEWED\"}},\"aggs\":{\"Reviewed Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Review In Progress Bills\":{\"filter\":{\"term\":{\"Data.wfStatusInfo.currentStatus.keyword\":\"REVIEW_IN_PROGRESS\"}},\"aggs\":{\"Review In Progress Bills\":{\"value_count\":{\"field\":\"Data.bill.id.keyword\"}}}},\"Avg Verification Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.PENDING_VERIFICATION_TO_VERIFICATION_IN_PROGRESS\"}},\"Avg Review Time\":{\"avg\":{\"field\":\"Data.wfStatusInfo.statusTransitionTimes.UNDER_REVIEW_TO_REVIEW_IN_PROGRESS\"}}}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -67442,6 +67491,7 @@
       "Fully Verified Bills",
       "Under Review Bills",
       "Reviewed Bills",
+      "Review In Progress Bills",
       "Avg Verification Time",
       "Avg Review Time",
       "Count"
@@ -67481,6 +67531,15 @@
           "Reviewed Bills"
         ],
         "newField": "REVIEWED",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Review In Progress Bills"
+        ],
+        "newField": "REVIEW_IN_PROGRESS",
         "_comments": ""
       },
       {
@@ -67613,7 +67672,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "requestQueryMap": "",
         "indexName": "ba-transform-billdetail-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"Bills Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"Bills Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"BillDetails Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payeeUpdatedAtEpochMs\"}},\"aggs\":{\"BillDetails Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}}}}}"
       }
@@ -67703,7 +67762,7 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"projectId\":\"Data.projectId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "requestQueryMap": "",
         "indexName": "ba-transform-billdetail-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}},\"aggs\":{\"Country\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Total Bills\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}},\"BillDetails\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}},\"Bills Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}},\"aggs\":{\"Bills Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.billId.keyword\"}}}},\"BillDetails Edited\":{\"filter\":{\"exists\":{\"field\":\"Data.billDetail.additionalDetails.editInfo.payablesUpdatedAtEpochMs\"}},\"aggs\":{\"BillDetails Edited\":{\"cardinality\":{\"field\":\"Data.billDetail.id.keyword\"}}}}}}}}}}"
       }
