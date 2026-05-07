@@ -32920,59 +32920,61 @@
     "insight": {},
     "_comment": " "
   },
-  "todayPopulationCoveredNationalICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_TODAY_ICCD",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "date",
-        "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"campaignNumber\": \"campaignNumber\"}",
-        "indexName": "kw-population-coverage-summary-datewise",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"population covered today\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"province\"}}]}},\"aggs\":{\"total_administered\":{\"sum\":{\"field\":\"total_population_administered\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "filterForCurrentDay": true,
-    "action": "",
-    "aggregationPaths": [
-      "population covered today"
-    ],
-    "insight": {
-      "chartResponseMap": "todayPopulationCovered",
-      "action": "differenceOfNumbers",
-      "upwardIndicator": "positive",
-      "downwardIndicator": "negative",
-      "textMessage": "$indicator$value% than last $insightInterval",
-      "colorCode": "#228B22",
-      "insightInterval": "day"
-    },
-    "_comment": " "
+  
+ "todayPopulationCoveredNationalICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_TODAY_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "date",
+      "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"campaignNumber\": \"campaignNumber\"}",
+      "indexName": "kw-population-coverage-summary-datewise",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"population_covered_today\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"province\"}}]}},\"aggs\":{\"total_administered\":{\"sum\":{\"field\":\"total_population_administered\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "filterForCurrentDay": true,
+  "action": "",
+  "aggregationPaths": [
+    "population_covered_today>total_administered"
+  ],
+  "insight": {
+    "chartResponseMap": "todayPopulationCovered",
+    "action": "differenceOfNumbers",
+    "upwardIndicator": "positive",
+    "downwardIndicator": "negative",
+    "textMessage": "$indicator$value% than last $insightInterval",
+    "colorCode": "#228B22",
+    "insightInterval": "day"
   },
-  "totalPopulationCoveredNationalICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_TOTAL_ICCD",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"campaignNumber\": \"campaignNumber\"}",
-        "indexName": "kw-population-coverage-summary",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"population covered total\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"province\"}}]}},\"aggs\":{\"total_administered\":{\"sum\":{\"field\":\"total_population_administered\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "population covered total"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
+  "_comment": " "
+},
+
+"totalPopulationCoveredNationalICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_TOTAL_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "date",
+      "requestQueryMap": "{\"cycle\": \"cycle\", \"projectTypeId\": \"projectTypeId\", \"campaignNumber\": \"campaignNumber\"}",
+      "indexName": "kw-population-coverage-summary",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"population_covered_total\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"province\"}}]}},\"aggs\":{\"total_administered\":{\"sum\":{\"field\":\"total_population_administered\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "population_covered_total>total_administered"
+  ],
+  "insight": {},
+  "_comment": " "
+},
   "todayInterventionAdministeredNationalICCD": {
     "chartName": "DSS_HEALTH_NATIONAL_TODAY_INTERVENTION_ADMINISTERED_ICCD",
     "queries": [
