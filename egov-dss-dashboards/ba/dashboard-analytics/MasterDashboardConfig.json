@@ -9550,6 +9550,15 @@
                   "tabName": "GENERATOR_EDITS"
                 },
                 {
+                  "id": "paymentsBillDetailCountrySummaryTableEditorEdits",
+                  "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY_EDITOR_EDITS",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PAYMENT_EDITOR_EDITS"
+                },
+                {
                   "id": "paymentsBillDetailCountrySummaryTableReviewerEdits",
                   "name": "DSS_HEALTH_PAYMENTS_BILLDETAIL_SUMMARY_REVIEWER_EDITS",
                   "code": "",
@@ -9783,8 +9792,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "EVENING"
-                },
-                {
                 }
               ]
             }
