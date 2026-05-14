@@ -165,6 +165,62 @@
       ]
     },
     {
+      "name": "DSS_HEALTH_MAPS_DASHBOARD_LLIN_HEADING",
+      "id": "maps-health-dashboard-llin",
+      "isActive": "",
+      "style": "linear",
+      "visualizations": [
+        {
+          "row": 1,
+          "name": "DSS_NATIONAL_HEALTH_MAPS",
+          "vizArray": [
+            {
+              "id": 901,
+              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsCoverageHeatMapLLIN",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_NATIONAL_HEALTH_MAPS",
+          "vizArray": [
+            {
+              "id": 902,
+              "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "populationCoverageHeatMapLLIN",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "provincial-health-dashboard-llin",
       "isActive": "",
@@ -732,7 +788,6 @@
             }
           ]
         },
-       
         {
           "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
@@ -9197,7 +9252,7 @@
                 }
               ]
             },
-             {
+            {
               "id": 705,
               "name": "DSS_HEALTH_SCHEDULED_TODAY",
               "label": "DSS_HEALTH_SCHEDULED_TODAY",
@@ -9562,7 +9617,6 @@
             }
           ]
         },
-        
         {
           "row": 1,
           "name": "DSS_HEALTH_DEVICE_SWITCH",
@@ -9720,7 +9774,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_ATTENDANCE",
@@ -9784,8 +9837,7 @@
                   "headers": [],
                   "tabName": "EVENING"
                 },
-                {
-                }
+                {}
               ]
             }
           ]
@@ -10010,7 +10062,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_USER_ACTIVITY",
@@ -10052,21 +10103,39 @@
                   "filters": {
                     "userInfo": {
                       "type": "text",
-                      "filterFields": ["userName", "userId", "nameOfUser"]
+                      "filterFields": [
+                        "userName",
+                        "userId",
+                        "nameOfUser"
+                      ]
                     },
                     "status": {
                       "type": "dropdown",
-                      "filterFields": ["active"],
-                      "options": ["ACTIVE", "INACTIVE"]
+                      "filterFields": [
+                        "active"
+                      ],
+                      "options": [
+                        "ACTIVE",
+                        "INACTIVE"
+                      ]
                     },
                     "roles": {
                       "type": "dropdown",
-                      "filterFields": ["role"],
-                      "options": ["COMMUNITY_DISTRIBUTOR", "TEAM_SUPERVISOR", "DISTRIBUTOR"]
+                      "filterFields": [
+                        "role"
+                      ],
+                      "options": [
+                        "COMMUNITY_DISTRIBUTOR",
+                        "TEAM_SUPERVISOR",
+                        "DISTRIBUTOR"
+                      ]
                     },
                     "boundary": {
                       "type": "boundary",
-                      "filterFields": ["province", "district"]
+                      "filterFields": [
+                        "province",
+                        "district"
+                      ]
                     }
                   },
                   "name": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_SUMMARY",
@@ -10115,20 +10184,34 @@
                       "filters": {
                         "actionTypes": {
                           "type": "dropdown",
-                          "filterFields": ["actionType"],
-                          "options": ["Stock", "Delivery", "Complaints", "Error Record"]
+                          "filterFields": [
+                            "actionType"
+                          ],
+                          "options": [
+                            "Stock",
+                            "Delivery",
+                            "Complaints",
+                            "Error Record"
+                          ]
                         },
                         "outcome": {
                           "type": "dropdown",
-                          "filterFields": ["outcome"],
-                          "options": ["SUCCESS", "FAILED"]
+                          "filterFields": [
+                            "outcome"
+                          ],
+                          "options": [
+                            "SUCCESS",
+                            "FAILED"
+                          ]
                         },
                         "calender": {
                           "type": "calender"
                         },
                         "recordId": {
                           "type": "text",
-                          "filterFields": ["id"]
+                          "filterFields": [
+                            "id"
+                          ]
                         }
                       },
                       "charts": [
@@ -10148,7 +10231,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
@@ -13558,7 +13640,7 @@
             }
           ]
         },
-         {
+        {
           "row": 1,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
