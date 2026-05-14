@@ -4,7 +4,8 @@
     "ba": "http://health-expense-calculator.bauchi:8080",
     "ke": "http://health-expense-calculator.kebbi:8080",
     "si": "http://health-expense-calculator.sierraleone:8080",
-    "os": "http://health-expense-calculator.osun:8080"
+    "os": "http://health-expense-calculator.osun:8080",
+    "bednet": "http://health-expense-calculator.bednet:8080"
   },
   "/individual/.*": {
     "dev": "http://individual.egov:8080",
