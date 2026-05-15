@@ -40,7 +40,7 @@ ServiceMaps:
         - name: ba-transform-billreport-index-v1
           type: billreport
           id: $.billReport.id
-          isBulk: true
+          isBulk: false
           jsonPath: $
           customJsonMapping:
             indexMapping:
