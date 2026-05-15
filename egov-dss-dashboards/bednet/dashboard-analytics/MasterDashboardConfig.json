@@ -13475,6 +13475,110 @@
               ]
             }
           ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 401,
+              "name": "DSS_HEALTH_COMPLAINTS_STATUS",
+              "label": "DSS_HEALTH_COMPLAINTS_STATUS",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByStatusBreakdownProvincialLLIN",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 402,
+              "name": "DSS_HEALTH_COMPLAINTS_TYPE",
+              "label": "DSS_HEALTH_COMPLAINTS_TYPE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalComplaintsRegisteredByTypeLLIN",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_USER_SYNC",
+          "vizArray": [
+            {
+              "id": 501,
+              "name": "DSS_HEALTH_USER_SYNC",
+              "label": "DSS_HEALTH_USER_SYNC",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncSummaryProvinceLLIN",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_SUPERVISION",
+          "vizArray": [
+            {
+              "id": 601,
+              "name": "DSS_HEALTH_CHECKLIST",
+              "label": "DSS_HEALTH_CHECKLIST",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "checklistCompletionRateOfNationalSupervisorLLIN",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_SUMMARY",
+          "vizArray": [
+            {
+              "id": 701,
+              "name": "DSS_HEALTH_SUMMARY",
+              "label": "DSS_HEALTH_SUMMARY",
+              "vizType": "stacked-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByDistrictLLIN",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
