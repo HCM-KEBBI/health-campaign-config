@@ -176,6 +176,8 @@
               "charts": [
                 {
                   "id": "complaintsByStatusBreakdownProvincialLLIN",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS",
+                  "code": "",
                   "chartType": "line",
                   "filter": "",
                   "headers": []
@@ -192,6 +194,8 @@
               "charts": [
                 {
                   "id": "totalComplaintsRegisteredByTypeLLIN",
+                  "name": "DSS_HEALTH_COMPLAINTS_TYPE",
+                  "code": "",
                   "chartType": "donut",
                   "filter": "",
                   "headers": []
