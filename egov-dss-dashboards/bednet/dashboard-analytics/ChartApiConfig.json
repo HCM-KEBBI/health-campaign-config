@@ -68872,7 +68872,7 @@
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"ITNs Assigned\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.province.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
       }
     ],
-    "chartType": "xtable",
+    "chartType": "table",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
