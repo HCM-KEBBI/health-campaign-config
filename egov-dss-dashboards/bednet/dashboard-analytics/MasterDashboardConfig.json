@@ -13520,24 +13520,6 @@
                   "headers": []
                 }
               ]
-            },
-            {
-              "id": 302,
-              "name": "DSS_HEALTH_NATIONAL_CHECKLISTS_FILLED",
-              "label": "DSS_HEALTH_NATIONAL_CHECKLISTS_FILLED",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalChecklistsFilledBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_CHECKLISTS_FILLED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
             }
           ]
         },
