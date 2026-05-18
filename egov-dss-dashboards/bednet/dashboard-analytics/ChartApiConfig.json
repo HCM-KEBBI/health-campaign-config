@@ -68737,7 +68737,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Created\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Created\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
       }
     ],
     "chartType": "metric",
