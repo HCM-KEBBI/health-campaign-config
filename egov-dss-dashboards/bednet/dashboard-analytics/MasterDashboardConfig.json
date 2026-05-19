@@ -13531,7 +13531,7 @@
               "id": 401,
               "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
               "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "vizType": "table",
+              "vizType": "stacked-table",
               "noUnit": true,
               "isCollapsible": false,
               "ref": {
