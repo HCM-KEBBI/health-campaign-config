@@ -68871,7 +68871,17 @@
     "documentType": "_doc",
     "action": "",
     "plotLabel": "LGA",
-    "excludedColumns": [],
+    "excludedColumns": [
+      "Total Households Registered",
+      "People Living in Registered",
+      "Overall Target",
+      "HH Redeemed",
+      "ITNs Distributed",
+      "People in Redeemed HHs",
+      "Total DPs",
+      "Active DPs Count",
+      "Total ITNs Assigned"
+    ],
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [],
