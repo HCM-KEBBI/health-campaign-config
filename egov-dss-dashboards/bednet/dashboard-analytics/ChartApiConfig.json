@@ -68779,14 +68779,14 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+        "requestQueryMap": "",
         "indexName": "bednet-user-sync-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+        "requestQueryMap": "",
         "indexName": "bednet-project-staff-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
       }
