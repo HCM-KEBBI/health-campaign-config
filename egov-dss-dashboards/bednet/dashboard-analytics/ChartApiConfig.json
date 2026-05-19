@@ -68730,7 +68730,7 @@
     "_comment": "Complaints by type at national level"
   },
   "nationalUsersCreatedBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_USERS_CREATED",
+    "chartName": "DSS HEALTH NATIONAL TOTAL USERS CREATED",
     "queries": [
       {
         "module": "COMMON",
