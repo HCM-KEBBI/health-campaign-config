@@ -50481,7 +50481,7 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.taskDates",
+        "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Total visits\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}"
