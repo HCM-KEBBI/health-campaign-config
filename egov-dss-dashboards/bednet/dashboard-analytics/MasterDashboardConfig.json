@@ -13663,6 +13663,54 @@
               ]
             }
           ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_NATIONAL_HEALTH_MAPS",
+          "vizArray": [
+            {
+              "id": 901,
+              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsCoverageHeatMapBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_NATIONAL_HEALTH_MAPS",
+          "vizArray": [
+            {
+              "id": 902,
+              "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsITNsRedeemedHeatMapBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
