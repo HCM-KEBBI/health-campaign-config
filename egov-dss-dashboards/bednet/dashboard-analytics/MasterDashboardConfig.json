@@ -13669,7 +13669,7 @@
           "name": "DSS_NATIONAL_HEALTH_MAPS",
           "vizArray": [
             {
-              "id": 901,
+              "id": 911,
               "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
               "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
               "vizType": "heatmap",
@@ -13693,7 +13693,7 @@
           "name": "DSS_NATIONAL_HEALTH_MAPS",
           "vizArray": [
             {
-              "id": 902,
+              "id": 912,
               "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
               "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
               "vizType": "heatmap",
