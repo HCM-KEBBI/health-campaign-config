@@ -13670,6 +13670,30 @@
         },
         {
           "row": 8,
+          "name": "DSS_TEST_CHART",
+          "vizArray": [
+            {
+              "id": 999,
+              "name": "DSS_TEST_CHART",
+              "label": "DSS_TEST_CHART",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "nationalComplaintsByStatusBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
+                  "code": "",
+                  "chartType": "donut",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 9,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
@@ -13711,7 +13735,7 @@
           ]
         },
         {
-          "row": 9,
+          "row": 10,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
@@ -13753,7 +13777,7 @@
           ]
         },
         {
-          "row": 10,
+          "row": 11,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
@@ -13777,7 +13801,7 @@
           ]
         },
         {
-          "row": 11,
+          "row": 12,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
