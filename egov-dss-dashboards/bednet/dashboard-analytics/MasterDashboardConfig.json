@@ -273,62 +273,6 @@
       ]
     },
     {
-      "name": "DSS_HEALTH_MAPS_DASHBOARD_LLIN_HEADING",
-      "id": "maps-health-dashboard-llin",
-      "isActive": "",
-      "style": "linear",
-      "visualizations": [
-        {
-          "row": 1,
-          "name": "DSS_NATIONAL_HEALTH_MAPS",
-          "vizArray": [
-            {
-              "id": 901,
-              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 2,
-          "name": "DSS_NATIONAL_HEALTH_MAPS",
-          "vizArray": [
-            {
-              "id": 902,
-              "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-              "vizType": "heatmap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "populationCoverageHeatMapLLIN",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_HEADING",
       "id": "provincial-health-dashboard-llin",
       "isActive": "",
@@ -13692,7 +13636,7 @@
                   "id": "householdsCoverageHeatMapBednetsICCD",
                   "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
                   "code": "",
-                  "chartType": "xtable",
+                  "chartType": "heatmap",
                   "filter": "",
                   "headers": []
                 }
@@ -13716,7 +13660,7 @@
                   "id": "householdsITNsRedeemedHeatMapBednetsICCD",
                   "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
                   "code": "",
-                  "chartType": "xtable",
+                  "chartType": "heatmap",
                   "filter": "",
                   "headers": []
                 }
@@ -14237,54 +14181,6 @@
                   "filter": "",
                   "headers": [],
                   "tabName": "DAYWISE"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 8,
-          "name": "DSS_HEALTH_MAPS",
-          "vizArray": [
-            {
-              "id": 981,
-              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 9,
-          "name": "DSS_HEALTH_MAPS",
-          "vizArray": [
-            {
-              "id": 982,
-              "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsITNsRedeemedHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             }
