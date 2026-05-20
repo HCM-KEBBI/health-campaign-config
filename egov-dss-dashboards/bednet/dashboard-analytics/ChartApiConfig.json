@@ -68907,5 +68907,143 @@
     "computedFields": [],
     "insight": {},
     "_comment": "National summary table by LGA with all required columns for BednetsICCD"
+  },
+  "complaintsByLGABednetsICCD": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_LGA",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "hcm-complaints-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaints By LGA\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.complaintNumber.keyword\"}}}}}}"
+      }
+    ],
+    "chartType": "bar",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "LGA",
+    "aggregationPaths": [
+      "Complaints By LGA"
+    ],
+    "insight": {},
+    "_comment": "Complaints by LGA"
+  },
+  "complaintsByStatusBednetsICCD": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "hcm-complaints-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaints By Status\":{\"terms\":{\"field\":\"Data.status.keyword\",\"size\":50}}}}"
+      }
+    ],
+    "chartType": "stackedBar",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Status",
+    "aggregationPaths": [
+      "Complaints By Status"
+    ],
+    "insight": {},
+    "_comment": "Complaints by status"
+  },
+  "complaintsByTypeBednetsICCD": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "hcm-complaints-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaints By Type\":{\"terms\":{\"field\":\"Data.complaintType.keyword\",\"size\":100}}}}"
+      }
+    ],
+    "chartType": "stackedBar",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Complaint Type",
+    "aggregationPaths": [
+      "Complaints By Type"
+    ],
+    "insight": {},
+    "_comment": "Complaints by type"
+  },
+  "averageComplaintResolutionTimeBednetsICCD": {
+    "chartName": "DSS_HEALTH_AVG_RESOLUTION_TIME",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "hcm-complaints-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Average Resolution Time\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"avg_resolution\":{\"avg\":{\"field\":\"Data.resolutionTime\"}}}}}}"
+      }
+    ],
+    "chartType": "bar",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "LGA",
+    "aggregationPaths": [
+      "Average Resolution Time"
+    ],
+    "insight": {},
+    "_comment": "Average complaint resolution time"
+  },
+  "summaryComplaintsByStatusBednetsICCD": {
+    "chartName": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "hcm-complaints-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Complaints Status\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"Resolved\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"RESOLVED\"}}},\"Rejected\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"REJECTED\"}}},\"Pending\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"PENDING\"}}}}}}}"
+      }
+    ],
+    "chartType": "table",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "LGA",
+    "aggregationPaths": [
+      "Summary Complaints Status"
+    ],
+    "insight": {},
+    "_comment": "Summary complaints by status"
+  },
+  "summaryOpenComplaintsBednetsICCD": {
+    "chartName": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "hcm-complaints-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Open Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"0-6 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":0,\"lt\":6}}}},\"6-12 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":6,\"lt\":12}}}},\"12-24 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":12,\"lt\":24}}}},\">24 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":24}}}}}}}}"
+      }
+    ],
+    "chartType": "table",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "LGA",
+    "aggregationPaths": [
+      "Summary Open Complaints"
+    ],
+    "insight": {},
+    "_comment": "Summary open complaints"
   }
 }

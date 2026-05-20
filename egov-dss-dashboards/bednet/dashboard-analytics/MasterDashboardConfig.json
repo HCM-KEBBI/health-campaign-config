@@ -13667,6 +13667,138 @@
               ]
             }
           ]
+        },
+        {
+          "row": 8,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 901,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_LGA",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_LGA",
+              "vizType": "bar",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByLGABednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_LGA",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 902,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
+              "vizType": "stacked-bar",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByStatusBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
+                  "code": "",
+                  "chartType": "stackedBar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 903,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+              "vizType": "stacked-bar",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "complaintsByTypeBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+                  "code": "",
+                  "chartType": "stackedBar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 904,
+              "name": "DSS_HEALTH_AVG_RESOLUTION_TIME",
+              "label": "DSS_HEALTH_AVG_RESOLUTION_TIME",
+              "vizType": "bar",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "averageComplaintResolutionTimeBednetsICCD",
+                  "name": "DSS_HEALTH_AVG_RESOLUTION_TIME",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 905,
+              "name": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
+              "label": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
+              "vizType": "table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryComplaintsByStatusBednetsICCD",
+                  "name": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 906,
+              "name": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
+              "label": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
+              "vizType": "table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryOpenComplaintsBednetsICCD",
+                  "name": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
