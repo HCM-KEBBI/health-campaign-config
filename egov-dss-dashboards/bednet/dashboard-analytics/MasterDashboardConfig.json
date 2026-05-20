@@ -13702,7 +13702,7 @@
                   "id": "complaintsByStatusBednetsICCD",
                   "name": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
                   "code": "",
-                  "chartType": "stackedBar",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -13726,7 +13726,7 @@
                   "id": "complaintsByTypeBednetsICCD",
                   "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
                   "code": "",
-                  "chartType": "stackedBar",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
