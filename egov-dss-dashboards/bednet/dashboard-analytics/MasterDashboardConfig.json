@@ -13401,7 +13401,7 @@
               "id": 101,
               "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
               "label": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
-              "vizType": "stacked-collection",
+              "vizType": "metric-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13427,7 +13427,7 @@
               "id": 102,
               "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
               "label": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
-              "vizType": "stacked-collection",
+              "vizType": "metric-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13459,7 +13459,7 @@
               "id": 103,
               "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
               "label": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
-              "vizType": "stacked-collection",
+              "vizType": "metric-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13485,7 +13485,7 @@
               "id": 104,
               "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
               "label": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "vizType": "stacked-collection",
+              "vizType": "metric-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13559,7 +13559,7 @@
               "id": 301,
               "name": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
               "label": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
-              "vizType": "stacked-collection",
+              "vizType": "metric-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13599,7 +13599,7 @@
               "id": 401,
               "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
               "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "vizType": "stacked-table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "ref": {
@@ -13628,7 +13628,7 @@
               "id": 911,
               "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
               "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "vizType": "heatmap",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13652,7 +13652,7 @@
               "id": 912,
               "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
               "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-              "vizType": "heatmap",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13676,7 +13676,7 @@
               "id": 901,
               "name": "DSS_HEALTH_COMPLAINTS_BY_LGA",
               "label": "DSS_HEALTH_COMPLAINTS_BY_LGA",
-              "vizType": "bar",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13694,7 +13694,7 @@
               "id": 902,
               "name": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
               "label": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
-              "vizType": "stacked-bar",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13718,7 +13718,7 @@
               "id": 903,
               "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
               "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
-              "vizType": "stacked-bar",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13736,7 +13736,7 @@
               "id": 904,
               "name": "DSS_HEALTH_AVG_RESOLUTION_TIME",
               "label": "DSS_HEALTH_AVG_RESOLUTION_TIME",
-              "vizType": "bar",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13760,7 +13760,7 @@
               "id": 905,
               "name": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
               "label": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
-              "vizType": "table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
@@ -13784,7 +13784,7 @@
               "id": 906,
               "name": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
               "label": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
-              "vizType": "table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
