@@ -14175,6 +14175,54 @@
           ]
         },
         {
+          "row": 8,
+          "name": "DSS_HEALTH_MAPS",
+          "vizArray": [
+            {
+              "id": 981,
+              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsCoverageHeatMapProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "name": "DSS_HEALTH_MAPS",
+          "vizArray": [
+            {
+              "id": 982,
+              "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsITNsRedeemedHeatMapProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "row": 1,
           "name": "DSS_KIBANA_MAPS",
           "vizArray": [
