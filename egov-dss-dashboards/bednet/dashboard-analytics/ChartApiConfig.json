@@ -47885,7 +47885,7 @@
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"Number of households visited\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}}}"
       }
     ],
-    "chartType": "bar",
+    "chartType": "metric",
     "isCumulative": false,
     "valueType": "number",
     "drillChart": "none",
@@ -47921,7 +47921,7 @@
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"householdsTargeted\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"overallTarget\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
       }
     ],
-    "chartType": "bar",
+    "chartType": "metric",
     "isCumulative": false,
     "valueType": "percentage",
     "drillChart": "none",
