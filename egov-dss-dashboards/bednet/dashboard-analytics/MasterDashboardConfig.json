@@ -14821,34 +14821,80 @@
       ]
     },
     {
-      "name": "DSS_HEALTH_NATIONAL_DASHBOARD_LLIN_ICCD_HEADING",
+      "name": "DSS_HEALTH_OVERVIEW_DASHBOARD_LLIN_ICCD_HEADING",
       "id": "district-health-dashboard-bednets-iccd",
       "isActive": "",
       "style": "linear",
+      "hideFilterFields": [
+        "DDR",
+        "Ulb",
+        "Denomination",
+        "ModuleFilter"
+      ],
       "visualizations": [
         {
           "row": 1,
-          "name": "DSS_NATIONAL_HEALTH_HOUSEHOLD_REGISTRATION",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 101,
-              "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
-              "label": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
-              "vizType": "metric-collection",
+              "id": 200,
+              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "vizType": "bannercard",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalHouseholdsRegisteredBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
+                  "id": "userSyncSummaryDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 201,
+              "name": "DSS_HEALTH_HOUSEHOLDS",
+              "label": "DSS_HEALTH_HOUSEHOLDS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdVisitsWithinDateRangeBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "nationalHouseholdRegisteredCoverageBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
+                  "id": "totalVisitsBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "householdVisitsTargetDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalHouseholdCoverageDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -14857,24 +14903,82 @@
               ]
             },
             {
-              "id": 102,
-              "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
-              "label": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
-              "vizType": "metric-collection",
-              "noUnit": true,
+              "id": 202,
+              "name": "DSS_HEALTH_POPULATION_COVERED",
+              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "vizType": "stacked-collection",
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalPopulationRegisteredBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_REGISTERED",
+                  "id": "overviewPopulationCoveredBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "nationalPopulationRegisteredCoverageBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED_COVERAGE_PERCENT",
+                  "id": "overviewTotalPopulationCoveredBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewPopulationTargetedDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "overviewPopulationCoverageAchievedDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 203,
+              "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "distributionsByRangeBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalDistributionsTillTodayBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "bednetsTargetDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "bednetsDistributionCoverageDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -14886,55 +14990,39 @@
         },
         {
           "row": 2,
-          "name": "DSS_NATIONAL_HEALTH_DISTRIBUTION",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 103,
-              "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
-              "label": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
-              "vizType": "metric-collection",
+              "id": 204,
+              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalVouchersScannedBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_VOUCHERS_SCANNED",
+                  "id": "totalHouseholdsNotDeliveredDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
                   "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalVouchersScannedCoverageBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED_COVERAGE_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
+                  "chartType": "donut",
                   "filter": "",
                   "headers": []
                 }
               ]
             },
             {
-              "id": 104,
-              "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "label": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "vizType": "metric-collection",
+              "id": 205,
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalPopulationCoveredITNsBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED_ITNS",
+                  "id": "totalComplaintsRegisteredBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
                   "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalPopulationCoverageDistributionBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERAGE_DISTRIBUTION_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
+                  "chartType": "donut",
                   "filter": "",
                   "headers": []
                 }
@@ -14944,39 +15032,21 @@
         },
         {
           "row": 3,
-          "name": "DSS_NATIONAL_HEALTH_COMPLAINTS",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
-              "label": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
+              "id": 206,
+              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
+              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalComplaintsByStatusBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
+                  "id": "householdsCoverageBarchartByAPBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
                   "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 202,
-              "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-              "label": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalComplaintsByTypeBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-                  "code": "",
-                  "chartType": "donut",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -14986,37 +15056,21 @@
         },
         {
           "row": 4,
-          "name": "DSS_NATIONAL_HEALTH_USER_MANAGEMENT",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
-              "id": 301,
-              "name": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
-              "label": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
-              "vizType": "metric-collection",
+              "id": 207,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalUsersCreatedBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_CREATED",
+                  "id": "daysInventoryStockLastsDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
                   "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalUsersSyncedBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalUsersSyncedPercentBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -15025,27 +15079,222 @@
           ]
         },
         {
-          "row": 5,
-          "name": "DSS_NATIONAL_HEALTH_SUMMARY_TABLE",
+          "row": 1,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 401,
-              "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+              "id": 211,
+              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
+              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdHouseholdsCoveredChartDistrictPercentBednetsICCD",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdHouseholdsCoveredChartDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                }
+              ]
+            },
+            {
+              "id": 212,
+              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
+              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdPopulationChartDistrictPercentBednetsICCD",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdPopulationChartDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 213,
+              "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "label": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdBednetsDistributedChartDistrictPercentBednetsICCD",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT_PERCENT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "PERCENT"
+                },
+                {
+                  "id": "rdBednetsDistributedChartDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "NUMBER"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 217,
+              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
+              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
-              "ref": {
-                "url": "provincial-health-dashboard-bednets-iccd",
-                "logoUrl": "",
-                "type": "internal"
-              },
               "charts": [
                 {
-                  "id": "nationalSummaryByLGABednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+                  "id": "householdsCoverageHeatMapDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
                   "code": "",
-                  "chartType": "table",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "HOUSEHOLD"
+                },
+                {
+                  "id": "populationCoverageHeatMapDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "POPULATION"
+                },
+                {
+                  "id": "bednetsCoverageHeatMapDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_DISTRICT",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "BEDNETS"
+                }
+              ]
+            },
+            {
+              "id": 218,
+              "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+              "label": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+              "vizType": "latlong",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdsVisitedLatLongPointsBednetsICCD",
+                  "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+                  "code": "",
+                  "chartType": "points",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 215,
+              "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "actualVsPlannedHouseholdLineGraphDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_DISTRICT",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Household",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedPopulationLineGraphDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_DISTRICT",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Population",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedBednetsLineGraphDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_DISTRICT",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Bednets",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "vizArray": [
+            {
+              "id": 217,
+              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "rdUncoveredPopulationDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
@@ -15055,21 +15304,57 @@
         },
         {
           "row": 6,
-          "name": "DSS_NATIONAL_HEALTH_MAPS",
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 911,
-              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+              "id": 216,
+              "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_AP",
+              "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_AP",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageHeatMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+                  "id": "summaryByAdministrativeProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_SUMMARY_BY_AP",
                   "code": "",
-                  "chartType": "heatmap",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "BOUNDARY"
+                },
+                {
+                  "id": "summaryByAdministrativeProvinceDayBednetsICCD",
+                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "DAYWISE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_KIBANA_MAPS",
+          "vizArray": [
+            {
+              "id": 401,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "checklistCompletionRateOfDistrictSupervisor",
+                  "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "bednet-administration-successful-national",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
@@ -15078,22 +15363,24 @@
           ]
         },
         {
-          "row": 7,
-          "name": "DSS_NATIONAL_HEALTH_MAPS",
+          "row": 2,
+          "name": "DSS_KIBANA_MAPS",
           "vizArray": [
             {
-              "id": 912,
-              "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+              "id": 412,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsITNsRedeemedHeatMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+                  "id": "checklistCompletionRateOfDistrictSupervisor",
+                  "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
-                  "chartType": "heatmap",
+                  "moduleName": "llin",
+                  "pageName": "bednet-checklists-fill-national",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
@@ -15102,20 +15389,38 @@
           ]
         },
         {
-          "row": 8,
-          "name": "DSS_TEST_CHART",
+          "row": 1,
+          "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
-              "id": 999,
-              "name": "DSS_TEST_CHART",
-              "label": "DSS_TEST_CHART",
+              "id": 221,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalComplaintsByStatusBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
+                  "id": "complaintsByDistrictTotalBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT_TOTAL",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 222,
+              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalComplaintsRegisteredByTypeBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -15126,20 +15431,20 @@
           ]
         },
         {
-          "row": 9,
+          "row": 2,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
-              "id": 901,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_LGA",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_LGA",
+              "id": 223,
+              "name": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_PROVINCIAL",
+              "label": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_PROVINCIAL",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByLGABednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_LGA",
+                  "id": "complaintsByStatusBreakdownProvincialBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_PROVINCIAL",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15148,16 +15453,16 @@
               ]
             },
             {
-              "id": 902,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
+              "id": 224,
+              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByStatusBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_STATUS",
+                  "id": "complaintsByTypeBreakdownProvincialBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15168,20 +15473,20 @@
           ]
         },
         {
-          "row": 10,
+          "row": 3,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
-              "id": 903,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+              "id": 352,
+              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByTypeBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE",
+                  "id": "ComplaintsShareByDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15190,16 +15495,16 @@
               ]
             },
             {
-              "id": 904,
-              "name": "DSS_HEALTH_AVG_RESOLUTION_TIME",
-              "label": "DSS_HEALTH_AVG_RESOLUTION_TIME",
+              "id": 351,
+              "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
+              "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "averageComplaintResolutionTimeBednetsICCD",
-                  "name": "DSS_HEALTH_AVG_RESOLUTION_TIME",
+                  "id": "averageResolutionTimeProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_PROVINCE",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15210,20 +15515,54 @@
           ]
         },
         {
-          "row": 11,
+          "row": 4,
           "name": "DSS_HEALTH_COMPLAINTS",
           "vizArray": [
             {
-              "id": 905,
-              "name": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
-              "label": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
+              "id": 226,
+              "name": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_SUMMARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "summaryComplaintsByStatusBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_COMPLAINT_STATUS",
+                  "id": "complaintsByStatusSummaryProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_PROVINCE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "BOUNDARY"
+                },
+                {
+                  "id": "complaintsByStatusSummaryDayBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "DAYWISE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 227,
+              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "openComplaintsSummaryByDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -15234,22 +15573,238 @@
           ]
         },
         {
-          "row": 12,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "row": 1,
+          "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
-              "id": 906,
-              "name": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
-              "label": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
+              "id": 241,
+              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "summaryOpenComplaintsBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
+                  "id": "daysInventoryStockLastsProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 242,
+              "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "label": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "inventoryStockInHandProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 244,
+              "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+              "label": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+              "vizType": "latlong",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "warehouseDistributionLatLongPointsBednetsICCD",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "points",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrictWiseProvincialBoardBednetsICCD",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
                   "code": "",
                   "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableDaysStockLastsDistrictWiseProvincialBoardBednetsICCD",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableAvlRcvdDispFacilitiesBednetsICCD",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableStockStatusDistrictWiseProvincialBoardBednetsICCD",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "warehouseDistributionLatLongTableWarNumDistrictWiseProvincialBoardBednetsICCD",
+                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 243,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByApBednetsICCD",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_SUPERVISION",
+          "vizArray": [
+            {
+              "id": 261,
+              "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+              "label": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "checklistCompletionRateOfNationalSupervisorBednetsICCD",
+                  "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 262,
+              "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+              "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_SUPERVISION",
+          "vizArray": [
+            {
+              "id": 263,
+              "name": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+              "label": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "checklistCompletionRateOfProvincialSupervisorBednetsICCD",
+                  "name": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 264,
+              "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+              "label": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "checklistCompletionRateOfDistrictSupervisorBednetsICCD",
+                  "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_CUSTOM_CHART",
+          "vizArray": [
+            {
+              "id": 700,
+              "name": "DSS_CUSTOM_CHART_LLIN",
+              "label": "DSS_CUSTOM_CHART_LLIN",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "customChart",
+                  "name": "DSS_HEALTH_CUSTOM_CHART",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "bednet-custom-chart",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
