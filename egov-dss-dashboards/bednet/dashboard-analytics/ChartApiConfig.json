@@ -47874,15 +47874,14 @@
     "_comment": " "
   },
   "rdHouseholdsCoveredChartDistrictBednetsICCD": {
-    "kind": "drillDown",
     "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
     "queries": [
       {
         "module": "COMMON",
         "dateRefField": "Data.taskDates",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"Number of households visited\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"householdsVisited\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}"
       }
     ],
     "chartType": "metric",
@@ -47892,15 +47891,10 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Number of households visited"
-    ],
-    "filterKeys": [
-      {
-        "key": "lga"
-      }
+      "householdsVisited"
     ],
     "insight": {},
-    "_comment": "Number of households registered by LGA"
+    "_comment": "Total households covered at district level"
   },
   "rdHouseholdsCoveredChartDistrictPercentBednetsICCD": {
     "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
@@ -47908,14 +47902,14 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.taskDates",
-        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"householdsVisited\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "Data.taskDates",
-        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"householdsTargeted\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}"
       }
@@ -47931,7 +47925,7 @@
       "householdsTargeted"
     ],
     "insight": {},
-    "_comment": "Overall household coverage percentage (district level)"
+    "_comment": "Household coverage percentage at district level (R&D)"
   },
   "rdHouseholdsCoveredChartLocalityBednetsICCD": {
     "kind": "drillDown",
