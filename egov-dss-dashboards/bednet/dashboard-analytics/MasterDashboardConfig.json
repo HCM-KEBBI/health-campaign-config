@@ -15086,7 +15086,7 @@
               "id": 211,
               "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
               "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
+              "vizType": "metric-collection",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
@@ -15094,7 +15094,7 @@
                   "id": "rdHouseholdsCoveredChartDistrictPercentBednetsICCD",
                   "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
@@ -15103,7 +15103,7 @@
                   "id": "rdHouseholdsCoveredChartDistrictBednetsICCD",
                   "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": [],
                   "tabName": "NUMBER"
@@ -15114,7 +15114,7 @@
               "id": 212,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
               "label": "DSS_HEALTH_POPULATION_COVERED_RD",
-              "vizType": "chart",
+              "vizType": "metric-collection",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
@@ -15122,7 +15122,7 @@
                   "id": "rdPopulationChartDistrictPercentBednetsICCD",
                   "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": [],
                   "tabName": "PERCENT"
@@ -15131,7 +15131,7 @@
                   "id": "rdPopulationChartDistrictBednetsICCD",
                   "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": [],
                   "tabName": "NUMBER"
