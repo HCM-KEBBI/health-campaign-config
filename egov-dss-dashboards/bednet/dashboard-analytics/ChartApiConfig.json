@@ -47931,9 +47931,6 @@
       "householdsVisited",
       "householdsTargeted"
     ],
-    "isCappedByCampaignPeriod": [
-      "overallTarget"
-    ],
     "filterKeys": [
       {
         "key": "lga"
