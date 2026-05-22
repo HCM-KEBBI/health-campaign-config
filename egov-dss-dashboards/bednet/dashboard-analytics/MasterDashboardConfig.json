@@ -15087,7 +15087,7 @@
               "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
               "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
               "vizType": "metric-collection",
-              "noUnit": false,
+              "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
@@ -15115,7 +15115,7 @@
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
               "label": "DSS_HEALTH_POPULATION_COVERED_RD",
               "vizType": "metric-collection",
-              "noUnit": false,
+              "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
