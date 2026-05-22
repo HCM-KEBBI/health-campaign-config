@@ -15083,7 +15083,7 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 211,
+              "id": 2111,
               "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
               "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
               "vizType": "metric-collection",
@@ -15111,7 +15111,7 @@
               ]
             },
             {
-              "id": 212,
+              "id": 2121,
               "name": "DSS_HEALTH_POPULATION_COVERED_RD",
               "label": "DSS_HEALTH_POPULATION_COVERED_RD",
               "vizType": "metric-collection",
@@ -15145,7 +15145,7 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 213,
+              "id": 2131,
               "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
               "label": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
               "vizType": "chart",
@@ -15179,7 +15179,7 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 217,
+              "id": 2171,
               "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
               "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
               "vizType": "chart",
@@ -15216,7 +15216,7 @@
               ]
             },
             {
-              "id": 218,
+              "id": 2181,
               "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
               "label": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
               "vizType": "latlong",
@@ -15240,7 +15240,7 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 215,
+              "id": 2115,
               "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
               "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
               "vizType": "chart",
@@ -15283,7 +15283,7 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 217,
+              "id": 2117,
               "name": "DSS_HEALTH_UNCOVERED_POPULATION",
               "label": "DSS_HEALTH_UNCOVERED_POPULATION",
               "vizType": "chart",
@@ -15307,7 +15307,7 @@
           "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
-              "id": 216,
+              "id": 2161,
               "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_AP",
               "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_AP",
               "vizType": "chart",
