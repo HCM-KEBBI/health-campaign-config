@@ -13633,10 +13633,12 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageHeatMapBednetsICCD",
+                  "id": "checklistCompletionRateOfDistrictSupervisorBednetsICCD",
                   "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
                   "code": "",
-                  "chartType": "heatmap",
+                  "moduleName": "iccd-maps",
+                  "pageName": "bednet-administration-successful-national",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
