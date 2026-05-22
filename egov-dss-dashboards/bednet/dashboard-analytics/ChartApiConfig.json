@@ -47903,7 +47903,6 @@
     "_comment": "Number of households registered by LGA"
   },
   "rdHouseholdsCoveredChartDistrictPercentBednetsICCD": {
-    "kind": "drillDown",
     "chartName": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
     "queries": [
       {
@@ -47911,14 +47910,14 @@
         "dateRefField": "Data.taskDates",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"householdsVisited\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"householdsVisited\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "Data.taskDates",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"householdsTargeted\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"overallTarget\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"householdsTargeted\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}"
       }
     ],
     "chartType": "metric",
@@ -47931,14 +47930,8 @@
       "householdsVisited",
       "householdsTargeted"
     ],
-    "filterKeys": [
-      {
-        "key": "lga"
-      }
-    ],
-    "sort": "sortKeyAsc",
     "insight": {},
-    "_comment": "Household coverage percentage by LGA"
+    "_comment": "Overall household coverage percentage (district level)"
   },
   "rdHouseholdsCoveredChartLocalityBednetsICCD": {
     "kind": "drillDown",
@@ -48203,56 +48196,35 @@
     "_comment": " "
   },
   "rdPopulationChartDistrictPercentBednetsICCD": {
-    "kind": "drillDown",
     "chartName": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Percentage of Population Covered\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"script\":{\"source\":\"doc['Data.quantity'].value * 1.8\"}}}}}}}}}"
+        "dateRefField": "Data.taskDates",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "bednet-household-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"populationVisited\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}"
       },
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "dateRefField": "Data.taskDates",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.locality.keyword\"}}]}}}},\"aggs\":{\"Population Targeted\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.administrativeProvince.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"TPD\":{\"sum\":{\"script\":{\"source\":\"doc['Data.targetPerDay'].value * 365\"}}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"populationTargeted\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}"
       }
     ],
-    "chartType": "line",
+    "chartType": "metric",
     "isCumulative": false,
     "valueType": "percentage",
-    "drillChart": "rdPopulationChartApPercentBednetsICCD",
+    "drillChart": "none",
     "documentType": "_doc",
     "action": "percentage",
     "aggregationPaths": [
-      "Percentage of Population Covered",
-      "Population Targeted"
-    ],
-    "isCappedByCampaignPeriod": [
-      "Overall Target"
-    ],
-    "filterKeys": [
-      {
-        "key": "administrativeProvince"
-      }
-    ],
-    "sort": "sortKeyAsc",
-    "computedFields": [
-      {
-        "postAggregationTheory": "repsonseToDifferenceOfDates",
-        "actionName": "",
-        "fields": [
-          "TPD"
-        ],
-        "newField": "Percentage Covered",
-        "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
-      }
+      "populationVisited",
+      "populationTargeted"
     ],
     "insight": {},
-    "_comment": " "
+    "_comment": "Overall population coverage percentage (district level)"
   },
   "rdPopulationChartLocalityBednetsICCD": {
     "kind": "drillDown",
