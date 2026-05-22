@@ -137,10 +137,6 @@
           "id": "national-health-dashboard-bednets-iccd"
         },
         {
-          "name": "Maps Health Dashboard Bednets ICCD",
-          "id": "maps-health-dashboard-bednets-iccd"
-        },
-        {
           "name": "Bednets ICCD Dashboard Level Two",
           "id": "provincial-health-dashboard-bednets-iccd"
         },
@@ -292,10 +288,6 @@
         {
           "name": "Bednets ICCD Dashboard Level One",
           "id": "national-health-dashboard-bednets-iccd"
-        },
-        {
-          "name": "Maps Health Dashboard Bednets ICCD",
-          "id": "maps-health-dashboard-bednets-iccd"
         },
         {
           "name": "Bednets ICCD Dashboard Level Two",
