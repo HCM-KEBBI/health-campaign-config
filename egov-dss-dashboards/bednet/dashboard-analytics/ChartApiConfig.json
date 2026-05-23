@@ -44305,16 +44305,16 @@
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.State.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"productVariant\":\"Data.productVariant.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Household Distribution\":{\"date_histogram\":{\"field\":\"Data.createdTime\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Day wise distributions\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Household Distribution\":{\"date_histogram\":{\"field\":\"Data.createdTime\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Day wise distributions\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.province.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"province\":\"Data.boundaryHierarchy.State.keyword\",\"district\":\"Data.boundaryHierarchy.district.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"productVariant\":\"Data.productVariant.keyword\"}",
         "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.province.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Household Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\"},\"aggs\":{\"Target Household\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectBeneficiaryType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.district.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Household Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Target Household\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
       }
     ],
     "chartType": "line",
@@ -44332,7 +44332,7 @@
       "Household Distribution"
     ],
     "insight": {},
-    "_comment": " "
+    "_comment": "Province level actual vs planned household distribution graph"
   },
   "actualVsPlannedPopulationLineGraphDistrictBednetsICCD": {
     "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_DISTRICT",
