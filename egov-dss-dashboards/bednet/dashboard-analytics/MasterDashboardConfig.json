@@ -15394,15 +15394,15 @@
           "vizArray": [
             {
               "id": 221,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
+              "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_AP",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByDistrictTotalBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT_TOTAL",
+                  "id": "complaintsByAPTotalBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_AP_TOTAL",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15436,15 +15436,15 @@
           "vizArray": [
             {
               "id": 223,
-              "name": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_PROVINCIAL",
-              "label": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_PROVINCIAL",
+              "name": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_DISTRICT",
+              "label": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_DISTRICT",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByStatusBreakdownProvincialBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_PROVINCIAL",
+                  "id": "complaintsByStatusBreakdownDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15454,15 +15454,15 @@
             },
             {
               "id": 224,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
+              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_DISTRICT",
+              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_DISTRICT",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByTypeBreakdownProvincialBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
+                  "id": "complaintsByTypeBreakdownDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15485,7 +15485,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "ComplaintsShareByDistrictBednetsICCD",
+                  "id": "ComplaintsShareByAPBednetsICCD",
                   "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
                   "code": "",
                   "chartType": "bar",
@@ -15496,15 +15496,15 @@
             },
             {
               "id": 351,
-              "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
-              "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
+              "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_DISTRICT",
+              "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_DISTRICT",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "averageResolutionTimeProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_PROVINCE",
+                  "id": "averageResolutionTimeDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15527,8 +15527,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByStatusSummaryProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_PROVINCE",
+                  "id": "complaintsByStatusSummaryDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DISTRICT",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -15561,8 +15561,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "openComplaintsSummaryByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
+                  "id": "openComplaintsSummaryByAPBednetsICCD",
+                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_AP",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -15585,8 +15585,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "daysInventoryStockLastsProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                  "id": "daysInventoryStockLastsDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -15603,8 +15603,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "inventoryStockInHandProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
+                  "id": "inventoryStockInHandDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_DISTRICT",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
