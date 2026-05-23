@@ -15091,8 +15091,8 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdHouseholdsCoveredChartDistrictPercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT_PERCENT",
+                  "id": "nationalHouseholdsRegisteredBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -15100,8 +15100,8 @@
                   "tabName": "PERCENT"
                 },
                 {
-                  "id": "rdHouseholdsCoveredChartDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_DISTRICT",
+                  "id": "nationalHouseholdRegisteredCoverageBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
