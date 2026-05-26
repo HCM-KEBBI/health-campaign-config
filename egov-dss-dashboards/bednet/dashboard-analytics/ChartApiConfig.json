@@ -45562,9 +45562,9 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"selectedType\":\"Data.service.applicationStatus.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"selectedType\":\"Data.service.applicationStatus.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus\":[\"\"]}}]}},\"aggs\":{\"Complaints Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\"},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"\"]}}]}},\"aggs\":{\"Complaints Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
       }
     ],
     "chartType": "pie",
@@ -50215,9 +50215,9 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}}}}"
       }
     ],
     "chartType": "pie",
