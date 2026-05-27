@@ -45351,7 +45351,7 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"District\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"Resolved\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}]}},\"aggs\":{\"District\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Resolved Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"Rejected\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}]}},\"aggs\":{\"District\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Rejected Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
