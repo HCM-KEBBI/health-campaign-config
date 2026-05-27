@@ -14840,7 +14840,7 @@
               "id": 200,
               "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
               "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
-              "vizType": "bannercard",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
