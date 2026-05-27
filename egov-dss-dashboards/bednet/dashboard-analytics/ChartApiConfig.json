@@ -45275,8 +45275,8 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Open filter by Country\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"Open Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}},\"Resolved filter by Country\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}]}},\"aggs\":{\"Resolved Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Resolved Complaints Count\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}},\"Rejected filter by Country\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}]}},\"aggs\":{\"Rejected Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Rejected Complaints Count\":{\"value_count\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}}}}}}}}"
       }
@@ -47059,10 +47059,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"District\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"date_range\":{\"field\":\"@timestamp\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open since 6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open since 6h-12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open since 12h-24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open since 24h-48h\"},{\"to\":\"now-48h\",\"key\":\"open for more than 48h\"}]}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"District\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"date_range\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open since 6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open since 6h-12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open since 12h-24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open since 24h-48h\"},{\"to\":\"now-48h\",\"key\":\"open for more than 48h\"}]}}}}}}}}"
       }
     ],
     "filterKeys": [
