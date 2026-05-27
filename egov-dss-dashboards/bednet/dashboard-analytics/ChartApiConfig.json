@@ -50195,11 +50195,7 @@
     "valueType": "number",
     "showLabel": true,
     "drillChart": "totalComplaintsRegisteredByStatusDrilldownBednetsICCD",
-    "filterKeys": [
-      {
-        "key": "serviceCode"
-      }
-    ],
+    "filterKeys": [],
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
