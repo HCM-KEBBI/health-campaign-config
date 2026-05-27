@@ -45054,8 +45054,8 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"community\":\"Data.boundaryHierarchy.Community.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"Community\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"Resolved\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}]}},\"aggs\":{\"Community\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Resolved Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}},\"Rejected\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}]}},\"aggs\":{\"Community\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Rejected Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
       }
@@ -47019,10 +47019,10 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.Ward.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"Ward\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"date_range\":{\"field\":\"@timestamp\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open since 6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open since 6h-12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open since 12h-24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open since 24h-48h\"},{\"to\":\"now-48h\",\"key\":\"open for more than 48h\"}]}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Open\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}]}},\"aggs\":{\"Ward\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Open Complaints Count\":{\"date_range\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\",\"keyed\":true,\"ranges\":[{\"from\":\"now-6h\",\"to\":\"now\",\"key\":\"open since 6h\"},{\"from\":\"now-12h\",\"to\":\"now-6h\",\"key\":\"open since 6h-12h\"},{\"from\":\"now-24h\",\"to\":\"now-12h\",\"key\":\"open since 12h-24h\"},{\"from\":\"now-48h\",\"to\":\"now-24h\",\"key\":\"open since 24h-48h\"},{\"to\":\"now-48h\",\"key\":\"open for more than 48h\"}]}}}}}}}}"
       }
     ],
     "filterKeys": [
