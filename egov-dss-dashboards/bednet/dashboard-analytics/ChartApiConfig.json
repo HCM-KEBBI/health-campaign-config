@@ -46344,7 +46344,7 @@
       }
     ],
     "filterKeys": [],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "householdsITNsRedeemedHeatMapProvinceBednetsICCD",
     "documentType": "_doc",
@@ -69015,7 +69015,7 @@
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Complaints Status\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"Resolved\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"RESOLVED\"}}},\"Rejected\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"REJECTED\"}}},\"Pending\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"PENDING\"}}}}}}}"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
@@ -69038,7 +69038,7 @@
         "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Open Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"0-6 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":0,\"lt\":6}}}},\"6-12 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":6,\"lt\":12}}}},\"12-24 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":12,\"lt\":24}}}},\">24 Hours\":{\"filter\":{\"range\":{\"Data.openHours\":{\"gte\":24}}}}}}}}"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
