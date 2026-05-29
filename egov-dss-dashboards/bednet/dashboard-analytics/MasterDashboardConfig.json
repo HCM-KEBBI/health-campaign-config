@@ -13621,32 +13621,6 @@
           ]
         },
         {
-          "row": 6,
-          "name": "DSS_NATIONAL_HEALTH_MAPS",
-          "vizArray": [
-            {
-              "id": 911,
-              "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "label": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "checklistCompletionRateOfDistrictSupervisorBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
-                  "code": "",
-                  "moduleName": "iccd-maps",
-                  "pageName": "bednet-administration-successful-national",
-                  "chartType": "kibanaComponent",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 7,
           "name": "DSS_NATIONAL_HEALTH_MAPS",
           "vizArray": [
@@ -14739,24 +14713,6 @@
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 261,
-              "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "label": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "checklistCompletionRateOfNationalSupervisorBednetsICCD",
-                  "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 262,
               "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
               "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
@@ -14767,48 +14723,6 @@
                 {
                   "id": "userSyncRateByDistrictBednetsICCD",
                   "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 2,
-          "name": "DSS_HEALTH_SUPERVISION",
-          "vizArray": [
-            {
-              "id": 263,
-              "name": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "label": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "checklistCompletionRateOfProvincialSupervisorBednetsICCD",
-                  "name": "DSS_HEALTH_SUPERVISION_PROVINCIAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 264,
-              "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "label": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "checklistCompletionRateOfDistrictSupervisorBednetsICCD",
-                  "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
