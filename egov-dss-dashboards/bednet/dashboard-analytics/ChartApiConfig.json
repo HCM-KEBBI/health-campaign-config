@@ -69011,8 +69011,8 @@
         "module": "COMMON",
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "hcm-complaints-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Complaints Status\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"Resolved\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"RESOLVED\"}}},\"Rejected\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"REJECTED\"}}},\"Pending\":{\"filter\":{\"term\":{\"Data.status.keyword\":\"PENDING\"}}}}}}}"
+        "indexName": "bednet-transformer-pgr-services",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Complaints Status\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"Resolved\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}},\"Rejected\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}},\"Pending\":{\"filter\":{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"PENDING_FOR_REASSIGNMENT\"]}}}}}}}"
       }
     ],
     "chartType": "xtable",
