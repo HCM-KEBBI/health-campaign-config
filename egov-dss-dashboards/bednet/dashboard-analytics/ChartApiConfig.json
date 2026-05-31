@@ -46242,7 +46242,7 @@
       }
     ],
     "filterKeys": [],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
@@ -46438,7 +46438,7 @@
       }
     ],
     "filterKeys": [],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
@@ -49007,7 +49007,7 @@
         "column": "Ward"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "summaryByLocalityBednetsICCD",
     "documentType": "_doc",
@@ -49432,7 +49432,7 @@
         "column": "LGA"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "summaryByAdministrativeProvinceBednetsICCD",
     "documentType": "_doc",
