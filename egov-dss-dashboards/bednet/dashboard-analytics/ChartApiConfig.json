@@ -50555,7 +50555,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Unique Users Synced\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Unique Users Synced\":{\"value_count\":{\"field\":\"Data.syncedUserId.keyword\"}}}}}}"
       }
     ],
     "filterKeys": [],
