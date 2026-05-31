@@ -14778,7 +14778,7 @@
               "id": 201,
               "name": "DSS_HEALTH_HOUSEHOLDS",
               "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "stacked-collection",
+              "vizType": "metric-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
