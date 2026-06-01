@@ -50634,7 +50634,7 @@
       }
     ],
     "filterKeys": [],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
