@@ -45211,7 +45211,7 @@
         "column": "Ward"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "complaintsByStatusSummaryAPBednetsICCD",
     "documentType": "_doc",
@@ -45363,7 +45363,7 @@
         "column": "District"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "complaintsByStatusSummaryDistrictBednetsICCD",
     "documentType": "_doc",
@@ -47031,7 +47031,7 @@
         "column": "Ward"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "openComplaintsSummaryByLocalityBednetsICCD",
     "documentType": "_doc",
@@ -47071,7 +47071,7 @@
         "column": "District"
       }
     ],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "openComplaintsSummaryByAPBednetsICCD",
     "documentType": "_doc",
