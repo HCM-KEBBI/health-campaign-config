@@ -69037,10 +69037,10 @@
         "dateRefField": "Data.service.auditDetails.createdTime",
         "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Open Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":100},\"aggs\":{\"Pending Assignment\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}},\"Pending Reassignment\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_FOR_REASSIGNMENT\"}}},\"Resolved\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}},\"Rejected\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Summary Open Complaints\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":10000},\"aggs\":{\"Pending Assignment\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_ASSIGNMENT\"}}},\"Pending Reassignment\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"PENDING_FOR_REASSIGNMENT\"}}},\"Resolved\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}}},\"Rejected\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}}}}}}}"
       }
     ],
-    "chartType": "xtable",
+    "chartType": "table",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
