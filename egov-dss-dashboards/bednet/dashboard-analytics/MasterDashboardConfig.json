@@ -13609,15 +13609,26 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalSummaryByLGABednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
+                  "headers": [
+                    "LGA",
+                    "Ward",
+                    "Distribution Hub",
+                    "Target Households",
+                    "People Living in Registered",
+                    "Avg. Household Size",
+                    "Total Number of DPs",
+                    "Active HHM",
+                    "Total ITNs Assigned",
+                    "Percentage Household Coverage",
+                    "ITNs Positioned",
+                    "HH Redeemed",
+                    "Number of People in Redeemed HHs",
+                    "Avg. Net Per Distribution",
+                    "Total DPs",
+                    "Active DPs",
+                    "Percentage Redemption Rate",
+                    "Percentage Distribution Rate"
+                  ]
                 }
               ]
             }
