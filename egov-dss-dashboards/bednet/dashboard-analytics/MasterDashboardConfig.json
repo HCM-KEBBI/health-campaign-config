@@ -13784,9 +13784,14 @@
               "id": 906,
               "name": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
               "label": "DSS_HEALTH_SUMMARY_OPEN_COMPLAINTS",
-              "vizType": "chart",
+              "vizType": "stacked-table",
               "noUnit": true,
               "isCollapsible": false,
+              "ref": {
+                "url": "provincial-health-dashboard-bednets-iccd",
+                "logoUrl": "",
+                "type": "internal"
+              },
               "charts": [
                 {
                   "id": "summaryOpenComplaintsBednetsICCD",
