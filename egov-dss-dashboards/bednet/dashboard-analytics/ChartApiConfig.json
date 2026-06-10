@@ -68870,7 +68870,7 @@
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Ward\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500}},\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"match_all\":{}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Ward\":{\"value_count\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}},\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}}}"
       },
       {
         "module": "COMMON",
