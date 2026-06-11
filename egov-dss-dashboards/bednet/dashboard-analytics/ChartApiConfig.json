@@ -46299,7 +46299,7 @@
       }
     ],
     "filterKeys": [],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "householdsCoverageHeatMapProvinceBednetsICCD",
     "documentType": "_doc",
@@ -46393,7 +46393,7 @@
       }
     ],
     "filterKeys": [],
-    "chartType": "table",
+    "chartType": "xtable",
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
