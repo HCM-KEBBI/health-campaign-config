@@ -44497,9 +44497,9 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Solved filters\":{\"filters\":{\"filters\":{\"NAME\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"RESOLVED\",\"REJECTED\"]}}]}}}},\"aggs\":{\"Resolution time in hours\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.country.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.auditDetails.createdTime\"}},\"Created Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.createdTime\"}},\"Last Modified Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}},\"Difference of Time\":{\"bucket_script\":{\"buckets_path\":{\"CT\":\"Created Time\",\"LMT\":\"Last Modified Time\",\"CC\":\"Complaints Count\"},\"script\":\"params.CC > 0 ? (params.LMT - params.CT) / 3600000 / params.CC : 0\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Solved filters\":{\"filters\":{\"filters\":{\"NAME\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"RESOLVED\",\"REJECTED\"]}}]}}}},\"aggs\":{\"Resolution time in hours\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}},\"Created Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.createdTime\"}},\"Last Modified Time\":{\"sum\":{\"field\":\"Data.service.auditDetails.lastModifiedTime\"}},\"Difference of Time\":{\"bucket_script\":{\"buckets_path\":{\"CT\":\"Created Time\",\"LMT\":\"Last Modified Time\",\"CC\":\"Complaints Count\"},\"script\":\"params.CC > 0 ? (params.LMT - params.CT) / 3600000 / params.CC : 0\"}}}}}}}}"
       }
     ],
     "chartType": "line",
@@ -44513,7 +44513,7 @@
     ],
     "filterKeys": [
       {
-        "key": "country"
+        "key": "state"
       }
     ],
     "insight": {},
