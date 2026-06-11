@@ -13599,9 +13599,14 @@
               "id": 401,
               "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
               "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "vizType": "chart",
+              "vizType": "stacked-table",
               "noUnit": true,
               "isCollapsible": false,
+              "ref": {
+                "url": "provincial-health-dashboard-bednets-iccd",
+                "logoUrl": "",
+                "type": "internal"
+              },
               "charts": [
                 {
                   "id": "nationalSummaryByLGABednetsICCD",
@@ -13609,26 +13614,7 @@
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": [
-                    "LGA",
-                    "Ward",
-                    "Distribution Hub",
-                    "Target Households",
-                    "People Living in Registered",
-                    "Avg. Household Size",
-                    "Total Number of DPs",
-                    "Active HHM",
-                    "Total ITNs Assigned",
-                    "Percentage Household Coverage",
-                    "ITNs Positioned",
-                    "HH Redeemed",
-                    "Number of People in Redeemed HHs",
-                    "Avg. Net Per Distribution",
-                    "Total DPs",
-                    "Active DPs",
-                    "Percentage Redemption Rate",
-                    "Percentage Distribution Rate"
-                  ]
+                  "headers": []
                 }
               ]
             }

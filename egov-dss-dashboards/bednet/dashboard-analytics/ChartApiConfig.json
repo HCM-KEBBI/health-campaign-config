@@ -68870,49 +68870,49 @@
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"match_all\":{}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Ward\":{\"value_count\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}},\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"match_all\":{}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Ward\":{\"value_count\":{\"field\":\"Data.boundaryHierarchy.ward.keyword\"}},\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"query\":{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Target Households\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Target Households\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"query\":{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"HH Redeemed\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}},\"Number of People in Redeemed HHs\":{\"sum\":{\"field\":\"Data.memberCount\"}},\"ITNs Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"HH Redeemed\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}},\"Number of People in Redeemed HHs\":{\"sum\":{\"field\":\"Data.memberCount\"}},\"ITNs Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"query\":{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Total Number of DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}},\"Total DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}},\"Active DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Total Number of DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}},\"Total DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}},\"Active DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"query\":{\"term\":{\"Data.role.keyword\":\"TEAM_SUPERVISOR\"}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Active HHM\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"TEAM_SUPERVISOR\"}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Active HHM\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-stock-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Distribution Hub\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500}},\"ITNs Positioned\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"match_all\":{}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Distribution Hub\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500}},\"ITNs Positioned\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -68926,24 +68926,34 @@
     "hideHeaderDenomination": true,
     "computedFields": [
       {
-        "postAggregationTheory": "reponseToFloat(People Living in Registered)/reponseToFloat(Total Households Registered)",
-        "actionName": "Avg. Household Size"
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Total Households Registered",
+          "Target Households"
+        ],
+        "newField": "Percentage Household Coverage",
+        "_comments": ""
       },
       {
-        "postAggregationTheory": "(reponseToFloat(Total Households Registered)/reponseToFloat(Target Households))*100",
-        "actionName": "Percentage Household Coverage"
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "HH Redeemed",
+          "Total Households Registered"
+        ],
+        "newField": "Percentage Redemption Rate",
+        "_comments": ""
       },
       {
-        "postAggregationTheory": "reponseToFloat(ITNs Distributed)/reponseToFloat(HH Redeemed)",
-        "actionName": "Avg. Net Per Distribution"
-      },
-      {
-        "postAggregationTheory": "(reponseToFloat(HH Redeemed)/reponseToFloat(Total Households Registered))*100",
-        "actionName": "Percentage Redemption Rate"
-      },
-      {
-        "postAggregationTheory": "(reponseToFloat(ITNs Distributed)/reponseToFloat(Total ITNs Assigned))*100",
-        "actionName": "Percentage Distribution Rate"
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "ITNs Distributed",
+          "Total ITNs Assigned"
+        ],
+        "newField": "Percentage Distribution Rate",
+        "_comments": ""
       }
     ],
     "insight": {},
