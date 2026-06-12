@@ -44202,7 +44202,7 @@
         "dateRefField": "Data.household.auditDetails.createdTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"geohash_grid\":{\"field\":\"Data.location\",\"precision\":5},\"aggs\":{\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"Location\":{\"geo_centroid\":{\"field\":\"Data.location\"}},\"LGA\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500}},\"State\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"geohash_grid\":{\"field\":\"Data.geoPoint\",\"precision\":5},\"aggs\":{\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"Location\":{\"geo_centroid\":{\"field\":\"Data.geoPoint\"}},\"LGA\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500}},\"State\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -44220,6 +44220,33 @@
     ],
     "insight": {},
     "_comment": "Households Registered Map Bednets ICCD"
+  },
+  "householdsRedeemedITNSMapBednetsICCD": {
+    "chartName": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Households ITNs Redeemed\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Locations\":{\"geohash_grid\":{\"field\":\"Data.geoPoint\",\"precision\":5},\"aggs\":{\"Total Households ITNs Redeemed\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}},\"Location\":{\"geo_centroid\":{\"field\":\"Data.geoPoint\"}},\"LGA\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500}},\"State\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500}}}}}}}}"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Locations"
+    ],
+    "filterKeys": [
+      {
+        "key": "lga"
+      }
+    ],
+    "insight": {},
+    "_comment": "Households ITNs Redeemed Map Bednets ICCD"
   },
   "actualVsPlannedBednetsLineGraphDistrictBednetsICCD": {
     "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_DISTRICT",
