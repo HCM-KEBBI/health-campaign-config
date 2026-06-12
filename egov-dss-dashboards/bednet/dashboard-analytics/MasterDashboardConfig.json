@@ -14151,11 +14151,11 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsRegisteredMapBednetsICCDDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP_DISTRICT",
+                  "id": "householdsRegisteredMapBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-registered-map-district",
+                  "pageName": "bednet-households-registered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -14177,11 +14177,11 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsRedeemedITNSMapBednetsICCDDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REDEEMED_ITNS_MAP_DISTRICT",
+                  "id": "householdsRedeemedITNSMapBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLDS_REDEEMED_ITNS_MAP",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-redeemed-itns-map-district",
+                  "pageName": "bednet-households-redeemed-itns-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15083,7 +15083,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsRegisteredMapBednetsICCD",
+                  "id": "checklistCompletionRateOfDistrictSupervisor",
                   "name": "DSS_HEALTH_SUPERVISION_DISTRICT_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
                   "code": "",
                   "moduleName": "llin",
