@@ -10903,11 +10903,11 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "unsuccessfulAdministrationsMap",
-                  "name": "DASHBOARD_MAP_UNSUCCESSFUL_ADMINISTRATIONS",
+                  "id": "householdRegisteredMap",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "moduleName": "iccd-maps",
-                  "pageName": "bednet-unsuccessful-administrations-map",
+                  "pageName": "bednet-households-registered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
