@@ -15441,24 +15441,6 @@
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 261,
-              "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "label": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "checklistCompletionRateOfNationalSupervisorBednetsICCD",
-                  "name": "DSS_HEALTH_SUPERVISION_NATIONAL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 262,
               "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
               "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
@@ -15471,32 +15453,6 @@
                   "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
                   "code": "",
                   "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 1,
-          "name": "DSS_CUSTOM_CHART",
-          "vizArray": [
-            {
-              "id": 700,
-              "name": "DSS_CUSTOM_CHART_LLIN",
-              "label": "DSS_CUSTOM_CHART_LLIN",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "customChart",
-                  "name": "DSS_HEALTH_CUSTOM_CHART",
-                  "code": "",
-                  "moduleName": "llin",
-                  "pageName": "bednet-custom-chart",
-                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
