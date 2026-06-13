@@ -47760,14 +47760,14 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}}}},\"aggs\":{\"Percentage of Bednets Distributed\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"term\":{\"Data.productVariant.keyword\":\"PVAR-2026-02-06-000662\"}}]}}}},\"aggs\":{\"Percentage of Bednets Distributed\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
       },
       {
         "module": "COMMON",
         "dateRefField": "",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\"}}]}}}},\"aggs\":{\"Bednets Targeted\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"TPD\":{\"sum\":{\"script\":{\"source\":\"doc['Data.targetPerDay'].value * 365\"}}}}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"FILTERS\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.productVariant.keyword\":\"PVAR-2026-02-06-000662\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\"}}]}}}},\"aggs\":{\"Bednets Targeted\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"TPD\":{\"sum\":{\"script\":{\"source\":\"doc['Data.targetPerDay'].size()!=0 ? doc['Data.targetPerDay'].value * 365 : 0\"}}}}}}}}}"
       }
     ],
     "chartType": "line",
@@ -47791,13 +47791,12 @@
     "sort": "sortKeyAsc",
     "computedFields": [
       {
-        "postAggregationTheory": "repsonseToDifferenceOfDates",
+        "postAggregationTheory": "responseToDifferenceOfDates",
         "actionName": "",
         "fields": [
           "TPD"
         ],
-        "newField": "Percentage Bednets",
-        "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
+        "newField": "Percentage Bednets"
       }
     ],
     "insight": {},
