@@ -14551,6 +14551,78 @@
               ]
             }
           ]
+        },
+        {
+          "row": 1,
+          "name": "CDD_TEAM_PERFORMANCE_PAGE",
+          "vizArray": [
+            {
+              "id": 700,
+              "name": "CDD_TEAM_PERFORMANCE_PAGE",
+              "label": "CDD_TEAM_PERFORMANCE_PAGE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "numberOfSuccessfulRegistrationsCDDBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED_CDD",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "CDD_TEAM_PERFORMANCE_PAGE",
+          "vizArray": [
+            {
+              "id": 701,
+              "name": "CDD_TEAM_PERFORMANCE_PAGE",
+              "label": "CDD_TEAM_PERFORMANCE_PAGE",
+              "vizType": "stacked-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryReportByLGACDDBednetsICCD",
+                  "name": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "CDD_TEAM_PERFORMANCE_PAGE",
+          "vizArray": [
+            {
+              "id": 702,
+              "name": "CDD_TEAM_PERFORMANCE_PAGE",
+              "label": "CDD_TEAM_PERFORMANCE_PAGE",
+              "vizType": "stacked-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "cddTeamPerformanceBednetsICCD",
+                  "name": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
