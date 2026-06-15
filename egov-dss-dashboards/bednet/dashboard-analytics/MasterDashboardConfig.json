@@ -14554,7 +14554,7 @@
         },
         {
           "row": 1,
-          "name": "CDD_TEAM_PERFORMANCE_ONE",
+          "name": "CDD_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 7010,
@@ -14578,7 +14578,7 @@
         },
         {
           "row": 2,
-          "name": "CDD_TEAM_PERFORMANCE_TWO",
+          "name": "CDD_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 7011,
@@ -14602,7 +14602,7 @@
         },
         {
           "row": 3,
-          "name": "CDD_TEAM_PERFORMANCE_THREE",
+          "name": "CDD_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 7012,
