@@ -48248,10 +48248,11 @@
         "dateRefField": "Data.household.auditDetails.createdTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.Ward.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Number of Successful Registrations\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Number of Successful Registrations\":{\"date_histogram\":{\"field\":\"Data.household.auditDetails.createdTime\",\"calendar_interval\":\"day\"},\"aggs\":{\"Registrations\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
       }
     ],
-    "chartType": "line",
+    "chartType": "bar",
+    "isCumulative": false,
     "valueType": "number",
     "drillChart": "none",
     "documentType": "_doc",
@@ -48260,7 +48261,7 @@
       "Number of Successful Registrations"
     ],
     "insight": {},
-    "_comment": "CDD total successful household registrations"
+    "_comment": "CDD daily successful household registrations"
   },
   "summaryReportByLGACDDBednetsICCD": {
     "chartName": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
