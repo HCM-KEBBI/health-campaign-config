@@ -13456,32 +13456,6 @@
           "name": "DSS_NATIONAL_HEALTH_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 103,
-              "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
-              "label": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
-              "vizType": "metric-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalVouchersScannedBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_VOUCHERS_SCANNED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalVouchersScannedCoverageBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED_COVERAGE_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
               "id": 104,
               "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
               "label": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
