@@ -13612,7 +13612,7 @@
                   "id": "nationalSummaryByLGABednetsICCD",
                   "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
                   "code": "",
-                  "chartType": "table",
+                  "chartType": "xtable",
                   "filter": "",
                   "headers": []
                 }
