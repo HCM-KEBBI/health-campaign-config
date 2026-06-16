@@ -69043,6 +69043,82 @@
     "insight": {},
     "_comment": "Total checklists filled by supervisors at national level"
   },
+  "nationalSummaryByLGABednetsICCDPartA": {
+    "chartName": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+        "indexName": "bednet-household-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"match_all\":{}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Ward\":{\"value_count\":{\"field\":\"Data.boundaryHierarchy.ward.keyword\"}},\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+        "indexName": "bednet-project-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Target Households\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+        "indexName": "bednet-project-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"LGA Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"HH Redeemed\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}},\"Number of People in Redeemed HHs\":{\"sum\":{\"field\":\"Data.memberCount\"}},\"ITNs Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "LGA",
+    "excludedColumns": ["Total Households Registered", "Target Households", "HH Redeemed", "ITNs Distributed", "Total ITNs Assigned", "People Living in Registered", "Number of People in Redeemed HHs", "Bednets" ],
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "Total Households Registered",
+          "Target Households"
+        ],
+        "newField": "Percentage Household Coverage",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "HH Redeemed",
+          "Total Households Registered"
+        ],
+        "newField": "Percentage Redemption Rate",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "PercentageComputedField",
+        "fields": [
+          "ITNs Distributed",
+          "Total ITNs Assigned"
+        ],
+        "newField": "Percentage Distribution Rate",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "_comment": "National Summary By LGA Bednets ICCD"
+  },
   "nationalSummaryByLGABednetsICCD": {
     "chartName": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
     "queries": [
