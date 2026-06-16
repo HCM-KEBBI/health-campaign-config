@@ -46717,6 +46717,30 @@
     "insight": {},
     "_comment": " "
   },
+  "inventoryStockUsedProvinceBednetsICCD": {
+    "chartName": "DSS_HEALTH_INVENTORY_STOCK_USED_PROVINCE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Used\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Used Stock\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Used Stock"
+    ],
+    "insight": {},
+    "_comment": "Inventory Stock Used = Total quantity distributed to households grouped by LGA"
+  },
   "inventoryStockInHandDistrictBednetsICCD": {
     "chartName": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_DISTRICT",
     "queries": [
@@ -69081,7 +69105,17 @@
     "documentType": "_doc",
     "action": "",
     "plotLabel": "LGA",
-    "excludedColumns": ["Total Households Registered", "Target Households", "HH Redeemed", "ITNs Distributed", "Total ITNs Assigned", "People Living in Registered", "Number of People in Redeemed HHs", "Bednets", "Ward" ],
+    "excludedColumns": [
+      "Total Households Registered",
+      "Target Households",
+      "HH Redeemed",
+      "ITNs Distributed",
+      "Total ITNs Assigned",
+      "People Living in Registered",
+      "Number of People in Redeemed HHs",
+      "Bednets",
+      "Ward"
+    ],
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "computedFields": [

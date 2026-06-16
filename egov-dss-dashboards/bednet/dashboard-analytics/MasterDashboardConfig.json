@@ -14406,16 +14406,16 @@
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
-              "id": 241,
-              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "id": 242,
+              "name": "DSS_HEALTH_INVENTORY_STOCK_USED",
+              "label": "DSS_HEALTH_INVENTORY_STOCK_USED",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "daysInventoryStockLastsProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                  "id": "inventoryStockUsedProvinceBednetsICCD",
+                  "name": "DSS_HEALTH_INVENTORY_STOCK_USED_PROVINCE",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
