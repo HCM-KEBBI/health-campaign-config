@@ -50655,9 +50655,9 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.household.auditDetails.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.Ward.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Successful Registrations\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Successful Registrations\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
       }
     ],
     "chartType": "line",
@@ -50667,13 +50667,14 @@
     "drillChart": "none",
     "documentType": "_doc",
     "action": "",
-    "aggregationPaths": [
-      "Successful Registrations"
-    ],
     "filterKeys": [
       {
         "key": "lga"
       }
+    ],
+    "sort": "sortKeyAsc",
+    "aggregationPaths": [
+      "Successful Registrations"
     ],
     "insight": {},
     "_comment": "CDD successful registrations grouped by LGA"
