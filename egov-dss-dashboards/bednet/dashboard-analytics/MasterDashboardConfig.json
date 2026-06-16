@@ -14553,11 +14553,11 @@
           ]
         },
         {
-          "row": 1,
-          "name": "CDD_TEAM_PERFORMANCE",
+          "row": 2,
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 7010,
+              "id": 263,
               "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED_CDD",
               "label": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED_CDD",
               "vizType": "chart",
@@ -14577,11 +14577,11 @@
           ]
         },
         {
-          "row": 2,
-          "name": "CDD_TEAM_PERFORMANCE",
+          "row": 3,
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 7011,
+              "id": 264,
               "name": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
               "label": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
               "vizType": "stacked-table",
@@ -14601,11 +14601,11 @@
           ]
         },
         {
-          "row": 3,
-          "name": "CDD_TEAM_PERFORMANCE",
+          "row": 4,
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
-              "id": 7012,
+              "id": 265,
               "name": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
               "label": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
               "vizType": "stacked-table",
