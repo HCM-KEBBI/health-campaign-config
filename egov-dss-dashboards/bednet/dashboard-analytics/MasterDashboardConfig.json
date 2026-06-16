@@ -13599,7 +13599,7 @@
               "id": 401,
               "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
               "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "vizType": "stacked-table",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "ref": {
@@ -13610,6 +13610,35 @@
               "charts": [
                 {
                   "id": "nationalSummaryByLGABednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_NATIONAL_HEALTH_SUMMARY_TABLE",
+          "vizArray": [
+            {
+              "id": 401,
+              "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+              "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+              "vizType": "stacked-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "ref": {
+                "url": "provincial-health-dashboard-bednets-iccd",
+                "logoUrl": "",
+                "type": "internal"
+              },
+              "charts": [
+                {
+                  "id": "nationalSummaryByLGABednetsICCDPartA",
                   "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
                   "code": "",
                   "chartType": "table",
