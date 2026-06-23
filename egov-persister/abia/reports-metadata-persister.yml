@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Persists household.
-      fromTopic: bednet-save-hcm-report-metadata
+      fromTopic: abia-save-hcm-report-metadata
       isTransaction: true
       isAuditEnabled: true
       module: REPORTS
@@ -13,7 +13,7 @@ serviceMaps:
       transactionCodeJsonPath: $.dag_run_id
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO bednet.REPORTS_METADATA(dagRunId, dagName, campaignIdentifier, reportName, triggerFrequency, fileStoreId, triggerTime, tenantId, reportRange) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO abia.REPORTS_METADATA(dagRunId, dagName, campaignIdentifier, reportName, triggerFrequency, fileStoreId, triggerTime, tenantId, reportRange) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $
           jsonMaps:
             - jsonPath: $.dag_run_id

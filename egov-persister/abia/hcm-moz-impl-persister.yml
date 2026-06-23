@@ -3,10 +3,10 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Persists DHIS2 Records into the tables
-      fromTopic: bednet-create-dhis2-record
+      fromTopic: abia-create-dhis2-record
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_dhis2_record(dhis2RecordInternalID,dhis2Id,parentId,dhis2EntityType,dhis2DataPayload,source,createdBy,lastModifiedBy,createdTime,lastModifiedTime)
+        - query: INSERT INTO abia.eg_dhis2_record(dhis2RecordInternalID,dhis2Id,parentId,dhis2EntityType,dhis2DataPayload,source,createdBy,lastModifiedBy,createdTime,lastModifiedTime)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
@@ -24,10 +24,10 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
     - version: 1.0
       description: Updates DHIS2 records into the tables
-      fromTopic: bednet-update-dhis2-record
+      fromTopic: abia-update-dhis2-record
       isTransaction: true
       queryMaps:
-        - query: UPDATE bednet.eg_dhis2_record SET  dhis2Id= ?, dhis2EntityType=?, dhis2DataPayload=?,
+        - query: UPDATE abia.eg_dhis2_record SET  dhis2Id= ?, dhis2EntityType=?, dhis2DataPayload=?,
             lastModifiedTime=?, lastModifiedBy=?  WHERE dhis2RecordInternalID=?;
           basePath: $.*
           jsonMaps:
@@ -41,10 +41,10 @@ serviceMaps:
             - jsonPath: $.*.dhis2RecordInternalID
     - version: 1.0
       description: Persists DIGIT Records into the tables
-      fromTopic: bednet-create-digit-record
+      fromTopic: abia-create-digit-record
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_digit_record(digitRecordInternalId,digitId,parentId,referenceId,digitEntityType,digitDataPayload,source,createdBy,lastModifiedBy,createdTime,lastModifiedTime)
+        - query: INSERT INTO abia.eg_digit_record(digitRecordInternalId,digitId,parentId,referenceId,digitEntityType,digitDataPayload,source,createdBy,lastModifiedBy,createdTime,lastModifiedTime)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
           jsonMaps:
@@ -63,10 +63,10 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
     - version: 1.0
       description: Updates DIGIT records into the tables
-      fromTopic: bednet-update-digit-record
+      fromTopic: abia-update-digit-record
       isTransaction: true
       queryMaps:
-        - query: UPDATE bednet.eg_digit_record SET  digitId= ?,referenceId=? ,digitEntityType=?,
+        - query: UPDATE abia.eg_digit_record SET  digitId= ?,referenceId=? ,digitEntityType=?,
             digitDataPayload=?, lastModifiedTime=?, lastModifiedBy=? WHERE digitRecordInternalId=?;
           basePath: $.*
           jsonMaps:
@@ -81,10 +81,10 @@ serviceMaps:
             - jsonPath: $.*.digitRecordInternalId
     - version: 1.0
       description: Persists DHIS2 to Digit identifiers mapping into the tables
-      fromTopic: bednet-create-dhis2-digit-mapping
+      fromTopic: abia-create-dhis2-digit-mapping
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_digit_mapping(digitMappingId, dhis2RecordInternalID,
+        - query: INSERT INTO abia.eg_digit_mapping(digitMappingId, dhis2RecordInternalID,
             digitId, parentId, rowVersion, digitEntityType, createdBy,lastModifiedBy,createdTime,lastModifiedTime)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
@@ -101,10 +101,10 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
     - version: 1.0
       description: Updates DHIS2 to Digit identifiers mapping into the tables
-      fromTopic: bednet-update-dhis2-digit-mapping
+      fromTopic: abia-update-dhis2-digit-mapping
       isTransaction: true
       queryMaps:
-        - query: UPDATE bednet.eg_digit_mapping SET  digitId= ?, digitEntityType=?, dhis2RecordInternalID=?,
+        - query: UPDATE abia.eg_digit_mapping SET  digitId= ?, digitEntityType=?, dhis2RecordInternalID=?,
             lastModifiedTime=?, lastModifiedBy=?, rowVersion=?  WHERE digitMappingId=?;
           basePath: $.*
           jsonMaps:
@@ -117,10 +117,10 @@ serviceMaps:
             - jsonPath: $.*.digitMappingId
     - version: 1.0
       description: Persists Digit to DHIS2 identifiers mapping into the tables
-      fromTopic: bednet-create-digit-dhis2-mapping
+      fromTopic: abia-create-digit-dhis2-mapping
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_dhis2_mapping(dhis2MappingId, digitRecordInternalId,
+        - query: INSERT INTO abia.eg_dhis2_mapping(dhis2MappingId, digitRecordInternalId,
             dhis2d,parentId,dhis2EntityType, createdBy,lastModifiedBy,createdTime,lastModifiedTime)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*
@@ -136,10 +136,10 @@ serviceMaps:
             - jsonPath: $.*.auditDetails.lastModifiedTime
     - version: 1.0
       description: Updates Digit to DHIS2 identifiers mapping into the tables
-      fromTopic: bednet-update-digit-dhis2-mapping
+      fromTopic: abia-update-digit-dhis2-mapping
       isTransaction: true
       queryMaps:
-        - query: UPDATE bednet.eg_dhis2_mapping SET  dhis2d= ?, dhis2EntityType=?, digitRecordInternalId=?,
+        - query: UPDATE abia.eg_dhis2_mapping SET  dhis2d= ?, dhis2EntityType=?, digitRecordInternalId=?,
             lastModifiedTime=?, lastModifiedBy=? WHERE dhis2MappingId=?;
           basePath: $.*
           jsonMaps:
@@ -151,10 +151,10 @@ serviceMaps:
             - jsonPath: $.*.dhis2MappingId
     - version: 1.0
       description: Persists DHIS2 to Digit transformation job history into the tables
-      fromTopic: bednet-create-dhis2-job
+      fromTopic: abia-create-dhis2-job
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_scheduler_job_history(jobID, jobType, jobName, executionStartTime,
+        - query: INSERT INTO abia.eg_scheduler_job_history(jobID, jobType, jobName, executionStartTime,
             executionCompletionTime, executionStatus, executionRetryCount, createdBy,lastModifiedBy,createdTime,lastModifiedTime,syncCount,province)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Job
@@ -176,10 +176,10 @@ serviceMaps:
             - jsonPath: $.Job.province
     - version: 1.0
       description: Update DHIS2 to Digit transformation job history in table
-      fromTopic: bednet-update-dhis2-job
+      fromTopic: abia-update-dhis2-job
       isTransaction: true
       queryMaps:
-        - query: UPDATE bednet.eg_scheduler_job_history SET executionStatus = ?, executionCompletionTime
+        - query: UPDATE abia.eg_scheduler_job_history SET executionStatus = ?, executionCompletionTime
             = ?, executionRetryCount = ?, syncCount = ? WHERE jobID=?;
           basePath: $.Job
           jsonMaps:
@@ -192,19 +192,19 @@ serviceMaps:
             - jsonPath: $.Job.jobID
     - version: 1.0
       description: Delete DHIS2 to Digit transformation job history in table
-      fromTopic: bednet-delete-dhis2-job
+      fromTopic: abia-delete-dhis2-job
       isTransaction: true
       queryMaps:
-        - query: DELETE FROM bednet.eg_scheduler_job_history WHERE jobID=?;
+        - query: DELETE FROM abia.eg_scheduler_job_history WHERE jobID=?;
           basePath: $.Job
           jsonMaps:
             - jsonPath: $.Job.jobID
     - version: 1.0
       description: Persists Boundary data into the table
-      fromTopic: bednet-create-boundary-data
+      fromTopic: abia-create-boundary-data
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_dhis2_boundary(id, name, parent, path, children, boundaryLevel,
+        - query: INSERT INTO abia.eg_dhis2_boundary(id, name, parent, path, children, boundaryLevel,
             boundary, source, campaignStartDate, campaignEndDate, totalHouseholds, targetedHouseholds,
             totalIndividuals, targetedIndividuals, bednetsEstimated, totalBednets, createdBy,
             lastModifiedBy, createdTime, lastModifiedTime) VALUES (?, ?, ?, ?, ?, ?, ?,
@@ -254,10 +254,10 @@ serviceMaps:
             - jsonPath: $.*.totalBednets
     - version: 1.0
       description: Persists Boundary(CSV) data into the table
-      fromTopic: bednet-create-boundaryCSV-data
+      fromTopic: abia-create-boundaryCSV-data
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_dhis2_boundary_csv(id, name, parent, path, children,
+        - query: INSERT INTO abia.eg_dhis2_boundary_csv(id, name, parent, path, children,
             boundaryLevel, boundary, source, campaignStartDate, campaignEndDate, objectNode,
             createdBy, lastModifiedBy, createdTime, lastModifiedTime, boundaryHierarchy)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id) DO
@@ -298,10 +298,10 @@ serviceMaps:
             - jsonPath: $.*.boundaryHierarchy
     - version: 1.0
       description: Persists HCM events into the table
-      fromTopic: bednet-create-hcm-event-history
+      fromTopic: abia-create-hcm-event-history
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO bednet.eg_hcm_event_history(eventId, jobId, url, payload, status,
+        - query: INSERT INTO abia.eg_hcm_event_history(eventId, jobId, url, payload, status,
             message, createdBy, lastModifiedBy, createdTime, lastModifiedTime) VALUES
             (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.*

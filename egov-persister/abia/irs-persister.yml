@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
     - version: 1.0
       description: Saves a user action task
-      fromTopic: bednet-save-user-action-project-task-topic
+      fromTopic: abia-save-user-action-project-task-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -13,7 +13,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO bednet.USER_ACTION(id, clientreferenceid, tenantid, projectid, latitude, longitude, locationaccuracy, boundarycode, action, beneficiarytag, resourcetag, status, additionaldetails, createdby, createdtime, lastmodifiedby, lastmodifiedtime, clientcreatedtime, clientlastmodifiedtime, clientcreatedby, clientlastmodifiedby, rowversion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO abia.USER_ACTION(id, clientreferenceid, tenantid, projectid, latitude, longitude, locationaccuracy, boundarycode, action, beneficiarytag, resourcetag, status, additionaldetails, createdby, createdtime, lastmodifiedby, lastmodifiedtime, clientcreatedtime, clientlastmodifiedtime, clientcreatedby, clientlastmodifiedby, rowversion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id
@@ -43,7 +43,7 @@ serviceMaps:
 
     - version: 1.0
       description: Updates a user action task
-      fromTopic: bednet-update-user-action-project-task-topic
+      fromTopic: abia-update-user-action-project-task-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -53,7 +53,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: UPDATE bednet.USER_ACTION SET tenantId = ?, projectId = ?, latitude = ?, longitude = ?, locationaccuracy = ?, boundarycode = ?, action = ?, beneficiarytag = ?, resourcetag = ?, status = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE ID = ?;
+        - query: UPDATE abia.USER_ACTION SET tenantId = ?, projectId = ?, latitude = ?, longitude = ?, locationaccuracy = ?, boundarycode = ?, action = ?, beneficiarytag = ?, resourcetag = ?, status = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion = ?, clientLastModifiedTime = ?, clientLastModifiedBy = ? WHERE ID = ?;
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.tenantId
@@ -78,7 +78,7 @@ serviceMaps:
 
     - version: 1.0
       description: Saves a location tracking task
-      fromTopic: bednet-save-location-capture-project-topic
+      fromTopic: abia-save-location-capture-project-topic
       isTransaction: true
       isAuditEnabled: true
       module: PROJECT
@@ -88,7 +88,7 @@ serviceMaps:
       transactionCodeJsonPath: $.clientReferenceId
       auditAttributeBasePath: $.*
       queryMaps:
-        - query: INSERT INTO bednet.USER_LOCATION(id, clientreferenceid, tenantid, projectid, latitude, longitude, locationaccuracy, boundarycode, action, additionaldetails, createdby, createdtime, lastmodifiedby, lastmodifiedtime, clientcreatedtime, clientlastmodifiedtime, clientcreatedby, clientlastmodifiedby) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+        - query: INSERT INTO abia.USER_LOCATION(id, clientreferenceid, tenantid, projectid, latitude, longitude, locationaccuracy, boundarycode, action, additionaldetails, createdby, createdtime, lastmodifiedby, lastmodifiedtime, clientcreatedtime, clientlastmodifiedtime, clientcreatedby, clientlastmodifiedby) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
           basePath: $.*
           jsonMaps:
             - jsonPath: $.*.id

@@ -2,18 +2,18 @@ ServiceMaps:
   serviceName: Tracer
   version: 1.0.0
   mappings:
-  - topic: bednet-tracer-error-queue-index
+  - topic: abia-tracer-error-queue-index
     configKey: INDEX
     indexes:
-    - name: bednet-egovtracer
+    - name: abia-egovtracer
       type: errors
       id: $.id
       isBulk: false
       timeStampField: $.ts
-  - topic: bednet-tracer-error-queue-reindex
+  - topic: abia-tracer-error-queue-reindex
     configKey: REINDEX
     indexes:
-    - name: bednet-egovtracerreindex
+    - name: abia-egovtracerreindex
       type: errors
       id: $.id
       isBulk: true

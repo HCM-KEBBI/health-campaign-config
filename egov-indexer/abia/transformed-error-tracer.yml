@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: project
   version: 1.0.0
   mappings:
-  - topic: bednet-transformed-errors-topic
+  - topic: abia-transformed-errors-topic
     configKey: INDEX
     indexes:
-    - name: bednet-transformed-errors-index-v1
+    - name: abia-transformed-errors-index-v1
       type: errors
       id: $.id
       isBulk: true

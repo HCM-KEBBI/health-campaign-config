@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Saves a stock
-    fromTopic: bednet-save-stock-topic
+    fromTopic: abia-save-stock-topic
     isTransaction: true
     isAuditEnabled: true
     module: STOCK
@@ -13,7 +13,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: INSERT INTO bednet.STOCK(id, clientReferenceId, tenantId, productVariantId,
+    - query: INSERT INTO abia.STOCK(id, clientReferenceId, tenantId, productVariantId,
         wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason,
         senderType, senderId, receiverType, receiverId, additionalDetails, createdBy,
         createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, campaignNumber,
@@ -52,7 +52,7 @@ serviceMaps:
       - jsonPath: $.*.clientAuditDetails.lastModifiedBy
   - version: 1.0
     description: Updates a stock
-    fromTopic: bednet-update-stock-topic
+    fromTopic: abia-update-stock-topic
     isTransaction: true
     isAuditEnabled: true
     module: STOCK
@@ -62,7 +62,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.STOCK SET tenantId=?, dateOfEntry = ?, productVariantId=?,
+    - query: UPDATE abia.STOCK SET tenantId=?, dateOfEntry = ?, productVariantId=?,
         wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?,
         transactionReason=?, senderType=?, senderId=?, receiverType=?, receiverId=?,
         additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, campaignNumber=?,
@@ -94,7 +94,7 @@ serviceMaps:
       - jsonPath: $.*.id
   - version: 1.0
     description: Deletes a stock
-    fromTopic: bednet-delete-stock-topic
+    fromTopic: abia-delete-stock-topic
     isTransaction: true
     isAuditEnabled: true
     module: STOCK
@@ -104,7 +104,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.STOCK SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime
+    - query: UPDATE abia.STOCK SET lastModifiedBy=?, lastModifiedTime=?, clientLastModifiedTime
         = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?, additionalDetails=?
         WHERE id=?;
       basePath: $.*
@@ -121,7 +121,7 @@ serviceMaps:
       - jsonPath: $.*.id
   - version: 1.0
     description: Saves a stock reconciliation
-    fromTopic: bednet-save-stock-reconciliation-topic
+    fromTopic: abia-save-stock-reconciliation-topic
     isTransaction: true
     isAuditEnabled: true
     module: STOCK
@@ -131,7 +131,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: INSERT INTO bednet.STOCK_RECONCILIATION_LOG(id, clientReferenceId, tenantId,
+    - query: INSERT INTO abia.STOCK_RECONCILIATION_LOG(id, clientReferenceId, tenantId,
         facilityId, dateOfReconciliation, calculatedCount, physicalRecordedCount,
         commentsOnReconciliation, productVariantId, referenceId, referenceIdType,
         additionalDetails, createdBy, createdTime, lastModifiedBy, lastModifiedTime,
@@ -165,7 +165,7 @@ serviceMaps:
       - jsonPath: $.*.clientAuditDetails.lastModifiedBy
   - version: 1.0
     description: Updates a stock reconciliation
-    fromTopic: bednet-update-stock-reconciliation-topic
+    fromTopic: abia-update-stock-reconciliation-topic
     isTransaction: true
     isAuditEnabled: true
     module: STOCK
@@ -175,7 +175,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.STOCK_RECONCILIATION_LOG SET tenantId=?, facilityId=?, productVariantId=?,
+    - query: UPDATE abia.STOCK_RECONCILIATION_LOG SET tenantId=?, facilityId=?, productVariantId=?,
         referenceId=?, referenceIdType=?, dateOfReconciliation=?, calculatedCount=?,
         physicalRecordedCount=?, commentsOnReconciliation=?, additionalDetails=?,
         lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime
@@ -202,7 +202,7 @@ serviceMaps:
       - jsonPath: $.*.id
   - version: 1.0
     description: Deletes a stock reconciliation
-    fromTopic: bednet-delete-stock-reconciliation-topic
+    fromTopic: abia-delete-stock-reconciliation-topic
     isTransaction: true
     isAuditEnabled: true
     module: STOCK
@@ -212,7 +212,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?,
+    - query: UPDATE abia.STOCK_RECONCILIATION_LOG SET lastModifiedBy=?, lastModifiedTime=?,
         clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion=?, isDeleted=?,
         additionalDetails=? WHERE id=?;
       basePath: $.*

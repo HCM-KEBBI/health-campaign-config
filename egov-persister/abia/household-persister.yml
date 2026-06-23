@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Persists household.
-    fromTopic: bednet-save-household-topic
+    fromTopic: abia-save-household-topic
     isTransaction: true
     isAuditEnabled: true
     module: HOUSEHOLD
@@ -13,7 +13,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: INSERT INTO bednet.HOUSEHOLD(id, tenantId, clientReferenceId, numberOfMembers,
+    - query: INSERT INTO abia.HOUSEHOLD(id, tenantId, clientReferenceId, numberOfMembers,
         addressId, additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime,
         rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy,
         clientLastModifiedBy) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
@@ -38,7 +38,7 @@ serviceMaps:
       - jsonPath: $.*.clientAuditDetails.lastModifiedTime
       - jsonPath: $.*.clientAuditDetails.createdBy
       - jsonPath: $.*.clientAuditDetails.lastModifiedBy
-    - query: INSERT INTO bednet.ADDRESS(id, clientReferenceId, tenantid, doorno, latitude,
+    - query: INSERT INTO abia.ADDRESS(id, clientReferenceId, tenantid, doorno, latitude,
         longitude, locationAccuracy, type, addressline1, addressline2, landmark, city,
         pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -62,7 +62,7 @@ serviceMaps:
       - jsonPath: $.*.address.locality.code
   - version: 1.0
     description: Updates household.
-    fromTopic: bednet-update-household-topic
+    fromTopic: abia-update-household-topic
     isTransaction: true
     isAuditEnabled: true
     module: HOUSEHOLD-UPDATE
@@ -72,7 +72,7 @@ serviceMaps:
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers
+    - query: UPDATE abia.HOUSEHOLD SET tenantId = ?, clientReferenceId = ?, numberOfMembers
         = ?, addressId = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime
         = ?, rowVersion = ?, isDeleted = ?, clientLastModifiedTime = ?, clientLastModifiedBy
         = ? WHERE ID = ?;
@@ -92,7 +92,7 @@ serviceMaps:
       - jsonPath: $.*.clientAuditDetails.lastModifiedTime
       - jsonPath: $.*.clientAuditDetails.lastModifiedBy
       - jsonPath: $.*.id
-    - query: INSERT INTO bednet.ADDRESS(id, clientReferenceId, tenantid, doorno, latitude,
+    - query: INSERT INTO abia.ADDRESS(id, clientReferenceId, tenantid, doorno, latitude,
         longitude, locationAccuracy, type, addressline1, addressline2, landmark, city,
         pincode, buildingName, street, localityCode) VALUES (?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT(id) DO UPDATE SET tenantId = ?,
@@ -133,7 +133,7 @@ serviceMaps:
       - jsonPath: $.*.address.locality.code
   - version: 1.0
     description: Deletes household.
-    fromTopic: bednet-delete-household-topic
+    fromTopic: abia-delete-household-topic
     isTransaction: true
     isAuditEnabled: true
     module: HOUSEHOLD-DELETE
@@ -143,7 +143,7 @@ serviceMaps:
     transactionCodeJsonPath: $.householdClientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime
+    - query: UPDATE abia.HOUSEHOLD SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedTime
         = ?, clientLastModifiedBy = ?,  rowVersion = ?, isDeleted = ?, additionalDetails=?
         WHERE ID = ?;
       basePath: $.*
@@ -160,7 +160,7 @@ serviceMaps:
       - jsonPath: $.*.id
   - version: 1.0
     description: Persists household member.
-    fromTopic: bednet-save-household-member-topic
+    fromTopic: abia-save-household-member-topic
     isTransaction: true
     isAuditEnabled: true
     module: HOUSEHOLD-MEMBER
@@ -170,7 +170,7 @@ serviceMaps:
     transactionCodeJsonPath: $.householdClientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: INSERT INTO bednet.HOUSEHOLD_MEMBER(id, tenantId, clientReferenceId, individualId,
+    - query: INSERT INTO abia.HOUSEHOLD_MEMBER(id, tenantId, clientReferenceId, individualId,
         individualClientReferenceId, householdId, householdClientReferenceId, isHeadOfHousehold,
         additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime,
         rowVersion, isDeleted, clientCreatedTime, clientLastModifiedTime, clientCreatedBy,
@@ -201,7 +201,7 @@ serviceMaps:
       - jsonPath: $.*.clientAuditDetails.lastModifiedBy
   - version: 1.0
     description: Update household member.
-    fromTopic: bednet-update-household-member-topic
+    fromTopic: abia-update-household-member-topic
     isTransaction: true
     isAuditEnabled: true
     module: HOUSEHOLD-MEMBER-UPDATE
@@ -211,7 +211,7 @@ serviceMaps:
     transactionCodeJsonPath: $.individualId
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.HOUSEHOLD_MEMBER SET isHeadOfHousehold=?, additionalDetails=?,
+    - query: UPDATE abia.HOUSEHOLD_MEMBER SET isHeadOfHousehold=?, additionalDetails=?,
         lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, isDeleted=?, clientLastModifiedTime
         = ?, clientLastModifiedBy = ? WHERE individualId=? AND householdId=? AND isDeleted=false;
       basePath: $.*
@@ -230,7 +230,7 @@ serviceMaps:
       - jsonPath: $.*.householdId
   - version: 1.0
     description: Deletes household Member.
-    fromTopic: bednet-delete-household-member-topic
+    fromTopic: abia-delete-household-member-topic
     isTransaction: true
     isAuditEnabled: true
     module: HOUSEHOLD-MEMBER-DELETE
@@ -240,7 +240,7 @@ serviceMaps:
     transactionCodeJsonPath: $.id
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime =
+    - query: UPDATE abia.HOUSEHOLD_MEMBER SET lastModifiedBy = ?, lastModifiedTime =
         ?, clientLastModifiedTime = ?, clientLastModifiedBy = ?, rowVersion = ?, isDeleted
         = ?, additionalDetails=? WHERE ID = ?;
       basePath: $.*

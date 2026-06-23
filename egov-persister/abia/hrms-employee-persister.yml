@@ -4,10 +4,10 @@ serviceMaps:
   - version: 1.0
     name: hrms
     description: Persists employee details in the table
-    fromTopic: bednet-save-hrms-employee
+    fromTopic: abia-save-hrms-employee
     isTransaction: true
     queryMaps:
-    - query: INSERT INTO bednet.eg_hrms_employee(tenantid, id, uuid, code, dateOfAppointment,
+    - query: INSERT INTO abia.eg_hrms_employee(tenantid, id, uuid, code, dateOfAppointment,
         employeestatus, employeetype, active, createdby, createddate, lastmodifiedby,
         lastModifiedDate, reactivateemployee) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?);
@@ -26,7 +26,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.auditDetails.lastModifiedDate
       - jsonPath: $.Employees.*.reActivateEmployee
-    - query: INSERT INTO bednet.eg_hrms_assignment(tenantid, uuid, position, department,
+    - query: INSERT INTO abia.eg_hrms_assignment(tenantid, uuid, position, department,
         designation, fromdate, todate, govtordernumber, reportingto, isHOD, iscurrentassignment,
         employeeid, createdby, createddate, lastmodifiedby, lastModifiedDate) VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -48,7 +48,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.assignments.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.assignments.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.assignments.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_educationaldetails(tenantid, uuid, employeeid,
+    - query: INSERT INTO abia.eg_hrms_educationaldetails(tenantid, uuid, employeeid,
         qualification, stream, yearofpassing, university, remarks, isactive, createdby,
         createddate, lastmodifiedby, lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?);
@@ -67,7 +67,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.education.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.education.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.education.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_departmentaltests(tenantid, uuid, employeeid,
+    - query: INSERT INTO abia.eg_hrms_departmentaltests(tenantid, uuid, employeeid,
         test, yearofpassing, remarks, isactive, createdby, createddate, lastmodifiedby,
         lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.tests.*
@@ -83,7 +83,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.tests.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.tests.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.tests.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_empdocuments(tenantid, uuid, employeeid, documentid,
+    - query: INSERT INTO abia.eg_hrms_empdocuments(tenantid, uuid, employeeid, documentid,
         documentname, referencetype, referenceid, createdby, createddate, lastmodifiedby,
         lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.documents.*
@@ -99,7 +99,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.documents.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.documents.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.documents.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_servicehistory(tenantid, uuid, employeeid, servicestatus,
+    - query: INSERT INTO abia.eg_hrms_servicehistory(tenantid, uuid, employeeid, servicestatus,
         servicefrom, serviceto, ordernumber, isCurrentPosition, location, createdby,
         createddate, lastmodifiedby, lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?);
@@ -118,7 +118,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.serviceHistory.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.serviceHistory.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.serviceHistory.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_jurisdiction (uuid, employeeid, hierarchy, boundarytype,
+    - query: INSERT INTO abia.eg_hrms_jurisdiction (uuid, employeeid, hierarchy, boundarytype,
         boundary, tenantid, isActive, createdby, createddate, lastmodifiedby, lastModifiedDate)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.jurisdictions.*
@@ -137,14 +137,14 @@ serviceMaps:
   - version: 1.0
     name: hrms
     description: Persists employee details in the table
-    fromTopic: bednet-egov-hrms-update
+    fromTopic: abia-egov-hrms-update
     isTransaction: true
     queryMaps:
-    - query: DELETE from bednet.eg_hrms_employee WHERE uuid=?
+    - query: DELETE from abia.eg_hrms_employee WHERE uuid=?
       basePath: Employees.*
       jsonMaps:
       - jsonPath: $.Employees.*.uuid
-    - query: INSERT INTO bednet.eg_hrms_employee(tenantid, id, uuid, code, dateOfAppointment,
+    - query: INSERT INTO abia.eg_hrms_employee(tenantid, id, uuid, code, dateOfAppointment,
         employeestatus, employeetype, active, createdby, createddate, lastmodifiedby,
         lastModifiedDate, reactivateemployee) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?);
@@ -163,7 +163,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.auditDetails.lastModifiedDate
       - jsonPath: $.Employees.*.reActivateEmployee
-    - query: INSERT INTO bednet.eg_hrms_assignment(tenantid, uuid, position, department,
+    - query: INSERT INTO abia.eg_hrms_assignment(tenantid, uuid, position, department,
         designation, fromdate, todate, govtordernumber, reportingto, isHOD, iscurrentassignment,
         employeeid, createdby, createddate, lastmodifiedby, lastModifiedDate) VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -185,7 +185,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.assignments.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.assignments.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.assignments.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_educationaldetails(tenantid, uuid, employeeid,
+    - query: INSERT INTO abia.eg_hrms_educationaldetails(tenantid, uuid, employeeid,
         qualification, stream, yearofpassing, university, remarks, isactive, createdby,
         createddate, lastmodifiedby, lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?);
@@ -204,7 +204,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.education.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.education.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.education.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_departmentaltests(tenantid, uuid, employeeid,
+    - query: INSERT INTO abia.eg_hrms_departmentaltests(tenantid, uuid, employeeid,
         test, yearofpassing, remarks, isactive, createdby, createddate, lastmodifiedby,
         lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.tests.*
@@ -220,7 +220,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.tests.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.tests.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.tests.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_empdocuments(tenantid, uuid, employeeid, documentid,
+    - query: INSERT INTO abia.eg_hrms_empdocuments(tenantid, uuid, employeeid, documentid,
         documentname, referencetype, referenceid, createdby, createddate, lastmodifiedby,
         lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.documents.*
@@ -236,7 +236,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.documents.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.documents.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.documents.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_servicehistory(tenantid, uuid, employeeid, servicestatus,
+    - query: INSERT INTO abia.eg_hrms_servicehistory(tenantid, uuid, employeeid, servicestatus,
         servicefrom, serviceto, ordernumber, isCurrentPosition, location, createdby,
         createddate, lastmodifiedby, lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?);
@@ -255,7 +255,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.serviceHistory.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.serviceHistory.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.serviceHistory.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_jurisdiction (uuid, employeeid, hierarchy, boundarytype,
+    - query: INSERT INTO abia.eg_hrms_jurisdiction (uuid, employeeid, hierarchy, boundarytype,
         boundary, tenantid, isActive, createdby, createddate, lastmodifiedby, lastModifiedDate)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.jurisdictions.*
@@ -271,7 +271,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.jurisdictions.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.jurisdictions.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.jurisdictions.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_deactivationdetails(uuid, employeeid, reasonfordeactivation,
+    - query: INSERT INTO abia.eg_hrms_deactivationdetails(uuid, employeeid, reasonfordeactivation,
         effectivefrom, ordernumber, remarks, tenantid, createdby, createddate, lastmodifiedby,
         lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.deactivationDetails.*
@@ -287,7 +287,7 @@ serviceMaps:
       - jsonPath: $.Employees.*.deactivationDetails.*.auditDetails.createdDate
       - jsonPath: $.Employees.*.deactivationDetails.*.auditDetails.lastModifiedBy
       - jsonPath: $.Employees.*.deactivationDetails.*.auditDetails.lastModifiedDate
-    - query: INSERT INTO bednet.eg_hrms_reactivationdetails(uuid, employeeid, reasonforreactivation,
+    - query: INSERT INTO abia.eg_hrms_reactivationdetails(uuid, employeeid, reasonforreactivation,
         effectivefrom, ordernumber, remarks, tenantid, createdby, createddate, lastmodifiedby,
         lastModifiedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: Employees.*.reactivationDetails.*

@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Persists workflow processInstanceFromRequest details in eg_workflow_v2  table
-    fromTopic: bednet-save-wf-transitions
+    fromTopic: abia-save-wf-transitions
     isTransaction: true
     isAuditEnabled: true
     module: WORKFLOW
@@ -13,7 +13,7 @@ serviceMaps:
     transactionCodeJsonPath: $.businessId
     auditAttributeBasePath: $.ProcessInstances.*
     queryMaps:
-    - query: INSERT INTO bednet.eg_wf_processinstance_v2( id,tenantid,businessService,businessId,moduleName,action,status,comment,
+    - query: INSERT INTO abia.eg_wf_processinstance_v2( id,tenantid,businessService,businessId,moduleName,action,status,comment,
         assigner, stateSla,businessServiceSla, previousStatus, createdby, lastmodifiedby,
         createdtime, lastmodifiedtime, rating, escalated) VALUES (?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -37,7 +37,7 @@ serviceMaps:
       - jsonPath: $.ProcessInstances.*.auditDetails.lastModifiedTime
       - jsonPath: $.ProcessInstances.*.rating
       - jsonPath: $.ProcessInstances.*.escalated
-    - query: INSERT INTO bednet.eg_wf_document_v2( id, tenantid, active, documenttype,documentUid,
+    - query: INSERT INTO abia.eg_wf_document_v2( id, tenantid, active, documenttype,documentUid,
         processinstanceid, filestoreid, createdby, lastmodifiedby, createdtime, lastmodifiedtime)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: ProcessInstances.*.documents.*
@@ -53,7 +53,7 @@ serviceMaps:
       - jsonPath: $.ProcessInstances.documents.*.auditDetails.lastModifiedBy
       - jsonPath: $.ProcessInstances.documents.*.auditDetails.createdTime
       - jsonPath: $.ProcessInstances.documents.*.auditDetails.lastModifiedTime
-    - query: INSERT INTO bednet.eg_wf_assignee_v2(processinstanceid, tenantid, assignee,
+    - query: INSERT INTO abia.eg_wf_assignee_v2(processinstanceid, tenantid, assignee,
         createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?,
         ?, ?, ?, ?);
       basePath: ProcessInstances.*.assignes.*
@@ -67,7 +67,7 @@ serviceMaps:
       - jsonPath: $.ProcessInstances[*][?({uuid} in @.assignes[*].uuid)].auditDetails.lastModifiedTime
   - version: 1.0
     description: Persists BusinessService in the table
-    fromTopic: bednet-save-wf-businessservice
+    fromTopic: abia-save-wf-businessservice
     isTransaction: true
     isAuditEnabled: true
     module: WORKFLOW-BUSINESS
@@ -77,7 +77,7 @@ serviceMaps:
     transactionCodeJsonPath: $.BusinessServices.*.business
     auditAttributeBasePath: $.BusinessServices.*
     queryMaps:
-    - query: INSERT INTO bednet.eg_wf_businessservice_v2(businessServiceSla, businessservice,
+    - query: INSERT INTO abia.eg_wf_businessservice_v2(businessServiceSla, businessservice,
         business, tenantid, uuid, geturi, posturi, createdby, createdtime, lastmodifiedby,
         lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: BusinessServices.*
@@ -93,9 +93,9 @@ serviceMaps:
       - jsonPath: $.BusinessServices.*.auditDetails.createdTime
       - jsonPath: $.BusinessServices.*.auditDetails.lastModifiedBy
       - jsonPath: $.BusinessServices.*.auditDetails.lastModifiedTime
-    - query: INSERT INTO bednet.eg_wf_state_v2(seq, uuid, tenantid, businessserviceid,
+    - query: INSERT INTO abia.eg_wf_state_v2(seq, uuid, tenantid, businessserviceid,
         state,applicationStatus,sla,docuploadrequired, isstartstate, isterminatestate,isStateUpdatable,
-        createdby, createdtime, lastmodifiedby, lastmodifiedtime) VALUES (nextval('bednet.seq_eg_wf_state_v2'),?
+        createdby, createdtime, lastmodifiedby, lastmodifiedtime) VALUES (nextval('abia.seq_eg_wf_state_v2'),?
         , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: BusinessServices.*.states.*
       jsonMaps:
@@ -113,7 +113,7 @@ serviceMaps:
       - jsonPath: $.BusinessServices.*.states.*.auditDetails.createdTime
       - jsonPath: $.BusinessServices.*.states.*.auditDetails.lastModifiedBy
       - jsonPath: $.BusinessServices.*.states.*.auditDetails.lastModifiedTime
-    - query: INSERT INTO bednet.eg_wf_action_v2( uuid,tenantId,active, currentState, action,
+    - query: INSERT INTO abia.eg_wf_action_v2( uuid,tenantId,active, currentState, action,
         nextstate, roles, createdby, createdtime, lastmodifiedby, lastmodifiedtime)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: BusinessServices.*.states.*.actions.*
@@ -133,7 +133,7 @@ serviceMaps:
       - jsonPath: $.BusinessServices.*.states.*.actions.*.auditDetails.lastModifiedTime
   - version: 1.0
     description: Persists BusinessService in the table
-    fromTopic: bednet-update-wf-businessservice
+    fromTopic: abia-update-wf-businessservice
     isTransaction: true
     isAuditEnabled: true
     module: WORKFLOW-BUSINESS-UPDATE
@@ -143,7 +143,7 @@ serviceMaps:
     transactionCodeJsonPath: $.BusinessServices.*.business
     auditAttributeBasePath: $.BusinessServices.*
     queryMaps:
-    - query: UPDATE bednet.eg_wf_businessservice_v2 SET businessservicesla=?,businessservice=?,
+    - query: UPDATE abia.eg_wf_businessservice_v2 SET businessservicesla=?,businessservice=?,
         business=?, geturi=?, posturi=?, lastmodifiedby=?, lastmodifiedtime=? WHERE
         uuid=?;
       basePath: BusinessServices.*
@@ -156,9 +156,9 @@ serviceMaps:
       - jsonPath: $.BusinessServices.*.auditDetails.lastModifiedBy
       - jsonPath: $.BusinessServices.*.auditDetails.lastModifiedTime
       - jsonPath: $.BusinessServices.*.uuid
-    - query: INSERT INTO bednet.eg_wf_state_v2(seq, uuid, tenantid, businessserviceid,
+    - query: INSERT INTO abia.eg_wf_state_v2(seq, uuid, tenantid, businessserviceid,
         state,applicationStatus,sla,docuploadrequired, isstartstate, isterminatestate,isStateUpdatable,
-        createdby, createdtime, lastmodifiedby, lastmodifiedtime) VALUES (nextval('bednet.seq_eg_wf_state_v2'),
+        createdby, createdtime, lastmodifiedby, lastmodifiedtime) VALUES (nextval('abia.seq_eg_wf_state_v2'),
         ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (uuid) DO UPDATE SET
         state=EXCLUDED.state,applicationStatus=EXCLUDED.applicationStatus,sla=EXCLUDED.sla,docuploadrequired=EXCLUDED.docuploadrequired,isstartstate=EXCLUDED.isstartstate,
         isterminatestate=EXCLUDED.isterminatestate,isStateUpdatable=EXCLUDED.isStateUpdatable,
@@ -179,7 +179,7 @@ serviceMaps:
       - jsonPath: $.BusinessServices.*.states.*.auditDetails.createdTime
       - jsonPath: $.BusinessServices.*.states.*.auditDetails.lastModifiedBy
       - jsonPath: $.BusinessServices.*.states.*.auditDetails.lastModifiedTime
-    - query: INSERT INTO bednet.eg_wf_action_v2( uuid,tenantId,active, currentState, action,
+    - query: INSERT INTO abia.eg_wf_action_v2( uuid,tenantId,active, currentState, action,
         nextstate, roles, createdby, createdtime, lastmodifiedby, lastmodifiedtime)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (uuid) DO UPDATE SET
         active=EXCLUDED.active, action=EXCLUDED.action, nextstate=EXCLUDED.nextstate,

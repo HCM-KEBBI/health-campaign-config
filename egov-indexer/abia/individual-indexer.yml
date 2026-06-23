@@ -2,28 +2,28 @@ ServiceMaps:
   serviceName: individual
   version: 1.0.0
   mappings:
-  - topic: bednet-save-individual-topic
+  - topic: abia-save-individual-topic
     configKey: INDEX
     indexes:
-    - name: bednet-individual-index-v1
+    - name: abia-individual-index-v1
       type: individual
       id: $.clientReferenceId
       isBulk: true
       jsonPath: $.*
       timeStampField: $.auditDetails.createdTime
-  - topic: bednet-update-individual-topic
+  - topic: abia-update-individual-topic
     configKey: INDEX
     indexes:
-    - name: bednet-individual-index-v1
+    - name: abia-individual-index-v1
       type: individual
       id: $.clientReferenceId
       isBulk: true
       jsonPath: $.*
       timeStampField: $.auditDetails.lastModifiedTime
-  - topic: bednet-delete-individual-topic
+  - topic: abia-delete-individual-topic
     configKey: INDEX
     indexes:
-    - name: bednet-individual-index-v1
+    - name: abia-individual-index-v1
       type: individual
       id: $.clientReferenceId
       isBulk: true

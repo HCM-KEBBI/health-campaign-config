@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: muster-service
   version: 1.0.0
   mappings:
-  - topic: bednet-transformer-producer-muster-roll-index-v1-topic
+  - topic: abia-transformer-producer-muster-roll-index-v1-topic
     configKey: INDEX
     indexes:
-    - name: bednet-muster-roll-index-v1
+    - name: abia-muster-roll-index-v1
       type: musterRoll
       id: $.musterRoll.id,$.musterRoll.tenantId
       jsonPath: $

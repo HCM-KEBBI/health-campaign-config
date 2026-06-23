@@ -2,19 +2,19 @@ ServiceMaps:
   serviceName: Uploader
   version: 1.0.0
   mappings:
-  - topic: bednet-save-upload-jobs
+  - topic: abia-save-upload-jobs
     configKey: INDEX
     indexes:
-    - name: bednet-uploaderindex-v1
+    - name: abia-uploaderindex-v1
       type: jobs
       id: $.code
       isBulk: false
       jsonPath: $.UploadJob
       timeStampField: $.auditDetails.createdTime
-  - topic: bednet-update-upload-jobs
+  - topic: abia-update-upload-jobs
     configKey: INDEX
     indexes:
-    - name: bednet-uploaderindex-v1
+    - name: abia-uploaderindex-v1
       type: jobs
       id: $.code
       isBulk: false

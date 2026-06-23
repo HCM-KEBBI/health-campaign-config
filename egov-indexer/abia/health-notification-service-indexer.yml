@@ -3,10 +3,10 @@ ServiceMaps:
   version: 1.0.0
   mappings:
     # ── INDEX: Save new scheduled notification to Elasticsearch ──
-    - topic: bednet-save-scheduled-notification-topic
+    - topic: abia-save-scheduled-notification-topic
       configKey: INDEX
       indexes:
-        - name: bednet-scheduled-notification-v1
+        - name: abia-scheduled-notification-v1
           type: general
           id: $.id
           isBulk: true
@@ -14,10 +14,10 @@ ServiceMaps:
           timeStampField: $.auditDetails.createdTime
 
     # ── INDEX: Update scheduled notification in Elasticsearch ──
-    - topic: bednet-update-scheduled-notification-topic
+    - topic: abia-update-scheduled-notification-topic
       configKey: INDEX
       indexes:
-        - name: bednet-scheduled-notification-v1
+        - name: abia-scheduled-notification-v1
           type: general
           id: $.id
           isBulk: true
@@ -25,10 +25,10 @@ ServiceMaps:
           timeStampField: $.auditDetails.lastModifiedTime
 
     # ── REINDEX: Re-index from Elasticsearch ──
-    - topic: bednet-scheduled-notification-v1
+    - topic: abia-scheduled-notification-v1
       configKey: REINDEX
       indexes:
-        - name: bednet-scheduled-notification-v1
+        - name: abia-scheduled-notification-v1
           type: general
           jsonPath: $.hits
           timeStampField: $.lastModifiedTime

@@ -4,11 +4,11 @@ serviceMaps:
     # ── INSERT: Save new scheduled notification ──
     - version: 1.0
       description: Persists scheduled notification
-      fromTopic: bednet-save-scheduled-notification-topic
+      fromTopic: abia-save-scheduled-notification-topic
       isTransaction: true
       queryMaps:
         - query: >-
-            INSERT INTO bednet.scheduled_notification(
+            INSERT INTO abia.scheduled_notification(
               id, clientReferenceId, tenantId, eventType, entityId, entityType,
               scheduledAt, createdAt, templateCode, recipientType, recipientId,
               mobileNumber, contextData, status, attempts, lastAttemptAt,
@@ -48,11 +48,11 @@ serviceMaps:
     # ── UPDATE: Update existing scheduled notification ──
     - version: 1.0
       description: Updates scheduled notification
-      fromTopic: bednet-update-scheduled-notification-topic
+      fromTopic: abia-update-scheduled-notification-topic
       isTransaction: true
       queryMaps:
         - query: >-
-            UPDATE bednet.scheduled_notification SET
+            UPDATE abia.scheduled_notification SET
               status = ?, attempts = ?, lastAttemptAt = ?, errorMessage = ?,
               isDeleted = ?, rowVersion = ?,
               lastModifiedBy = ?, lastModifiedTime = ?

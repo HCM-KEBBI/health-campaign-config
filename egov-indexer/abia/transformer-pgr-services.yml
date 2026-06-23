@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: Public Grievance Redressal - rainmaker
   version: 1.0.0
   mappings:
-  - topic: bednet-transformer-save-pgr-request
+  - topic: abia-transformer-save-pgr-request
     configKey: INDEX
     indexes:
-    - name: bednet-transformer-pgr-services
+    - name: abia-transformer-pgr-services
       type: general
       id: $.service.serviceRequestId
       jsonPath: $
@@ -17,7 +17,7 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.service.auditDetails.lastModifiedTime
-    - name: bednet-user-sync-index-v1
+    - name: abia-user-sync-index-v1
       type: users
       id: $.service.serviceRequestId
       isBulk: true

@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: referralmanagement
   version: 1.0.0
   mappings:
-  - topic: bednet-transformer-producer-referral-index-v1-topic
+  - topic: abia-transformer-producer-referral-index-v1-topic
     configKey: INDEX
     indexes:
-    - name: bednet-referral-index-v1
+    - name: abia-referral-index-v1
       type: referral
       id: $.referral.id
       isBulk: true
@@ -17,7 +17,7 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.referral.auditDetails.createdTime
-    - name: bednet-user-sync-index-v1
+    - name: abia-user-sync-index-v1
       type: users
       id: $.referral.id
       isBulk: true
@@ -53,19 +53,19 @@ ServiceMaps:
         - inJsonPath: $.additionalDetails.cycleIndex
           outJsonPath: $.Data.additionalDetails.cycleIndex
       timeStampField: $.referral.auditDetails.lastModifiedTime
-  - topic: bednet-delete-referral-topic
+  - topic: abia-delete-referral-topic
     configKey: INDEX
     indexes:
-    - name: bednet-referral-index-v1
+    - name: abia-referral-index-v1
       type: referral
       id: $.id
       isBulk: true
       jsonPath: $.*
       timeStampField: $.auditDetails.lastModifiedTime
-  - topic: bednet-transformer-producer-side-effect-index-v1-topic
+  - topic: abia-transformer-producer-side-effect-index-v1-topic
     configKey: INDEX
     indexes:
-    - name: bednet-side-effect-index-v1
+    - name: abia-side-effect-index-v1
       type: side-effect
       id: $.sideEffect.id
       isBulk: true
@@ -77,7 +77,7 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.sideEffect.auditDetails.createdTime
-    - name: bednet-user-sync-index-v1
+    - name: abia-user-sync-index-v1
       type: users
       id: $.sideEffect.id,$.sideEffect.tenantId
       isBulk: true
@@ -111,19 +111,19 @@ ServiceMaps:
         - inJsonPath: $.additionalDetails
           outJsonPath: $.Data.additionalDetails
       timeStampField: $.sideEffect.auditDetails.lastModifiedTime
-  - topic: bednet-delete-side-effect-topic
+  - topic: abia-delete-side-effect-topic
     configKey: INDEX
     indexes:
-    - name: bednet-side-effect-index-v1
+    - name: abia-side-effect-index-v1
       type: side-effect
       id: $.id
       isBulk: true
       jsonPath: $.*
       timeStampField: $.auditDetails.lastModifiedTime
-  - topic: bednet-transformer-producer-hfreferral-index-v1-topic
+  - topic: abia-transformer-producer-hfreferral-index-v1-topic
     configKey: INDEX
     indexes:
-    - name: bednet-hf-referral-index-v1
+    - name: abia-hf-referral-index-v1
       type: hfreferral
       id: $.hfReferral.id
       isBulk: true
@@ -135,7 +135,7 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.hfReferral.clientAuditDetails.lastModifiedTime
-    - name: bednet-user-sync-index-v1
+    - name: abia-user-sync-index-v1
       type: users
       id: $.hfReferral.id
       isBulk: true
@@ -171,10 +171,10 @@ ServiceMaps:
           - inJsonPath: $.additionalDetails.cycleIndex
             outJsonPath: $.Data.additionalDetails.cycleIndex
       timeStampField: $.hfReferral.clientAuditDetails.lastModifiedTime
-  - topic: bednet-delete-hfreferral-topic
+  - topic: abia-delete-hfreferral-topic
     configKey: INDEX
     indexes:
-    - name: bednet-hf-referral-index-v1
+    - name: abia-hf-referral-index-v1
       type: hfreferral
       id: $.id
       isBulk: true

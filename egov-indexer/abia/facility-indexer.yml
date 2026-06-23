@@ -2,19 +2,19 @@ ServiceMaps:
   serviceName: facility
   version: 1.0.0
   mappings:
-  - topic: bednet-save-facility-topic
+  - topic: abia-save-facility-topic
     configKey: INDEX
     indexes:
-    - name: bednet-facility-index-v1
+    - name: abia-facility-index-v1
       type: facility
       id: $.clientReferenceId
       isBulk: true
       jsonPath: $.*
       timeStampField: $.auditDetails.createdTime
-  - topic: bednet-update-facility-topic
+  - topic: abia-update-facility-topic
     configKey: INDEX
     indexes:
-    - name: bednet-facility-index-v1
+    - name: abia-facility-index-v1
       type: facility
       id: $.clientReferenceId
       isBulk: true

@@ -3,8 +3,8 @@ serviceMaps:
   mappings:
     - version: 1.0
       name: bill create
-      description: create bill in bednet.eg_expense_bill
-      fromTopic: bednet-save-expense-bill-db
+      description: create bill in abia.eg_expense_bill
+      fromTopic: abia-save-expense-bill-db
       isAuditEnabled: true
       module: BILL
       objecIdJsonPath: $.id
@@ -12,7 +12,7 @@ serviceMaps:
       transactionCodeJsonPath: $.billNumber
       auditAttributeBasePath: $.bills.*
       queryMaps:
-        - query: INSERT into bednet.eg_expense_bill (id, tenantid, localitycode, billdate, duedate,
+        - query: INSERT into abia.eg_expense_bill (id, tenantid, localitycode, billdate, duedate,
             billnumber, totalamount, totalPaidAmount, businessservice, referenceId,
             fromperiod, toperiod, status, paymentStatus, createdby, createdTime, lastmodifiedby,
             lastModifiedTime, additionalDetails) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
@@ -39,7 +39,7 @@ serviceMaps:
             - jsonPath: $.bills.*.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT into bednet.eg_expense_party (id, tenantid, type, identifier, parentId,
+        - query: INSERT into abia.eg_expense_party (id, tenantid, type, identifier, parentId,
             status, createdby, createdTime, lastmodifiedby, lastModifiedTime) values(?,?,?,?,?,?,?,?,?,?)
           basePath: $.bills.*.payer
           jsonMaps:
@@ -53,7 +53,7 @@ serviceMaps:
             - jsonPath: $.bills.*.payer.auditDetails.createdTime
             - jsonPath: $.bills.*.payer.auditDetails.lastModifiedBy
             - jsonPath: $.bills.*.payer.auditDetails.lastModifiedTime
-        - query: INSERT into bednet.eg_expense_billdetail (id, tenantid, billid, referenceId,
+        - query: INSERT into abia.eg_expense_billdetail (id, tenantid, billid, referenceId,
             totalAmount, totalPaidAmount, status, paymentStatus, fromperiod, toperiod,
             workerid, totalattendance, createdby, createdTime, lastModifiedby, lastModifiedTime,
             additionalDetails) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
@@ -78,7 +78,7 @@ serviceMaps:
             - jsonPath: $.bills.*.billDetails.*.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT into bednet.eg_expense_party (id, tenantid, type, identifier, parentId,
+        - query: INSERT into abia.eg_expense_party (id, tenantid, type, identifier, parentId,
             status, paymentprovider, payeename, payeephonenumber, bankaccount, bankcode,
             beneficiarycode, additionalDetails, createdby, createdTime, lastmodifiedby, lastModifiedTime)
             values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
@@ -103,7 +103,7 @@ serviceMaps:
             - jsonPath: $.bills.*.billDetails.*.payee.auditDetails.createdTime
             - jsonPath: $.bills.*.billDetails.*.payee.auditDetails.lastModifiedBy
             - jsonPath: $.bills.*.billDetails.*.payee.auditDetails.lastModifiedTime
-        - query: INSERT into bednet.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
+        - query: INSERT into abia.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
             amount, paidAmount, type, status, paymentStatus, islineitempayable, createdby,
             createdTime, lastmodifiedby, lastModifiedTime, additionalDetails) values(?,?,?,?,?,?,?,?,?,false,?,?,?,?,?)
             ON CONFLICT (id,tenantid) DO UPDATE SET headcode=EXCLUDED.headcode, amount=EXCLUDED.amount,
@@ -128,7 +128,7 @@ serviceMaps:
             - jsonPath: $.bills.*.billDetails.*.lineItems.*.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT into bednet.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
+        - query: INSERT into abia.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
             amount, paidAmount, type, status, paymentStatus, islineitempayable, createdby,
             createdTime, lastmodifiedby, lastModifiedTime, additionalDetails) values(?,?,?,?,?,?,?,?,?,true,?,?,?,?,?)
             ON CONFLICT (id,tenantid) DO UPDATE SET headcode=EXCLUDED.headcode, amount=EXCLUDED.amount,
@@ -156,8 +156,8 @@ serviceMaps:
               dbType: JSONB
     - version: 1.0
       name: bill update
-      description: update bill in bednet.eg_expense_bill
-      fromTopic: bednet-update-expense-bill-db
+      description: update bill in abia.eg_expense_bill
+      fromTopic: abia-update-expense-bill-db
       isAuditEnabled: true
       module: BILL
       objecIdJsonPath: $.id
@@ -165,7 +165,7 @@ serviceMaps:
       transactionCodeJsonPath: $.billNumber
       auditAttributeBasePath: $.bills.*
       queryMaps:
-        - query: UPDATE bednet.eg_expense_bill SET billdate=?, duedate=?, totalAmount=?, totalPaidAmount=?,
+        - query: UPDATE abia.eg_expense_bill SET billdate=?, duedate=?, totalAmount=?, totalPaidAmount=?,
             businessservice=?, referenceid=?, fromperiod=?, toperiod=?, status=?, paymentstatus=?,
             lastmodifiedby=?, lastmodifiedtime=?, additionaldetails=? WHERE id=? AND tenantid=?;
           basePath: $.bills.*
@@ -187,7 +187,7 @@ serviceMaps:
               dbType: JSONB
             - jsonPath: $.bills.*.id
             - jsonPath: $.bills.*.tenantId
-        - query: UPDATE bednet.eg_expense_party SET type=?, identifier=?, parentid=?, status=?,
+        - query: UPDATE abia.eg_expense_party SET type=?, identifier=?, parentid=?, status=?,
             lastmodifiedby=?, lastmodifiedtime=? WHERE id=? AND tenantid=?;
           basePath: $.bills.*
           jsonMaps:
@@ -199,7 +199,7 @@ serviceMaps:
             - jsonPath: $.bills.*.payer.auditDetails.lastModifiedTime
             - jsonPath: $.bills.*.payer.id
             - jsonPath: $.bills.*.tenantId
-        - query: INSERT into bednet.eg_expense_billdetail (id, tenantid, billid, totalamount,
+        - query: INSERT into abia.eg_expense_billdetail (id, tenantid, billid, totalamount,
             totalpaidamount, status, referenceId, paymentStatus, fromperiod, toperiod,
             workerid, totalattendance, createdby, createdTime, lastModifiedby, lastModifiedTime,
             additionalDetails) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
@@ -231,7 +231,7 @@ serviceMaps:
             - jsonPath: $.bills.*.billDetails.*.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT into bednet.eg_expense_party (id, tenantid, type, identifier, parentId,
+        - query: INSERT into abia.eg_expense_party (id, tenantid, type, identifier, parentId,
             status, paymentprovider, payeename, payeephonenumber, bankaccount, bankcode,
             beneficiarycode, additionalDetails, createdby, createdTime, lastmodifiedby, lastModifiedTime)
             values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT (id, tenantid) DO UPDATE SET
@@ -262,7 +262,7 @@ serviceMaps:
             - jsonPath: $.bills.*.billDetails.*.payee.auditDetails.createdTime
             - jsonPath: $.bills.*.billDetails.*.payee.auditDetails.lastModifiedBy
             - jsonPath: $.bills.*.billDetails.*.payee.auditDetails.lastModifiedTime
-        - query: INSERT into bednet.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
+        - query: INSERT into abia.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
             amount, paidAmount, type, status, islineitempayable, createdby, createdTime,
             lastmodifiedby, lastModifiedTime, additionalDetails) values(?,?,?,?,?,?,?,?,false,?,?,?,?,?)
             ON CONFLICT (id,tenantid) DO UPDATE SET headcode=EXCLUDED.headcode, amount=EXCLUDED.amount,
@@ -286,7 +286,7 @@ serviceMaps:
             - jsonPath: $.bills.*.billDetails.*.lineItems.*.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT into bednet.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
+        - query: INSERT into abia.eg_expense_lineitem (id, tenantid, billDetailId, headCode,
             amount, paidAmount, type, status, paymentStatus, islineitempayable, createdby,
             createdTime, lastmodifiedby, lastModifiedTime, additionalDetails) values(?,?,?,?,?,?,?,?,?,true,?,?,?,?,?)
             ON CONFLICT (id,tenantid) DO UPDATE SET headcode=EXCLUDED.headcode, amount=EXCLUDED.amount,
@@ -314,10 +314,10 @@ serviceMaps:
               dbType: JSONB
     - version: 1.0
       name: Payment create
-      description: create payment in bednet.eg_expense_payment
-      fromTopic: bednet-save-expense-payment-db
+      description: create payment in abia.eg_expense_payment
+      fromTopic: abia-save-expense-payment-db
       queryMaps:
-        - query: INSERT INTO bednet.eg_expense_payment(id, tenantid, netpayableamount, netpaidamount,
+        - query: INSERT INTO abia.eg_expense_payment(id, tenantid, netpayableamount, netpaidamount,
             paymentnumber, status, referencestatus, createdby, createdtime, lastmodifiedby,
             lastmodifiedtime, additionaldetails) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.payment
@@ -336,7 +336,7 @@ serviceMaps:
             - jsonPath: $.payment.additionalDetails
               type: JSON
               dbType: JSONB
-        - query: INSERT INTO bednet.eg_expense_payment_bill(id, tenantid, paymentid, billid,
+        - query: INSERT INTO abia.eg_expense_payment_bill(id, tenantid, paymentid, billid,
             totalamount, totalpaidamount, status, createdby, createdtime, lastmodifiedby,
             lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.payment.bills.*
@@ -352,7 +352,7 @@ serviceMaps:
             - jsonPath: $.payment.auditDetails.createdTime
             - jsonPath: $.payment.auditDetails.lastModifiedBy
             - jsonPath: $.payment.auditDetails.lastModifiedTime
-        - query: INSERT INTO bednet.eg_expense_payment_billdetail(id, tenantid, billdetailid,
+        - query: INSERT INTO abia.eg_expense_payment_billdetail(id, tenantid, billdetailid,
             paymentbillid, totalamount, totalpaidamount, status, createdby, createdtime,
             lastmodifiedby, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.payment.bills.*.billDetails.*
@@ -368,7 +368,7 @@ serviceMaps:
             - jsonPath: $.payment.auditDetails.createdTime
             - jsonPath: $.payment.auditDetails.lastModifiedBy
             - jsonPath: $.payment.auditDetails.lastModifiedTime
-        - query: INSERT INTO bednet.eg_expense_payment_lineitem(id, tenantid, paymentbilldetailid,
+        - query: INSERT INTO abia.eg_expense_payment_lineitem(id, tenantid, paymentbilldetailid,
             lineitemid, paidamount, status, createdby, createdtime, lastmodifiedby,
             lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.payment.bills.*.billDetails.*.payableLineItems.*
@@ -385,10 +385,10 @@ serviceMaps:
             - jsonPath: $.payment.auditDetails.lastModifiedTime
     - version: 1.0
       name: Payment update
-      description: update payment status in bednet.eg_expense_payment
-      fromTopic: bednet-update-expense-payment-db
+      description: update payment status in abia.eg_expense_payment
+      fromTopic: abia-update-expense-payment-db
       queryMaps:
-        - query: UPDATE bednet.eg_expense_payment SET status=?, referencestatus=?, lastmodifiedby=?,
+        - query: UPDATE abia.eg_expense_payment SET status=?, referencestatus=?, lastmodifiedby=?,
             lastmodifiedtime=?, additionaldetails=? WHERE id=? AND tenantid=?;
           basePath: $.payment
           jsonMaps:
@@ -401,7 +401,7 @@ serviceMaps:
               dbType: JSONB
             - jsonPath: $.payment.id
             - jsonPath: $.payment.tenantId
-        - query: UPDATE bednet.eg_expense_payment_bill SET status=?, lastmodifiedby=?, lastmodifiedtime=?
+        - query: UPDATE abia.eg_expense_payment_bill SET status=?, lastmodifiedby=?, lastmodifiedtime=?
             WHERE id=? AND paymentid=? AND tenantid=?;
           basePath: $.payment.bills.*
           jsonMaps:
@@ -411,7 +411,7 @@ serviceMaps:
             - jsonPath: $.payment.bills.*.id
             - jsonPath: $.payment.id
             - jsonPath: $.payment.tenantId
-        - query: UPDATE bednet.eg_expense_payment_billdetail SET status=?, lastmodifiedby=?,
+        - query: UPDATE abia.eg_expense_payment_billdetail SET status=?, lastmodifiedby=?,
             lastmodifiedtime=? WHERE id=? AND paymentbillid=? AND tenantid=?;
           basePath: $.payment.bills.*.billDetails.*
           jsonMaps:
@@ -421,7 +421,7 @@ serviceMaps:
             - jsonPath: $.payment.bills.*.billDetails.*.id
             - jsonPath: $.payment.bills[?({id} in @.billDetails[*].id)].id
             - jsonPath: $.payment.tenantId
-        - query: UPDATE bednet.eg_expense_payment_lineitem SET status=?, lastmodifiedby=?,
+        - query: UPDATE abia.eg_expense_payment_lineitem SET status=?, lastmodifiedby=?,
             lastmodifiedtime=? WHERE id=? AND paymentbilldetailid=? AND tenantid=?;
           basePath: $.payment.bills.*.billDetails.*.payableLineItems.*
           jsonMaps:
@@ -433,10 +433,10 @@ serviceMaps:
             - jsonPath: $.payment.tenantId
     - version: 1.0
       name: Bill Transaction Report Save
-      description: create bill transaction report in bednet.eg_expense_bill_transaction_report
-      fromTopic: bednet-expense-bill-transaction-report-save
+      description: create bill transaction report in abia.eg_expense_bill_transaction_report
+      fromTopic: abia-expense-bill-transaction-report-save
       queryMaps:
-        - query: INSERT INTO bednet.eg_expense_bill_transaction_report (id, bill_id, tenant_id, type, status, file_store_id, error_details, created_by, created_time, last_modified_by, last_modified_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id, tenant_id) DO NOTHING;
+        - query: INSERT INTO abia.eg_expense_bill_transaction_report (id, bill_id, tenant_id, type, status, file_store_id, error_details, created_by, created_time, last_modified_by, last_modified_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (id, tenant_id) DO NOTHING;
           basePath: $.billTransactionReport
           jsonMaps:
             - jsonPath: $.billTransactionReport.id
@@ -454,10 +454,10 @@ serviceMaps:
             - jsonPath: $.billTransactionReport.auditDetails.lastModifiedTime
     - version: 1.0
       name: Bill Transaction Report Update
-      description: update bill transaction report in bednet.eg_expense_bill_transaction_report
-      fromTopic: bednet-expense-bill-transaction-report-update
+      description: update bill transaction report in abia.eg_expense_bill_transaction_report
+      fromTopic: abia-expense-bill-transaction-report-update
       queryMaps:
-        - query: UPDATE bednet.eg_expense_bill_transaction_report SET status=?, file_store_id=?, error_details=?, last_modified_by=?, last_modified_time=? WHERE id=? AND tenant_id=?;
+        - query: UPDATE abia.eg_expense_bill_transaction_report SET status=?, file_store_id=?, error_details=?, last_modified_by=?, last_modified_time=? WHERE id=? AND tenant_id=?;
           basePath: $.billTransactionReport
           jsonMaps:
             - jsonPath: $.billTransactionReport.status

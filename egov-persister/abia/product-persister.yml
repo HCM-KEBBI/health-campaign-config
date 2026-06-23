@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Persists Product
-    fromTopic: bednet-save-product-topic
+    fromTopic: abia-save-product-topic
     isTransaction: true
     isAuditEnabled: true
     module: PRODUCT
@@ -13,7 +13,7 @@ serviceMaps:
     
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: INSERT INTO bednet.product(id, tenantId, type, name, manufacturer, additionalDetails,
+    - query: INSERT INTO abia.product(id, tenantId, type, name, manufacturer, additionalDetails,
         createdBy, lastModifiedBy, createdTime, lastModifiedTime, rowVersion, isDeleted)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.*
@@ -34,7 +34,7 @@ serviceMaps:
       - jsonPath: $.*.isDeleted
   - version: 1.0
     description: Updates Product
-    fromTopic: bednet-update-product-topic
+    fromTopic: abia-update-product-topic
     isTransaction: true
     isAuditEnabled: true
     module: PRODUCT-UPDATE
@@ -44,7 +44,7 @@ serviceMaps:
     
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.product SET tenantId = ?, type = ?, name = ?, manufacturer
+    - query: UPDATE abia.product SET tenantId = ?, type = ?, name = ?, manufacturer
         = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion
         = ?, isDeleted = ? WHERE id = ?
       basePath: $.*
@@ -63,7 +63,7 @@ serviceMaps:
       - jsonPath: $.*.id
   - version: 1.0
     description: Saves a product variant
-    fromTopic: bednet-save-product-variant-topic
+    fromTopic: abia-save-product-variant-topic
     isTransaction: true
     isAuditEnabled: true
     module: PRODUCT-VARIANT
@@ -73,7 +73,7 @@ serviceMaps:
     
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: INSERT INTO bednet.product_variant(id, tenantId, productId, sku, variation,
+    - query: INSERT INTO abia.product_variant(id, tenantId, productId, sku, variation,
         additionalDetails, createdBy, lastModifiedBy, createdTime, lastModifiedTime,
         rowVersion, isDeleted) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
       basePath: $.*
@@ -94,7 +94,7 @@ serviceMaps:
       - jsonPath: $.*.isDeleted
   - version: 1.0
     description: Updates a product variant
-    fromTopic: bednet-update-product-variant-topic
+    fromTopic: abia-update-product-variant-topic
     isTransaction: true
     isAuditEnabled: true
     module: PRODUCT-UPDATE
@@ -104,7 +104,7 @@ serviceMaps:
     
     auditAttributeBasePath: $.*
     queryMaps:
-    - query: UPDATE bednet.product_variant SET tenantId = ?, productId = ?, sku = ?, variation
+    - query: UPDATE abia.product_variant SET tenantId = ?, productId = ?, sku = ?, variation
         = ?, additionalDetails = ?, lastModifiedBy = ?, lastModifiedTime = ?, rowVersion
         = ?, isDeleted = ? WHERE id = ?;
       basePath: $.*

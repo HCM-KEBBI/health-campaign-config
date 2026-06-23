@@ -3,10 +3,10 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Persists the schema definition
-    fromTopic: bednet-save-mdms-schema-definition
+    fromTopic: abia-save-mdms-schema-definition
     isTransaction: true
     queryMaps:
-    - query: INSERT INTO bednet.eg_mdms_schema_definition (id ,tenantid, code, description,
+    - query: INSERT INTO abia.eg_mdms_schema_definition (id ,tenantid, code, description,
         definition, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.SchemaDefinition
@@ -25,10 +25,10 @@ serviceMaps:
       - jsonPath: $.SchemaDefinition.auditDetails.lastModifiedTime
   - version: 1.0
     description: Persists the mdms data
-    fromTopic: bednet-save-mdms-data
+    fromTopic: abia-save-mdms-data
     isTransaction: true
     queryMaps:
-    - query: INSERT INTO bednet.eg_mdms_data (id, tenantid, uniqueidentifier, schemacode,
+    - query: INSERT INTO abia.eg_mdms_data (id, tenantid, uniqueidentifier, schemacode,
         data, isactive, createdby, lastmodifiedby, createdtime, lastmodifiedtime)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.Mdms
@@ -47,10 +47,10 @@ serviceMaps:
       - jsonPath: $.Mdms.auditDetails.lastModifiedTime
   - version: 1.0
     description: Updates the mdms data
-    fromTopic: bednet-update-mdms-data
+    fromTopic: abia-update-mdms-data
     isTransaction: true
     queryMaps:
-    - query: UPDATE bednet.eg_mdms_data SET data = ?, isActive = ?, lastModifiedBy = ?,
+    - query: UPDATE abia.eg_mdms_data SET data = ?, isActive = ?, lastModifiedBy = ?,
         lastModifiedTime = ? WHERE id = ?;
       basePath: $.Mdms
       jsonMaps:

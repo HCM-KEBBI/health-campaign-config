@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: service-request
   version: 1.0.0
   mappings:
-  - topic: bednet-transformer-producer-service-request-index-v1-topic
+  - topic: abia-transformer-producer-service-request-index-v1-topic
     configKey: INDEX
     indexes:
-    - name: bednet-service-task-v1
+    - name: abia-service-task-v1
       type: service
       id: $.clientReferenceId,$.tenantId
       isBulk: true
@@ -17,7 +17,7 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.createdTime
-    - name: bednet-user-sync-index-v1
+    - name: abia-user-sync-index-v1
       type: users
       id: $.id
       isBulk: true
@@ -55,10 +55,10 @@ ServiceMaps:
         - inJsonPath: $.additionalDetails.cycleIndex
           outJsonPath: $.Data.additionalDetails.cycleIndex
       timeStampField: $.createdTime
-  - topic: bednet-transformer-producer-hfreferral-fever-index-topic
+  - topic: abia-transformer-producer-hfreferral-fever-index-topic
     configKey: INDEX
     indexes:
-    - name: bednet-hf-referral-fever-index
+    - name: abia-hf-referral-fever-index
       type: service
       id: $.id
       isBulk: true
@@ -70,10 +70,10 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.createdTime
-  - topic: bednet-transformer-producer-hfreferral-drug-reaction-index-topic
+  - topic: abia-transformer-producer-hfreferral-drug-reaction-index-topic
     configKey: INDEX
     indexes:
-    - name: bednet-hf-referral-drug-reaction-index
+    - name: abia-hf-referral-drug-reaction-index
       type: service
       id: $.id
       isBulk: true
@@ -85,10 +85,10 @@ ServiceMaps:
         - inJsonPath: $
           outJsonPath: $.Data
       timeStampField: $.createdTime
-  - topic: bednet-transformer-producer-extra-transformed-checklist-index-topic
+  - topic: abia-transformer-producer-extra-transformed-checklist-index-topic
     configKey: INDEX
     indexes:
-    - name: bednet-transformed-checklist-index-v1
+    - name: abia-transformed-checklist-index-v1
       type: service
       id: $.id,$.tenantId
       isBulk: true

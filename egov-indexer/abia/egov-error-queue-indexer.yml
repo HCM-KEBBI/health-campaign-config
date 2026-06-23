@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: Tracer
   version: 1.0.0
   mappings:
-  - topic: bednet-error-details-indexer-topic
+  - topic: abia-error-details-indexer-topic
     configKey: INDEX
     indexes:
-    - name: bednet-egov-tracer-error-details
+    - name: abia-egov-tracer-error-details
       type: general
       id: $.uuid
       isBulk: true

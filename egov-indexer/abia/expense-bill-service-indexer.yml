@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: Billing Service
   version: 1.0.0
   mappings:
-    - topic: bednet-transformer-bill-index-topic
+    - topic: abia-transformer-bill-index-topic
       configKey: INDEX
       indexes:
-        - name: bednet-transform-bill-index-v1
+        - name: abia-transform-bill-index-v1
           type: bill
           id: $.bill.id
           isBulk: false
@@ -18,10 +18,10 @@ ServiceMaps:
                 outJsonPath: $.Data
           timeStampField: $.bill.auditDetails.lastModifiedTime
 
-    - topic: bednet-transformer-billdetail-index-topic
+    - topic: abia-transformer-billdetail-index-topic
       configKey: INDEX
       indexes:
-        - name: bednet-transform-billdetail-index-v1
+        - name: abia-transform-billdetail-index-v1
           type: billdetail
           id: $.id
           isBulk: true
@@ -34,10 +34,10 @@ ServiceMaps:
                 outJsonPath: $.Data
           timeStampField: $.billDetail.auditDetails.lastModifiedTime
 
-    - topic: bednet-transformer-billreport-index-topic
+    - topic: abia-transformer-billreport-index-topic
       configKey: INDEX
       indexes:
-        - name: bednet-transform-billreport-index-v1
+        - name: abia-transform-billreport-index-v1
           type: billreport
           id: $.billReport.id
           isBulk: true

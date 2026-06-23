@@ -4,11 +4,11 @@ serviceMaps:
 
     - version: 1.0
       description: Save/override device token
-      fromTopic: bednet-save-push-device-token
+      fromTopic: abia-save-push-device-token
       isTransaction: true
       queryMaps:
         - query: >-
-            INSERT INTO bednet.eg_push_device_tokens
+            INSERT INTO abia.eg_push_device_tokens
             (id, userid, devicetoken, devicetype, tenantid, facilityid, userroles, createdby, createdtime, lastmodifiedby, lastmodifiedtime)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (devicetoken, facilityid) DO UPDATE SET
@@ -31,11 +31,11 @@ serviceMaps:
 
     - version: 1.0
       description: Delete device token
-      fromTopic: bednet-delete-push-device-token
+      fromTopic: abia-delete-push-device-token
       isTransaction: true
       queryMaps:
         - query: >-
-            DELETE FROM bednet.eg_push_device_tokens
+            DELETE FROM abia.eg_push_device_tokens
             WHERE userid = ? AND devicetoken = ? AND tenantid = ? AND facilityid = ?
           basePath: $.deviceTokens.*
           jsonMaps:
@@ -46,11 +46,11 @@ serviceMaps:
 
     - version: 1.0
       description: Unregister device token (delete all rows for userId+deviceToken, regardless of facilityId)
-      fromTopic: bednet-unregister-push-device-token
+      fromTopic: abia-unregister-push-device-token
       isTransaction: true
       queryMaps:
         - query: >-
-            DELETE FROM bednet.eg_push_device_tokens
+            DELETE FROM abia.eg_push_device_tokens
             WHERE userid = ? AND devicetoken = ?
           basePath: $.deviceTokens.*
           jsonMaps:

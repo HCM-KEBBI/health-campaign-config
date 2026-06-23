@@ -3,7 +3,7 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Persists service definition details in service definition table
-    fromTopic: bednet-save-service-definition
+    fromTopic: abia-save-service-definition
     isTransaction: true
     isAuditEnabled: true
     module: SAVE-SERVICE-DEFINITION
@@ -13,7 +13,7 @@ serviceMaps:
     
     auditAttributeBasePath: $.ServiceDefinition
     queryMaps:
-    - query: INSERT INTO bednet.eg_service_definition(id, tenantid, code, isactive, createdby,
+    - query: INSERT INTO abia.eg_service_definition(id, tenantid, code, isactive, createdby,
         lastmodifiedby, createdtime, lastmodifiedtime, additionaldetails, clientid)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.ServiceDefinition
@@ -30,7 +30,7 @@ serviceMaps:
         type: JSON
         dbType: JSONB
       - jsonPath: $.ServiceDefinition.clientId
-    - query: INSERT INTO bednet.eg_service_attribute_definition(id, referenceid, tenantid,
+    - query: INSERT INTO abia.eg_service_attribute_definition(id, referenceid, tenantid,
         code, datatype, "values", isactive, required, regex, "order", createdby, lastmodifiedby,
         createdtime, lastmodifiedtime, additionaldetails) VALUES (?, ?, ?, ?, ?, ?,
         ?, ?, ?, ?, ?, ?, ?, ?, ?);
@@ -57,7 +57,7 @@ serviceMaps:
         dbType: JSONB
   - version: 1.0
     description: Persists service details in service table
-    fromTopic: bednet-save-service
+    fromTopic: abia-save-service
     isTransaction: true
     isAuditEnabled: true
     module: SAVE-SERVICE
@@ -67,7 +67,7 @@ serviceMaps:
     
     auditAttributeBasePath: $.Service
     queryMaps:
-    - query: INSERT INTO bednet.eg_service(id, tenantid, servicedefid, referenceid, createdby,
+    - query: INSERT INTO abia.eg_service(id, tenantid, servicedefid, referenceid, createdby,
         lastmodifiedby, createdtime, lastmodifiedtime, additionaldetails, accountid,
         clientid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.Service
@@ -85,7 +85,7 @@ serviceMaps:
         dbType: JSONB
       - jsonPath: $.Service.accountId
       - jsonPath: $.Service.clientId
-    - query: INSERT INTO bednet.eg_service_attribute_value(id, referenceid, attributecode,
+    - query: INSERT INTO abia.eg_service_attribute_value(id, referenceid, attributecode,
         value, createdby, lastmodifiedby, createdtime, lastmodifiedtime, additionaldetails)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: $.Service.attributes.*

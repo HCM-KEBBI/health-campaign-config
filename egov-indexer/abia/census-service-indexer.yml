@@ -2,10 +2,10 @@ ServiceMaps:
   serviceName: census-service
   version: 1.0.0
   mappings:
-    - topic: bednet-census-create-topic
+    - topic: abia-census-create-topic
       configKey: INDEX
       indexes:
-        - name: bednet-census-index-v1
+        - name: abia-census-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -16,10 +16,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: bednet-census-update-topic
+    - topic: abia-census-update-topic
       configKey: INDEX
       indexes:
-        - name: bednet-census-index-v1
+        - name: abia-census-index-v1
           type: general
           id: $.id
           timeStampField: $.auditDetails.createdTime
@@ -30,10 +30,10 @@ ServiceMaps:
               - inJsonPath: $
                 outJsonPath: $.Data
 
-    - topic: bednet-census-bulk-update-topic
+    - topic: abia-census-bulk-update-topic
       configKey: INDEX
       indexes:
-        - name: bednet-census-index-v1
+        - name: abia-census-index-v1
           type: general
           id: $.id
           isBulk: true

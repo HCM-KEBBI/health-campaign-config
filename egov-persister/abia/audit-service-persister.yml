@@ -3,10 +3,10 @@ serviceMaps:
   mappings:
   - version: 1.0
     description: Persists audit service fields in database
-    fromTopic: bednet-audit-create
+    fromTopic: abia-audit-create
     isTransaction: true
     queryMaps:
-    - query: INSERT INTO bednet.eg_audit_logs( id, useruuid,module,tenantid,transactioncode,changedate,objectid,entityname,
+    - query: INSERT INTO abia.eg_audit_logs( id, useruuid,module,tenantid,transactioncode,changedate,objectid,entityname,
         keyvaluemap, operationtype, integrityhash, auditcorrelationid) VALUES (?,
         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       basePath: AuditLogs.*

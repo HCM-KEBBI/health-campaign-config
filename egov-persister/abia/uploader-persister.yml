@@ -4,10 +4,10 @@ serviceMaps:
   - version: 1.0
     name: Uploader
     description: Persists upload jobs to table
-    fromTopic: bednet-save-upload-jobs
+    fromTopic: abia-save-upload-jobs
     isTransaction: true
     queryMaps:
-    - query: Insert into bednet.EGDU_UPLOADREGISTRY(CODE, TENANTID, REQUESTFILE_PATH,
+    - query: Insert into abia.EGDU_UPLOADREGISTRY(CODE, TENANTID, REQUESTFILE_PATH,
         MODULE_NAME, DEF_NAME, REQUESTER_NAME, STATUS,FILE_NAME,CREATEDBY,CREATEDDATE,LASTMODIFIEDBY,LASTMODIFIEDDATE)
         VALUES(?,?,?,?,?,?,?,?,?,?,?,?);
       basePath: UploadJob
@@ -27,10 +27,10 @@ serviceMaps:
   - version: 1.0
     name: Uploader
     description: Updates upload jobs in the table
-    fromTopic: bednet-update-upload-jobs
+    fromTopic: abia-update-upload-jobs
     isTransaction: true
     queryMaps:
-    - query: Update bednet.EGDU_UPLOADREGISTRY set START_TIME=?, END_TIME=?, TOTAL_ROWS=?,
+    - query: Update abia.EGDU_UPLOADREGISTRY set START_TIME=?, END_TIME=?, TOTAL_ROWS=?,
         SUCCESS_ROWS=?, FAILED_ROWS=?, RESPONSEFILE_PATH=?, STATUS=?, REASON_FOR_FAILURE
         = ?, LASTMODIFIEDBY=?, LASTMODIFIEDDATE=? where CODE=? AND TENANTID=?
       basePath: UploadJobs
