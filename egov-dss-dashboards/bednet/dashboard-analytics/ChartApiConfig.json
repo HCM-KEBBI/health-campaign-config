@@ -47402,7 +47402,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Population Covered for Date range"
+      "Population Covered for Date range>Population"
     ],
     "insight": {},
     "_comment": "People living in redeemed households"
