@@ -1,0 +1,21 @@
+ServiceMaps:
+  serviceName: Tracer
+  version: 1.0.0
+  mappings:
+  - topic: nigeria-itn-tracer-error-queue-index
+    configKey: INDEX
+    indexes:
+    - name: nigeria-itn-egovtracer
+      type: errors
+      id: $.id
+      isBulk: false
+      timeStampField: $.ts
+  - topic: nigeria-itn-tracer-error-queue-reindex
+    configKey: REINDEX
+    indexes:
+    - name: nigeria-itn-egovtracerreindex
+      type: errors
+      id: $.id
+      isBulk: true
+      jsonPath: $.hits
+      timeStampField: $.ts
