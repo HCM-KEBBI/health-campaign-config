@@ -1,0 +1,46 @@
+ServiceMaps:
+  serviceName: census-service
+  version: 1.0.0
+  mappings:
+    - topic: sierraleone-census-create-topic
+      configKey: INDEX
+      indexes:
+        - name: sierraleone-census-index-v1
+          type: general
+          id: $.id
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: {"Data":{}}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+
+    - topic: sierraleone-census-update-topic
+      configKey: INDEX
+      indexes:
+        - name: sierraleone-census-index-v1
+          type: general
+          id: $.id
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+
+    - topic: sierraleone-census-bulk-update-topic
+      configKey: INDEX
+      indexes:
+        - name: sierraleone-census-index-v1
+          type: general
+          id: $.id
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data

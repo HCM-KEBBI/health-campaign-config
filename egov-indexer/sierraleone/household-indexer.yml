@@ -1,0 +1,52 @@
+ServiceMaps:
+  serviceName: household
+  version: 1.0.0
+  mappings:
+  - topic: sierraleone-transformer-producer-household-index-v1-topic
+    configKey: INDEX
+    indexes:
+    - name: sierraleone-household-index-v1
+      type: household
+      id: $.household.clientReferenceId
+      isBulk: true
+      jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+        - inJsonPath: $
+          outJsonPath: $.Data
+      timeStampField: $.household.clientAuditDetails.lastModifiedTime
+  - topic: sierraleone-delete-household-topic
+    configKey: INDEX
+    indexes:
+    - name: sierraleone-household-index-v1
+      type: household
+      id: $.clientReferenceId
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
+  - topic: sierraleone-transformer-producer-household-member-index-v1-topic
+    configKey: INDEX
+    indexes:
+    - name: sierraleone-household-member-index-v1
+      type: member
+      id: $.householdMember.clientReferenceId
+      isBulk: true
+      jsonPath: $.*
+      customJsonMapping:
+        indexMapping:
+          Data: {}
+        fieldMapping:
+        - inJsonPath: $
+          outJsonPath: $.Data
+      timeStampField: $.householdMember.clientAuditDetails.lastModifiedTime
+  - topic: sierraleone-delete-household-member-topic
+    configKey: INDEX
+    indexes:
+    - name: sierraleone-household-member-index-v1
+      type: member
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
