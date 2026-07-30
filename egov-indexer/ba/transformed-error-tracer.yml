@@ -18,12 +18,12 @@ ServiceMaps:
           outJsonPath: $.Data
       timeStampField: $.auditDetails.createdTime
       
-    - topic: ba-transformer-error-topic
-      configKey: INDEX
-      indexes:
-        - name: ba-transformer-error-index-v1
-          type: errors
-          id: $.id
-          isBulk: false
-          jsonPath: $
-          timeStampField: $.timestamp      
+  - topic: ba-transformer-error-topic
+    configKey: INDEX
+    indexes:
+      - name: ba-transformer-error-index-v1
+        type: errors
+        id: $.id
+        isBulk: false
+        jsonPath: $
+        timeStampField: $.timestamp      
