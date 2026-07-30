@@ -1,0 +1,46 @@
+ServiceMaps:
+  serviceName: census-service
+  version: 1.0.0
+  mappings:
+    - topic: abia-census-create-topic
+      configKey: INDEX
+      indexes:
+        - name: abia-census-index-v1
+          type: general
+          id: $.id
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: {"Data":{}}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+
+    - topic: abia-census-update-topic
+      configKey: INDEX
+      indexes:
+        - name: abia-census-index-v1
+          type: general
+          id: $.id
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+
+    - topic: abia-census-bulk-update-topic
+      configKey: INDEX
+      indexes:
+        - name: abia-census-index-v1
+          type: general
+          id: $.id
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
