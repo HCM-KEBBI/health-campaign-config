@@ -1,0 +1,40 @@
+ServiceMaps:
+  serviceName: product
+  version: 1.0.0
+  mappings:
+  - topic: liberia-save-product-variant-topic
+    configKey: INDEX
+    indexes:
+    - name: liberia-product-variant-index-v1
+      type: product-variant
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: liberia-save-product-topic
+    configKey: INDEX
+    indexes:
+    - name: liberia-product-index-v1
+      type: product
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: liberia-update-product-topic
+    configKey: INDEX
+    indexes:
+    - name: liberia-product-index-v1
+      type: product
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: liberia-update-product-variant-topic
+    configKey: INDEX
+    indexes:
+    - name: liberia-product-variant-index-v1
+      type: product-variant-update
+      id: $.id
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime

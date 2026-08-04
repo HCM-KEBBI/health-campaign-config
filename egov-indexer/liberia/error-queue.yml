@@ -1,0 +1,21 @@
+ServiceMaps:
+  serviceName: Tracer
+  version: 1.0.0
+  mappings:
+  - topic: liberia-tracer-error-queue-index
+    configKey: INDEX
+    indexes:
+    - name: liberia-egovtracer
+      type: errors
+      id: $.id
+      isBulk: false
+      timeStampField: $.ts
+  - topic: liberia-tracer-error-queue-reindex
+    configKey: REINDEX
+    indexes:
+    - name: liberia-egovtracerreindex
+      type: errors
+      id: $.id
+      isBulk: true
+      jsonPath: $.hits
+      timeStampField: $.ts
