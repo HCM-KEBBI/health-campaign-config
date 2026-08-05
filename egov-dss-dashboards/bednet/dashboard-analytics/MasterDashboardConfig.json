@@ -14158,7 +14158,7 @@
                   "name": "DSS_HEALTH_HOUSEHOLDS_REDEEMED_ITNS_MAP",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-redeemed-itns-map",
+                  "pageName": "bednet-households-itns-delivered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15136,7 +15136,7 @@
                   "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP_DISTRICT",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-registered-map-district",
+                  "pageName": "bednet-households-registered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15162,7 +15162,7 @@
                   "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP_DISTRICT",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-redeemed-itns-map-district",
+                  "pageName": "bednet-households-itns-delivered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
