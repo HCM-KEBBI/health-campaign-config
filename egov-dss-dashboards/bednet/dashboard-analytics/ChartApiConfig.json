@@ -68880,7 +68880,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered ITNs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered ITNs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
       }
     ],
     "chartType": "metric",
@@ -68902,7 +68902,7 @@
         "dateRefField": "Data.createdTime",
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
       },
       {
         "module": "COMMON",
