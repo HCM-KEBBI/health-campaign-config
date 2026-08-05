@@ -14129,7 +14129,7 @@
               "charts": [
                 {
                   "id": "householdsRegisteredMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bednet-households-registered-map",
@@ -14155,7 +14155,7 @@
               "charts": [
                 {
                   "id": "householdsRedeemedITNSMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REDEEMED_ITNS_MAP",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_ITNS_DELIVERED",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bednet-households-itns-delivered-map",
@@ -14594,6 +14594,32 @@
                   "name": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
                   "code": "",
                   "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "vizArray": [
+            {
+              "id": 265,
+              "name": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "label": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByDistrictBednetsICCD",
+                  "name": "CUSTOM_ITN_SUMMARY_REPORT",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-summary-report",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
@@ -15133,7 +15159,7 @@
               "charts": [
                 {
                   "id": "householdsRegisteredMapBednetsICCDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP_DISTRICT",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bednet-households-registered-map",
@@ -15159,7 +15185,7 @@
               "charts": [
                 {
                   "id": "householdsRedeemedITNsMapBednetsICCDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP_DISTRICT",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_ITNS_DELIVERED",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bednet-households-itns-delivered-map",
@@ -15502,6 +15528,32 @@
                   "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
                   "code": "",
                   "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "vizArray": [
+            {
+              "id": 265,
+              "name": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "label": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByDistrictBednetsICCD",
+                  "name": "CUSTOM_ITN_SUMMARY_REPORT",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-summary-report",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
