@@ -13362,7 +13362,7 @@
       ]
     },
     {
-      "name": "DSS_HEALTH_NATIONAL_DASHBOARD_LLIN_ICCD_HEADING",
+      "name": "DSS_HEALTH_NATIONAL_DASHBOARD_BEDNET_HEADING",
       "id": "national-health-dashboard-bednets-iccd",
       "isActive": "",
       "style": "linear",
@@ -13375,12 +13375,12 @@
               "id": 101,
               "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
               "label": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
-              "vizType": "metric-collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalHouseholdsRegisteredBednetsICCD",
+                  "id": "nationalHouseholdsRegisteredSMC",
                   "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "chartType": "metric",
@@ -13388,7 +13388,7 @@
                   "headers": []
                 },
                 {
-                  "id": "nationalHouseholdRegisteredCoverageBednetsICCD",
+                  "id": "nationalHouseholdRegisteredCoverageSMC",
                   "name": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
                   "code": "",
                   "chartType": "metric",
@@ -13401,12 +13401,12 @@
               "id": 102,
               "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
               "label": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
-              "vizType": "metric-collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalPopulationRegisteredBednetsICCD",
+                  "id": "nationalPopulationRegisteredSMC",
                   "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_REGISTERED",
                   "code": "",
                   "chartType": "metric",
@@ -13414,7 +13414,7 @@
                   "headers": []
                 },
                 {
-                  "id": "nationalPopulationRegisteredCoverageBednetsICCD",
+                  "id": "nationalPopulationRegisteredCoverageSMC",
                   "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED_COVERAGE_PERCENT",
                   "code": "",
                   "chartType": "metric",
@@ -13430,15 +13430,41 @@
           "name": "DSS_NATIONAL_HEALTH_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 104,
-              "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "label": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "vizType": "metric-collection",
+              "id": 103,
+              "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
+              "label": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalPopulationCoveredITNsBednetsICCD",
+                  "id": "nationalVouchersScannedSMC",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_VOUCHERS_SCANNED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "nationalVouchersScannedCoverageSMC",
+                  "name": "DSS_HEALTH_NATIONAL_VOUCHERS_SCANNED_COVERAGE_PERCENT",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 104,
+              "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
+              "label": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "nationalPopulationCoveredITNsSMC",
                   "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED_ITNS",
                   "code": "",
                   "chartType": "metric",
@@ -13446,7 +13472,7 @@
                   "headers": []
                 },
                 {
-                  "id": "nationalPopulationCoverageDistributionBednetsICCD",
+                  "id": "nationalPopulationCoverageDistributionSMC",
                   "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERAGE_DISTRIBUTION_PERCENT",
                   "code": "",
                   "chartType": "metric",
@@ -13470,7 +13496,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalComplaintsByStatusBednetsICCD",
+                  "id": "nationalComplaintsByStatusSMC",
                   "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
                   "code": "",
                   "chartType": "donut",
@@ -13488,7 +13514,7 @@
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalComplaintsByTypeBednetsICCD",
+                  "id": "nationalComplaintsByTypeSMC",
                   "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
@@ -13507,12 +13533,12 @@
               "id": 301,
               "name": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
               "label": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
-              "vizType": "metric-collection",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalUsersCreatedBednetsICCD",
+                  "id": "nationalUsersCreatedSMC",
                   "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_CREATED",
                   "code": "",
                   "chartType": "metric",
@@ -13520,7 +13546,7 @@
                   "headers": []
                 },
                 {
-                  "id": "nationalUsersSyncedBednetsICCD",
+                  "id": "nationalUsersSyncedSMC",
                   "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED",
                   "code": "",
                   "chartType": "metric",
@@ -13528,8 +13554,26 @@
                   "headers": []
                 },
                 {
-                  "id": "nationalUsersSyncedPercentBednetsICCD",
+                  "id": "nationalUsersSyncedPercentSMC",
                   "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED_PERCENT",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 302,
+              "name": "DSS_HEALTH_NATIONAL_CHECKLISTS_FILLED",
+              "label": "DSS_HEALTH_NATIONAL_CHECKLISTS_FILLED",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "nationalChecklistsFilledSMC",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_CHECKLISTS_FILLED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -13547,7 +13591,7 @@
               "id": 401,
               "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
               "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "vizType": "chart",
+              "vizType": "stacked-table",
               "noUnit": true,
               "isCollapsible": false,
               "ref": {
@@ -13557,7 +13601,7 @@
               },
               "charts": [
                 {
-                  "id": "nationalSummaryByLGABednetsICCD",
+                  "id": "nationalSummaryByLGASMC",
                   "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
                   "code": "",
                   "chartType": "table",
@@ -13570,28 +13614,67 @@
         },
         {
           "row": 6,
-          "name": "DSS_NATIONAL_HEALTH_SUMMARY_TABLE",
+          "name": "DSS_HEALTH_REGISTRATION_ADMINISTRATION",
           "vizArray": [
             {
-              "id": 401,
-              "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "vizType": "stacked-table",
+              "id": 319,
+              "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
-              "ref": {
-                "url": "provincial-health-dashboard-bednets-iccd",
-                "logoUrl": "",
-                "type": "internal"
-              },
               "charts": [
                 {
-                  "id": "nationalSummaryByLGABednetsICCDPartA",
-                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+                  "id": "actualVsPlannedHouseholdLineGraphProvinceSMC",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_PROVINCE",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "Household",
+                  "headers": []
+                },
+                {
+                  "id": "actualVsPlannedPopulationLineGraphProvinceSMC",
+                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_PROVINCE",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "tabName": "CHILDREN",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_REGISTRATION_ADMINISTRATION",
+          "vizArray": [
+            {
+              "id": 216,
+              "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
+              "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByDistrictSMC",
+                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "BOUNDARY"
+                },
+                {
+                  "id": "summaryByDistrictDaySMC",
+                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "DAYWISE"
                 }
               ]
             }
