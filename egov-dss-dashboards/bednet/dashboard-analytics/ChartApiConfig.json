@@ -3471,7 +3471,7 @@
   "drillChart": "none",
   "documentType": "_doc",
   "action": "",
-  "plotLabel": "State",
+  "plotLabel": "Provinces",
   "excludedColumns": [
     "Total Households Registered",
     "People Living in Registered",
@@ -3509,87 +3509,10 @@
     },
     {
       "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["Total DPs"],
-      "newField": "Total_Number_of_DPs",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["Total Households Registered"],
-      "newField": "Active_HHM",
-      "_comments": "Active HHM (Households Mobilized)"
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["Total ITNs Assigned"],
-      "newField": "Total_ITNs_Assigned",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
       "actionName": "PercentageComputedField",
       "fields": ["Total Households Registered", "Overall Target"],
       "newField": "Percentage_Household_Coverage",
       "_comments": "Percentage Household Coverage = (Households Registered / Target Households) * 100"
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["Total ITNs Assigned"],
-      "newField": "ITNs_Positioned",
-      "_comments": "ITNs Positioned (same as ITNs Assigned)"
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["HH Redeemed"],
-      "newField": "HH_Redeemed",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["People in Redeemed HHs"],
-      "newField": "Number_of_People_in_Redeemed_HHs",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "PercentageComputedField",
-      "fields": ["ITNs Distributed", "HH Redeemed"],
-      "newField": "Avg_Net_Per_Distribution",
-      "_comments": "Avg. Net Per Distribution = No of ITNs Distributed / No of HHs Redeemed"
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["Total DPs"],
-      "newField": "Total_DPs",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": ["Active DPs Count"],
-      "newField": "Active_DPs",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "PercentageComputedField",
-      "fields": ["HH Redeemed", "Total Households Registered"],
-      "newField": "Percentage_Redemption_Rate",
-      "_comments": "Percentage Redemption Rate = (Tokens Redeemed / HHs Mobilized) * 100"
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "PercentageComputedField",
-      "fields": ["ITNs Distributed", "Total ITNs Assigned"],
-      "newField": "Percentage_Distribution_Rate",
-      "_comments": "Percentage Distribution Rate = (ITNs Distributed / Nets Assigned) * 100"
     }
   ],
   "insight": {},
