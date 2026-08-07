@@ -3193,6 +3193,27 @@
   "insight": {},
   "_comment": "Household Registered Coverage % = (Households Registered / Target Households) * 100"
 },
+"nationalHouseholdTargetBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_HOUSEHOLD_TARGET",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Household Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Household Target"
+  ],
+  "insight": {}
+},
 "nationalPopulationRegisteredBednetsICCD": {
   "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_REGISTERED",
   "queries": [
@@ -3246,6 +3267,27 @@
   "insight": {},
   "_comment": "Population Registered Coverage % = (Population Registered / Target Population) * 100"
 },
+"nationalPopulationTargetBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_POPULATION_TARGET",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Population Target"
+  ],
+  "insight": {}
+},
 "nationalPopulationCoveredITNsBednetsICCD": {
   "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED_ITNS",
   "queries": [
@@ -3298,6 +3340,27 @@
   "postAggregationTheory": "",
   "insight": {},
   "_comment": "Population Coverage during Distribution % = (Population Covered under ITNs / Target Population) * 100"
+},
+"nationalITNTargetBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_ITN_TARGET",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"ITN Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "ITN Target"
+  ],
+  "insight": {}
 },
 "nationalComplaintsByStatusBednetsICCD": {
   "chartName": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
