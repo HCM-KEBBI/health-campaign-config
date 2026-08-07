@@ -3140,6 +3140,531 @@
     "insight": {},
     "_comment": " "
   },
+"nationalHouseholdsRegisteredBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.household.auditDetails.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-household-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Households Registered"
+  ],
+  "insight": {},
+  "_comment": "Total number of households registered at national level"
+},
+"nationalHouseholdRegisteredCoverageBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.household.auditDetails.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-household-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Households Registered",
+    "Overall target"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Household Registered Coverage % = (Households Registered / Target Households) * 100"
+},
+"nationalPopulationRegisteredBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_REGISTERED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.household.auditDetails.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-household-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Population Registered"
+  ],
+  "insight": {},
+  "_comment": "Total population registered (sum of memberCount from households)"
+},
+"nationalPopulationRegisteredCoverageBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED_COVERAGE_PERCENT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.household.auditDetails.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-household-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Population Registered",
+    "Overall target"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Population Registered Coverage % = (Population Registered / Target Population) * 100"
+},
+"nationalPopulationCoveredITNsBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED_ITNS",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered ITNs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Population Covered ITNs"
+  ],
+  "insight": {},
+  "_comment": "Total population covered under ITNs (sum of memberCount from delivered households)"
+},
+"nationalPopulationCoverageDistributionBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERAGE_DISTRIBUTION_PERCENT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Population Covered",
+    "Overall target"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Population Coverage during Distribution % = (Population Covered under ITNs / Target Population) * 100"
+},
+"nationalComplaintsByStatusBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-transformer-pgr-services",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
+    }
+  ],
+  "chartType": "pie",
+  "valueType": "number",
+  "showLabel": true,
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Complaints Status"
+  ],
+  "insight": {},
+  "_comment": "Complaints by status at national level"
+},
+"nationalComplaintsByTypeBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.service.auditDetails.lastModifiedTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-transformer-pgr-services",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus\":[\"\"]}}]}},\"aggs\":{\"Complaints Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\",\"size\":50},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
+    }
+  ],
+  "chartType": "pie",
+  "valueType": "number",
+  "showLabel": true,
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Complaints Type"
+  ],
+  "insight": {},
+  "_comment": "Complaints by type at national level"
+},
+"nationalUsersCreatedBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_USERS_CREATED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Created\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Users Created"
+  ],
+  "insight": {},
+  "_comment": "Total users created across all user roles at national level"
+},
+"nationalUsersSyncedBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Users Synced"
+  ],
+  "insight": {},
+  "_comment": "Total users synced across all user roles at national level"
+},
+"nationalUsersSyncedPercentBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED_PERCENT",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Users Synced",
+    "Total Users"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Total users synced (%) = (Users Synced / Total Users Created) * 100"
+},
+"nationalSummaryByStateBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-household-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"State Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Target Households\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Distribution Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"HH Redeemed\":{\"value_count\":{\"field\":\"Data.id.keyword\"}},\"ITNs Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}},\"People in Redeemed HHs\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-staff-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"DPs Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-user-sync-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"Active DPs\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Active DPs Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"ITNs Assigned\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    }
+  ],
+  "chartType": "table",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "State",
+  "excludedColumns": [
+    "Total Households Registered",
+    "People Living in Registered",
+    "Overall Target",
+    "HH Redeemed",
+    "ITNs Distributed",
+    "People in Redeemed HHs",
+    "Total DPs",
+    "Active DPs Count",
+    "Total ITNs Assigned"
+  ],
+  "hideInsights": true,
+  "hideHeaderDenomination": true,
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Overall Target"],
+      "newField": "Target_Households",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["People Living in Registered"],
+      "newField": "People_Living_in_Registered",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": ["People Living in Registered", "Total Households Registered"],
+      "newField": "Avg_Household_Size",
+      "_comments": "Avg. Household Size = People Living in Registered / Total Households Registered"
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Total DPs"],
+      "newField": "Total_Number_of_DPs",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Total Households Registered"],
+      "newField": "Active_HHM",
+      "_comments": "Active HHM (Households Mobilized)"
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Total ITNs Assigned"],
+      "newField": "Total_ITNs_Assigned",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": ["Total Households Registered", "Overall Target"],
+      "newField": "Percentage_Household_Coverage",
+      "_comments": "Percentage Household Coverage = (Households Registered / Target Households) * 100"
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Total ITNs Assigned"],
+      "newField": "ITNs_Positioned",
+      "_comments": "ITNs Positioned (same as ITNs Assigned)"
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["HH Redeemed"],
+      "newField": "HH_Redeemed",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["People in Redeemed HHs"],
+      "newField": "Number_of_People_in_Redeemed_HHs",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": ["ITNs Distributed", "HH Redeemed"],
+      "newField": "Avg_Net_Per_Distribution",
+      "_comments": "Avg. Net Per Distribution = No of ITNs Distributed / No of HHs Redeemed"
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Total DPs"],
+      "newField": "Total_DPs",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "AdditiveComputedField",
+      "fields": ["Active DPs Count"],
+      "newField": "Active_DPs",
+      "_comments": ""
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": ["HH Redeemed", "Total Households Registered"],
+      "newField": "Percentage_Redemption_Rate",
+      "_comments": "Percentage Redemption Rate = (Tokens Redeemed / HHs Mobilized) * 100"
+    },
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": ["ITNs Distributed", "Total ITNs Assigned"],
+      "newField": "Percentage_Distribution_Rate",
+      "_comments": "Percentage Distribution Rate = (ITNs Distributed / Nets Assigned) * 100"
+    }
+  ],
+  "insight": {},
+  "_comment": "National summary table by State"
+},
+"actualVsPlannedHouseholdLineGraphProvinceBednetsICCD": {
+  "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+      "indexName": "bednet-household-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"exists\":{\"field\":\"Data.household.id.keyword\"}},\"aggs\":{\"Household Distribution\":{\"date_histogram\":{\"field\":\"Data.household.auditDetails.createdTime\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Day wise distributions\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Household Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\"},\"aggs\":{\"Target Household\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "isCumulative": true,
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "predictionPath": "Household Target",
+  "distributionPath": "Household Distribution",
+  "cappedTarget": "Overall Target",
+  "showPercentageValue": true,
+  "aggregationPaths": [
+    "Household Target",
+    "Household Distribution"
+  ],
+  "insight": {},
+  "_comment": " "
+},
+"actualVsPlannedPopulationLineGraphProvinceBednetsICCD": {
+  "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_PROVINCE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"ADMINISTRATION_SUCCESS\"}}]}},\"aggs\":{\"Population Distribution\":{\"date_histogram\":{\"field\":\"Data.createdTime\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Population distributed\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.projectBeneficiaryClientReferenceId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName] != null) \\nstate.list.add(doc[params.fieldName].value);\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); \\n        int count = 0;\\n        for(shardList in states) {\\n          if(shardList != null) { \\n            for(key in shardList) {\\n              if(!uniqueValueMap.containsKey(key)) {\\n                count +=1;\\n                uniqueValueMap.put(key, key);\\n              }\\n            }\\n          }\\n        } \\n        return count;\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Population Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\"},\"aggs\":{\"Target\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "isCumulative": true,
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "predictionPath": "Population Target",
+  "distributionPath": "Population Distribution",
+  "cappedTarget": "Overall Target",
+  "showPercentageValue": true,
+  "aggregationPaths": [
+    "Population Target",
+    "Population Distribution"
+  ],
+  "insight": {},
+  "_comment": " "
+},
   "checklistCompletionRateAllSupervisorsApSMC": {
     "chartName": "DSS_HEALTH_ALL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE_AP",
     "queries": [
@@ -44407,41 +44932,6 @@
     "insight": {},
     "_comment": " "
   },
-  "actualVsPlannedHouseholdLineGraphProvinceBednetsICCD": {
-    "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"productVariant\":\"Data.productVariant.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Household Distribution\":{\"date_histogram\":{\"field\":\"Data.createdTime\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Day wise distributions\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"productVariant\":\"Data.productVariant.keyword\"}",
-        "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectBeneficiaryType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Household Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Target Household\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": true,
-    "valueType": "percentage",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "predictionPath": "Household Target",
-    "distributionPath": "Household Distribution",
-    "cappedTarget": "Overall Target",
-    "showPercentageValue": true,
-    "aggregationPaths": [
-      "Household Target",
-      "Household Distribution"
-    ],
-    "insight": {},
-    "_comment": "State level actual vs planned household distribution graph"
-  },
   "actualVsPlannedPopulationLineGraphDistrictBednetsICCD": {
     "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_DISTRICT",
     "queries": [
@@ -44458,41 +44948,6 @@
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Population Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\"},\"aggs\":{\"Target\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
-      }
-    ],
-    "chartType": "line",
-    "isCumulative": true,
-    "valueType": "percentage",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "predictionPath": "Population Target",
-    "distributionPath": "Population Distribution",
-    "cappedTarget": "Overall Target",
-    "showPercentageValue": true,
-    "aggregationPaths": [
-      "Population Target",
-      "Population Distribution"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "actualVsPlannedPopulationLineGraphProvinceBednetsICCD": {
-    "chartName": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Population Distribution\":{\"date_histogram\":{\"field\":\"Data.createdTime\",\"calendar_interval\":\"day\",\"min_doc_count\":1},\"aggs\":{\"Day wise distributions\":{\"sum\":{\"field\":\"Data.quantity\"}},\"Population distributed\":{\"bucket_script\":{\"buckets_path\":{\"target\":\"Day wise distributions\"},\"script\":\"params.target*1.8\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"chartSpecificProperty\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"startDate\":{\"terms\":{\"field\":\"Data.startDate\"}},\"endDate\":{\"terms\":{\"field\":\"Data.endDate\"}},\"Population Target\":{\"date_histogram\":{\"field\":\"Data.startDate\",\"calendar_interval\":\"day\"},\"aggs\":{\"Target\":{\"sum\":{\"field\":\"Data.targetPerDay\"}}}},\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
       }
     ],
     "chartType": "line",
@@ -68713,112 +69168,6 @@
     "insight": {},
     "_comment": "National summary table by LGA with all required columns"
   },
-  "nationalHouseholdsRegisteredBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.household.auditDetails.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Households Registered"
-    ],
-    "insight": {},
-    "_comment": "Total number of households registered at national level"
-  },
-  "nationalHouseholdRegisteredCoverageBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.household.auditDetails.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "percentage",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "percentage",
-    "aggregationPaths": [
-      "Households Registered",
-      "Overall target"
-    ],
-    "postAggregationTheory": "",
-    "insight": {},
-    "_comment": "Household Registered Coverage % = (Households Registered / Target Households) * 100"
-  },
-  "nationalPopulationRegisteredBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_REGISTERED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.household.auditDetails.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Population Registered"
-    ],
-    "insight": {},
-    "_comment": "Total population registered (sum of memberCount from households)"
-  },
-  "nationalPopulationRegisteredCoverageBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED_COVERAGE_PERCENT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.household.auditDetails.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-household-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "percentage",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "percentage",
-    "aggregationPaths": [
-      "Population Registered",
-      "Overall target"
-    ],
-    "postAggregationTheory": "",
-    "insight": {},
-    "_comment": "Population Registered Coverage % = (Population Registered / Target Population) * 100"
-  },
   "nationalVouchersScannedBednetsICCD": {
     "chartName": "DSS_HEALTH_NATIONAL_TOTAL_VOUCHERS_SCANNED",
     "queries": [
@@ -68871,180 +69220,6 @@
     "postAggregationTheory": "",
     "insight": {},
     "_comment": "Vouchers Scanned % = (Vouchers Scanned / Total Registered Households) * 100"
-  },
-  "nationalPopulationCoveredITNsBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED_ITNS",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered ITNs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Population Covered ITNs"
-    ],
-    "insight": {},
-    "_comment": "Total population covered under ITNs (sum of memberCount from delivered households)"
-  },
-  "nationalPopulationCoverageDistributionBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_POPULATION_COVERAGE_DISTRIBUTION_PERCENT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "percentage",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "percentage",
-    "aggregationPaths": [
-      "Population Covered",
-      "Overall target"
-    ],
-    "postAggregationTheory": "",
-    "insight": {},
-    "_comment": "Population Coverage during Distribution % = (Population Covered under ITNs / Target Population) * 100"
-  },
-  "nationalComplaintsByStatusBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
-      }
-    ],
-    "chartType": "pie",
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Complaints Status"
-    ],
-    "insight": {},
-    "_comment": "Complaints by status at national level"
-  },
-  "nationalComplaintsByTypeBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus\":[\"\"]}}]}},\"aggs\":{\"Complaints Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\",\"size\":50},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
-      }
-    ],
-    "chartType": "pie",
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Complaints Type"
-    ],
-    "insight": {},
-    "_comment": "Complaints by type at national level"
-  },
-  "nationalUsersCreatedBednetsICCD": {
-    "chartName": "DSS HEALTH NATIONAL TOTAL USERS CREATED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Created\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Users Created"
-    ],
-    "insight": {},
-    "_comment": "Total users created across all user roles at national level"
-  },
-  "nationalUsersSyncedBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "Users Synced"
-    ],
-    "insight": {},
-    "_comment": "Total users synced across all user roles at national level"
-  },
-  "nationalUsersSyncedPercentBednetsICCD": {
-    "chartName": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED_PERCENT",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "",
-        "indexName": "bednet-user-sync-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.country.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "",
-        "indexName": "bednet-project-staff-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
-      }
-    ],
-    "chartType": "metric",
-    "valueType": "percentage",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "percentage",
-    "aggregationPaths": [
-      "Users Synced",
-      "Total Users"
-    ],
-    "postAggregationTheory": "",
-    "insight": {},
-    "_comment": "Total users synced (%) = (Users Synced / Total Users Created) * 100"
   },
   "nationalChecklistsFilledBednetsICCD": {
     "chartName": "DSS_HEALTH_NATIONAL_TOTAL_CHECKLISTS_FILLED",
