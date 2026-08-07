@@ -13459,6 +13459,48 @@
         },
         {
           "row": 3,
+          "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
+          "vizArray": [
+            {
+              "id": 707,
+              "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
+              "label": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "populationCoverageHeatMapNationalBednetsICCD",
+                  "name": "DSS_HEALTH_POPULATION_COVERAGE_NATIONAL_HEATMAP_BEDNETS_ICCD",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 708,
+              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP",
+              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP",
+              "vizType": "heatmap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "householdCoverageHeatMapNationalBednetsICCD",
+                  "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP_NATIONAL_BEDNETS_ICCD",
+                  "code": "",
+                  "chartType": "heatmap",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
           "name": "DSS_NATIONAL_HEALTH_COMPLAINTS",
           "vizArray": [
             {
@@ -13500,7 +13542,7 @@
           ]
         },
         {
-          "row": 4,
+          "row": 5,
           "name": "DSS_NATIONAL_HEALTH_USER_MANAGEMENT",
           "vizArray": [
             {
@@ -13540,7 +13582,7 @@
           ]
         },
         {
-          "row": 5,
+          "row": 6,
           "name": "DSS_NATIONAL_HEALTH_SUMMARY_TABLE",
           "vizArray": [
             {
@@ -13569,7 +13611,7 @@
           ]
         },
         {
-          "row": 6,
+          "row": 7,
           "name": "DSS_HEALTH_REGISTRATION_ADMINISTRATION",
           "vizArray": [
             {
