@@ -13545,8 +13545,8 @@
           "vizArray": [
             {
               "id": 401,
-              "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
-              "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+              "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
+              "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
               "vizType": "stacked-table",
               "noUnit": true,
               "isCollapsible": false,
@@ -13557,8 +13557,8 @@
               },
               "charts": [
                 {
-                  "id": "nationalSummaryByLGASMC",
-                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_LGA",
+                  "id": "nationalSummaryByStateBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
