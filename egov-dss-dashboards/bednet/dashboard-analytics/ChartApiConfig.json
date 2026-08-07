@@ -3665,6 +3665,240 @@
   "insight": {},
   "_comment": " "
 },
+"populationCoverageHeatMapNationalBednetsICCD": {
+  "chartName": "DSS_HEALTH_POPULATION_COVERAGE_NATIONAL_HEATMAP_BEDNETS_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Population Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Total Population Covered\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"total_count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "populationCoverageHeatMapProvinceBednetsICCDNational",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "State",
+  "excludedColumns": [
+    "S.N.",
+    "Target for daterange"
+  ],
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "total_count",
+        "target"
+      ],
+      "newField": "percentage_value",
+      "_comments": ""
+    }
+  ],
+  "insight": {},
+  "hideInsights": false,
+  "hideHeaderDenomination": true,
+  "_comment": "National population coverage heatmap for Bednets",
+  "kind": "drillDown"
+},
+"populationCoverageHeatMapProvinceBednetsICCDNational": {
+  "kind": "drillDown",
+  "chartName": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_STATE_BEDNETS_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}]}},\"aggs\":{\"Population Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Total Population Covered\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"total_count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "populationCoverageHeatMapDistrictBednetsICCD",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "LGA",
+  "excludedColumns": [
+    "S.N.",
+    "Target for daterange"
+  ],
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "total_count",
+        "target"
+      ],
+      "newField": "percentage_value",
+      "_comments": "Population Coverage % = (Population Covered / Target Population) × 100"
+    }
+  ],
+  "insight": {},
+  "hideInsights": false,
+  "hideHeaderDenomination": true,
+  "_comment": "State drill-down Population Coverage Heatmap for Bednets"
+},
+"householdCoverageHeatMapNationalBednetsICCD": {
+  "chartName": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP_NATIONAL_BEDNETS_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Household Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Households Covered\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"householdsCovered\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "householdCoverageHeatMapProvinceBednetsICCDNational",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "State",
+  "excludedColumns": [
+    "S.N.",
+    "Target for daterange"
+  ],
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "householdsCovered",
+        "target"
+      ],
+      "newField": "percentage_value",
+      "_comments": "Household Coverage %"
+    }
+  ],
+  "insight": {},
+  "hideInsights": false,
+  "hideHeaderDenomination": true,
+  "_comment": "National Household Coverage Heatmap for Bednets",
+  "kind": "drillDown"
+},
+"householdCoverageHeatMapProvinceBednetsICCDNational": {
+  "chartName": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP_STATE_BEDNETS_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}]}},\"aggs\":{\"Household Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Households Covered\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"householdsCovered\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "householdCoverageHeatMapDistrictBednetsICCD",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "LGA",
+  "excludedColumns": [
+    "S.N.",
+    "Target for daterange"
+  ],
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "householdsCovered",
+        "target"
+      ],
+      "newField": "percentage_value",
+      "_comments": "Household Coverage %"
+    }
+  ],
+  "insight": {},
+  "hideInsights": false,
+  "hideHeaderDenomination": true,
+  "_comment": "State drill-down Household Coverage Heatmap for Bednets",
+  "kind": "drillDown"
+},
+"householdCoverageHeatMapDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP_WARD_BEDNETS_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Distribution Hub.keyword\"}}]}},\"aggs\":{\"Household Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTER\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Households Covered\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"householdsCovered\":{\"value_count\":{\"field\":\"Data.householdId.keyword\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "Ward",
+  "excludedColumns": [
+    "S.N.",
+    "Target for daterange"
+  ],
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "householdsCovered",
+        "target"
+      ],
+      "newField": "percentage_value",
+      "_comments": "Household Coverage % = (Households Covered / Target Households) × 100"
+    }
+  ],
+  "insight": {},
+  "hideInsights": false,
+  "hideHeaderDenomination": true,
+  "_comment": "Ward-level Household Coverage Heatmap for Bednets"
+},
   "checklistCompletionRateAllSupervisorsApSMC": {
     "chartName": "DSS_HEALTH_ALL_SUPERVISORS_CHECKLISTS_COMPLETION_RATE_AP",
     "queries": [
@@ -47932,61 +48166,53 @@
     "insight": {},
     "_comment": "Total people living in redeemed households"
   },
-  "populationCoverageHeatMapDistrictBednetsICCD": {
-    "chartName": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "bednet-project-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\"}}]}},\"aggs\":{\"Population Target\":{\"terms\":{\"size\":500,\"order\":{\"_key\":\"asc\"},\"field\":\"Data.boundaryHierarchy.Ward.keyword\"},\"aggs\":{\"Overall Population target\":{\"sum\":{\"field\":\"Data.overallTarget\"}},\"target\":{\"sum\":{\"field\":\"Data.targetPerDay\"}},\"Target for daterange\":{\"bucket_script\":{\"buckets_path\":{\"SUM\":\"target\"},\"script\":\"(params.SUM) * 365\"}}}}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Total Population covered\":{\"terms\":{\"size\":500,\"order\":{\"_key\":\"asc\"},\"field\":\"Data.boundaryHierarchy.Ward.keyword\"},\"aggs\":{\"Quantity\":{\"sum\":{\"field\":\"Data.quantity\"}},\"total_count\":{\"bucket_script\":{\"buckets_path\":{\"target\":\"Quantity\"},\"script\":\"params.target * 1.8\"}}}}}}}}"
-      }
-    ],
-    "filterKeys": [],
-    "chartType": "table",
-    "valueType": "number",
-    "drillChart": "none",
-    "documentType": "_doc",
-    "action": "",
-    "plotLabel": "Districts",
-    "excludedColumns": [
-      "S.N.",
-      "Target for daterange"
-    ],
-    "computedFields": [
-      {
-        "postAggregationTheory": "",
-        "actionName": "AdditiveComputedField",
-        "fields": [
-          "Overall Population target"
-        ],
-        "newField": "Population Target",
-        "_comments": ""
-      },
-      {
-        "postAggregationTheory": "",
-        "actionName": "PercentageComputedField",
-        "fields": [
-          "total_count",
-          "Population Target"
-        ],
-        "newField": "percentage_value",
-        "_comments": ""
-      }
-    ],
-    "insight": {},
-    "hideInsights": false,
-    "hideHeaderDenomination": true,
-    "_comment": " "
-  },
+"populationCoverageHeatMapDistrictBednetsICCD": {
+  "kind": "drillDown",
+  "chartName": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_WARD_BEDNETS_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Community.keyword\"}}]}},\"aggs\":{\"Population Target\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Total Population Covered\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"total_count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}}}"
+    }
+  ],
+  "filterKeys": [],
+  "chartType": "xtable",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "plotLabel": "Ward",
+  "excludedColumns": [
+    "S.N.",
+    "Target for daterange"
+  ],
+  "computedFields": [
+    {
+      "postAggregationTheory": "",
+      "actionName": "PercentageComputedField",
+      "fields": [
+        "total_count",
+        "target"
+      ],
+      "newField": "percentage_value",
+      "_comments": "Population Coverage %"
+    }
+  ],
+  "insight": {},
+  "hideInsights": false,
+  "hideHeaderDenomination": true,
+  "_comment": "Ward drill-down Population Coverage Heatmap for Bednets"
+},
   "populationCoverageHeatMapBednetsICCD": {
     "chartName": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
     "queries": [
