@@ -3498,7 +3498,7 @@
       "dateRefField": "",
       "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
       "indexName": "bednet-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Target Households\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Target Households\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
     },
     {
       "module": "COMMON",
@@ -3526,14 +3526,7 @@
       "dateRefField": "",
       "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
       "indexName": "bednet-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"ITNs Assigned\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
-    },
-    {
-      "module": "COMMON",
-      "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
-      "indexName": "bednet-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Project Start and End Dates\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Start Date\":{\"min\":{\"field\":\"Data.startDate\"}},\"End Date\":{\"max\":{\"field\":\"Data.endDate\"}}}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"ITNs Assigned\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
     }
   ],
   "chartType": "xtable",
@@ -3551,9 +3544,7 @@
     "People in Redeemed HHs",
     "Total DPs",
     "Active DPs Count",
-    "Total ITNs Assigned",
-    "startDate",
-    "endDate"
+    "Total ITNs Assigned"
   ],
   "hideInsights": true,
   "hideHeaderDenomination": true,
@@ -3585,24 +3576,6 @@
       "fields": ["Total Households Registered", "Overall Target"],
       "newField": "Percentage_Household_Coverage",
       "_comments": "Percentage Household Coverage = (Households Registered / Target Households) * 100"
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": [
-        "Start Date"
-      ],
-      "newField": "startDate",
-      "_comments": ""
-    },
-    {
-      "postAggregationTheory": "",
-      "actionName": "AdditiveComputedField",
-      "fields": [
-        "End Date"
-      ],
-      "newField": "endDate",
-      "_comments": ""
     }
   ],
   "insight": {},
