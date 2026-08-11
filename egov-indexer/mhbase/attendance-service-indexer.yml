@@ -1,0 +1,64 @@
+ServiceMaps:
+  serviceName: attendance-service
+  version: 1.0.0
+  mappings:
+    - topic: mhbase-transformer-producer-attendee-index
+      configKey: INDEX
+      indexes:
+        - name: mhbase-attendee-index-v1
+          type: attendee
+          id: $.attendee.id
+          isBulk: true
+          jsonPath: $.*
+          customJsonMapping:
+            indexMapping:
+              Data: {}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.attendee.auditDetails.createdTime
+    - topic: mhbase-transformer-producer-attendance-staff-index
+      configKey: INDEX
+      indexes:
+        - name: mhbase-staff-index-v1
+          type: staff
+          id: $.staff.id
+          isBulk: true
+          jsonPath: $.*
+          customJsonMapping:
+            indexMapping:
+              Data: {}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.staff.auditDetails.createdTime
+    - topic: mhbase-transformer-save-attendance-register
+      configKey: INDEX
+      indexes:
+        - name: mhbase-transformed-attendance-register-index-v1
+          type: attendance-register
+          id: $.attendanceRegister.id
+          isBulk: true
+          jsonPath: $.*
+          customJsonMapping:
+            indexMapping:
+              Data: {}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.attendanceRegister.auditDetails.lastModifiedTime
+    - topic: mhbase-transformer-save-attendance-log
+      configKey: INDEX
+      indexes:
+        - name: mhbase-attendance-log-index-v1
+          type: attendance-log
+          id: $.attendanceLog.id
+          isBulk: true
+          jsonPath: $.*
+          customJsonMapping:
+            indexMapping:
+              Data: {}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.attendanceLog.auditDetails.lastModifiedTime

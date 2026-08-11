@@ -1,0 +1,22 @@
+ServiceMaps:
+  serviceName: Uploader
+  version: 1.0.0
+  mappings:
+    - topic: mhbase-save-upload-jobs
+      configKey: INDEX
+      indexes:
+        - name: mhbase-uploaderindex-v1
+          type: jobs
+          id: $.code
+          isBulk: false
+          jsonPath: $.UploadJob
+          timeStampField: $.auditDetails.createdTime
+    - topic: mhbase-update-upload-jobs
+      configKey: INDEX
+      indexes:
+        - name: mhbase-uploaderindex-v1
+          type: jobs
+          id: $.code
+          isBulk: false
+          jsonPath: $.UploadJob
+          timeStampField: $.auditDetails.createdTime

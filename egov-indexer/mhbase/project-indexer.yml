@@ -1,0 +1,100 @@
+ServiceMaps:
+  serviceName: Project Service
+  version: 1.0.0
+  mappings:
+    - topic: mhbase-transformer-producer-bulk-project-index-v1-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-index-v1
+          type: projects
+          id: $.id
+          isBulk: true
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data: {}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.lastModifiedTime
+    - topic: mhbase-save-project-beneficiary-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-beneficiary-index-v1
+          type: project-beneficiary
+          id: $.clientReferenceId,$.beneficiaryClientReferenceId,$.tenantId
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+    - topic: mhbase-update-project-beneficiary-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-beneficiary-index-v1
+          type: project-beneficiary
+          id: $.clientReferenceId,$.beneficiaryClientReferenceId,$.tenantId
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: mhbase-delete-project-beneficiary-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-beneficiary-index-v1
+          type: project-beneficiary
+          id: $.clientReferenceId,$.beneficiaryClientReferenceId,$.tenantId
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: mhbase-save-project-resource-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-resource-index-v1
+          type: project-resource
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+    - topic: mhbase-update-project-resource-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-resource-index-v1
+          type: project-resource
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: mhbase-delete-project-resource-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-resource-index-v1
+          type: project-resource
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: mhbase-save-project-facility-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-facility-index-v1
+          type: project-facility
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.createdTime
+    - topic: mhbase-update-project-facility-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-facility-index-v1
+          type: project-facility
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime
+    - topic: mhbase-delete-project-facility-topic
+      configKey: INDEX
+      indexes:
+        - name: mhbase-project-facility-index-v1
+          type: project-facility
+          id: $.id
+          isBulk: true
+          jsonPath: $.*
+          timeStampField: $.auditDetails.lastModifiedTime

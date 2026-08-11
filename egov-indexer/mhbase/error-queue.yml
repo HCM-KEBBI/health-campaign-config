@@ -1,0 +1,21 @@
+ServiceMaps:
+  serviceName: Tracer
+  version: 1.0.0
+  mappings:
+    - topic: mhbase-tracer-error-queue-index
+      configKey: INDEX
+      indexes:
+        - name: mhbase-egovtracer
+          type: errors
+          id: $.id
+          isBulk: false
+          timeStampField: $.ts
+    - topic: mhbase-tracer-error-queue-reindex
+      configKey: REINDEX
+      indexes:
+        - name: mhbase-egovtracerreindex
+          type: errors
+          id: $.id
+          isBulk: true
+          jsonPath: $.hits
+          timeStampField: $.ts
