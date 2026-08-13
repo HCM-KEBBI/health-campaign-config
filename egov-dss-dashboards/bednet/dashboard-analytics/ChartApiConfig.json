@@ -45480,6 +45480,106 @@
     },
     "_comment": " "
   },
+"totalExcessStockDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_TOTAL_EXCESS_STOCK",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Excess Stock\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"EXCESS\"}}]}},\"aggs\":{\"Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "number",
+  "aggregationPaths": [
+    "Total Excess Stock"
+  ],
+  "_comment": "Total Excess Stock at District Level"
+},
+"totalLossStockDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_TOTAL_LOSS_STOCK",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Loss Stock\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"LESS\"}}]}},\"aggs\":{\"Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "number",
+  "aggregationPaths": [
+    "Total Loss Stock"
+  ],
+  "_comment": "Total Loss Stock at District Level"
+},
+"excessStockPercentageDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_EXCESS_STOCK_PERCENTAGE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Excess Stock\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"EXCESS\"}}]}},\"aggs\":{\"Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributed\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Excess Stock",
+    "Total Distributed"
+  ],
+  "_comment": "Excess Stock Percentage at District Level"
+},
+"lossStockPercentageDistrictBednetsICCD": {
+  "chartName": "DSS_HEALTH_LOSS_STOCK_PERCENTAGE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Loss Stock\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"LESS\"}}]}},\"aggs\":{\"Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Distributed\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Loss Stock",
+    "Total Distributed"
+  ],
+  "_comment": "Loss Stock Percentage at District Level"
+},
   "bednetsDistributionCoverageProvinceBednetsICCD": {
     "chartName": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE_PROVINCE",
     "queries": [
@@ -47771,6 +47871,20 @@
         "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Incoming Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"RECEIVED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Outgoing Stock\":{\"filter\":{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"IS\":\"Incoming Stock>SUM\",\"OS\":\"Outgoing Stock>SUM\"},\"script\":\"params.IS-params.OS\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"EXCESS\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Excess\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.Ward.keyword\"}},{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"LESS\"}}]}},\"aggs\":{\"Available Stock\":{\"terms\":{\"size\":500,\"field\":\"Data.boundaryHierarchy.Ward.keyword\",\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Loss\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}}}"
       }
     ],
     "chartType": "xtable",
@@ -47797,7 +47911,9 @@
       "Incoming",
       "Outgoing",
       "Total Stock",
-      "Overall Target to Receive"
+      "Overall Target to Receive",
+      "Excess",
+      "Loss"
     ],
     "computedFields": [
       {
@@ -47844,6 +47960,24 @@
           "Target for days to last"
         ],
         "newField": "Days To Last",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Excess"
+        ],
+        "newField": "Excess Stock",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Loss"
+        ],
+        "newField": "Loss Stock",
         "_comments": ""
       }
     ],

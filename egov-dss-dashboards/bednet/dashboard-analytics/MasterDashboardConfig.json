@@ -14867,6 +14867,48 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 204,
+              "name": "DSS_HEALTH_EXCESS_LOSS_STOCK",
+              "label": "DSS_HEALTH_EXCESS_LOSS_STOCK",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalExcessStockDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_TOTAL_EXCESS_STOCK",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalLossStockDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_TOTAL_LOSS_STOCK",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "excessStockPercentageDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_EXCESS_STOCK_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "lossStockPercentageDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_LOSS_STOCK_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
