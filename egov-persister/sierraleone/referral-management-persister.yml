@@ -5,6 +5,12 @@ serviceMaps:
     description: Saves a side effect
     fromTopic: sierraleone-save-side-effect-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: INSERT INTO sierraleone.SIDE_EFFECT(id, clientReferenceId, tenantId, taskId, taskClientReferenceId,
         projectBeneficiaryId, projectBeneficiaryClientReferenceId, symptoms, additionalDetails,
@@ -40,6 +46,12 @@ serviceMaps:
     description: Updates a side effect
     fromTopic: sierraleone-update-side-effect-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE sierraleone.SIDE_EFFECT SET tenantId = ?, taskId = ?, taskClientReferenceId
         = ?, projectBeneficiaryId = ?, projectBeneficiaryClientReferenceId = ?, symptoms
@@ -70,6 +82,12 @@ serviceMaps:
     description: Deletes a side effect
     fromTopic: sierraleone-delete-side-effect-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE sierraleone.SIDE_EFFECT SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedBy
         = ?, clientLastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID =
@@ -87,6 +105,12 @@ serviceMaps:
     description: Saves a referral
     fromTopic: sierraleone-save-referral-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: INSERT INTO sierraleone.REFERRAL(id, clientReferenceId, tenantId, projectBeneficiaryId,
         projectBeneficiaryClientReferenceId, referrerId, recipientId, recipientType,
@@ -125,6 +149,12 @@ serviceMaps:
     description: Updates a referral
     fromTopic: sierraleone-update-referral-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE sierraleone.REFERRAL SET tenantId = ?, projectBeneficiaryId = ?, projectBeneficiaryClientReferenceId
         = ?, referrerId = ?, recipientId = ?, recipientType = ?, reasons = ?, additionalDetails
@@ -158,6 +188,12 @@ serviceMaps:
     description: Deletes a referral
     fromTopic: sierraleone-delete-referral-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE sierraleone.REFERRAL SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedBy
         = ?, clientLastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID =
@@ -175,6 +211,12 @@ serviceMaps:
     description: Saves a hfreferral
     fromTopic: sierraleone-save-hfreferral-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: INSERT INTO sierraleone.hf_referral(id, clientReferenceId, tenantId, projectid,
         projectFacilityId, symptom, symptomsurveyid, beneficiaryid, referralcode,
@@ -210,6 +252,12 @@ serviceMaps:
     description: Updates a hfreferral
     fromTopic: sierraleone-update-hfreferral-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE sierraleone.hf_referral SET clientReferenceId = ?, tenantId = ?, projectid
         = ?, projectFacilityId = ?, symptom = ?, symptomsurveyid = ?, beneficiaryid
@@ -240,6 +288,12 @@ serviceMaps:
     description: Deletes a hfreferral
     fromTopic: sierraleone-delete-hfreferral-topic
     isTransaction: true
+    isAuditEnabled: true
+    module: REFERRALMANAGEMENT
+    objecIdJsonPath: $.id
+    tenantIdJsonPath: $.tenantId
+    transactionCodeJsonPath: $.clientReferenceId
+    auditAttributeBasePath: $.*
     queryMaps:
     - query: UPDATE sierraleone.hf_referral SET lastModifiedBy = ?, lastModifiedTime = ?, clientLastModifiedBy
         = ?, clientLastModifiedTime = ?, rowVersion = ?, isDeleted = ? WHERE ID =
