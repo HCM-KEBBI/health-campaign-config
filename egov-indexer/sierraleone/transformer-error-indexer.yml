@@ -1,0 +1,13 @@
+ServiceMaps:
+  serviceName: transformer-error
+  version: 1.0.0
+  mappings:
+    - topic: sierraleone-transformer-error-topic
+      configKey: INDEX
+      indexes:
+        - name: sierraleone-transformer-error-index-v1
+          type: errors
+          id: $.id
+          isBulk: false
+          jsonPath: $
+          timeStampField: $.timestamp

@@ -214,12 +214,15 @@ serviceMaps:
         dbType: JSONB
       - jsonPath: $.*.id
     - query: UPDATE sierraleone.TASK_RESOURCE SET lastModifiedBy = ?, lastModifiedTime = ?,
-        isDeleted = ? WHERE ID = ?;
+        isDeleted = ?, additionalDetails = ? WHERE ID = ?;
       basePath: $.*.resources.*
       jsonMaps:
       - jsonPath: $.*.auditDetails.lastModifiedBy
       - jsonPath: $.*.auditDetails.lastModifiedTime
       - jsonPath: $.*.isDeleted
+      - jsonPath: $.*.additionalFields
+        type: JSON
+        dbType: JSONB
       - jsonPath: $.*.id
   - version: 1.0
     description: Saves a adverse event
