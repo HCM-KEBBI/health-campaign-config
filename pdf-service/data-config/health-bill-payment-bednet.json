@@ -371,6 +371,42 @@
                                 },
                                 "type": "date",
                                 "format": "DD/MM/YYYY HH:mm:ss z"
+                            },
+                            {
+                                "variable": "preparedBySignatureName",
+                                "value": {
+                                    "path": "$.preparedBySignatureName"
+                                }
+                            },
+                            {
+                                "variable": "preparedBySignatureImage",
+                                "value": {
+                                    "path": "$.preparedBySignatureImage"
+                                }
+                            },
+                            {
+                                "variable": "verifiedBySignatureName",
+                                "value": {
+                                    "path": "$.verifiedBySignatureName"
+                                }
+                            },
+                            {
+                                "variable": "verifiedBySignatureImage",
+                                "value": {
+                                    "path": "$.verifiedBySignatureImage"
+                                }
+                            },
+                            {
+                                "variable": "approvedBySignatureName",
+                                "value": {
+                                    "path": "$.approvedBySignatureName"
+                                }
+                            },
+                            {
+                                "variable": "approvedBySignatureImage",
+                                "value": {
+                                    "path": "$.approvedBySignatureImage"
+                                }
                             }
                         ]
                     }
