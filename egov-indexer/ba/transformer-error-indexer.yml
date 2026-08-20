@@ -1,13 +1,19 @@
 ServiceMaps:
-  serviceName: transformer-error
+  serviceName: project
   version: 1.0.0
   mappings:
-    - topic: ba-transformer-error-topic
+    - topic: ba-transformed-errors-topic
       configKey: INDEX
       indexes:
-        - name: ba-transformer-error-index-v1
+        - name: ba-transformed-errors-index-v1
           type: errors
           id: $.id
-          isBulk: false
+          isBulk: true
           jsonPath: $
-          timeStampField: $.timestamp
+          customJsonMapping:
+            indexMapping:
+              Data: {}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+          timeStampField: $.auditDetails.createdTime
