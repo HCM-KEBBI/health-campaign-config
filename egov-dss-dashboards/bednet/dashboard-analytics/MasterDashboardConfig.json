@@ -13822,15 +13822,15 @@
           "vizArray": [
             {
               "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "name": "DSS_HEALTH_BENEFICIARIES_NOT_ADMINISTERED",
+              "label": "DSS_HEALTH_BENEFICIARIES_NOT_ADMINISTERED",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalHouseholdsNotDeliveredProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
+                  "id": "populationNotAdministeredByReasonProvinceICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_BENEFICIARIES_NOT_ADMINISTERED",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
