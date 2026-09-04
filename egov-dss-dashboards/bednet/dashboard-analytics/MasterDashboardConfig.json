@@ -13797,6 +13797,48 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 204,
+              "name": "DSS_HEALTH_EXCESS_AND_LOSS_STOCK",
+              "label": "DSS_HEALTH_EXCESS_AND_LOSS_STOCK",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalExcessStockBednetsICCD",
+                  "name": "DSS_HEALTH_TOTAL_EXCESS_STOCK",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalLossStockBednetsICCD",
+                  "name": "DSS_HEALTH_TOTAL_LOSS_STOCK",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "excessStockPercentageBednetsICCD",
+                  "name": "DSS_HEALTH_EXCESS_STOCK_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "lossStockPercentageBednetsICCD",
+                  "name": "DSS_HEALTH_LOSS_STOCK_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
@@ -13804,24 +13846,6 @@
           "row": 2,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
-            {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -14186,10 +14210,10 @@
               "charts": [
                 {
                   "id": "householdsRegisteredMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-registered-map",
+                  "pageName": "bo-households-registered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -14212,10 +14236,10 @@
               "charts": [
                 {
                   "id": "householdsRedeemedITNSMapBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REDEEMED_ITNS_MAP",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_ITNS_DELIVERED",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-redeemed-itns-map",
+                  "pageName": "bo-households-itns-delivered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -14657,6 +14681,32 @@
               ]
             }
           ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "vizArray": [
+            {
+              "id": 265,
+              "name": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "label": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByDistrictBednetsICCD",
+                  "name": "CUSTOM_ITN_SUMMARY_REPORT",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -14825,6 +14875,48 @@
                   "headers": []
                 }
               ]
+            },
+            {
+              "id": 204,
+              "name": "DSS_HEALTH_EXCESS_LOSS_STOCK",
+              "label": "DSS_HEALTH_EXCESS_LOSS_STOCK",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "totalExcessStockDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_TOTAL_EXCESS_STOCK",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "totalLossStockDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_TOTAL_LOSS_STOCK",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "excessStockPercentageDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_EXCESS_STOCK_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "lossStockPercentageDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_LOSS_STOCK_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
             }
           ]
         },
@@ -14832,24 +14924,6 @@
           "row": 2,
           "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
-            {
-              "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalHouseholdsNotDeliveredDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
             {
               "id": 205,
               "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
@@ -15190,10 +15264,10 @@
               "charts": [
                 {
                   "id": "householdsRegisteredMapBednetsICCDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_REGISTERED_MAP_DISTRICT",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-registered-map-district",
+                  "pageName": "bo-households-registered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15216,10 +15290,10 @@
               "charts": [
                 {
                   "id": "householdsRedeemedITNsMapBednetsICCDistrict",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_ITNS_REDEEMED_MAP_DISTRICT",
+                  "name": "DASHBOARD_MAP_HOUSEHOLDS_ITNS_DELIVERED",
                   "code": "",
                   "moduleName": "llin",
-                  "pageName": "bednet-households-redeemed-itns-map-district",
+                  "pageName": "bo-households-itns-delivered-map",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15559,6 +15633,32 @@
                   "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
                   "code": "",
                   "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "vizArray": [
+            {
+              "id": 265,
+              "name": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "label": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "userSyncRateByDistrictBednetsICCD",
+                  "name": "CUSTOM_ITN_SUMMARY_REPORT",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-summary-report",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
