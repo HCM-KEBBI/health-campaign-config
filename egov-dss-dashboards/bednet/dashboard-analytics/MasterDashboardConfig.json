@@ -14579,6 +14579,84 @@
           ]
         },
         {
+          "row": 5,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 248,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReceived",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-received-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 249,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockIssued",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-issued-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 250,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReturned",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-returned-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "row": 1,
           "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
@@ -15619,6 +15697,84 @@
                   "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
                   "code": "",
                   "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 248,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReceived",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-received-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 249,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockIssued",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-issued-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 250,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReturned",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-returned-summary-report",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }

@@ -52046,6 +52046,126 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
+"summaryByStockReceived": {
+  "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.@timestamp",
+      "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"Stock Received\":{\"terms\":{\"field\":\"Data.transactingFacilityName.keyword\",\"size\":500},\"aggs\":{\"Received Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "sum",
+  "filterKeys": [
+    {
+      "key": "state"
+    },
+    {
+      "key": "lga"
+    },
+    {
+      "key": "campaignNumber"
+    },
+    {
+      "key": "cycleIndex"
+    }
+  ],
+  "sort": "sortKeyAsc",
+  "aggregationPaths": [
+    "Stock Received",
+    "Received Quantity"
+  ],
+  "insight": {},
+  "_comment": "Stock received from accepted ISSUED transactions, attributed to the receiving facility."
+},
+"summaryByStockIssued": {
+  "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.@timestamp",
+      "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}}]}},\"aggs\":{\"Stock Issued\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500},\"aggs\":{\"Issued Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "sum",
+  "filterKeys": [
+    {
+      "key": "state"
+    },
+    {
+      "key": "lga"
+    },
+    {
+      "key": "campaignNumber"
+    },
+    {
+      "key": "cycleIndex"
+    }
+  ],
+  "sort": "sortKeyAsc",
+  "aggregationPaths": [
+    "Stock Issued",
+    "Issued Quantity"
+  ],
+  "insight": {},
+  "_comment": "Stock issued from accepted and in-transit ISSUED transactions, attributed to the sending facility."
+},
+"summaryByStockReturned": {
+  "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.@timestamp",
+      "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+      "indexName": "bednet-stock-index-v1",
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"Stock Returned\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500},\"aggs\":{\"Returned Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+    }
+  ],
+  "chartType": "line",
+  "isCumulative": false,
+  "valueType": "number",
+  "plotLabel": "none",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "sum",
+  "filterKeys": [
+    {
+      "key": "state"
+    },
+    {
+      "key": "lga"
+    },
+    {
+      "key": "campaignNumber"
+    },
+    {
+      "key": "cycleIndex"
+    }
+  ],
+  "sort": "sortKeyAsc",
+  "aggregationPaths": [
+    "Stock Returned",
+    "Returned Quantity"
+  ],
+  "insight": {},
+  "_comment": "Stock returned through accepted RETURNED transactions, attributed to the sending facility."
+},
   "householdsDistributedBednetsICCD": {
     "chartName": "DSS_TOTAL_HOUSEHOLD_DISTRIBUTED",
     "queries": [
