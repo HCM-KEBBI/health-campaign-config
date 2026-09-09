@@ -13,5 +13,12 @@
     "ke": "http://individual.kebbi:8080",
     "si": "http://individual.egov:8080",
     "os": "http://individual.egov:8080"
+  },
+  "/inbox/.*": {
+    "dev": "http://inbox.dev:8080",
+    "ba": "http://inbox.bauchi:8080",
+    "ke": "http://inbox.kebbi:8080",
+    "si": "http://inbox.sierraleone:8080",
+    "os": "http://inbox.osun:8080"
   }
 }
