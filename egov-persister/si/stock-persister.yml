@@ -16,7 +16,7 @@ serviceMaps:
     - query: INSERT INTO si.STOCK(id, clientReferenceId, tenantId, productVariantId,
         wayBillNumber, quantity, referenceId, referenceIdType, transactionType, transactionReason,
         senderType, senderId, receiverType, receiverId, additionalDetails, createdBy,
-        createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, dateOfEntry,
+        createdTime, lastModifiedBy, lastModifiedTime, rowVersion, isDeleted, campaignNumber, dateOfEntry,
         clientCreatedTime, clientLastModifiedTime, clientCreatedBy, clientLastModifiedBy)
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
       basePath: $.*
@@ -44,6 +44,7 @@ serviceMaps:
       - jsonPath: $.*.auditDetails.lastModifiedTime
       - jsonPath: $.*.rowVersion
       - jsonPath: $.*.isDeleted
+      - jsonPath: $.*.campaignNumber
       - jsonPath: $.*.dateOfEntry
       - jsonPath: $.*.clientAuditDetails.createdTime
       - jsonPath: $.*.clientAuditDetails.lastModifiedTime
@@ -64,7 +65,7 @@ serviceMaps:
     - query: UPDATE si.STOCK SET tenantId=?, dateOfEntry = ?, productVariantId=?,
         wayBillNumber=?, quantity=?, referenceId=?, referenceIdType=?, transactionType=?,
         transactionReason=?, senderType=?, senderId=?, receiverType=?, receiverId=?,
-        additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, clientLastModifiedTime
+        additionalDetails=?, lastModifiedBy=?, lastModifiedTime=?, rowVersion=?, campaignNumber=?, clientLastModifiedTime
         = ?, clientLastModifiedBy = ? WHERE id=? AND isDeleted=false;
       basePath: $.*
       jsonMaps:
@@ -87,6 +88,7 @@ serviceMaps:
       - jsonPath: $.*.auditDetails.lastModifiedBy
       - jsonPath: $.*.auditDetails.lastModifiedTime
       - jsonPath: $.*.rowVersion
+      - jsonPath: $.*.campaignNumber
       - jsonPath: $.*.clientAuditDetails.lastModifiedTime
       - jsonPath: $.*.clientAuditDetails.lastModifiedBy
       - jsonPath: $.*.id
