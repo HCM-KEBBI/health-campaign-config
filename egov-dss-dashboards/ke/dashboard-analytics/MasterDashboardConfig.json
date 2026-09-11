@@ -7483,6 +7483,132 @@
               ]
             }
           ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 2110,
+              "name": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+              "label": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqSyncWithin24hByDistrictPercentSMC",
+                  "name": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 2111,
+              "name": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+              "label": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqAvgSyncLagHoursByDistrictSMC",
+                  "name": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 2112,
+              "name": "DSS_HEALTH_DQ_GPS_QUALITY",
+              "label": "DSS_HEALTH_DQ_GPS_QUALITY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqGpsQualityByDistrictPercentSMC",
+                  "name": "DSS_HEALTH_DQ_GPS_QUALITY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 2113,
+              "name": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+              "label": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqAgeDobMismatchByDistrictPercentSMC",
+                  "name": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 2114,
+              "name": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+              "label": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqAvgDeliveriesPerCddByDistrictSMC",
+                  "name": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 2115,
+              "name": "DSS_HEALTH_DQ_MISSING_NAME",
+              "label": "DSS_HEALTH_DQ_MISSING_NAME",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqMissingNameByDistrictPercentSMC",
+                  "name": "DSS_HEALTH_DQ_MISSING_NAME",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -9076,6 +9202,132 @@
                   "moduleName": "llin",
                   "pageName": "ke-custom-chart",
                   "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 3110,
+              "name": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+              "label": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqSyncWithin24hByAPPercentSMC",
+                  "name": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3111,
+              "name": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+              "label": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqAvgSyncLagHoursByAPSMC",
+                  "name": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 3112,
+              "name": "DSS_HEALTH_DQ_GPS_QUALITY",
+              "label": "DSS_HEALTH_DQ_GPS_QUALITY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqGpsQualityByAPPercentSMC",
+                  "name": "DSS_HEALTH_DQ_GPS_QUALITY",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3113,
+              "name": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+              "label": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqAgeDobMismatchByAPPercentSMC",
+                  "name": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 3114,
+              "name": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+              "label": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqAvgDeliveriesPerCddByAPSMC",
+                  "name": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3115,
+              "name": "DSS_HEALTH_DQ_MISSING_NAME",
+              "label": "DSS_HEALTH_DQ_MISSING_NAME",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "dqMissingNameByAPPercentSMC",
+                  "name": "DSS_HEALTH_DQ_MISSING_NAME",
+                  "code": "",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
