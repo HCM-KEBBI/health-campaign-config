@@ -1,0 +1,46 @@
+ServiceMaps:
+  serviceName: census-service
+  version: 1.0.0
+  mappings:
+    - topic: gabon-census-create-topic
+      configKey: INDEX
+      indexes:
+        - name: gabon-census-index-v1
+          type: general
+          id: $.id
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: {"Data":{}}
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+
+    - topic: gabon-census-update-topic
+      configKey: INDEX
+      indexes:
+        - name: gabon-census-index-v1
+          type: general
+          id: $.id
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data
+
+    - topic: gabon-census-bulk-update-topic
+      configKey: INDEX
+      indexes:
+        - name: gabon-census-index-v1
+          type: general
+          id: $.id
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Census
+          customJsonMapping:
+            indexMapping: { "Data": { } }
+            fieldMapping:
+              - inJsonPath: $
+                outJsonPath: $.Data

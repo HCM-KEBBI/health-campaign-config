@@ -1,0 +1,22 @@
+ServiceMaps:
+  serviceName: facility
+  version: 1.0.0
+  mappings:
+  - topic: gabon-save-facility-topic
+    configKey: INDEX
+    indexes:
+    - name: gabon-facility-index-v1
+      type: facility
+      id: $.clientReferenceId
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.createdTime
+  - topic: gabon-update-facility-topic
+    configKey: INDEX
+    indexes:
+    - name: gabon-facility-index-v1
+      type: facility
+      id: $.clientReferenceId
+      isBulk: true
+      jsonPath: $.*
+      timeStampField: $.auditDetails.lastModifiedTime
