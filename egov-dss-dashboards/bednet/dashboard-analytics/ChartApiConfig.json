@@ -3146,7 +3146,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap":  "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
     }
@@ -3168,14 +3168,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\":\"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3199,7 +3199,7 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Household Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3220,7 +3220,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\":\"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
     }
@@ -3242,14 +3242,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3273,7 +3273,7 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3294,7 +3294,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-task-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered ITNs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
     }
@@ -3316,14 +3316,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-task-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3368,7 +3368,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-transformer-pgr-services",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
     }
@@ -3391,7 +3391,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-transformer-pgr-services",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus\":[\"\"]}}]}},\"aggs\":{\"Complaints Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\",\"size\":50},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
     }
@@ -3414,7 +3414,7 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-staff-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Created\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
     }
@@ -3436,7 +3436,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-user-sync-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
     }
@@ -3458,14 +3458,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-user-sync-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-staff-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
     }
@@ -3489,49 +3489,49 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"State Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Target Households\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-task-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Distribution Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"HH Redeemed\":{\"value_count\":{\"field\":\"Data.id.keyword\"}},\"ITNs Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}},\"People in Redeemed HHs\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-staff-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"DPs Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-user-sync-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"Active DPs\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Active DPs Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"ITNs Assigned\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Project Start and End Dates\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"},\"aggs\":{\"Start Date\":{\"min\":{\"field\":\"Data.startDate\"}},\"End Date\":{\"max\":{\"field\":\"Data.endDate\"}}}}}}}}"
     }
