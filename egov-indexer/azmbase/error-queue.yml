@@ -1,0 +1,21 @@
+ServiceMaps:
+  serviceName: Tracer
+  version: 1.0.0
+  mappings:
+    - topic: azmbase-tracer-error-queue-index
+      configKey: INDEX
+      indexes:
+        - name: azmbase-egovtracer
+          type: errors
+          id: $.id
+          isBulk: false
+          timeStampField: $.ts
+    - topic: azmbase-tracer-error-queue-reindex
+      configKey: REINDEX
+      indexes:
+        - name: azmbase-egovtracerreindex
+          type: errors
+          id: $.id
+          isBulk: true
+          jsonPath: $.hits
+          timeStampField: $.ts
