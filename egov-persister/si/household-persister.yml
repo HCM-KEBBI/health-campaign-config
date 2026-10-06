@@ -27,6 +27,7 @@ serviceMaps:
       - jsonPath: $.*.additionalFields
         type: JSON
         dbType: JSONB
+      - jsonPath: $.*.householdType
       - jsonPath: $.*.auditDetails.createdBy
       - jsonPath: $.*.auditDetails.lastModifiedBy
       - jsonPath: $.*.auditDetails.createdTime
