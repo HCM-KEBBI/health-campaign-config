@@ -13906,10 +13906,9 @@
             }
           ]
         },
-
         {
           "row": 1,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_HEALTH_OVERVIEW",
           "vizArray": [
             {
               "id": 200,
@@ -14189,7 +14188,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_KIBANA_MAPS",
@@ -14242,7 +14240,6 @@
             }
           ]
         },
-
         {
           "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
@@ -14427,7 +14424,6 @@
             }
           ]
         },
-        
         {
           "row": 1,
           "name": "DSS_HEALTH_INVENTORY",
@@ -14587,18 +14583,20 @@
           "name": "DSS_HEALTH_INVENTORY",
           "vizArray": [
             {
-              "id": 245,
-              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
-              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
+              "id": 248,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "InventorySummaryByStateBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
+                  "id": "summaryByStockReceived",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
                   "code": "",
-                  "chartType": "table",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-received-summary-report",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
@@ -14606,10 +14604,61 @@
             }
           ]
         },
-
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 249,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockIssued",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-issued-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 250,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReturned",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-returned-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
         {
           "row": 1,
-          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
               "id": 262,
@@ -14633,7 +14682,7 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
               "id": 263,
@@ -14657,7 +14706,7 @@
         },
         {
           "row": 3,
-          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
               "id": 264,
@@ -14681,7 +14730,7 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
+          "name": "DSS_HEALTH_SUPERVISION",
           "vizArray": [
             {
               "id": 265,
@@ -14696,32 +14745,6 @@
                   "name": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
                   "code": "",
                   "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 5,
-          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
-          "vizArray": [
-            {
-              "id": 761,
-              "name": "DSS_HEALTH_KIBANA_SCREEN",
-              "label": "DSS_HEALTH_KIBANA_SCREEN",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "teamPerformanceSummary",
-                  "name": "DASHBOARD_TEAM_PERFORMNACE",
-                  "code": "",
-                  "moduleName": "llin",
-                  "pageName": "itn-user-report",
-                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }
@@ -14918,32 +14941,6 @@
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "itn-summary-report",
-                  "chartType": "kibanaComponent",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 2,
-          "name": "DSS_HEALTH_CUSTOM_REPORT",
-          "vizArray": [
-            {
-              "id": 265,
-              "name": "DSS_HEALTH_CUSTOM_STOCK_REPORT",
-              "label": "DSS_HEALTH_CUSTOM_STOCK_REPORT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "stockPositionByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_CUSTOM_STOCK_REPORT",
-                  "code": "",
-                  "moduleName": "llin",
-                  "pageName": "stock-position-report",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
