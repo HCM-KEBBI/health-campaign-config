@@ -62906,6 +62906,411 @@
     "hideInsights": true,
     "hideHeaderDenomination": true,
     "_comment": " "
+  },
+  "dqSyncWithin24hByDistrictPercentSMC": {
+    "chartName": "DSS_HEALTH_DQ_SYNC_WITHIN_24H",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"exists\": {\"field\": \"Data.syncedTimeStamp\"}}, {\"exists\": {\"field\": \"Data.@timestamp\"}}, {\"script\": {\"script\": {\"source\": \"long s = doc['Data.syncedTimeStamp'].value; long t = doc['Data.@timestamp'].value.toInstant().toEpochMilli(); return (s - t) <= 86400000L && (s - t) >= 0L;\", \"lang\": \"painless\"}}}]}}, \"aggs\": {\"Records Synced Within 24h\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"exists\": {\"field\": \"Data.syncedTimeStamp\"}}, {\"exists\": {\"field\": \"Data.@timestamp\"}}]}}, \"aggs\": {\"Total Synced Delivery Records\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "dqSyncWithin24hByAPPercentSMC",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Records Synced Within 24h",
+      "Total Synced Delivery Records"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqAvgSyncLagHoursByDistrictSMC": {
+    "chartName": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"exists\": {\"field\": \"Data.syncedTimeStamp\"}}, {\"exists\": {\"field\": \"Data.@timestamp\"}}]}}, \"aggs\": {\"Average Sync Lag Hours\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"avg\": {\"script\": {\"source\": \"long s = doc['Data.syncedTimeStamp'].value; long t = doc['Data.@timestamp'].value.toInstant().toEpochMilli(); double h = (s - t) / 3600000.0; return h < 0 ? 0 : h;\", \"lang\": \"painless\"}}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "dqAvgSyncLagHoursByAPSMC",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Average Sync Lag Hours"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqGpsQualityByDistrictPercentSMC": {
+    "chartName": "DSS_HEALTH_DQ_GPS_QUALITY",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}, {\"exists\": {\"field\": \"Data.geoPoint\"}}]}}, \"aggs\": {\"Deliveries With GPS\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}]}}, \"aggs\": {\"Total Successful Deliveries\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "dqGpsQualityByAPPercentSMC",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Deliveries With GPS",
+      "Total Successful Deliveries"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqAgeDobMismatchByDistrictPercentSMC": {
+    "chartName": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}, {\"exists\": {\"field\": \"Data.age\"}}, {\"exists\": {\"field\": \"Data.dateOfBirth\"}}, {\"script\": {\"script\": {\"source\": \"long dob = doc['Data.dateOfBirth'].value.toInstant().toEpochMilli(); long t = doc['Data.@timestamp'].value.toInstant().toEpochMilli(); if (t <= dob) { return true; } long m = (t - dob) / 2629800000L; return Math.abs(m - doc['Data.age'].value) > 1;\", \"lang\": \"painless\"}}}]}}, \"aggs\": {\"Age DOB Mismatch\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}, {\"exists\": {\"field\": \"Data.age\"}}, {\"exists\": {\"field\": \"Data.dateOfBirth\"}}]}}, \"aggs\": {\"Total Records With Age And DOB\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "dqAgeDobMismatchByAPPercentSMC",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Age DOB Mismatch",
+      "Total Records With Age And DOB"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqAvgDeliveriesPerCddByDistrictSMC": {
+    "chartName": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}]}}, \"aggs\": {\"Average Deliveries Per CDD\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"TotalDeliveries\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}, \"UniqueCDDs\": {\"cardinality\": {\"field\": \"Data.createdBy.keyword\", \"precision_threshold\": 40000}}, \"Count\": {\"bucket_script\": {\"buckets_path\": {\"total\": \"TotalDeliveries\", \"cdds\": \"UniqueCDDs\"}, \"script\": \"params.cdds > 0 ? params.total / params.cdds : 0\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "dqAvgDeliveriesPerCddByAPSMC",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Average Deliveries Per CDD"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqMissingNameByDistrictPercentSMC": {
+    "chartName": "DSS_HEALTH_DQ_MISSING_NAME",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-individual-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"exists\": {\"field\": \"Data.boundaryHierarchy.district.keyword\"}}], \"should\": [{\"bool\": {\"must_not\": [{\"exists\": {\"field\": \"Data.name.givenName\"}}]}}, {\"term\": {\"Data.name.givenName.keyword\": \"\"}}], \"minimum_should_match\": 1}}, \"aggs\": {\"Missing Or Blank Name\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-individual-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"exists\": {\"field\": \"Data.boundaryHierarchy.district.keyword\"}}]}}, \"aggs\": {\"Total Individuals Registered\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.district.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "dqMissingNameByAPPercentSMC",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Missing Or Blank Name",
+      "Total Individuals Registered"
+    ],
+    "filterKeys": [
+      {
+        "key": "district"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqSyncWithin24hByAPPercentSMC": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_DQ_SYNC_WITHIN_24H_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"exists\": {\"field\": \"Data.syncedTimeStamp\"}}, {\"exists\": {\"field\": \"Data.@timestamp\"}}, {\"script\": {\"script\": {\"source\": \"long s = doc['Data.syncedTimeStamp'].value; long t = doc['Data.@timestamp'].value.toInstant().toEpochMilli(); return (s - t) <= 86400000L && (s - t) >= 0L;\", \"lang\": \"painless\"}}}]}}, \"aggs\": {\"Records Synced Within 24h\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"exists\": {\"field\": \"Data.syncedTimeStamp\"}}, {\"exists\": {\"field\": \"Data.@timestamp\"}}]}}, \"aggs\": {\"Total Synced Delivery Records\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Records Synced Within 24h",
+      "Total Synced Delivery Records"
+    ],
+    "filterKeys": [
+      {
+        "key": "administrativeProvince"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqAvgSyncLagHoursByAPSMC": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_DQ_AVG_SYNC_LAG_HOURS_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"exists\": {\"field\": \"Data.syncedTimeStamp\"}}, {\"exists\": {\"field\": \"Data.@timestamp\"}}]}}, \"aggs\": {\"Average Sync Lag Hours\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"avg\": {\"script\": {\"source\": \"long s = doc['Data.syncedTimeStamp'].value; long t = doc['Data.@timestamp'].value.toInstant().toEpochMilli(); double h = (s - t) / 3600000.0; return h < 0 ? 0 : h;\", \"lang\": \"painless\"}}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Average Sync Lag Hours"
+    ],
+    "filterKeys": [
+      {
+        "key": "administrativeProvince"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqGpsQualityByAPPercentSMC": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_DQ_GPS_QUALITY_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}, {\"exists\": {\"field\": \"Data.geoPoint\"}}]}}, \"aggs\": {\"Deliveries With GPS\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}]}}, \"aggs\": {\"Total Successful Deliveries\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Deliveries With GPS",
+      "Total Successful Deliveries"
+    ],
+    "filterKeys": [
+      {
+        "key": "administrativeProvince"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqAgeDobMismatchByAPPercentSMC": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_DQ_AGE_DOB_MISMATCH_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}, {\"exists\": {\"field\": \"Data.age\"}}, {\"exists\": {\"field\": \"Data.dateOfBirth\"}}, {\"script\": {\"script\": {\"source\": \"long dob = doc['Data.dateOfBirth'].value.toInstant().toEpochMilli(); long t = doc['Data.@timestamp'].value.toInstant().toEpochMilli(); if (t <= dob) { return true; } long m = (t - dob) / 2629800000L; return Math.abs(m - doc['Data.age'].value) > 1;\", \"lang\": \"painless\"}}}]}}, \"aggs\": {\"Age DOB Mismatch\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}, {\"exists\": {\"field\": \"Data.age\"}}, {\"exists\": {\"field\": \"Data.dateOfBirth\"}}]}}, \"aggs\": {\"Total Records With Age And DOB\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Age DOB Mismatch",
+      "Total Records With Age And DOB"
+    ],
+    "filterKeys": [
+      {
+        "key": "administrativeProvince"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqAvgDeliveriesPerCddByAPSMC": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_DQ_AVG_DELIVERIES_PER_CDD_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-project-task-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"term\": {\"Data.deliveredTo.keyword\": \"INDIVIDUAL\"}}, {\"term\": {\"Data.administrationStatus.keyword\": \"ADMINISTRATION_SUCCESS\"}}]}}, \"aggs\": {\"Average Deliveries Per CDD\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"TotalDeliveries\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}, \"UniqueCDDs\": {\"cardinality\": {\"field\": \"Data.createdBy.keyword\", \"precision_threshold\": 40000}}, \"Count\": {\"bucket_script\": {\"buckets_path\": {\"total\": \"TotalDeliveries\", \"cdds\": \"UniqueCDDs\"}, \"script\": \"params.cdds > 0 ? params.total / params.cdds : 0\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Average Deliveries Per CDD"
+    ],
+    "filterKeys": [
+      {
+        "key": "administrativeProvince"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "dqMissingNameByAPPercentSMC": {
+    "kind": "drillDown",
+    "chartName": "DSS_HEALTH_DQ_MISSING_NAME_AP",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-individual-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"exists\": {\"field\": \"Data.boundaryHierarchy.district.keyword\"}}], \"should\": [{\"bool\": {\"must_not\": [{\"exists\": {\"field\": \"Data.name.givenName\"}}]}}, {\"term\": {\"Data.name.givenName.keyword\": \"\"}}], \"minimum_should_match\": 1}}, \"aggs\": {\"Missing Or Blank Name\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"province\": \"Data.boundaryHierarchy.province.keyword\", \"district\": \"Data.boundaryHierarchy.district.keyword\"}",
+        "indexName": "ke-individual-index-v1",
+        "aggrQuery": "{\"size\": 0, \"aggs\": {\"AGGS\": {\"filter\": {\"bool\": {\"must\": [{\"exists\": {\"field\": \"Data.boundaryHierarchy.district.keyword\"}}]}}, \"aggs\": {\"Total Individuals Registered\": {\"terms\": {\"size\": 500, \"field\": \"Data.boundaryHierarchy.administrativeProvince.keyword\", \"order\": {\"_key\": \"asc\"}}, \"aggs\": {\"Count\": {\"value_count\": {\"field\": \"Data.id.keyword\"}}}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Missing Or Blank Name",
+      "Total Individuals Registered"
+    ],
+    "filterKeys": [
+      {
+        "key": "administrativeProvince"
+      }
+    ],
+    "insight": {},
+    "_comment": " "
   }
-  
 }
