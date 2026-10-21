@@ -13822,15 +13822,15 @@
           "vizArray": [
             {
               "id": 204,
-              "name": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
-              "label": "DSS_HEALTH_HOUSEHOLDS_NOT_DELIVERED",
+              "name": "DSS_HEALTH_BENEFICIARIES_NOT_ADMINISTERED",
+              "label": "DSS_HEALTH_BENEFICIARIES_NOT_ADMINISTERED",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalHouseholdsNotDeliveredProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLDS_NOT_DELIVERED_PROVINCE",
+                  "id": "populationNotAdministeredByReasonProvinceICCD",
+                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_BENEFICIARIES_NOT_ADMINISTERED",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -13906,9 +13906,10 @@
             }
           ]
         },
+
         {
           "row": 1,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
           "vizArray": [
             {
               "id": 200,
@@ -14188,6 +14189,7 @@
             }
           ]
         },
+
         {
           "row": 1,
           "name": "DSS_KIBANA_MAPS",
@@ -14240,6 +14242,7 @@
             }
           ]
         },
+
         {
           "row": 1,
           "name": "DSS_HEALTH_COMPLAINTS",
@@ -14424,6 +14427,7 @@
             }
           ]
         },
+        
         {
           "row": 1,
           "name": "DSS_HEALTH_INVENTORY",
@@ -14579,8 +14583,33 @@
           ]
         },
         {
+          "row": 5,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 245,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "InventorySummaryByStateBednetsICCD",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+
+        {
           "row": 1,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 262,
@@ -14604,7 +14633,7 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 263,
@@ -14628,7 +14657,7 @@
         },
         {
           "row": 3,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 264,
@@ -14652,7 +14681,7 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
           "vizArray": [
             {
               "id": 265,
@@ -14675,6 +14704,203 @@
           ]
         },
         {
+          "row": 5,
+          "name": "DSS_HEALTH_TEAM_PERFORMANCE",
+          "vizArray": [
+            {
+              "id": 761,
+              "name": "DSS_HEALTH_KIBANA_SCREEN",
+              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "teamPerformanceSummary",
+                  "name": "DASHBOARD_TEAM_PERFORMNACE",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-user-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "row": 1,
+          "name": "DSS_HEALTH_USER_ACTIVITY",
+          "vizArray": [
+            {
+              "id": 1001,
+              "name": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_METRICS",
+              "label": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_METRICS",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "overallUsersMetrics",
+                  "name": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_METRICS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_USER_ACTIVITY",
+          "vizArray": [
+            {
+              "id": 1002,
+              "name": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_SUMMARY",
+              "label": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_SUMMARY",
+              "vizType": "summary-table",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "usersSummaryTable",
+                  "filters": {
+                    "userInfo": {
+                      "type": "text",
+                      "filterFields": [
+                        "userName",
+                        "userId",
+                        "nameOfUser"
+                      ]
+                    },
+                    "status": {
+                      "type": "dropdown",
+                      "filterFields": [
+                        "active"
+                      ],
+                      "options": [
+                        "ACTIVE",
+                        "INACTIVE"
+                      ]
+                    },
+                    "roles": {
+                      "type": "dropdown",
+                      "filterFields": [
+                        "role"
+                      ],
+                      "options": [
+                        "COMMUNITY_DISTRIBUTOR",
+                        "TEAM_SUPERVISOR",
+                        "DISTRIBUTOR"
+                      ]
+                    },
+                    "boundary": {
+                      "type": "boundary",
+                      "filterFields": [
+                        "province",
+                        "district"
+                      ]
+                    }
+                  },
+                  "name": "DSS_HEALTH_USER_ACTIVITY_OVERVIEW_SUMMARY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ],
+              "drillCharts": [
+                {
+                  "row": 1,
+                  "name": "DSS_HEALTH_USER_ACTIVITY",
+                  "vizArray": [
+                    {
+                      "id": 10011,
+                      "name": "DSS_HEALTH_USER_ACTIVITY_INDIVIDUAL_OVERVIEW",
+                      "label": "DSS_HEALTH_USER_ACTIVITY_INDIVIDUAL_OVERVIEW",
+                      "vizType": "cards-list",
+                      "noUnit": true,
+                      "isCollapsible": false,
+                      "charts": [
+                        {
+                          "id": "individualUsersMetrics",
+                          "name": "DSS_HEALTH_USER_ACTIVITY_INDIVIDUAL_OVERVIEW",
+                          "code": "",
+                          "chartType": "metric",
+                          "filter": "",
+                          "headers": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "row": 2,
+                  "name": "DSS_HEALTH_USER_ACTIVITY_INDIVIDUAL_SUMMARY",
+                  "vizArray": [
+                    {
+                      "id": 10012,
+                      "name": "DSS_HEALTH_USER_ACTIVITY_INDIVIDUAL_SUMMARY",
+                      "label": "DSS_HEALTH_USER_ACTIVITY_INDIVIDUAL_SUMMARY",
+                      "vizType": "summary-table",
+                      "noUnit": true,
+                      "isCollapsible": false,
+                      "filters": {
+                        "actionTypes": {
+                          "type": "dropdown",
+                          "filterFields": [
+                            "actionType"
+                          ],
+                          "options": [
+                            "Stock",
+                            "Delivery",
+                            "Complaints",
+                            "Error Record"
+                          ]
+                        },
+                        "outcome": {
+                          "type": "dropdown",
+                          "filterFields": [
+                            "outcome"
+                          ],
+                          "options": [
+                            "SUCCESS",
+                            "FAILED"
+                          ]
+                        },
+                        "calender": {
+                          "type": "calender"
+                        },
+                        "recordId": {
+                          "type": "text",
+                          "filterFields": [
+                            "id"
+                          ]
+                        }
+                      },
+                      "charts": [
+                        {
+                          "id": "usersRecordsSummaryTable",
+                          "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE_ICCD",
+                          "code": "",
+                          "chartType": "metric",
+                          "filter": "",
+                          "headers": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        
+        {
           "row": 1,
           "name": "DSS_HEALTH_CUSTOM_REPORT",
           "vizArray": [
@@ -14692,6 +14918,32 @@
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "itn-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "vizArray": [
+            {
+              "id": 265,
+              "name": "DSS_HEALTH_CUSTOM_STOCK_REPORT",
+              "label": "DSS_HEALTH_CUSTOM_STOCK_REPORT",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "stockPositionByDistrictBednetsICCD",
+                  "name": "DSS_HEALTH_CUSTOM_STOCK_REPORT",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "stock-position-report",
                   "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
@@ -15619,6 +15871,84 @@
                   "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
                   "code": "",
                   "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 248,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReceived",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-received-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 249,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockIssued",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-issued-summary-report",
+                  "chartType": "kibanaComponent",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_HEALTH_INVENTORY",
+          "vizArray": [
+            {
+              "id": 250,
+              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "summaryByStockReturned",
+                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+                  "code": "",
+                  "moduleName": "llin",
+                  "pageName": "itn-stock-returned-summary-report",
+                  "chartType": "kibanaComponent",
                   "filter": "",
                   "headers": []
                 }

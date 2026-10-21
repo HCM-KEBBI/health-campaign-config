@@ -3146,7 +3146,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap":  "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
     }
@@ -3168,14 +3168,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Households Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\":\"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3199,7 +3199,7 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Household Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3220,7 +3220,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\":\"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
     }
@@ -3242,14 +3242,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.household.auditDetails.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Registered\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.household.id.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3273,7 +3273,7 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3294,7 +3294,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-task-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered ITNs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
     }
@@ -3316,14 +3316,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-task-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Population Covered\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"projectTypeId\": \"Data.projectTypeId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Overall target\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"INDIVIDUAL\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}}}},\"aggs\":{\"TargetValue\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
@@ -3349,7 +3349,7 @@
       "dateRefField": "",
       "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
-      "aggrQuery": "{\"size\":0,\"aggs\":{\"ITN Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"ITN Target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.community.keyword\"}}]}},\"aggs\":{\"Count\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
     }
   ],
   "chartType": "metric",
@@ -3368,7 +3368,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-transformer-pgr-services",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"PENDING_ASSIGNMENT\",\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Complaints Status\":{\"terms\":{\"field\":\"Data.service.applicationStatus.keyword\",\"size\":10},\"aggs\":{\"Complaints Breakdown\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
     }
@@ -3391,7 +3391,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.service.auditDetails.lastModifiedTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-transformer-pgr-services",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus\":[\"\"]}}]}},\"aggs\":{\"Complaints Type\":{\"terms\":{\"field\":\"Data.service.serviceCode.keyword\",\"size\":50},\"aggs\":{\"Complaints Count\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}}}"
     }
@@ -3414,7 +3414,7 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-staff-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Created\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
     }
@@ -3436,7 +3436,7 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-user-sync-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
     }
@@ -3458,14 +3458,14 @@
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-user-sync-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Users Synced\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-staff-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.userId.keyword\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}"
     }
@@ -3489,49 +3489,49 @@
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-household-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"State Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total Households Registered\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}},\"People Living in Registered\":{\"sum\":{\"field\":\"Data.household.memberCount\"}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Target Households\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Overall Target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-task-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"HOUSEHOLD\"}},{\"term\":{\"Data.isDelivered\":true}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"Distribution Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"HH Redeemed\":{\"value_count\":{\"field\":\"Data.id.keyword\"}},\"ITNs Distributed\":{\"sum\":{\"field\":\"Data.quantity\"}},\"People in Redeemed HHs\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-staff-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}]}},\"aggs\":{\"DPs Summary\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total DPs\":{\"value_count\":{\"field\":\"Data.userId.keyword\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "Data.createdTime",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-user-sync-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}},{\"exists\":{\"field\":\"Data.syncedUserId.keyword\"}}]}},\"aggs\":{\"Active DPs\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Active DPs Count\":{\"scripted_metric\":{\"params\":{\"fieldName\":\"Data.syncedUserId.keyword\"},\"init_script\":\"state.list = []\",\"map_script\":\"if(doc[params.fieldName].size() > 0 && doc[params.fieldName].value != null) { state.list.add(doc[params.fieldName].value); }\",\"combine_script\":\"return state.list;\",\"reduce_script\":\"Map uniqueValueMap = new HashMap(); int count = 0; for (shardList in states) { if (shardList != null) { for (key in shardList) { if (!uniqueValueMap.containsKey(key)) { count += 1; uniqueValueMap.put(key, key); } } } } return count;\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"ITNs Assigned\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\",\"size\":500},\"aggs\":{\"Total ITNs Assigned\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
-      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\"}",
+      "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
       "indexName": "bednet-project-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"HOUSEHOLD\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\"}}]}},\"aggs\":{\"Project Start and End Dates\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.State.keyword\"},\"aggs\":{\"Start Date\":{\"min\":{\"field\":\"Data.startDate\"}},\"End Date\":{\"max\":{\"field\":\"Data.endDate\"}}}}}}}}"
     }
@@ -48372,7 +48372,7 @@
     "documentType": "_doc",
     "action": "",
     "aggregationPaths": [
-      "Population Covered for Date range>Population"
+      "Population Covered for Date range"
     ],
     "insight": {},
     "_comment": "People living in redeemed households"
@@ -51398,9 +51398,9 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.taskDates",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.Ward.keyword\",\"community\":\"Data.boundaryHierarchy.Community.keyword\",\"selectedType\":\"Data.deliveryComments.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.ward.keyword\",\"community\":\"Data.boundaryHierarchy.community.keyword\",\"selectedType\":\"Data.deliveryComments.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Total household not delivered\":{\"bool\":{\"must\":[{\"match_phrase\":{\"Data.productVariant\":\"PVAR\"}},{\"exists\":{\"field\":\"Data.deliveryComments.keyword\"}}],\"must_not\":[{\"term\":{\"Data.deliveryComments.keyword\":\"Entrega com sucesso\"}},{\"term\":{\"Data.deliveryComments.keyword\":\"Mais de 6 agregados familiares\"}}]}}}},\"aggs\":{\"Not Delivered Drilldown\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}}}}}}"
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Total household not delivered\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.deliveryComments.keyword\"}}],\"must_not\":[{\"term\":{\"Data.deliveryComments.keyword\":\"Entrega com sucesso\"}},{\"term\":{\"Data.deliveryComments.keyword\":\"Mais de 6 agregados familiares\"}}]}}}},\"aggs\":{\"Not Delivered Drilldown\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.lga.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}}}}}}"
       }
     ],
     "chartType": "pie",
@@ -51420,8 +51420,8 @@
     "queries": [
       {
         "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.Ward.keyword\",\"community\":\"Data.boundaryHierarchy.Community.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "dateRefField": "Data.taskDates",
+        "requestQueryMap": "{\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"ward\":\"Data.boundaryHierarchy.ward.keyword\",\"community\":\"Data.boundaryHierarchy.community.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
         "indexName": "bednet-project-task-index-v1",
         "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGR\":{\"filters\":{\"filters\":{\"Total household not delivered\":{\"bool\":{\"must\":[{\"wildcard\":{\"Data.productVariant.keyword\":\"PVAR*\"}},{\"exists\":{\"field\":\"Data.deliveryComments.keyword\"}}],\"must_not\":[{\"term\":{\"Data.deliveryComments.keyword\":\"Entrega com sucesso\"}},{\"term\":{\"Data.deliveryComments.keyword\":\"Mais de 6 agregados familiares\"}}]}}}},\"aggs\":{\"Not Delivered\":{\"terms\":{\"field\":\"Data.deliveryComments.keyword\",\"size\":500,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}}}"
       }
@@ -51439,6 +51439,67 @@
     "_comment": "Households not delivered grouped by delivery comments",
     "kind": "drillDown"
   },
+"populationNotAdministeredByReasonProvinceICCD": {
+  "chartName": "DSS_HEALTH_POPULATION_NOT_ADMINISTERED_BY_REASON_PROVINCE_ICCD",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_REFUSED\"}}]}},\"aggs\":{\"Beneficiary Refused\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_DIED\"}}]}},\"aggs\":{\"Beneficiary Died\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_MIGRATED\"}}]}},\"aggs\":{\"Beneficiary Migrated\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"BENEFICIARY_ABSENT\"}}]}},\"aggs\":{\"Beneficiary Absent\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.createdTime",
+      "requestQueryMap": "{\"cycle\":\"Data.additionalDetails.cycleIndex.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"state\":\"Data.boundaryHierarchy.state.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bednet-project-task-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"AGGS\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.deliveredTo.keyword\":\"INDIVIDUAL\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"INELIGIBLE\"}}]}},\"aggs\":{\"Beneficiary Ineligible\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}}}"
+    }
+  ],
+  "chartType": "pie",
+  "valueType": "number",
+  "showLabel": true,
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "",
+  "aggregationPaths": [
+    "Beneficiary Refused",
+    "Beneficiary Died",
+    "Beneficiary Migrated",
+    "Beneficiary Absent",
+    "Beneficiary Ineligible"
+  ],
+  "insight": {},
+  "_comment": "Beneficiaries not administered by reason",
+  "kind": "drillDown",
+  "filterKeys": [
+    {
+      "key": "reason"
+    }
+  ]
+},
   "totalPopulationCoveredBednetsICCD": {
     "chartName": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED",
     "queries": [
@@ -51985,6 +52046,126 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
+  "summaryByStockReceived": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RECEIVED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"Stock Received\":{\"terms\":{\"field\":\"Data.transactingFacilityName.keyword\",\"size\":500},\"aggs\":{\"Received Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "sum",
+    "filterKeys": [
+      {
+        "key": "state"
+      },
+      {
+        "key": "lga"
+      },
+      {
+        "key": "campaignNumber"
+      },
+      {
+        "key": "cycleIndex"
+      }
+    ],
+    "sort": "sortKeyAsc",
+    "aggregationPaths": [
+      "Stock Received",
+      "Received Quantity"
+    ],
+    "insight": {},
+    "_comment": "Stock received from accepted ISSUED transactions, attributed to the receiving facility."
+  },
+  "summaryByStockIssued": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_ISSUED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}}]}},\"aggs\":{\"Stock Issued\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500},\"aggs\":{\"Issued Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "sum",
+    "filterKeys": [
+      {
+        "key": "state"
+      },
+      {
+        "key": "lga"
+      },
+      {
+        "key": "campaignNumber"
+      },
+      {
+        "key": "cycleIndex"
+      }
+    ],
+    "sort": "sortKeyAsc",
+    "aggregationPaths": [
+      "Stock Issued",
+      "Issued Quantity"
+    ],
+    "insight": {},
+    "_comment": "Stock issued from accepted and in-transit ISSUED transactions, attributed to the sending facility."
+  },
+  "summaryByStockReturned": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STOCK_RETURNED",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.@timestamp",
+        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"Stock Returned\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500},\"aggs\":{\"Returned Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
+      }
+    ],
+    "chartType": "line",
+    "isCumulative": false,
+    "valueType": "number",
+    "plotLabel": "none",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "sum",
+    "filterKeys": [
+      {
+        "key": "state"
+      },
+      {
+        "key": "lga"
+      },
+      {
+        "key": "campaignNumber"
+      },
+      {
+        "key": "cycleIndex"
+      }
+    ],
+    "sort": "sortKeyAsc",
+    "aggregationPaths": [
+      "Stock Returned",
+      "Returned Quantity"
+    ],
+    "insight": {},
+    "_comment": "Stock returned through accepted RETURNED transactions, attributed to the sending facility."
+  },
   "householdsDistributedBednetsICCD": {
     "chartName": "DSS_TOTAL_HOUSEHOLD_DISTRIBUTED",
     "queries": [
@@ -51996,7 +52177,7 @@
         "aggrQuery": "{\"size\":0,\"aggs\":{\"FILTER\":{\"filters\":{\"filters\":{\"ADMIN_SUCCESS\":{\"bool\":{\"must\":[{\"term\":{\"Data.administrationStatus.keyword\":\"ADMINISTRATION_SUCCESS\"}}]}}}},\"aggs\":{\"totalHouseholdsDistributed\":{\"value_count\":{\"field\":\"Data.projectBeneficiaryClientReferenceId.keyword\"}}}}}}"
       }
     ],
-    "chartType": "metric",
+    "chartType": "line",
     "valueType": "number",
     "action": "",
     "isRoundOff": false,
@@ -64370,566 +64551,6 @@
     "hideHeaderDenomination": true,
     "_comment": " "
   },
-  "individualUsersMetrics": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.syncedUserId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "lastSyncTimeTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LastSyncTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "taskRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-stock-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "stockRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "latestGpsTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.geoPoint\",\"Data.syncedTimeStamp\"]}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformed-errors-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "failedRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Error Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "transformData": "linearAggregation",
-        "transformKey": "complaintsRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.hfReferral.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-hf-referral-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "referralRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Referral Records\":{\"value_count\":{\"field\":\"Data.hfReferral.id.keyword\"}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "failedRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "failedRecordCount": "Error Records.value"
-          }
-        ]
-      },
-      "taskRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "taskRecordCount": "Task Records.value"
-          }
-        ]
-      },
-      "complaintsRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "complaintRecordCount": "Complaint Records.value"
-          }
-        ]
-      },
-      "stockRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "stockRecordCount": "Stock Records.value"
-          }
-        ]
-      },
-      "latestGpsTransformer": {
-        "transformationMappings": [
-          {
-            "latestGps": "LatestDoc.hits.hits[0]._source.Data.geoPoint"
-          }
-        ]
-      },
-      "lastSyncTimeTransformer": {
-        "transformationMappings": [
-          {
-            "lastSyncTime": "LastSyncTime.value_as_string"
-          }
-        ]
-      },
-      "referralRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "referralRecordCount": "Referral Records.value"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeType": "linear",
-        "mergeKey": "combinedUserStats",
-        "flatten": true,
-        "datasets": [],
-        "outputMappings": [
-          {
-            "totalRecordsCount": "add(referralRecordCount,add(complaintRecordCount, add(taskRecordCount, stockRecordCount)))"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "totalRecordsCount",
-      "latestGps",
-      "failedRecordCount",
-      "lastSyncTime"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "usersRecordsSummaryTable": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "taskTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[],\"must_not\":[]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex.keyword\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-stock-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "stockTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.physicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "transformData": "rawDocuments",
-        "transformKey": "complaintsTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.service.serviceRequestId\",\"Data.service.serviceCode\",\"Data.service.description\",\"Data.service.applicationStatus\",\"Data.@timestamp\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformed-errors-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "errorTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.hfReferral.clientAuditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-hf-referral-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "referralTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.hfReferral.id\",\"Data.hfReferral.beneficiaryId\",\"Data.hfReferral.symptom\",\"Data.@timestamp\"]}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "referralTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.hfReferral.id",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Referral'",
-            "detail": "'${Data.hfReferral.beneficiaryId} is referred with ${Data.hfReferral.symptom}'",
-            "gps": "'-'",
-            "outcome": "BENEFICIARY_REFERRED"
-          }
-        ]
-      },
-      "taskTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.taskId",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Delivery'",
-            "detail": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? `Delivered ${Data.quantity} of ${Data.productName}` : Data.administrationStatus",
-            "gps": "Data.geoPoint[1] && Data.geoPoint[0]? `${Data.geoPoint[1]}, ${Data.geoPoint[0]}` : '-'",
-            "outcome": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? 'SUCCESS': Data.administrationStatus"
-          }
-        ]
-      },
-      "stockTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.id",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Stock'",
-            "detail": "Data.eventType === 'RECEIVED' && Data.reason === 'RETURNED' ? `${Data.facilityName} Got Return Stock of ${Data.physicalCount} ${Data.productName} from ${Data.transactingFacilityName}` : Data.eventType === 'RECEIVED' ? `${Data.facilityName} Received ${Data.physicalCount} ${Data.productName} from ${Data.transactingFacilityName}` : `${Data.facilityName} Dispatched ${Data.physicalCount} ${Data.productName} to ${Data.transactingFacilityName}`",
-            "gps": "Data.additionalDetails.lat && Data.additionalDetails.lng ? `${Data.additionalDetails.lat}, ${Data.additionalDetails.lng}` : '-'",
-            "outcome": "'SUCCESS'"
-          }
-        ]
-      },
-      "complaintsTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.service.serviceRequestId",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Complaint'",
-            "detail": "`Raised Complaint ${Data.service.serviceCode} which is in status ${Data.service.applicationStatus} with Description ${Data.service.description}`",
-            "gps": "'-'",
-            "outcome": "'COMPLAINT'"
-          }
-        ]
-      },
-      "errorTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.id",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Error Record'",
-            "detail": "Data.errorCategory",
-            "gps": "'-'",
-            "outcome": "'FAILED'"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeKey": "mergedUsersRecordTaskStockSummary",
-        "baseDataset": "taskTransformer",
-        "dataset": "stockTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "concat",
-        "clearDatasets": [
-          "taskTransformer",
-          "stockTransformer"
-        ]
-      },
-      {
-        "mergeKey": "mergedUsersRecordSummary1",
-        "baseDataset": "mergedUsersRecordTaskStockSummary",
-        "dataset": "complaintsTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "concat",
-        "clearDatasets": [
-          "mergedUsersRecordTaskStockSummary",
-          "complaintsTransformer"
-        ]
-      },
-      {
-        "mergeKey": "mergedUsersRecordSummary",
-        "baseDataset": "mergedUsersRecordSummary1",
-        "dataset": "errorTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "concat",
-        "clearDatasets": [
-          "mergedUsersRecordSummary1",
-          "errorTransformer"
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "mergedUsersRecordSummary"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "mergedUsersRecordSummary"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "overallUsersMetrics": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-staff-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "usersCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "activeUsersTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "taskRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-stock-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "stockRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "transformData": "linearAggregation",
-        "transformKey": "complaintsRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.hfReferral.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-hf-referral-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "referralRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Referral Records\":{\"value_count\":{\"field\":\"Data.hfReferral.id.keyword\"}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "taskRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "taskRecordCount": "Task Records.value"
-          }
-        ]
-      },
-      "stockRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "stockRecordCount": "Stock Records.value"
-          }
-        ]
-      },
-      "usersCountTransformer": {
-        "transformationMappings": [
-          {
-            "totalUsersCreated": "Total Users Count.value"
-          }
-        ]
-      },
-      "activeUsersTransformer": {
-        "transformationMappings": [
-          {
-            "totalUsersActive": "Active Users.value"
-          }
-        ]
-      },
-      "complaintsRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "complaintRecordCount": "Complaint Records.value"
-          }
-        ]
-      },
-      "referralRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "referralRecordCount": "Referral Records.value"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeType": "linear",
-        "mergeKey": "combinedUserStats",
-        "flatten": true,
-        "datasets": [],
-        "outputMappings": [
-          {
-            "inactiveUsers": "subtract(totalUsersCreated, totalUsersActive)",
-            "totalRecordsCount": "add(referralRecordCount,add(complaintRecordCount,add(taskRecordCount,stockRecordCount)))"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "totalUsersCreated",
-      "totalUsersActive",
-      "totalRecordsCount",
-      "inactiveUsers"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "usersSummaryTable": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-staff-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "usersInfoTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchyCode.lga\" ,\"Data.boundaryHierarchyCode.State\" ,\"Data.boundaryHierarchy.lga\", \"Data.boundaryHierarchy.State\", \"Data.nameOfUser\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "transformData": "termsAggregation",
-        "transformKey": "termsSampleTransformer",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.syncedUserName.keyword\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.lga\",\"Data.boundaryHierarchy.State\",\"Data.role\",\"Data.syncedTimeStamp\",\"Data.nameOfUser\"]}}}}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "usersInfoTransformer": {
-        "transformationMappings": [
-          {
-            "userId": "Data.userId",
-            "userName": "Data.userName",
-            "nameOfUser": "Data.nameOfUser",
-            "role": "Data.role",
-            "state": "Data.boundaryHierarchy.State",
-            "lga": "Data.boundaryHierarchy.lga",
-            "stateCode": "Data.boundaryHierarchyCode.State",
-            "lgaCode": "Data.boundaryHierarchyCode.lga"
-          }
-        ]
-      },
-      "termsSampleTransformer": {
-        "bucketsPath": "Username.buckets",
-        "transformationMappings": [
-          {
-            "userId": "key",
-            "userName": "LatestDoc.hits.hits[0]._source.Data.syncedUserName",
-            "nameOfUser": "LatestDoc.hits.hits[0]._source.Data.nameOfUser",
-            "role": "LatestDoc.hits.hits[0]._source.Data.role",
-            "state": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.state",
-            "lga": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.lga",
-            "totalRecords": "RecordTotal.value",
-            "latestSyncTime": "LatestSyncedTime.value_as_string",
-            "latestSyncEpoch": "toNumber(LatestSyncedTime.value)",
-            "active": "Last3Hours.doc_count > 0 ? 'ACTIVE' : 'INACTIVE'"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeKey": "mergedUsersSummary",
-        "baseDataset": "usersInfoTransformer",
-        "dataset": "termsSampleTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "full",
-        "clearDatasets2": [],
-        "clearDatasets": [
-          "usersInfoTransformer",
-          "termsSampleTransformer"
-        ],
-        "outputMappings": [
-          {
-            "userId": "usersInfoTransformer.userId ? usersInfoTransformer.userId : termsSampleTransformer.userId",
-            "userName": "usersInfoTransformer.userName ? usersInfoTransformer.userName : termsSampleTransformer.userName",
-            "nameOfUser": "usersInfoTransformer.nameOfUser ? usersInfoTransformer.nameOfUser : termsSampleTransformer.nameOfUser",
-            "role": "usersInfoTransformer.role ? usersInfoTransformer.role: termsSampleTransformer.role",
-            "state": "usersInfoTransformer.state ? usersInfoTransformer.state: termsSampleTransformer.state",
-            "lga": "usersInfoTransformer.lga ? usersInfoTransformer.lga : termsSampleTransformer.lga",
-            "stateCode": "usersInfoTransformer.stateCode",
-            "lgaCode": "usersInfoTransformer.lgaCode",
-            "totalRecords": "termsSampleTransformer.totalRecords",
-            "latestSyncTime": "termsSampleTransformer.latestSyncTime",
-            "active": "termsSampleTransformer.active ? termsSampleTransformer.active : 'INACTIVE'",
-            "fullLocation": "concat(usersInfoTransformer.state ? usersInfoTransformer.state: termsSampleTransformer.state, ' - ', usersInfoTransformer.lga ? usersInfoTransformer.lga : termsSampleTransformer.lga)"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "mergedUsersSummary"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "mergedUsersSummary"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
   "commodityStockSummary": {
     "chartName": "DSS_COMMODITY_STOCK_SUMMARY",
     "queries": [
@@ -67640,581 +67261,6 @@
     ],
     "ignoreSplitMetricPaths": []
   },
-  "overallUsersMetrics": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-staff-index-v1",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}",
-        "select": {
-          "totalUsersCreated": "Total Users Count.value"
-        }
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}",
-        "select": {
-          "totalUsersActive": "Active Users.value"
-        }
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}",
-        "select": {
-          "taskRecordCount": "Task Records.value"
-        }
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-stock-index-v1",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}",
-        "select": {
-          "stockRecordCount": "Stock Records.value"
-        }
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}",
-        "select": {
-          "complaintRecordCount": "Complaint Records.value"
-        }
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.hfReferral.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-hf-referral-index-v1",
-        "transformData": "linearAggregation",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Referral Records\":{\"value_count\":{\"field\":\"Data.hfReferral.id.keyword\"}}}}",
-        "select": {
-          "referralRecordCount": "Referral Records.value"
-        }
-      }
-    ],
-    "chartType": "rawResponse",
-    "merges": [
-      {
-        "mergeType": "linear",
-        "mergeKey": "combinedUserStats",
-        "flatten": true,
-        "datasets": [],
-        "outputMappings": [
-          {
-            "inactiveUsers": "subtract(totalUsersCreated, totalUsersActive)",
-            "totalRecordsCount": "add(referralRecordCount,add(complaintRecordCount,add(taskRecordCount,stockRecordCount)))"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "totalUsersCreated",
-      "totalUsersActive",
-      "totalRecordsCount",
-      "inactiveUsers"
-    ],
-    "cardsList": [
-      {
-        "id": "totalUsersCreated",
-        "labelKey": "DSS_OVERALL_USERS_TOTAL",
-        "valuePath": "totalUsersCreated",
-        "valueType": "NUMBER",
-        "descriptionParams": {
-          "count": "totalUsersCreated"
-        },
-        "colorRules": {
-          "type": "constant",
-          "color": "#0B4B66"
-        }
-      },
-      {
-        "id": "totalUsersActive",
-        "labelKey": "DSS_OVERALL_USERS_ACTIVE",
-        "valuePath": "totalUsersActive",
-        "valueType": "NUMBER",
-        "descriptionParams": {
-          "count": "totalUsersActive",
-          "offline": "inactiveUsers"
-        },
-        "colorRules": {
-          "type": "constant",
-          "color": "#0B4B66"
-        }
-      },
-      {
-        "id": "totalRecordsCount",
-        "labelKey": "DSS_OVERALL_RECORDS_TOTAL",
-        "valuePath": "totalRecordsCount",
-        "valueType": "NUMBER",
-        "descriptionParams": {
-          "count": "totalRecordsCount"
-        },
-        "colorRules": {
-          "type": "constant",
-          "color": "#0B4B66"
-        }
-      },
-      {
-        "id": "inactiveUsers",
-        "labelKey": "DSS_OVERALL_USERS_INACTIVE",
-        "valuePath": "inactiveUsers",
-        "valueType": "NUMBER",
-        "descriptionParams": {
-          "count": "inactiveUsers",
-          "total": "totalUsersCreated",
-          "online": "totalUsersActive"
-        },
-        "colorRules": {
-          "type": "constant",
-          "color": "#C84C0E"
-        }
-      }
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "usersSummaryTable": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-staff-index-v1",
-        "key": "staffDocuments",
-        "transformData": "rawDocuments",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchyCode.lga\" ,\"Data.boundaryHierarchyCode.State\" ,\"Data.boundaryHierarchy.lga\", \"Data.boundaryHierarchy.State\", \"Data.nameOfUser\"]}",
-        "select": {
-          "userId": "Data.userId",
-          "userName": "Data.userName",
-          "nameOfUser": "Data.nameOfUser",
-          "role": "Data.role",
-          "state": "Data.boundaryHierarchy.state",
-          "lga": "Data.boundaryHierarchy.lga",
-          "stateCode": "Data.boundaryHierarchyCode.state",
-          "lgaCode": "Data.boundaryHierarchyCode.lga"
-        }
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "key": "userSyncDocuments",
-        "transformData": "termsAggregation",
-        "bucketsPath": "Username.buckets",
-        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.syncedUserName.keyword\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.lga\",\"Data.boundaryHierarchy.State\",\"Data.role\",\"Data.syncedTimeStamp\",\"Data.nameOfUser\"]}}}}}}}",
-        "select": {
-          "userId": "key",
-          "userName": "LatestDoc.hits.hits[0]._source.Data.syncedUserName",
-          "nameOfUser": "LatestDoc.hits.hits[0]._source.Data.nameOfUser",
-          "role": "LatestDoc.hits.hits[0]._source.Data.role",
-          "state": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.state",
-          "lga": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.lga",
-          "totalRecords": "RecordTotal.value",
-          "latestSyncTime": "LatestSyncedTime.value_as_string",
-          "latestSyncEpoch": "toNumber(LatestSyncedTime.value)",
-          "active": "Last3Hours.doc_count > 0 ? 'ACTIVE' : 'INACTIVE'"
-        }
-      }
-    ],
-    "chartType": "rawResponse",
-    "merges": [
-      {
-        "mergeKey": "mergedUsersSummary",
-        "baseDataset": "staffDocuments",
-        "dataset": "userSyncDocuments",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "full",
-        "clearDatasets2": [],
-        "clearDatasets": [
-          "staffDocuments",
-          "userSyncDocuments"
-        ],
-        "outputMappings": [
-          {
-            "userId": "staffDocuments.userId ? staffDocuments.userId : userSyncDocuments.userId",
-            "userName": "staffDocuments.userName ? staffDocuments.userName : userSyncDocuments.userName",
-            "nameOfUser": "staffDocuments.nameOfUser ? staffDocuments.nameOfUser : userSyncDocuments.nameOfUser",
-            "role": "staffDocuments.role ? staffDocuments.role: userSyncDocuments.role",
-            "state": "staffDocuments.state ? staffDocuments.state: userSyncDocuments.state",
-            "lga": "staffDocuments.lga ? staffDocuments.lga : userSyncDocuments.lga",
-            "stateCode": "staffDocuments.stateCode",
-            "lgaCode": "staffDocuments.lgaCode",
-            "totalRecords": "staffDocuments.totalRecords",
-            "latestSyncTime": "staffDocuments.latestSyncTime",
-            "active": "staffDocuments.active ? userSyncDocuments.active : 'INACTIVE'",
-            "fullLocation": "concat(staffDocuments.state ? staffDocuments.state: userSyncDocuments.state, ' - ', staffDocuments.lga ? staffDocuments.lga : userSyncDocuments.lga)"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "mergedUsersSummary"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "mergedUsersSummary"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "individualUsersMetrics": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.createdTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.syncedUserId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-user-sync-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "lastSyncTimeTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LastSyncTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "taskRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-stock-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "stockRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "latestGpsTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.geoPoint\",\"Data.syncedTimeStamp\"]}}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformed-errors-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "failedRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Error Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "transformData": "linearAggregation",
-        "transformKey": "complaintsRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.hfReferral.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-hf-referral-index-v1",
-        "transformData": "linearAggregation",
-        "transformKey": "referralRecordCountTransformer",
-        "aggrQuery": "{\"size\":0,\"aggs\":{\"Referral Records\":{\"value_count\":{\"field\":\"Data.hfReferral.id.keyword\"}}}}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "failedRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "failedRecordCount": "Error Records.value"
-          }
-        ]
-      },
-      "taskRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "taskRecordCount": "Task Records.value"
-          }
-        ]
-      },
-      "complaintsRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "complaintRecordCount": "Complaint Records.value"
-          }
-        ]
-      },
-      "stockRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "stockRecordCount": "Stock Records.value"
-          }
-        ]
-      },
-      "latestGpsTransformer": {
-        "transformationMappings": [
-          {
-            "latestGps": "LatestDoc.hits.hits[0]._source.Data.geoPoint"
-          }
-        ]
-      },
-      "lastSyncTimeTransformer": {
-        "transformationMappings": [
-          {
-            "lastSyncTime": "LastSyncTime.value_as_string"
-          }
-        ]
-      },
-      "referralRecordCountTransformer": {
-        "transformationMappings": [
-          {
-            "referralRecordCount": "Referral Records.value"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeType": "linear",
-        "mergeKey": "combinedUserStats",
-        "flatten": true,
-        "datasets": [],
-        "outputMappings": [
-          {
-            "totalRecordsCount": "add(referralRecordCount,add(complaintRecordCount, add(taskRecordCount, stockRecordCount)))"
-          }
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "Users"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "totalRecordsCount",
-      "latestGps",
-      "failedRecordCount",
-      "lastSyncTime"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
-  "usersRecordsSummaryTable": {
-    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
-    "queries": [
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-project-task-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "taskTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[],\"must_not\":[]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex.keyword\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.syncedTime",
-        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-stock-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "stockTransformer",
-        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.physicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.service.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformer-pgr-services",
-        "transformData": "rawDocuments",
-        "transformKey": "complaintsTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.service.serviceRequestId\",\"Data.service.serviceCode\",\"Data.service.description\",\"Data.service.applicationStatus\",\"Data.@timestamp\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-transformed-errors-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "errorTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
-      },
-      {
-        "module": "COMMON",
-        "dateRefField": "Data.hfReferral.auditDetails.createdTime",
-        "requestQueryMap": "{\"userId\": \"Data.hfReferral.clientAuditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.State.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
-        "indexName": "bednet-hf-referral-index-v1",
-        "transformData": "rawDocuments",
-        "transformKey": "referralTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.hfReferral.id\",\"Data.hfReferral.beneficiaryId\",\"Data.hfReferral.symptom\",\"Data.@timestamp\"]}"
-      }
-    ],
-    "chartType": "rawResponse",
-    "transform": {
-      "referralTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.hfReferral.id",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Referral'",
-            "detail": "'${Data.hfReferral.beneficiaryId} is referred with ${Data.hfReferral.symptom}'",
-            "gps": "'-'",
-            "outcome": "BENEFICIARY_REFERRED"
-          }
-        ]
-      },
-      "taskTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.taskId",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Delivery'",
-            "detail": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? `Delivered ${Data.quantity} of ${Data.productName}` : Data.administrationStatus",
-            "gps": "Data.geoPoint[1] && Data.geoPoint[0]? `${Data.geoPoint[1]}, ${Data.geoPoint[0]}` : '-'",
-            "outcome": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? 'SUCCESS': Data.administrationStatus"
-          }
-        ]
-      },
-      "stockTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.id",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Stock'",
-            "detail": "Data.eventType === 'RECEIVED' && Data.reason === 'RETURNED' ? `${Data.facilityName} Got Return Stock of ${Data.physicalCount} ${Data.productName} from ${Data.transactingFacilityName}` : Data.eventType === 'RECEIVED' ? `${Data.facilityName} Received ${Data.physicalCount} ${Data.productName} from ${Data.transactingFacilityName}` : `${Data.facilityName} Dispatched ${Data.physicalCount} ${Data.productName} to ${Data.transactingFacilityName}`",
-            "gps": "Data.additionalDetails.lat && Data.additionalDetails.lng ? `${Data.additionalDetails.lat}, ${Data.additionalDetails.lng}` : '-'",
-            "outcome": "'SUCCESS'"
-          }
-        ]
-      },
-      "complaintsTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.service.serviceRequestId",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Complaint'",
-            "detail": "`Raised Complaint ${Data.service.serviceCode} which is in status ${Data.service.applicationStatus} with Description ${Data.service.description}`",
-            "gps": "'-'",
-            "outcome": "'COMPLAINT'"
-          }
-        ]
-      },
-      "errorTransformer": {
-        "transformationMappings": [
-          {
-            "id": "Data.id",
-            "timestamp": "Data.@timestamp",
-            "actionType": "'Error Record'",
-            "detail": "Data.errorCategory",
-            "gps": "'-'",
-            "outcome": "'FAILED'"
-          }
-        ]
-      }
-    },
-    "merges": [
-      {
-        "mergeKey": "mergedUsersRecordTaskStockSummary",
-        "baseDataset": "taskTransformer",
-        "dataset": "stockTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "concat",
-        "clearDatasets": [
-          "taskTransformer",
-          "stockTransformer"
-        ]
-      },
-      {
-        "mergeKey": "mergedUsersRecordSummary1",
-        "baseDataset": "mergedUsersRecordTaskStockSummary",
-        "dataset": "complaintsTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "concat",
-        "clearDatasets": [
-          "mergedUsersRecordTaskStockSummary",
-          "complaintsTransformer"
-        ]
-      },
-      {
-        "mergeKey": "mergedUsersRecordSummary",
-        "baseDataset": "mergedUsersRecordSummary1",
-        "dataset": "errorTransformer",
-        "baseKey": "userId",
-        "joinKey": "userId",
-        "joinType": "concat",
-        "clearDatasets": [
-          "mergedUsersRecordSummary1",
-          "errorTransformer"
-        ]
-      }
-    ],
-    "isCumulative": false,
-    "valueType": "number",
-    "showLabel": true,
-    "drillChart": "none",
-    "filterKeys": [
-      {
-        "key": "mergedUsersRecordSummary"
-      }
-    ],
-    "documentType": "_doc",
-    "action": "",
-    "aggregationPaths": [
-      "mergedUsersRecordSummary"
-    ],
-    "insight": {},
-    "_comment": " "
-  },
   "paymentsGeneratedOverviewBanner": {
     "chartName": "DSS_HEALTH_PAYMENTS_OVERVIEW_GENERATED",
     "queries": [
@@ -69955,5 +69001,825 @@
       "Summary Open Complaints"
     ],
     "insight": {}
+  },
+  "overallUsersMetrics": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-project-staff-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Total Users Count\":{\"cardinality\":{\"field\":\"Data.userId.keyword\"}}}}",
+        "select": {
+          "totalUsersCreated": "Total Users Count.value"
+        }
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-user-sync-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\"}}}]}},\"aggs\":{\"Active Users\":{\"cardinality\":{\"field\":\"Data.syncedUserId.keyword\"}}}}",
+        "select": {
+          "totalUsersActive": "Active Users.value"
+        }
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}",
+        "select": {
+          "taskRecordCount": "Task Records.value"
+        }
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}",
+        "select": {
+          "stockRecordCount": "Stock Records.value"
+        }
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-transformer-pgr-services",
+        "transformData": "linearAggregation",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}",
+        "select": {
+          "complaintRecordCount": "Complaint Records.value"
+        }
+      }
+    ],
+    "chartType": "rawResponse",
+    "merges": [
+      {
+        "mergeType": "linear",
+        "mergeKey": "combinedUserStats",
+        "flatten": true,
+        "datasets": [],
+        "outputMappings": [
+          {
+            "inactiveUsers": "subtract(totalUsersCreated, totalUsersActive)",
+            "totalRecordsCount": "add(complaintRecordCount,add(taskRecordCount,stockRecordCount))"
+          }
+        ]
+      }
+    ],
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [
+      {
+        "key": "Users"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "totalUsersCreated",
+      "totalUsersActive",
+      "totalRecordsCount",
+      "inactiveUsers"
+    ],
+    "cardsList": [
+      {
+        "id": "totalUsersCreated",
+        "labelKey": "DSS_OVERALL_USERS_TOTAL",
+        "valuePath": "totalUsersCreated",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "totalUsersCreated"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "totalUsersActive",
+        "labelKey": "DSS_OVERALL_USERS_ACTIVE",
+        "valuePath": "totalUsersActive",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "totalUsersActive",
+          "offline": "inactiveUsers"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "totalRecordsCount",
+        "labelKey": "DSS_OVERALL_RECORDS_TOTAL",
+        "valuePath": "totalRecordsCount",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "totalRecordsCount"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#0B4B66"
+        }
+      },
+      {
+        "id": "inactiveUsers",
+        "labelKey": "DSS_OVERALL_USERS_INACTIVE",
+        "valuePath": "inactiveUsers",
+        "valueType": "NUMBER",
+        "descriptionParams": {
+          "count": "inactiveUsers",
+          "total": "totalUsersCreated",
+          "online": "totalUsersActive"
+        },
+        "colorRules": {
+          "type": "constant",
+          "color": "#C84C0E"
+        }
+      }
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "usersSummaryTable": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-project-staff-index-v1",
+        "key": "staffDocuments",
+        "transformData": "rawDocuments",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.userId\",\"Data.userName\",\"Data.role\",\"Data.boundaryHierarchyCode.lga\" ,\"Data.boundaryHierarchyCode.state\" ,\"Data.boundaryHierarchy.lga\", \"Data.boundaryHierarchy.state\", \"Data.nameOfUser\"]}",
+        "select": {
+          "userId": "Data.userId",
+          "userName": "Data.userName",
+          "nameOfUser": "Data.nameOfUser",
+          "role": "Data.role",
+          "state": "Data.boundaryHierarchy.state",
+          "lga": "Data.boundaryHierarchy.lga",
+          "provinceCode": "Data.boundaryHierarchyCode.state",
+          "districtCode": "Data.boundaryHierarchyCode.lga"
+        }
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-user-sync-index-v1",
+        "key": "userSyncDocuments",
+        "transformData": "termsAggregation",
+        "bucketsPath": "Username.buckets",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[]}},\"aggs\":{\"Username\":{\"terms\":{\"field\":\"Data.syncedUserId.keyword\",\"size\":10000},\"aggs\":{\"LatestSyncedTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}},\"RecordTotal\":{\"value_count\":{\"field\":\"Data.syncedUserName.keyword\"}},\"Last3Hours\":{\"filter\":{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now-3h\",\"lte\":\"now\"}}}},\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.syncedUserName\",\"Data.@timestamp\",\"Data.boundaryHierarchy.lga\",\"Data.boundaryHierarchy.state\",\"Data.role\",\"Data.syncedTimeStamp\",\"Data.nameOfUser\"]}}}}}}}",
+        "select": {
+          "userId": "key",
+          "userName": "LatestDoc.hits.hits[0]._source.Data.syncedUserName",
+          "nameOfUser": "LatestDoc.hits.hits[0]._source.Data.nameOfUser",
+          "role": "LatestDoc.hits.hits[0]._source.Data.role",
+          "state": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.state",
+          "lga": "LatestDoc.hits.hits[0]._source.Data.boundaryHierarchy.lga",
+          "totalRecords": "RecordTotal.value",
+          "latestSyncTime": "LatestSyncedTime.value_as_string",
+          "latestSyncEpoch": "toNumber(LatestSyncedTime.value)",
+          "active": "Last3Hours.doc_count > 0 ? 'ACTIVE' : 'INACTIVE'"
+        }
+      }
+    ],
+    "chartType": "rawResponse",
+    "merges": [
+      {
+        "mergeKey": "mergedUsersSummary",
+        "baseDataset": "staffDocuments",
+        "dataset": "userSyncDocuments",
+        "baseKey": "userId",
+        "joinKey": "userId",
+        "joinType": "full",
+        "clearDatasets2": [],
+        "clearDatasets": [
+          "staffDocuments",
+          "userSyncDocuments"
+        ],
+        "outputMappings": [
+          {
+            "userId": "staffDocuments.userId ? staffDocuments.userId : userSyncDocuments.userId",
+            "userName": "staffDocuments.userName ? staffDocuments.userName : userSyncDocuments.userName",
+            "nameOfUser": "staffDocuments.nameOfUser ? staffDocuments.nameOfUser : userSyncDocuments.nameOfUser",
+            "role": "staffDocuments.role ? staffDocuments.role: userSyncDocuments.role",
+            "state": "staffDocuments.state ? staffDocuments.state: userSyncDocuments.state",
+            "lga": "staffDocuments.lga ? staffDocuments.lga : userSyncDocuments.lga",
+            "provinceCode": "staffDocuments.provinceCode",
+            "districtCode": "staffDocuments.districtCode",
+            "totalRecords": "userSyncDocuments.totalRecords",
+            "latestSyncTime": "userSyncDocuments.latestSyncTime",
+            "active": "userSyncDocuments.active ? userSyncDocuments.active : 'INACTIVE'",
+            "fullLocation": "concat(staffDocuments.state ? staffDocuments.state: userSyncDocuments.state, ' - ', staffDocuments.lga ? staffDocuments.lga : userSyncDocuments.lga)"
+          }
+        ]
+      }
+    ],
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [
+      {
+        "key": "mergedUsersSummary"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "mergedUsersSummary"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "individualUsersMetrics": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.syncedUserId.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-user-sync-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "lastSyncTimeTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"LastSyncTime\":{\"max\":{\"field\":\"Data.syncedTimeStamp\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "taskRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Task Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "stockRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Stock Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "latestGpsTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"LatestDoc\":{\"top_hits\":{\"size\":1,\"sort\":[{\"Data.syncedTimeStamp\":{\"order\":\"desc\"}}],\"_source\":{\"includes\":[\"Data.geoPoint\",\"Data.syncedTimeStamp\"]}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-transformed-errors-index-v1",
+        "transformData": "linearAggregation",
+        "transformKey": "failedRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Error Records\":{\"value_count\":{\"field\":\"Data.id.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-transformer-pgr-services",
+        "transformData": "linearAggregation",
+        "transformKey": "complaintsRecordCountTransformer",
+        "aggrQuery": "{\"size\":0,\"aggs\":{\"Complaint Records\":{\"value_count\":{\"field\":\"Data.service.serviceRequestId.keyword\"}}}}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "failedRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "failedRecordCount": "Error Records.value"
+          }
+        ]
+      },
+      "taskRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "taskRecordCount": "Task Records.value"
+          }
+        ]
+      },
+      "complaintsRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "complaintRecordCount": "Complaint Records.value"
+          }
+        ]
+      },
+      "stockRecordCountTransformer": {
+        "transformationMappings": [
+          {
+            "stockRecordCount": "Stock Records.value"
+          }
+        ]
+      },
+      "latestGpsTransformer": {
+        "transformationMappings": [
+          {
+            "latestGps": "LatestDoc.hits.hits[0]._source.Data.geoPoint"
+          }
+        ]
+      },
+      "lastSyncTimeTransformer": {
+        "transformationMappings": [
+          {
+            "lastSyncTime": "LastSyncTime.value_as_string"
+          }
+        ]
+      }
+    },
+    "merges": [
+      {
+        "mergeType": "linear",
+        "mergeKey": "combinedUserStats",
+        "flatten": true,
+        "datasets": [],
+        "outputMappings": [
+          {
+            "totalRecordsCount": "add(add(complaintRecordCount, add(taskRecordCount, stockRecordCount)))"
+          }
+        ]
+      }
+    ],
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [
+      {
+        "key": "Users"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "totalRecordsCount",
+      "latestGps",
+      "failedRecordCount",
+      "lastSyncTime"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "usersRecordsSummaryTable": {
+    "chartName": "DSS_HEALTH_COMPLAINTS_BY_HEALTH_DISTRICT_TOTAL_BURUNDI",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-project-task-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "taskTransformer",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[],\"must_not\":[{\"term\":{\"Data.administrationStatus.keywor\":{\"value\":\"DELIVERED\"}}}]}},\"_source\":[\"Data.geoPoint\",\"Data.taskId\",\"Data.productName\",\"Data.administrationStatus\",\"Data.@timestamp\",\"Data.quantity\",\"Data.latitude\",\"Data.longitude\",\"Data.boundaryHierarchy.subHills\",\"Data.additionalDetails.cycleIndex.keyword\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.syncedTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "stockTransformer",
+        "aggrQuery": "{\"size\":100,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.productName\",\"Data.eventType\",\"Data.reason\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.@timestamp\",\"Data.physicalCount\",\"Data.additionalDetails.lat\",\"Data.additionalDetails.lng\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.service.auditDetails.createdTime",
+        "requestQueryMap": "{\"cycle\": \"Data.additionalDetails.cycleIndex.keyword\", \"userId\": \"Data.service.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-transformer-pgr-services",
+        "transformData": "rawDocuments",
+        "transformKey": "complaintsTransformer",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.service.serviceRequestId\",\"Data.service.serviceCode\",\"Data.service.description\",\"Data.service.applicationStatus\",\"Data.@timestamp\"]}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "Data.auditDetails.createdTime",
+        "requestQueryMap": "{\"userId\": \"Data.auditDetails.createdBy.keyword\", \"campaignNumber\": \"Data.campaignNumber.keyword\", \"state\": \"Data.boundaryHierarchy.state.keyword\", \"lga\": \"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-transformed-errors-index-v1",
+        "transformData": "rawDocuments",
+        "transformKey": "errorTransformer",
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must\":[]}},\"_source\":[\"Data.id\",\"Data.errorCategory\",\"Data.@timestamp\"]}"
+      }
+    ],
+    "chartType": "rawResponse",
+    "transform": {
+      "taskTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.taskId",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Delivery'",
+            "detail": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? `Delivered ${Data.quantity} of ${Data.productName}` : Data.administrationStatus",
+            "gps": "Data.geoPoint[1] && Data.geoPoint[0]? `${Data.geoPoint[1]}, ${Data.geoPoint[0]}` : '-'",
+            "outcome": "Data.administrationStatus === 'ADMINISTRATION_SUCCESS' ? 'SUCCESS': Data.administrationStatus"
+          }
+        ]
+      },
+      "stockTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.id",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Stock'",
+            "detail": "Data.eventType === 'RECEIVED' && Data.reason === 'RETURNED' ? `${Data.facilityName} Got Return Stock of ${Data.physicalCount} ${Data.productName} from ${Data.transactingFacilityName}` : Data.eventType === 'RECEIVED' ? `${Data.facilityName} Received ${Data.physicalCount} ${Data.productName} from ${Data.transactingFacilityName}` : `${Data.facilityName} Dispatched ${Data.physicalCount} ${Data.productName} to ${Data.transactingFacilityName}`",
+            "gps": "Data.additionalDetails.lat && Data.additionalDetails.lng ? `${Data.additionalDetails.lat}, ${Data.additionalDetails.lng}` : '-'",
+            "outcome": "'SUCCESS'"
+          }
+        ]
+      },
+      "complaintsTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.service.serviceRequestId",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Complaint'",
+            "detail": "`Raised Complaint ${Data.service.serviceCode} which is in status ${Data.service.applicationStatus} with Description ${Data.service.description}`",
+            "gps": "'-'",
+            "outcome": "'COMPLAINT'"
+          }
+        ]
+      },
+      "errorTransformer": {
+        "transformationMappings": [
+          {
+            "id": "Data.id",
+            "timestamp": "Data.@timestamp",
+            "actionType": "'Error Record'",
+            "detail": "Data.errorCategory",
+            "gps": "'-'",
+            "outcome": "'FAILED'"
+          }
+        ]
+      }
+    },
+    "merges": [
+      {
+        "mergeKey": "mergedUsersRecordTaskStockSummary",
+        "baseDataset": "taskTransformer",
+        "dataset": "stockTransformer",
+        "baseKey": "userId",
+        "joinKey": "userId",
+        "joinType": "concat",
+        "clearDatasets": [
+          "taskTransformer",
+          "stockTransformer"
+        ]
+      },
+      {
+        "mergeKey": "mergedUsersRecordSummary1",
+        "baseDataset": "mergedUsersRecordTaskStockSummary",
+        "dataset": "complaintsTransformer",
+        "baseKey": "userId",
+        "joinKey": "userId",
+        "joinType": "concat",
+        "clearDatasets": [
+          "mergedUsersRecordTaskStockSummary",
+          "complaintsTransformer"
+        ]
+      },
+      {
+        "mergeKey": "mergedUsersRecordSummary",
+        "baseDataset": "mergedUsersRecordSummary1",
+        "dataset": "errorTransformer",
+        "baseKey": "userId",
+        "joinKey": "userId",
+        "joinType": "concat",
+        "clearDatasets": [
+          "mergedUsersRecordSummary1",
+          "errorTransformer"
+        ]
+      }
+    ],
+    "isCumulative": false,
+    "valueType": "number",
+    "showLabel": true,
+    "drillChart": "none",
+    "filterKeys": [
+      {
+        "key": "mergedUsersRecordSummary"
+      }
+    ],
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "mergedUsersRecordSummary"
+    ],
+    "insight": {},
+    "_comment": " "
+  },
+  "InventorySummaryByStateBednetsICCD": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_STATE",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}}],\"filter\":[{\"bool\":{\"should\":[{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Central Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Warehouse\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Warehouse\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"LGA Facility\"}},{\"terms\":{\"Data.transactingFacilityType.keyword\":[\"State\",\"Warehouse\"]}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}}],\"minimum_should_match\":1}}]}},\"aggs\":{\"State\":{\"terms\":{\"size\":1000,\"order\":{\"_key\":\"asc\"},\"script\":{\"source\":\"String State = doc['Data.boundaryHierarchy.State.keyword'].size() > 0 ? doc['Data.boundaryHierarchy.State.keyword'].value : ''; String ft = doc['Data.facilityType.keyword'].size() > 0 ? doc['Data.facilityType.keyword'].value : ''; String tt = doc['Data.transactingFacilityType.keyword'].size() > 0 ? doc['Data.transactingFacilityType.keyword'].value : ''; String fn = doc['Data.facilityName.keyword'].size() > 0 ? doc['Data.facilityName.keyword'].value : ''; String tfn = doc['Data.transactingFacilityName.keyword'].size() > 0 ? doc['Data.transactingFacilityName.keyword'].value : ''; String se = doc['Data.additionalDetails.stockEntryType.keyword'].size() > 0 ? doc['Data.additionalDetails.stockEntryType.keyword'].value : ''; if (State != '') { return State; } if (ft == 'Central Facility' && tt == 'Warehouse' && fn == 'National_WH' && tfn == 'STATE_WH' && se == 'ISSUED') { return 'Borno'; } return null;\"},\"value_type\":\"string\"},\"aggs\":{\"Received\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Central Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Warehouse\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Issued\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Warehouse\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Returned\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"LGA Facility\"}},{\"terms\":{\"Data.transactingFacilityType.keyword\":[\"State\",\"Warehouse\"]}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"ReceivedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Received>SUM\"},\"script\":\"params.v\"}},\"IssuedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Issued>SUM\"},\"script\":\"params.v\"}},\"ReturnedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Returned>SUM\"},\"script\":\"params.v\"}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"received\":\"ReceivedValue\",\"issued\":\"IssuedValue\",\"returned\":\"ReturnedValue\"},\"script\":\"params.received - params.issued + params.returned\"}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {
+        "key": "State",
+        "column": "State"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "InventorySummaryByLgaBednetsICCD",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "State",
+    "excludedColumns": [
+      "SUM",
+      "Received",
+      "Issued",
+      "Returned",
+      "Total Stock",
+      "ReceivedValue",
+      "IssuedValue",
+      "ReturnedValue"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "ReceivedValue"
+        ],
+        "newField": "Stock Received",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "IssuedValue"
+        ],
+        "newField": "Stock Issued",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "ReturnedValue"
+        ],
+        "newField": "Stock Returned",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Stock"
+        ],
+        "newField": "Stock Balance",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "kind": "drillDown"
+  },
+  "InventorySummaryByLgaBednetsICCD": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_LGA",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"State\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}}],\"filter\":[{\"bool\":{\"should\":[{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Warehouse\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}}],\"minimum_should_match\":1}}]}},\"aggs\":{\"LGA\":{\"terms\":{\"size\":1000,\"order\":{\"_key\":\"asc\"},\"script\":{\"source\":\"String ft = doc['Data.facilityType.keyword'].size()>0 ? doc['Data.facilityType.keyword'].value : ''; String tt = doc['Data.transactingFacilityType.keyword'].size()>0 ? doc['Data.transactingFacilityType.keyword'].value : ''; if (ft == 'Warehouse' && tt == 'LGA Facility' && doc['Data.transactingFacilityName.keyword'].size()>0) { String n = doc['Data.transactingFacilityName.keyword'].value; if (n.endsWith(' Warehouse')) { return n.substring(0,n.length()-10); } return n; } if (doc['Data.boundaryHierarchy.lga.keyword'].size()>0) { return doc['Data.boundaryHierarchy.lga.keyword'].value; } return null;\"},\"value_type\":\"string\"},\"aggs\":{\"Received\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Warehouse\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Issued\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Returned\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"ReceivedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Received>SUM\"},\"script\":\"params.v\"}},\"IssuedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Issued>SUM\"},\"script\":\"params.v\"}},\"ReturnedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Returned>SUM\"},\"script\":\"params.v\"}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"received\":\"ReceivedValue\",\"issued\":\"IssuedValue\",\"returned\":\"ReturnedValue\"},\"script\":\"params.received - params.issued + params.returned\"}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {
+        "key": "lga",
+        "column": "LGA"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "InventorySummaryByDhBednetsICCD",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "LGA",
+    "excludedColumns": [
+      "SUM",
+      "Received",
+      "Issued",
+      "Returned",
+      "Total Stock",
+      "ReceivedValue",
+      "IssuedValue",
+      "ReturnedValue"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "ReceivedValue"
+        ],
+        "newField": "Stock Received",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "IssuedValue"
+        ],
+        "newField": "Stock Issued",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "ReturnedValue"
+        ],
+        "newField": "Stock Returned",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Stock"
+        ],
+        "newField": "Stock Balance",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "kind": "drillDown"
+  },
+  "InventorySummaryByDhBednetsICCD": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DH",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"State\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"Distribution Hub\":\"Data.boundaryHierarchy.Distribution Hub.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}}],\"filter\":[{\"bool\":{\"should\":[{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}}],\"minimum_should_match\":1}}]}},\"aggs\":{\"DH\":{\"terms\":{\"field\":\"Data.boundaryHierarchy.Distribution Hub.keyword\",\"size\":1000,\"order\":{\"_key\":\"asc\"}},\"aggs\":{\"Received\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Issued\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Returned\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"ReturnedToLga\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"LGA Facility\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"ReceivedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Received>SUM\"},\"script\":\"params.v\"}},\"IssuedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Issued>SUM\"},\"script\":\"params.v\"}},\"ReturnedValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"Returned>SUM\"},\"script\":\"params.v\"}},\"ReturnedToLgaValue\":{\"bucket_script\":{\"buckets_path\":{\"v\":\"ReturnedToLga>SUM\"},\"script\":\"params.v\"}},\"Total Stock\":{\"bucket_script\":{\"buckets_path\":{\"received\":\"ReceivedValue\",\"issued\":\"IssuedValue\",\"returned\":\"ReturnedValue\",\"returnedToLga\":\"ReturnedToLgaValue\"},\"script\":\"params.received - params.issued + params.returned - params.returnedToLga\"}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {
+        "key": "Distribution Hub",
+        "column": "Distribution Hub"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "InventorySummaryByMdtBednetsICCD",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "Distribution Hub",
+    "excludedColumns": [
+      "SUM",
+      "Received",
+      "Issued",
+      "Returned",
+      "ReturnedToLga",
+      "Total Stock",
+      "ReceivedValue",
+      "IssuedValue",
+      "ReturnedValue",
+      "ReturnedToLgaValue"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "ReceivedValue"
+        ],
+        "newField": "Stock Received",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "IssuedValue"
+        ],
+        "newField": "Stock Issued",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "ReturnedValue"
+        ],
+        "newField": "Stock Returned",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Total Stock"
+        ],
+        "newField": "Stock Balance",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "kind": "drillDown"
+  },
+  "InventorySummaryByMdtBednetsICCD": {
+    "chartName": "DSS_HEALTH_INVENTORY_SUMMARY_BY_MDT",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"State\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"Distribution Hub\":\"Data.boundaryHierarchy.Distribution Hub.keyword\"}",
+        "indexName": "bednet-stock-index-v1",
+        "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"term\":{\"Data.projectTypeId.keyword\":\"Bednet\"}}],\"filter\":[{\"bool\":{\"should\":[{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}}],\"minimum_should_match\":1}}]}},\"aggs\":{\"MDT\":{\"terms\":{\"size\":1000,\"order\":{\"_key\":\"asc\"},\"script\":{\"source\":\"String ft = doc['Data.facilityType.keyword'].size()>0 ? doc['Data.facilityType.keyword'].value : ''; String tt = doc['Data.transactingFacilityType.keyword'].size()>0 ? doc['Data.transactingFacilityType.keyword'].value : ''; String se = doc['Data.additionalDetails.stockEntryType.keyword'].size()>0 ? doc['Data.additionalDetails.stockEntryType.keyword'].value : ''; if (ft=='Distribution Hub' && tt=='STAFF' && se=='ISSUED' && doc['Data.transactingFacilityName.keyword'].size()>0) return doc['Data.transactingFacilityName.keyword'].value; if (ft=='STAFF' && tt=='Distribution Hub' && se=='RETURNED' && doc['Data.facilityName.keyword'].size()>0) return doc['Data.facilityName.keyword'].value; return 'UNKNOWN';\"}},\"aggs\":{\"Received\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Returned\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.facilityType.keyword\":\"STAFF\"}},{\"term\":{\"Data.transactingFacilityType.keyword\":\"Distribution Hub\"}},{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}}]}},\"aggs\":{\"SUM\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}},\"Balance\":{\"sum\":{\"script\":{\"source\":\"String se = doc['Data.additionalDetails.stockEntryType.keyword'].size()>0 ? doc['Data.additionalDetails.stockEntryType.keyword'].value : ''; if (doc['Data.physicalCount'].size()==0) return 0; if (se=='ISSUED') return doc['Data.physicalCount'].value; if (se=='RETURNED') return -doc['Data.physicalCount'].value; return 0;\"}}}}}}}"
+      }
+    ],
+    "filterKeys": [
+      {
+        "key": "mdt",
+        "column": "MDT"
+      }
+    ],
+    "chartType": "xtable",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "plotLabel": "MDT",
+    "excludedColumns": [
+      "SUM",
+      "Received",
+      "Returned",
+      "Balance"
+    ],
+    "computedFields": [
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Received"
+        ],
+        "newField": "Stock Received",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Returned"
+        ],
+        "newField": "Stock Returned",
+        "_comments": ""
+      },
+      {
+        "postAggregationTheory": "",
+        "actionName": "AdditiveComputedField",
+        "fields": [
+          "Balance"
+        ],
+        "newField": "Stock Balance",
+        "_comments": ""
+      }
+    ],
+    "insight": {},
+    "hideInsights": true,
+    "hideHeaderDenomination": true,
+    "kind": "drillDown"
   }
 }
