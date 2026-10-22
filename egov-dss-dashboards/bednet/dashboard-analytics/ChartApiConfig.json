@@ -3490,7 +3490,7 @@
       "module": "COMMON",
       "dateRefField": "",
       "requestQueryMap": "{\"campaignId\":\"Data.campaignId\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-      "indexName": "bo-attendee-index-v1",
+      "indexName": "bednet-attendee-index-v1",
       "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"match\":{\"Data.role\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"Total Assigned MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.attendee.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendee.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
     }
   ],
@@ -3513,7 +3513,7 @@
       "module": "COMMON",
       "dateRefField": "Data.attendanceTime",
       "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-      "indexName": "bo-attendance-log-index-v1",
+      "indexName": "bednet-attendance-log-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Present MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}},{\"exists\":{\"field\":\"Data.attendanceLog.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendanceLog.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
     }
   ],
@@ -3536,14 +3536,14 @@
       "module": "COMMON",
       "dateRefField": "",
       "requestQueryMap": "{\"campaignId\":\"Data.campaignId\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-      "indexName": "bo-attendee-index-v1",
+      "indexName": "bednet-attendee-index-v1",
       "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"match\":{\"Data.role\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"Total Assigned MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.attendee.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendee.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "Data.attendanceTime",
       "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-      "indexName": "bo-attendance-log-index-v1",
+      "indexName": "bednet-attendance-log-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Present MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}},{\"exists\":{\"field\":\"Data.attendanceLog.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendanceLog.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
     }
   ],
@@ -3567,14 +3567,14 @@
       "module": "COMMON",
       "dateRefField": "Data.attendanceTime",
       "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-      "indexName": "bo-attendance-log-index-v1",
+      "indexName": "bednet-attendance-log-index-v1",
       "aggrQuery": "{\"size\":0,\"aggs\":{\"Present MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}},{\"exists\":{\"field\":\"Data.attendanceLog.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendanceLog.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
     },
     {
       "module": "COMMON",
       "dateRefField": "",
       "requestQueryMap": "{\"campaignId\":\"Data.campaignId\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
-      "indexName": "bo-attendee-index-v1",
+      "indexName": "bednet-attendee-index-v1",
       "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"match\":{\"Data.role\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"Total Assigned MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.attendee.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendee.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
     }
   ],
