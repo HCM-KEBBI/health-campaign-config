@@ -3483,6 +3483,114 @@
   "insight": {},
   "_comment": "Total users synced (%) = (Users Synced / Total Users Created) * 100"
 },
+"nationalAssignedMDTsBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_ASSIGNED_MDTS",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"campaignId\":\"Data.campaignId\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bo-attendee-index-v1",
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"match\":{\"Data.role\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"Total Assigned MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.attendee.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendee.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "count",
+  "aggregationPaths": [
+    "Total Assigned MDTs"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Total Assigned MDTs = Count of unique assigned MDT individual IDs for the selected campaign"
+},
+"nationalPresentMDTsBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_PRESENT_MDTS",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.attendanceTime",
+      "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bo-attendance-log-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Present MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}},{\"exists\":{\"field\":\"Data.attendanceLog.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendanceLog.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "count",
+  "aggregationPaths": [
+    "Present MDTs"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Total Present MDTs = Count of unique MDT individual IDs with an ENTRY attendance record for the selected campaign and date"
+},
+"nationalAbsentMDTsBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_TOTAL_ABSENT_MDTS",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"campaignId\":\"Data.campaignId\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bo-attendee-index-v1",
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"match\":{\"Data.role\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"Total Assigned MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.attendee.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendee.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.attendanceTime",
+      "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bo-attendance-log-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Present MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}},{\"exists\":{\"field\":\"Data.attendanceLog.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendanceLog.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "number",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "difference",
+  "aggregationPaths": [
+    "Total Assigned MDTs",
+    "Present MDTs"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "Total Absent MDTs = Total Assigned MDTs - Total Present MDTs"
+},
+"nationalMDTAttendancePercentageBednetsICCD": {
+  "chartName": "DSS_HEALTH_NATIONAL_MDT_ATTENDANCE_PERCENTAGE",
+  "queries": [
+    {
+      "module": "COMMON",
+      "dateRefField": "Data.attendanceTime",
+      "requestQueryMap": "{\"campaignId\":\"Data.campaignId.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bo-attendance-log-index-v1",
+      "aggrQuery": "{\"size\":0,\"aggs\":{\"Present MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.attendanceLog.type.keyword\":\"ENTRY\"}},{\"exists\":{\"field\":\"Data.attendanceLog.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendanceLog.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
+    },
+    {
+      "module": "COMMON",
+      "dateRefField": "",
+      "requestQueryMap": "{\"campaignId\":\"Data.campaignId\",\"campaignNumber\":\"Data.campaignNumber.keyword\"}",
+      "indexName": "bo-attendee-index-v1",
+      "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"must\":[{\"match\":{\"Data.role\":\"DISTRIBUTOR\"}}]}},\"aggs\":{\"Total Assigned MDTs\":{\"filter\":{\"bool\":{\"must\":[{\"exists\":{\"field\":\"Data.attendee.individualId.keyword\"}}]}},\"aggs\":{\"Count\":{\"cardinality\":{\"field\":\"Data.attendee.individualId.keyword\",\"precision_threshold\":40000}}}}}}"
+    }
+  ],
+  "chartType": "metric",
+  "valueType": "percentage",
+  "drillChart": "none",
+  "documentType": "_doc",
+  "action": "percentage",
+  "aggregationPaths": [
+    "Present MDTs",
+    "Total Assigned MDTs"
+  ],
+  "postAggregationTheory": "",
+  "insight": {},
+  "_comment": "MDT Attendance Percentage = (Present Assigned MDTs / Total Eligible Assigned MDTs) * 100"
+},
 "nationalSummaryByStateBednetsICCD": {
   "chartName": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
   "queries": [

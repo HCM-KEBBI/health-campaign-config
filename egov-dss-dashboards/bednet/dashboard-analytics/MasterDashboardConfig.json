@@ -13517,6 +13517,54 @@
         },
         {
           "row": 3,
+          "name": "DSS_NATIONAL_ATTENDANCE_SUMMARY",
+          "vizArray": [
+            {
+              "id": 105,
+              "name": "DSS_HEALTH_NATIONAL_ATTENDANCE_SUMMARY",
+              "label": "DSS_HEALTH_NATIONAL_ATTENDANCE_SUMMARY",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "nationalAssignedMDTsBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_ASSIGNED_MDTS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "nationalPresentMDTsBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_PRESENT_MDTS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "nationalAbsentMDTsBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_TOTAL_ABSENT_MDTS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "nationalMDTAttendancePercentageBednetsICCD",
+                  "name": "DSS_HEALTH_NATIONAL_MDT_ATTENDANCE_PERCENTAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
           "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
           "vizArray": [
             {
@@ -13558,7 +13606,7 @@
           ]
         },
         {
-          "row": 4,
+          "row": 5,
           "name": "DSS_NATIONAL_HEALTH_COMPLAINTS",
           "vizArray": [
             {
@@ -13600,7 +13648,7 @@
           ]
         },
         {
-          "row": 5,
+          "row": 6,
           "name": "DSS_NATIONAL_HEALTH_SUMMARY_TABLE",
           "vizArray": [
             {
