@@ -17,3 +17,17 @@ ServiceMaps:
         fieldMapping:
         - inJsonPath: $
           outJsonPath: $.Data
+
+  - topic: egov-persister-deadletter
+    configKey: INDEX
+    indexes:
+      - name: egov-tracer-error-details-persister
+        type: general
+        id: $.id
+        isBulk: false
+        timeStampField: $.ts
+        customJsonMapping:
+          indexMapping: { "Data": { } }
+          fieldMapping:
+            - inJsonPath: $
+              outJsonPath: $.Data
