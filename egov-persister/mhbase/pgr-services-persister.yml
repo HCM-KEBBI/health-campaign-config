@@ -7,15 +7,16 @@ serviceMaps:
       isTransaction: true
       queryMaps:
         - query:
-            INSERT INTO mhbase.eg_pgr_service_v2(id, tenantid, servicecode, servicerequestid,
+            INSERT INTO mhbase.eg_pgr_service_v2(id, tenantid, servicecode, hierarchytype, servicerequestid,
             description, accountid, additionaldetails, applicationstatus, source, createdby,
             createdtime, lastmodifiedby, lastmodifiedtime, selfComplaint) VALUES (?, ?,
-            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: service
           jsonMaps:
             - jsonPath: $.service.id
             - jsonPath: $.service.tenantId
             - jsonPath: $.service.serviceCode
+            - jsonPath: $.service.hierarchyType
             - jsonPath: $.service.serviceRequestId
             - jsonPath: $.service.description
             - jsonPath: $.service.accountId
@@ -67,12 +68,13 @@ serviceMaps:
       isTransaction: true
       queryMaps:
         - query:
-            UPDATE mhbase.eg_pgr_service_v2 SET servicecode=?, rating = ?,servicerequestid=?,
+            UPDATE mhbase.eg_pgr_service_v2 SET servicecode=?, hierarchytype=?, rating = ?,servicerequestid=?,
             description=?, accountid=?, additionaldetails=?, applicationstatus=?, lastmodifiedby=?,
             lastmodifiedtime=?, selfComplaint=? WHERE id=?;
           basePath: service
           jsonMaps:
             - jsonPath: $.service.serviceCode
+            - jsonPath: $.service.hierarchyType
             - jsonPath: $.service.rating
             - jsonPath: $.service.serviceRequestId
             - jsonPath: $.service.description

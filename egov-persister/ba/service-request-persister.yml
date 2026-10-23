@@ -9,6 +9,7 @@ serviceMaps:
     module: SAVE-SERVICE-DEFINITION
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.id
     
     auditAttributeBasePath: $.ServiceDefinition
@@ -63,6 +64,7 @@ serviceMaps:
     module: SAVE-SERVICE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.referenceId
     
     auditAttributeBasePath: $.Service
@@ -113,6 +115,7 @@ serviceMaps:
     module: SERVICE-REQUEST
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.id
     auditAttributeBasePath: $.*
     queryMaps:

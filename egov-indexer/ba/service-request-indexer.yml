@@ -44,6 +44,16 @@ ServiceMaps:
           outJsonPath: $.Data.syncedTimeStamp
         - inJsonPath: $.@timestamp
           outJsonPath: $.Data.@timestamp
+        - inJsonPath: $.userAddress
+          outJsonPath: $.Data.userAddress
+        - inJsonPath: $.projectId
+          outJsonPath: $.Data.projectId
+        - inJsonPath: $.projectType
+          outJsonPath: $.Data.projectType
+        - inJsonPath: $.projectTypeId
+          outJsonPath: $.Data.projectTypeId
+        - inJsonPath: $.projectName
+          outJsonPath: $.Data.projectName
         - inJsonPath: $.taskDates
           outJsonPath: $.Data.taskDates
         - inJsonPath: $.geoPoint
@@ -98,4 +108,118 @@ ServiceMaps:
         fieldMapping:
           - inJsonPath: $
             outJsonPath: $.Data
+      timeStampField: $.createdTime
+  - topic: ba-transformer-producer-service-index-v2-topic
+    configKey: INDEX
+    indexes:
+    - name: ba-referral-service-task-v1
+      type: service
+      id: $.id,$.ageGroup
+      isBulk: true
+      jsonPath: $
+      customJsonMapping:
+        indexMapping: { "Data": {} }
+        fieldMapping:
+        - inJsonPath: $
+          outJsonPath: $.Data
+      timeStampField: $.createdTime
+    - name: ba-user-sync-index-v1
+      type: users
+      id: $.id,$.ageGroup
+      isBulk: true
+      jsonPath: $
+      customJsonMapping:
+        indexMapping: { "Data": { "additionalDetails": { } } }
+        fieldMapping:
+        - inJsonPath: $.createdBy
+          outJsonPath: $.Data.syncedUserId
+        - inJsonPath: $.userName
+          outJsonPath: $.Data.syncedUserName
+        - inJsonPath: $.role
+          outJsonPath: $.Data.role
+        - inJsonPath: $.boundaryHierarchy
+          outJsonPath: $.Data.boundaryHierarchy
+        - inJsonPath: $.createdTime
+          outJsonPath: $.Data.clientCreatedTime
+        - inJsonPath: $.syncedTime
+          outJsonPath: $.Data.createdTime
+        - inJsonPath: $.syncedTimeStamp
+          outJsonPath: $.Data.syncedTimeStamp
+        - inJsonPath: $.@timestamp
+          outJsonPath: $.Data.@timestamp
+        - inJsonPath: $.taskDates
+          outJsonPath: $.Data.taskDates
+        - inJsonPath: $.userAddress
+          outJsonPath: $.Data.userAddress
+        - inJsonPath: $.projectId
+          outJsonPath: $.Data.projectId
+        - inJsonPath: $.projectType
+          outJsonPath: $.Data.projectType
+        - inJsonPath: $.projectTypeId
+          outJsonPath: $.Data.projectTypeId
+        - inJsonPath: $.projectName
+          outJsonPath: $.Data.projectName
+        - inJsonPath: $.campaignNumber
+          outJsonPath: $.Data.campaignNumber
+        - inJsonPath: $.campaignId
+          outJsonPath: $.Data.campaignId
+        - inJsonPath: $.additionalDetails.cycleIndex
+          outJsonPath: $.Data.additionalDetails.cycleIndex
+      timeStampField: $.createdTime
+  - topic: ba-transformer-producer-hfreferral-service-index-topic
+    configKey: INDEX
+    indexes:
+    - name: ba-hf-referral-service-task-v1
+      type: service
+      id: $.id
+      isBulk: true
+      jsonPath: $
+      customJsonMapping:
+        indexMapping: { "Data": {} }
+        fieldMapping:
+        - inJsonPath: $
+          outJsonPath: $.Data
+      timeStampField: $.createdTime
+    - name: ba-user-sync-index-v1
+      type: users
+      id: $.id
+      isBulk: true
+      jsonPath: $
+      customJsonMapping:
+        indexMapping: { "Data": { "additionalDetails": { } } }
+        fieldMapping:
+        - inJsonPath: $.createdBy
+          outJsonPath: $.Data.syncedUserId
+        - inJsonPath: $.userName
+          outJsonPath: $.Data.syncedUserName
+        - inJsonPath: $.role
+          outJsonPath: $.Data.role
+        - inJsonPath: $.boundaryHierarchy
+          outJsonPath: $.Data.boundaryHierarchy
+        - inJsonPath: $.createdTime
+          outJsonPath: $.Data.clientCreatedTime
+        - inJsonPath: $.syncedTime
+          outJsonPath: $.Data.createdTime
+        - inJsonPath: $.syncedTimeStamp
+          outJsonPath: $.Data.syncedTimeStamp
+        - inJsonPath: $.@timestamp
+          outJsonPath: $.Data.@timestamp
+        - inJsonPath: $.taskDates
+          outJsonPath: $.Data.taskDates
+        - inJsonPath: $.userAddress
+          outJsonPath: $.Data.userAddress
+        - inJsonPath: $.projectId
+          outJsonPath: $.Data.projectId
+        - inJsonPath: $.projectType
+          outJsonPath: $.Data.projectType
+        - inJsonPath: $.projectTypeId
+          outJsonPath: $.Data.projectTypeId
+        - inJsonPath: $.projectName
+          outJsonPath: $.Data.projectName
+        - inJsonPath: $.campaignNumber
+          outJsonPath: $.Data.campaignNumber
+        - inJsonPath: $.campaignId
+          outJsonPath: $.Data.campaignId
+        - inJsonPath: $.additionalDetails.cycleIndex
+          outJsonPath: $.Data.additionalDetails.cycleIndex
       timeStampField: $.createdTime

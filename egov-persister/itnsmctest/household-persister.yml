@@ -9,6 +9,7 @@ serviceMaps:
     module: HOUSEHOLD
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -69,6 +70,7 @@ serviceMaps:
     module: HOUSEHOLD-UPDATE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -140,6 +142,7 @@ serviceMaps:
     module: HOUSEHOLD-DELETE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.householdClientReferenceId
     auditAttributeBasePath: $.*
@@ -167,6 +170,7 @@ serviceMaps:
     module: HOUSEHOLD-MEMBER
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.householdClientReferenceId
     auditAttributeBasePath: $.*
@@ -233,6 +237,7 @@ serviceMaps:
     module: HOUSEHOLD-MEMBER-UPDATE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.individualId
     auditAttributeBasePath: $.*
@@ -279,6 +284,7 @@ serviceMaps:
     module: HOUSEHOLD-MEMBER-DELETE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.id
     auditAttributeBasePath: $.*

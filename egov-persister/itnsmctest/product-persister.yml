@@ -9,6 +9,7 @@ serviceMaps:
       module: PRODUCT
       objecIdJsonPath: $.id
       tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
       transactionCodeJsonPath: $.id
 
       auditAttributeBasePath: $.*
@@ -41,6 +42,7 @@ serviceMaps:
       module: PRODUCT-UPDATE
       objecIdJsonPath: $.id
       tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
       transactionCodeJsonPath: $.id
 
       auditAttributeBasePath: $.*
@@ -71,6 +73,7 @@ serviceMaps:
       module: PRODUCT-VARIANT
       objecIdJsonPath: $.id
       tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
       transactionCodeJsonPath: $.id
 
       auditAttributeBasePath: $.*
@@ -103,6 +106,7 @@ serviceMaps:
       module: PRODUCT-UPDATE
       objecIdJsonPath: $.id
       tenantIdJsonPath: $.tenantId
+      userUuidJsonPath: $.[0].auditDetails.createdBy
       transactionCodeJsonPath: $.id
 
       auditAttributeBasePath: $.*

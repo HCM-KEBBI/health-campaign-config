@@ -9,6 +9,7 @@ serviceMaps:
     module: STOCK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -58,6 +59,7 @@ serviceMaps:
     module: STOCK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -100,6 +102,7 @@ serviceMaps:
     module: STOCK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -127,6 +130,7 @@ serviceMaps:
     module: STOCK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -171,6 +175,7 @@ serviceMaps:
     module: STOCK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
@@ -208,6 +213,7 @@ serviceMaps:
     module: STOCK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*

@@ -9,6 +9,7 @@ serviceMaps:
     module: PROJECT-TASK
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.clientReferenceId
     
     auditAttributeBasePath: $.*
@@ -98,6 +99,7 @@ serviceMaps:
     module: PROJECT-TASK-UPDATE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.clientReferenceId
     
     auditAttributeBasePath: $.*
@@ -194,6 +196,7 @@ serviceMaps:
     module: PROJECT-TASK-DELETE
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.clientReferenceId
     
     auditAttributeBasePath: $.*
@@ -232,6 +235,7 @@ serviceMaps:
     module: PROJECT
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
@@ -265,6 +269,7 @@ serviceMaps:
     module: PROJECT
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:
@@ -294,6 +299,7 @@ serviceMaps:
     module: PROJECT
     objecIdJsonPath: $.id
     tenantIdJsonPath: $.tenantId
+    userUuidJsonPath: $.[0].auditDetails.createdBy
     transactionCodeJsonPath: $.clientReferenceId
     auditAttributeBasePath: $.*
     queryMaps:

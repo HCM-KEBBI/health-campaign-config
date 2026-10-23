@@ -46,6 +46,18 @@ ServiceMaps:
           outJsonPath: $.Data.taskDates
         - inJsonPath: $.syncedDate
           outJsonPath: $.Data.syncedDate
+        - inJsonPath: $.@timestamp
+          outJsonPath: $.Data.@timestamp
+        - inJsonPath: $.userAddress
+          outJsonPath: $.Data.userAddress
+        - inJsonPath: $.projectId
+          outJsonPath: $.Data.projectId
+        - inJsonPath: $.projectType
+          outJsonPath: $.Data.projectType
+        - inJsonPath: $.projectTypeId
+          outJsonPath: $.Data.projectTypeId
+        - inJsonPath: $.projectName
+          outJsonPath: $.Data.projectName
         - inJsonPath: $.campaignNumber
           outJsonPath: $.Data.campaignNumber
         - inJsonPath: $.campaignId
