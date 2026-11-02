@@ -16655,7 +16655,7 @@
         "indexName": "si-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockBalanceTransformer",
-        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must_not\":[{\"range\":{\"Data.createdTime\":{\"lte\":1788201000000}}}]}},\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\", \"Data.boundaryHierarchyCode\"]}"
+        "aggrQuery": "{\"size\":10000,\"query\":{\"bool\":{\"must_not\":[{\"range\":{\"Data.createdTime\":{\"lte\":1788201000000}}}]}},\"_source\":[\"Data.facilityId\",\"Data.transactingFacilityId\",\"Data.eventType\",\"Data.physicalCount\",\"Data.productVariant\",\"Data.productName\",\"Data.additionalDetails.stockEntryType\",\"Data.additionalDetails.status\",\"Data.campaignId\",\"Data.facilityName\",\"Data.transactingFacilityName\",\"Data.id\",\"Data.dateOfEntry\",\"Data.createdTime\",\"Data.nameOfUser\",\"Data.userName\", \"Data.boundaryHierarchyCode\",\"Data.additionalDetails.partial_flow\",\"Data.additionalDetails.discrepancyReason\",\"Data.additionalDetails.originalIssueClientReferenceId\"]}"
       }
     ],
     "chartType": "rawResponse",
@@ -16678,7 +16678,10 @@
             "createdTime": "Data.createdTime",
             "nameOfUser": "Data.nameOfUser",
             "userName": "Data.userName",
-            "boundaryHierarchyCode": "Data.boundaryHierarchyCode"
+            "boundaryHierarchyCode": "Data.boundaryHierarchyCode",
+            "partialFlow": "Data.additionalDetails.partial_flow",
+            "discrepancyReason": "Data.additionalDetails.discrepancyReason",
+            "originalIssueClientReferenceId": "Data.additionalDetails.originalIssueClientReferenceId"
           }
         ]
       }
