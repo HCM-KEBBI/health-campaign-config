@@ -9,35 +9,35 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DSS_NATIONAL_HEALTH_HOUSEHOLD_REGISTRATION",
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
-              "id": 101,
-              "name": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
-              "label": "DSS_HEALTH_NATIONAL_HOUSEHOLDS_REGISTERED",
+              "id": 3001,
+              "name": "DSS_SI_ITN_V_CARDS_REGISTRATION",
+              "label": "DSS_SI_ITN_V_CARDS_REGISTRATION",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalHouseholdsRegisteredBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
+                  "id": "siItnRegHhTotal",
+                  "name": "DSS_SI_ITN_REG_HH_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "nationalHouseholdRegisteredCoverageBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
+                  "id": "siItnRegHhTargetN",
+                  "name": "DSS_SI_ITN_REG_HH_TARGET_N",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "nationalHouseholdTargetBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLD_TARGET",
+                  "id": "siItnRegHhCoverageN",
+                  "name": "DSS_SI_ITN_REG_HH_COVERAGE_N",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -46,32 +46,108 @@
               ]
             },
             {
-              "id": 102,
-              "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
-              "label": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED",
+              "id": 3002,
+              "name": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
+              "label": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "nationalPopulationRegisteredBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_REGISTERED",
+                  "id": "siItnDstServedTotal",
+                  "name": "DSS_SI_ITN_DST_SERVED_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "nationalPopulationRegisteredCoverageBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_POPULATION_REGISTERED_COVERAGE_PERCENT",
+                  "id": "siItnDstEligible",
+                  "name": "DSS_SI_ITN_DST_ELIGIBLE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "nationalPopulationTargetBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_POPULATION_TARGET",
+                  "id": "siItnDstCoverage",
+                  "name": "DSS_SI_ITN_DST_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3003,
+              "name": "DSS_SI_ITN_V_CARDS_NETS",
+              "label": "DSS_SI_ITN_V_CARDS_NETS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstNetsTotal",
+                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegItnRequired",
+                  "name": "DSS_SI_ITN_REG_ITN_REQUIRED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetsCoverage",
+                  "name": "DSS_SI_ITN_DST_NETS_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3004,
+              "name": "DSS_SI_ITN_V_CARDS_POPULATION",
+              "label": "DSS_SI_ITN_V_CARDS_POPULATION",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegPopTotal",
+                  "name": "DSS_SI_ITN_REG_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopTotal",
+                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegPopTargetN",
+                  "name": "DSS_SI_ITN_REG_POP_TARGET_N",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopCoverageN",
+                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_N",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -83,210 +159,30 @@
         },
         {
           "row": 2,
-          "name": "DSS_NATIONAL_HEALTH_DISTRIBUTION",
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
-              "id": 104,
-              "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "label": "DSS_HEALTH_NATIONAL_POPULATION_COVERED_ITNS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalPopulationCoveredITNsBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_POPULATION_COVERED_ITNS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalPopulationCoverageDistributionBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_POPULATION_COVERAGE_DISTRIBUTION_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalITNTargetBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_ITN_TARGET",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 301,
-              "name": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
-              "label": "DSS_HEALTH_NATIONAL_USERS_OVERVIEW",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalUsersCreatedBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_CREATED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalUsersSyncedBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "nationalUsersSyncedPercentBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_USERS_SYNCED_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_NATIONAL_HEALTH_HEATMAPS",
-          "vizArray": [
-            {
-              "id": 707,
-              "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
-              "label": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP",
-              "vizType": "leafletMap",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "populationCoverageHeatMapNationalBednetsICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_NATIONAL_HEATMAP_BEDNETS_ICCD",
-                  "code": "",
-                  "chartType": "leafletHeatMap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "householdCoverageHeatMapNationalBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_HEATMAP_NATIONAL_BEDNETS_ICCD",
-                  "code": "",
-                  "chartType": "leafletHeatMap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "INTERVENTION"
-                },
-                {
-                  "id": "householdPointMap",
-                  "name": "DSS_HEALTH_HOUSEHOLD_POINT_MAP",
-                  "code": "",
-                  "chartType": "leafletCoordinateMap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "HOUSEHOLDS",
-                  "_styleComment": "Every key optional; each falls back independently. clusterColors takes a list (ramp, light -> dark) or a single colour string for a constant fill. Keep the steps on one hue: density is a magnitude, and unrelated hues would encode it as identity. The legend bar is generated from these same colours.",
-                  "style": {
-                    "clusterColors": ["#FFE9A8", "#FFD24D", "#FFA424", "#F76707", "#D9480F", "#A02C0A"],
-                    "pointColor": "#C84C0E",
-                    "clusterMinRadius": 5,
-                    "clusterMaxRadius": 22,
-                    "pointRadius": 4,
-                    "shape": "circle",
-                    "iconSize": 22
-                  },
-                  "_comment": "scaling is indexed by boundary drill depth; the last entry repeats for anything deeper, so adding hierarchy levels needs no code change. No level is named anywhere.",
-                  "_modeComment": "viewport = precision AND bbox follow the screen, so zooming re-clusters and panning brings in new data. This is the only mode where the document total is scoped to what is on screen, which is what lets individual coordinates appear once the user has zoomed into a sparse enough area. The alternatives keep a global bbox: boundary = fixed precision, one request for the whole boundary; zoom = precision follows zoom but pan is not an input. Both are cheaper, but in both the total is boundary-wide, so they can never flip to individual coordinates.",
-                  "_hitsCapComment": "hitsCap is the count below which individual coordinates are drawn instead of clusters; 0 or omitted means clusters only. Note the total is counted over the PADDED bbox, not the visible screen, so a larger bboxPadding delays the switch to individual coordinates.",
-                  "_precisionComment": "precision = round(leafletZoom) + zoomOffset, clamped to maxPrecision. In viewport mode precision and bbox scale together, so the bucket count per screen stays roughly constant at any zoom - maxPrecision is only an absolute floor on cell size.",
-                  "_paddingComment": "bboxPadding fetches a region larger than the screen, in each dimension. 2.0 = 4x the visible area, so the user can pan roughly half a screen in any direction before anything is refetched. Higher = fewer requests while panning, but a larger total and so a later switch to individual coordinates.",
-                  "scaling": [
-                    { "mode": "viewport", "zoomOffset": 3, "maxPrecision": 22, "hitsCap": 1000, "bboxPadding": 2.0 },
-                    { "mode": "viewport", "zoomOffset": 3, "maxPrecision": 22, "hitsCap": 1500, "bboxPadding": 2.0 },
-                    { "mode": "viewport", "zoomOffset": 3, "maxPrecision": 22, "hitsCap": 2000, "bboxPadding": 2.0 },
-                    { "mode": "viewport", "zoomOffset": 3, "maxPrecision": 22, "hitsCap": 2000, "bboxPadding": 1.5 }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 4,
-          "name": "DSS_NATIONAL_HEALTH_COMPLAINTS",
-          "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
-              "label": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalComplaintsByStatusBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_STATUS",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 202,
-              "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-              "label": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "nationalComplaintsByTypeBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_COMPLAINTS_BY_TYPE",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 5,
-          "name": "DSS_NATIONAL_HEALTH_SUMMARY_TABLE",
-          "vizArray": [
-            {
-              "id": 401,
-              "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
-              "label": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
+              "id": 3005,
+              "name": "DSS_SI_ITN_V_COVERAGE_SUMMARY",
+              "label": "DSS_SI_ITN_V_COVERAGE_SUMMARY",
               "vizType": "stacked-table",
               "noUnit": true,
               "isCollapsible": false,
-              "ref": {
-                "url": "level-two-dashboard",
-                "logoUrl": "",
-                "type": "internal"
-              },
               "charts": [
                 {
-                  "id": "nationalSummaryByStateBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_SUMMARY_BY_STATE",
+                  "id": "siItnCoverageSummaryN",
+                  "name": "DSS_SI_ITN_COVERAGE_SUMMARY_N",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
                   "headers": []
                 }
-              ]
+              ],
+              "ref": {
+                "url": "level-two-dashboard",
+                "logoUrl": "",
+                "type": "internal"
+              }
             }
           ]
         }
@@ -306,43 +202,43 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
+              "id": 4001,
+              "name": "DSS_SI_ITN_V_CARDS_REGISTRATION",
+              "label": "DSS_SI_ITN_V_CARDS_REGISTRATION",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdVisitsWithinDateRangeBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
+                  "id": "siItnRegHh",
+                  "name": "DSS_SI_ITN_REG_HH",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "totalVisitsBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
+                  "id": "siItnRegHhTotal",
+                  "name": "DSS_SI_ITN_REG_HH_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "householdVisitsTargetProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
+                  "id": "siItnRegHhTargetP",
+                  "name": "DSS_SI_ITN_REG_HH_TARGET_P",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "totalHouseholdCoverageProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
+                  "id": "siItnRegHhCoverageP",
+                  "name": "DSS_SI_ITN_REG_HH_COVERAGE_P",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -351,40 +247,40 @@
               ]
             },
             {
-              "id": 202,
-              "name": "DSS_HEALTH_POPULATION_COVERED",
-              "label": "DSS_HEALTH_POPULATION_COVERED",
+              "id": 4002,
+              "name": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
+              "label": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
               "vizType": "stacked-collection",
-              "noUnit": false,
+              "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "overviewPopulationCoveredBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
+                  "id": "siItnDstServed",
+                  "name": "DSS_SI_ITN_DST_SERVED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "overviewTotalPopulationCoveredBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
+                  "id": "siItnDstServedTotal",
+                  "name": "DSS_SI_ITN_DST_SERVED_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationTargetedProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
+                  "id": "siItnDstEligible",
+                  "name": "DSS_SI_ITN_DST_ELIGIBLE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationCoverageAchievedProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
+                  "id": "siItnDstCoverage",
+                  "name": "DSS_SI_ITN_DST_COVERAGE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -393,40 +289,40 @@
               ]
             },
             {
-              "id": 203,
-              "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
-              "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
+              "id": 4003,
+              "name": "DSS_SI_ITN_V_CARDS_NETS",
+              "label": "DSS_SI_ITN_V_CARDS_NETS",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "distributionsByRangeBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED",
+                  "id": "siItnDstNets",
+                  "name": "DSS_SI_ITN_DST_NETS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "totalDistributionsTillTodayBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
+                  "id": "siItnDstNetsTotal",
+                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "bednetsTargetProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
+                  "id": "siItnRegItnRequired",
+                  "name": "DSS_SI_ITN_REG_ITN_REQUIRED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "bednetsDistributionCoverageProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
+                  "id": "siItnDstNetsCoverage",
+                  "name": "DSS_SI_ITN_DST_NETS_COVERAGE",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -435,40 +331,40 @@
               ]
             },
             {
-              "id": 204,
-              "name": "DSS_HEALTH_EXCESS_AND_LOSS_STOCK",
-              "label": "DSS_HEALTH_EXCESS_AND_LOSS_STOCK",
+              "id": 4004,
+              "name": "DSS_SI_ITN_V_CARDS_POPULATION",
+              "label": "DSS_SI_ITN_V_CARDS_POPULATION",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalExcessStockBednetsICCD",
-                  "name": "DSS_HEALTH_TOTAL_EXCESS_STOCK",
+                  "id": "siItnRegPopTotal",
+                  "name": "DSS_SI_ITN_REG_POP_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "totalLossStockBednetsICCD",
-                  "name": "DSS_HEALTH_TOTAL_LOSS_STOCK",
+                  "id": "siItnDstPopTotal",
+                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "excessStockPercentageBednetsICCD",
-                  "name": "DSS_HEALTH_EXCESS_STOCK_PERCENTAGE",
+                  "id": "siItnRegPopTargetP",
+                  "name": "DSS_SI_ITN_REG_POP_TARGET_P",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "lossStockPercentageBednetsICCD",
-                  "name": "DSS_HEALTH_LOSS_STOCK_PERCENTAGE",
+                  "id": "siItnDstPopCoverageP",
+                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_P",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -480,71 +376,33 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
-              "id": 205,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
+              "id": 4005,
+              "name": "DSS_SI_ITN_V_COVERAGE_BY_AREA",
+              "label": "DSS_SI_ITN_V_COVERAGE_BY_AREA",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalComplaintsRegisteredBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdsCoverageBarchartByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_DISTRICT",
+                  "id": "siItnRegCoverageByAreaP",
+                  "name": "DSS_SI_ITN_REG_COVERAGE_BY_AREA_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 4,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 207,
-              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
+                  "headers": [],
+                  "tabName": "SI_ITN_REGISTERED"
+                },
                 {
-                  "id": "daysInventoryStockLastsProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_PROVINCE",
+                  "id": "siItnDstCoverageByAreaP",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "SI_ITN_SERVED"
                 }
               ]
             }
@@ -552,19 +410,19 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 200,
-              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
-              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
+              "id": 4006,
+              "name": "DSS_SI_ITN_V_REGISTRAR_SYNC",
+              "label": "DSS_SI_ITN_V_REGISTRAR_SYNC",
               "vizType": "bannercard",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "userSyncSummaryProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "id": "siItnRegRegistrarSyncP",
+                  "name": "DSS_SI_ITN_REG_REGISTRAR_SYNC_P",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -576,61 +434,23 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 211,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
+              "id": 4007,
+              "name": "DSS_SI_ITN_V_REG_PROGRESS",
+              "label": "DSS_SI_ITN_V_REG_PROGRESS",
+              "vizType": "cards-list",
+              "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdHouseholdsCoveredChartProvincePercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE_PERCENT",
+                  "id": "siItnRegTilesP",
+                  "name": "DSS_SI_ITN_REG_TILES_P",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_HOUSEHOLDS_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
-            {
-              "id": 212,
-              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
-              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
-              "vizType": "chart",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdPopulationChartProvincePercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE_PERCENT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdPopulationChartProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
+                  "headers": []
                 }
               ]
             }
@@ -638,33 +458,60 @@
         },
         {
           "row": 3,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 213,
-              "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
-              "label": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
+              "id": 4008,
+              "name": "DSS_SI_ITN_V_REG_COVERAGE",
+              "label": "DSS_SI_ITN_V_REG_COVERAGE",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdBednetsDistributedChartProvincePercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE_PERCENT",
+                  "id": "siItnRegCoverageByAreaPctP",
+                  "name": "DSS_SI_ITN_REG_COVERAGE_BY_AREA_PCT_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
                   "headers": [],
-                  "tabName": "PERCENT"
+                  "tabName": "SI_ITN_HH_PCT"
                 },
                 {
-                  "id": "rdBednetsDistributedChartProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_PROVINCE",
+                  "id": "siItnRegPopByAreaPctP",
+                  "name": "DSS_SI_ITN_REG_POP_BY_AREA_PCT_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
                   "headers": [],
-                  "tabName": "NUMBER"
+                  "tabName": "SI_ITN_POP_PCT"
+                },
+                {
+                  "id": "siItnRegCoverageByAreaP",
+                  "name": "DSS_SI_ITN_REG_COVERAGE_BY_AREA_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_COUNT"
+                }
+              ]
+            },
+            {
+              "id": 4009,
+              "name": "DSS_SI_ITN_V_REG_COMMUNITIES",
+              "label": "DSS_SI_ITN_V_REG_COMMUNITIES",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegCommunitiesByAreaP",
+                  "name": "DSS_SI_ITN_REG_COMMUNITIES_BY_AREA_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
@@ -672,58 +519,447 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 217,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
+              "id": 4010,
+              "name": "DSS_SI_ITN_V_REG_DAILY",
+              "label": "DSS_SI_ITN_V_REG_DAILY",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegDaily",
+                  "name": "DSS_SI_ITN_REG_DAILY",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_DAILY"
+                },
+                {
+                  "id": "siItnRegDailyCum",
+                  "name": "DSS_SI_ITN_REG_DAILY_CUM",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_CUMULATIVE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
+          "vizArray": [
+            {
+              "id": 4011,
+              "name": "DSS_SI_ITN_V_REG_SUMMARY",
+              "label": "DSS_SI_ITN_V_REG_SUMMARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_PROVINCE",
+                  "id": "siItnRegSummaryP",
+                  "name": "DSS_SI_ITN_REG_SUMMARY_P",
                   "code": "",
-                  "chartType": "heatmap",
+                  "chartType": "table",
                   "filter": "",
                   "headers": [],
-                  "tabName": "HOUSEHOLD"
+                  "tabName": "SI_ITN_BY_AREA"
                 },
                 {
-                  "id": "populationCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_PROVINCE",
+                  "id": "siItnRegSummaryByDay",
+                  "name": "DSS_SI_ITN_REG_SUMMARY_BY_DAY",
                   "code": "",
-                  "chartType": "heatmap",
+                  "chartType": "table",
                   "filter": "",
                   "headers": [],
-                  "tabName": "POPULATION"
-                },
-                {
-                  "id": "bednetsCoverageHeatMapProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_PROVINCE",
-                  "code": "",
-                  "chartType": "heatmap",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "BEDNETS"
+                  "tabName": "SI_ITN_BY_DAY"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
+          "vizArray": [
             {
-              "id": 218,
-              "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
-              "label": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
-              "vizType": "latlong",
+              "id": 4012,
+              "name": "DSS_SI_ITN_V_DISTRIBUTOR_SYNC",
+              "label": "DSS_SI_ITN_V_DISTRIBUTOR_SYNC",
+              "vizType": "bannercard",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsVisitedLatLongPointsBednetsICCD",
-                  "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+                  "id": "siItnDstDistributorSyncP",
+                  "name": "DSS_SI_ITN_DST_DISTRIBUTOR_SYNC_P",
                   "code": "",
-                  "chartType": "points",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
+          "vizArray": [
+            {
+              "id": 4013,
+              "name": "DSS_SI_ITN_V_DST_HOUSEHOLDS",
+              "label": "DSS_SI_ITN_V_DST_HOUSEHOLDS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstServed",
+                  "name": "DSS_SI_ITN_DST_SERVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstEligible",
+                  "name": "DSS_SI_ITN_DST_ELIGIBLE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstCoverage",
+                  "name": "DSS_SI_ITN_DST_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 4014,
+              "name": "DSS_SI_ITN_V_DST_NETS",
+              "label": "DSS_SI_ITN_V_DST_NETS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstNetsTotal",
+                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegItnRequired",
+                  "name": "DSS_SI_ITN_REG_ITN_REQUIRED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetsCoverage",
+                  "name": "DSS_SI_ITN_DST_NETS_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetGap",
+                  "name": "DSS_SI_ITN_DST_NET_GAP",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 4015,
+              "name": "DSS_SI_ITN_V_DST_POPULATION",
+              "label": "DSS_SI_ITN_V_DST_POPULATION",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstPopTotal",
+                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopCoverageP",
+                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_P",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 4016,
+              "name": "DSS_SI_ITN_V_DST_TOKENS",
+              "label": "DSS_SI_ITN_V_DST_TOKENS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegTokens",
+                  "name": "DSS_SI_ITN_REG_TOKENS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstRedemption",
+                  "name": "DSS_SI_ITN_DST_REDEMPTION",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstUnredeemed",
+                  "name": "DSS_SI_ITN_DST_UNREDEEMED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
+          "vizArray": [
+            {
+              "id": 4017,
+              "name": "DSS_SI_ITN_V_DST_COVERAGE",
+              "label": "DSS_SI_ITN_V_DST_COVERAGE",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstCoverageByAreaPctP",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_PCT_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_HH_PCT"
+                },
+                {
+                  "id": "siItnDstCoverageByAreaPopPctP",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_POP_PCT_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_POP_PCT"
+                },
+                {
+                  "id": "siItnDstCoverageByAreaNetsPctP",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_NETS_PCT_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_NETS_PCT"
+                },
+                {
+                  "id": "siItnDstCoverageByAreaP",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_COUNT"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
+          "vizArray": [
+            {
+              "id": 4018,
+              "name": "DSS_SI_ITN_V_DST_DAILY",
+              "label": "DSS_SI_ITN_V_DST_DAILY",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstDaily",
+                  "name": "DSS_SI_ITN_DST_DAILY",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_DAILY"
+                },
+                {
+                  "id": "siItnDstDailyCum",
+                  "name": "DSS_SI_ITN_DST_DAILY_CUM",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_CUMULATIVE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
+          "vizArray": [
+            {
+              "id": 4019,
+              "name": "DSS_SI_ITN_V_DST_SUMMARY",
+              "label": "DSS_SI_ITN_V_DST_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstSummaryP",
+                  "name": "DSS_SI_ITN_DST_SUMMARY_P",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_BY_AREA"
+                },
+                {
+                  "id": "siItnDstSummaryByDay",
+                  "name": "DSS_SI_ITN_DST_SUMMARY_BY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_BY_DAY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4020,
+              "name": "DSS_SI_ITN_V_INV_HEADLINE",
+              "label": "DSS_SI_ITN_V_INV_HEADLINE",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkHeadline",
+                  "name": "DSS_SI_ITN_STK_HEADLINE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4021,
+              "name": "DSS_SI_ITN_V_INV_LEG_COUNTRY",
+              "label": "DSS_SI_ITN_V_INV_LEG_COUNTRY",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegCountry",
+                  "name": "DSS_SI_ITN_STK_LEG_COUNTRY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4022,
+              "name": "DSS_SI_ITN_V_INV_LEG_DISTRICT",
+              "label": "DSS_SI_ITN_V_INV_LEG_DISTRICT",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegDistrict",
+                  "name": "DSS_SI_ITN_STK_LEG_DISTRICT",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4023,
+              "name": "DSS_SI_ITN_V_INV_LEG_PHU",
+              "label": "DSS_SI_ITN_V_INV_LEG_PHU",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegPhu",
+                  "name": "DSS_SI_ITN_STK_LEG_PHU",
+                  "code": "",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -733,41 +969,22 @@
         },
         {
           "row": 5,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
           "vizArray": [
             {
-              "id": 215,
-              "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
-              "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
-              "vizType": "chart",
+              "id": 4024,
+              "name": "DSS_SI_ITN_V_INV_LEG_DP",
+              "label": "DSS_SI_ITN_V_INV_LEG_DP",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "actualVsPlannedHouseholdLineGraphProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_PROVINCE",
+                  "id": "siItnStkLegDp",
+                  "name": "DSS_SI_ITN_STK_LEG_DP",
                   "code": "",
-                  "chartType": "line",
+                  "chartType": "metric",
                   "filter": "",
-                  "tabName": "Household",
-                  "headers": []
-                },
-                {
-                  "id": "actualVsPlannedPopulationLineGraphProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_PROVINCE",
-                  "code": "",
-                  "chartType": "line",
-                  "filter": "",
-                  "tabName": "Population",
-                  "headers": []
-                },
-                {
-                  "id": "actualVsPlannedBednetsLineGraphProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_PROVINCE",
-                  "code": "",
-                  "chartType": "line",
-                  "filter": "",
-                  "tabName": "Bednets",
                   "headers": []
                 }
               ]
@@ -776,19 +993,143 @@
         },
         {
           "row": 6,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
           "vizArray": [
             {
-              "id": 217,
-              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "id": 4025,
+              "name": "DSS_SI_ITN_V_INV_LEG_CDD",
+              "label": "DSS_SI_ITN_V_INV_LEG_CDD",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegCdd",
+                  "name": "DSS_SI_ITN_STK_LEG_CDD",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4026,
+              "name": "DSS_SI_ITN_V_INV_IN_HAND",
+              "label": "DSS_SI_ITN_V_INV_IN_HAND",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkInHand",
+                  "name": "DSS_SI_ITN_STK_IN_HAND",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4027,
+              "name": "DSS_SI_ITN_V_INV_BY_AREA",
+              "label": "DSS_SI_ITN_V_INV_BY_AREA",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkByAreaP",
+                  "name": "DSS_SI_ITN_STK_BY_AREA_P",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4028,
+              "name": "DSS_SI_ITN_V_INV_STATUS",
+              "label": "DSS_SI_ITN_V_INV_STATUS",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdUncoveredPopulationProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_PROVINCE",
+                  "id": "siItnStkStatusByLevel",
+                  "name": "DSS_SI_ITN_STK_STATUS_BY_LEVEL",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 4029,
+              "name": "DSS_SI_ITN_V_INV_USAGE",
+              "label": "DSS_SI_ITN_V_INV_USAGE",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkUsageByAreaP",
+                  "name": "DSS_SI_ITN_STK_USAGE_BY_AREA_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_USAGE"
+                },
+                {
+                  "id": "siItnStkReturnRateByAreaP",
+                  "name": "DSS_SI_ITN_STK_RETURN_RATE_BY_AREA_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_RETURN_RATE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 4030,
+              "name": "DSS_SI_ITN_V_INV_LOSS_BY_AREA",
+              "label": "DSS_SI_ITN_V_INV_LOSS_BY_AREA",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLossByAreaP",
+                  "name": "DSS_SI_ITN_STK_LOSS_BY_AREA_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -799,34 +1140,24 @@
           ]
         },
         {
-          "row": 7,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "row": 11,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
           "vizArray": [
             {
-              "id": 216,
-              "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
-              "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_DISTRICT",
+              "id": 4031,
+              "name": "DSS_SI_ITN_V_INV_PENDING",
+              "label": "DSS_SI_ITN_V_INV_PENDING",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "summaryByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT",
+                  "id": "siItnStkPending",
+                  "name": "DSS_SI_ITN_STK_PENDING",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "BOUNDARY"
-                },
-                {
-                  "id": "summaryByDistrictDayBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT_DAY",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "DAYWISE"
+                  "headers": []
                 }
               ]
             }
@@ -834,19 +1165,71 @@
         },
         {
           "row": 1,
-          "name": "DSS_KIBANA_MAPS",
+          "name": "DSS_SI_ITN_TAB_MAPS",
           "vizArray": [
             {
-              "id": 401,
-              "name": "DSS_HEALTH_KIBANA_SCREEN",
-              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "id": 4032,
+              "name": "DSS_SI_ITN_V_LEAFLET",
+              "label": "DSS_SI_ITN_V_LEAFLET",
+              "vizType": "leafletMap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnMapRegCoverageP",
+                  "name": "DSS_SI_ITN_MAP_REG_COVERAGE_P",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_REG"
+                },
+                {
+                  "id": "siItnMapDstCoverageP",
+                  "name": "DSS_SI_ITN_MAP_DST_COVERAGE_P",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_DST"
+                },
+                {
+                  "id": "siItnMapPopCoverageP",
+                  "name": "DSS_SI_ITN_MAP_POP_COVERAGE_P",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_POP"
+                },
+                {
+                  "id": "siItnMapNetsCoverageP",
+                  "name": "DSS_SI_ITN_MAP_NETS_COVERAGE_P",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_NETS"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_MAPS",
+          "vizArray": [
+            {
+              "id": 4033,
+              "name": "DSS_SI_ITN_V_MAP_1",
+              "label": "DSS_SI_ITN_V_MAP_1",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "householdsRegisteredMapBednetsICCD",
-                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
+                  "name": "DSS_SI_ITN_V_MAP_1",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bo-households-registered-map",
@@ -859,20 +1242,20 @@
           ]
         },
         {
-          "row": 2,
-          "name": "DSS_KIBANA_MAPS",
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_MAPS",
           "vizArray": [
             {
-              "id": 412,
-              "name": "DSS_HEALTH_KIBANA_SCREEN",
-              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "id": 4034,
+              "name": "DSS_SI_ITN_V_MAP_2",
+              "label": "DSS_SI_ITN_V_MAP_2",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "householdsRedeemedITNSMapBednetsICCD",
-                  "name": "DASHBOARD_MAP_HOUSEHOLDS_ITNS_DELIVERED",
+                  "name": "DSS_SI_ITN_V_MAP_2",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bo-households-itns-delivered-map",
@@ -886,37 +1269,61 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 221,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT",
+              "id": 4035,
+              "name": "DSS_SI_ITN_V_CMP_RECEIVED",
+              "label": "DSS_SI_ITN_V_CMP_RECEIVED",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnCmpTiles",
+                  "name": "DSS_SI_ITN_CMP_TILES",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 4036,
+              "name": "DSS_SI_ITN_V_COMPLAINTS_BY_STATUS",
+              "label": "DSS_SI_ITN_V_COMPLAINTS_BY_STATUS",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByDistrictTotalBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_DISTRICT_TOTAL",
+                  "id": "siItnCmpByStatus",
+                  "name": "DSS_SI_ITN_CMP_BY_STATUS",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "donut",
                   "filter": "",
                   "headers": []
                 }
               ]
             },
             {
-              "id": 222,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "id": 4037,
+              "name": "DSS_SI_ITN_V_CMP_BY_TYPE",
+              "label": "DSS_SI_ITN_V_CMP_BY_TYPE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalComplaintsRegisteredByTypeBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+                  "id": "siItnCmpByType",
+                  "name": "DSS_SI_ITN_CMP_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -927,62 +1334,20 @@
           ]
         },
         {
-          "row": 2,
-          "name": "DSS_HEALTH_COMPLAINTS",
-          "vizArray": [
-            {
-              "id": 223,
-              "name": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_PROVINCIAL",
-              "label": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_PROVINCIAL",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "complaintsByStatusBreakdownProvincialBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_PROVINCIAL",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 224,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "complaintsByTypeBreakdownProvincialBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_PROVINCIAL",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 3,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 352,
-              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
-              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "id": 4038,
+              "name": "DSS_SI_ITN_V_CMP_BY_AREA",
+              "label": "DSS_SI_ITN_V_CMP_BY_AREA",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "ComplaintsShareByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+                  "id": "siItnCmpByAreaP",
+                  "name": "DSS_SI_ITN_CMP_BY_AREA_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -991,16 +1356,16 @@
               ]
             },
             {
-              "id": 351,
-              "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
-              "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_PROVINCE",
+              "id": 4039,
+              "name": "DSS_SI_ITN_V_CMP_SHARE",
+              "label": "DSS_SI_ITN_V_CMP_SHARE",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "averageResolutionTimeProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_PROVINCE",
+                  "id": "siItnCmpShareByAreaP",
+                  "name": "DSS_SI_ITN_CMP_SHARE_BY_AREA_P",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -1012,33 +1377,41 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 226,
-              "name": "DSS_HEALTH_COMPLAINTS_SUMMARY",
-              "label": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "id": 4040,
+              "name": "DSS_SI_ITN_V_CMP_RESOLUTION",
+              "label": "DSS_SI_ITN_V_CMP_RESOLUTION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnCmpAvgResolutionP",
+                  "name": "DSS_SI_ITN_CMP_AVG_RESOLUTION_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 4041,
+              "name": "DSS_SI_ITN_V_CMP_TYPE_BY_AREA",
+              "label": "DSS_SI_ITN_V_CMP_TYPE_BY_AREA",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByStatusSummaryProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_PROVINCE",
+                  "id": "siItnCmpTypeByAreaP",
+                  "name": "DSS_SI_ITN_CMP_TYPE_BY_AREA_P",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "BOUNDARY"
-                },
-                {
-                  "id": "complaintsByStatusSummaryDayBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DAY",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "DAYWISE"
+                  "headers": []
                 }
               ]
             }
@@ -1046,173 +1419,37 @@
         },
         {
           "row": 5,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 227,
-              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
-              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "id": 4042,
+              "name": "DSS_SI_ITN_V_CMP_SUMMARY",
+              "label": "DSS_SI_ITN_V_CMP_SUMMARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "openComplaintsSummaryByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_DISTRICT",
+                  "id": "siItnCmpSummaryP",
+                  "name": "DSS_SI_ITN_CMP_SUMMARY_P",
                   "code": "",
                   "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 1,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 240,
-              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
-              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
-              "vizType": "bannercard",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "warehouseManagerUserSyncIRSICCD",
-                  "name": "DSS_HEALTH_WAREHOUSE_MANAGER_USER_SYNC_RATE",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 2,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 242,
-              "name": "DSS_HEALTH_INVENTORY_STOCK_USED",
-              "label": "DSS_HEALTH_INVENTORY_STOCK_USED",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "inventoryStockUsedProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_STOCK_USED_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
                   "filter": "",
                   "headers": []
                 }
               ]
             },
             {
-              "id": 242,
-              "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
-              "label": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
+              "id": 4043,
+              "name": "DSS_SI_ITN_V_CMP_OPEN_AGE",
+              "label": "DSS_SI_ITN_V_CMP_OPEN_AGE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "inventoryStockInHandProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_PROVINCE",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 244,
-              "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-              "label": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-              "vizType": "latlong",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "warehouseDistributionLatLongPointsBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "points",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableDaysStockLastsDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableAvlRcvdDispFacilitiesBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableStockStatusDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableWarNumDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 4,
-          "name": "DSS_HEALTH_INVENTORY",
-          "vizArray": [
-            {
-              "id": 243,
-              "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
-              "label": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "InventorySummaryByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_DISTRICT",
+                  "id": "siItnCmpOpenAgeP",
+                  "name": "DSS_SI_ITN_CMP_OPEN_AGE_P",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -1224,21 +1461,21 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_SI_ITN_TAB_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 262,
-              "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
-              "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
-              "vizType": "chart",
+              "id": 4044,
+              "name": "DSS_SI_ITN_V_TEAMS",
+              "label": "DSS_SI_ITN_V_TEAMS",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "userSyncRateByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+                  "id": "siItnWfTiles",
+                  "name": "DSS_SI_ITN_WF_TILES",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -1248,43 +1485,19 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_SI_ITN_TAB_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 263,
-              "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED_CDD",
-              "label": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED_CDD",
+              "id": 4045,
+              "name": "DSS_SI_ITN_V_REG_TEAMS",
+              "label": "DSS_SI_ITN_V_REG_TEAMS",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "numberOfSuccessfulRegistrationsCDDBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED_CDD",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "row": 3,
-          "name": "DSS_HEALTH_SUPERVISION",
-          "vizArray": [
-            {
-              "id": 264,
-              "name": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
-              "label": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
-              "vizType": "stacked-table",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "summaryReportByLGACDDBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_REPORT_BY_LGA_CDD",
+                  "id": "siItnWfRegistrars",
+                  "name": "DSS_SI_ITN_WF_REGISTRARS",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -1295,20 +1508,20 @@
           ]
         },
         {
-          "row": 4,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 265,
-              "name": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
-              "label": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
-              "vizType": "stacked-table",
+              "id": 4046,
+              "name": "DSS_SI_ITN_V_DST_TEAMS",
+              "label": "DSS_SI_ITN_V_DST_TEAMS",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "cddTeamPerformanceBednetsICCD",
-                  "name": "DSS_HEALTH_CDD_TEAM_PERFORMANCE",
+                  "id": "siItnWfDistributors",
+                  "name": "DSS_SI_ITN_WF_DISTRIBUTORS",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -1320,29 +1533,194 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "name": "DSS_SI_ITN_TAB_DATA_QUALITY",
           "vizArray": [
             {
-              "id": 265,
-              "name": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
-              "label": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
-              "vizType": "chart",
+              "id": 4047,
+              "name": "DSS_SI_ITN_V_DQ_CARDS",
+              "label": "DSS_SI_ITN_V_DQ_CARDS",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "userSyncRateByDistrictBednetsICCD",
-                  "name": "CUSTOM_ITN_SUMMARY_REPORT",
+                  "id": "siItnDqTiles",
+                  "name": "DSS_SI_ITN_DQ_TILES",
                   "code": "",
-                  "moduleName": "llin",
-                  "pageName": "itn-summary-report",
-                  "chartType": "kibanaComponent",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
               ]
             }
           ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 4048,
+              "name": "DSS_SI_ITN_V_DQ_BY_AREA",
+              "label": "DSS_SI_ITN_V_DQ_BY_AREA",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDqByAreaP",
+                  "name": "DSS_SI_ITN_DQ_BY_AREA_P",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 4049,
+              "name": "DSS_SI_ITN_V_DQ_SUMMARY",
+              "label": "DSS_SI_ITN_V_DQ_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDqSummaryP",
+                  "name": "DSS_SI_ITN_DQ_SUMMARY_P",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 4050,
+              "name": "DSS_SI_ITN_V_SYS_USERS",
+              "label": "DSS_SI_ITN_V_SYS_USERS",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnSysTiles",
+                  "name": "DSS_SI_ITN_SYS_TILES",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 4051,
+              "name": "DSS_SI_ITN_V_SYS_TREND",
+              "label": "DSS_SI_ITN_V_SYS_TREND",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnSysSyncTrend",
+                  "name": "DSS_SI_ITN_SYS_SYNC_TREND",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 4052,
+              "name": "DSS_SI_ITN_V_SYS_USER_TABLE",
+              "label": "DSS_SI_ITN_V_SYS_USER_TABLE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnSysUserTable",
+                  "name": "DSS_SI_ITN_SYS_USER_TABLE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 4053,
+              "name": "DSS_SI_ITN_V_REG_SYNC_TABLE",
+              "label": "DSS_SI_ITN_V_REG_SYNC_TABLE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegRegistrarSyncTableP",
+                  "name": "DSS_SI_ITN_REG_REGISTRAR_SYNC_TABLE_P",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 4054,
+              "name": "DSS_SI_ITN_V_DST_SYNC_TABLE",
+              "label": "DSS_SI_ITN_V_DST_SYNC_TABLE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstDistributorSyncTableP",
+                  "name": "DSS_SI_ITN_DST_DISTRIBUTOR_SYNC_TABLE_P",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_CUSTOM",
+          "vizArray": []
         }
       ]
     },
@@ -1360,19 +1738,227 @@
       "visualizations": [
         {
           "row": 1,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
-              "id": 200,
-              "name": "DSS_HEALTH_USER_SYNC_OVERVIEW",
-              "label": "DSS_HEALTH_USER_SYNC_OVERVIEW",
-              "vizType": "chart",
+              "id": 5001,
+              "name": "DSS_SI_ITN_V_CARDS_REGISTRATION",
+              "label": "DSS_SI_ITN_V_CARDS_REGISTRATION",
+              "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "userSyncSummaryDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_USER_SYNC_SUMMARY",
+                  "id": "siItnRegHh",
+                  "name": "DSS_SI_ITN_REG_HH",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegHhTotal",
+                  "name": "DSS_SI_ITN_REG_HH_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegHhTargetD",
+                  "name": "DSS_SI_ITN_REG_HH_TARGET_D",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegHhCoverageD",
+                  "name": "DSS_SI_ITN_REG_HH_COVERAGE_D",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5002,
+              "name": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
+              "label": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstServed",
+                  "name": "DSS_SI_ITN_DST_SERVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstServedTotal",
+                  "name": "DSS_SI_ITN_DST_SERVED_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstEligible",
+                  "name": "DSS_SI_ITN_DST_ELIGIBLE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstCoverage",
+                  "name": "DSS_SI_ITN_DST_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5003,
+              "name": "DSS_SI_ITN_V_CARDS_NETS",
+              "label": "DSS_SI_ITN_V_CARDS_NETS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstNets",
+                  "name": "DSS_SI_ITN_DST_NETS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetsTotal",
+                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegItnRequired",
+                  "name": "DSS_SI_ITN_REG_ITN_REQUIRED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetsCoverage",
+                  "name": "DSS_SI_ITN_DST_NETS_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5004,
+              "name": "DSS_SI_ITN_V_CARDS_POPULATION",
+              "label": "DSS_SI_ITN_V_CARDS_POPULATION",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegPopTotal",
+                  "name": "DSS_SI_ITN_REG_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopTotal",
+                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegPopTargetD",
+                  "name": "DSS_SI_ITN_REG_POP_TARGET_D",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopCoverageD",
+                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_D",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 5005,
+              "name": "DSS_SI_ITN_V_COVERAGE_BY_AREA",
+              "label": "DSS_SI_ITN_V_COVERAGE_BY_AREA",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegCoverageByAreaD",
+                  "name": "DSS_SI_ITN_REG_COVERAGE_BY_AREA_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_REGISTERED"
+                },
+                {
+                  "id": "siItnDstCoverageByAreaD",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_SERVED"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
+          "vizArray": [
+            {
+              "id": 5006,
+              "name": "DSS_SI_ITN_V_REGISTRAR_SYNC",
+              "label": "DSS_SI_ITN_V_REGISTRAR_SYNC",
+              "vizType": "bannercard",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegRegistrarSyncD",
+                  "name": "DSS_SI_ITN_REG_REGISTRAR_SYNC_D",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -1383,196 +1969,22 @@
           ]
         },
         {
-          "row": 1,
-          "name": "DSS_HEALTH_OVERVIEW",
-          "vizArray": [
-            {
-              "id": 201,
-              "name": "DSS_HEALTH_HOUSEHOLDS",
-              "label": "DSS_HEALTH_HOUSEHOLDS",
-              "vizType": "metric-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "householdVisitsWithinDateRangeBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_HOUSEHOLDS_VISITED_OVER_DATERANGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalVisitsBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "householdVisitsTargetDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalHouseholdCoverageDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 202,
-              "name": "DSS_HEALTH_POPULATION_COVERED",
-              "label": "DSS_HEALTH_POPULATION_COVERED",
-              "vizType": "stacked-collection",
-              "noUnit": false,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "overviewPopulationCoveredBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "overviewTotalPopulationCoveredBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_POPULATION_COVERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "overviewPopulationTargetedDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "overviewPopulationCoverageAchievedDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 203,
-              "name": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
-              "label": "DSS_HEALTH_BED_NETS_DISTRIBUTED",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "distributionsByRangeBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_DISTRIBUTED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalDistributionsTillTodayBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_TOTAL_BED_NETS_DISTRIBUTED_TILL_TODAY",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "bednetsTargetDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "bednetsDistributionCoverageDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 204,
-              "name": "DSS_HEALTH_EXCESS_LOSS_STOCK",
-              "label": "DSS_HEALTH_EXCESS_LOSS_STOCK",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "totalExcessStockDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_TOTAL_EXCESS_STOCK",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "totalLossStockDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_TOTAL_LOSS_STOCK",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "excessStockPercentageDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_EXCESS_STOCK_PERCENTAGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "lossStockPercentageDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_LOSS_STOCK_PERCENTAGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 2,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 205,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS",
-              "vizType": "chart",
+              "id": 5007,
+              "name": "DSS_SI_ITN_V_REG_PROGRESS",
+              "label": "DSS_SI_ITN_V_REG_PROGRESS",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalComplaintsRegisteredBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BREAKDOWN",
+                  "id": "siItnRegTilesD",
+                  "name": "DSS_SI_ITN_REG_TILES_D",
                   "code": "",
-                  "chartType": "donut",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -1582,19 +1994,56 @@
         },
         {
           "row": 3,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 206,
-              "name": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
-              "label": "DSS_HEALTH_HOUSEHOLD_COVERAGE_RANKING",
+              "id": 5008,
+              "name": "DSS_SI_ITN_V_REG_COVERAGE",
+              "label": "DSS_SI_ITN_V_REG_COVERAGE",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageBarchartByAPBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_BAR_CHART_BY_AP",
+                  "id": "siItnRegCoverageByAreaPctD",
+                  "name": "DSS_SI_ITN_REG_COVERAGE_BY_AREA_PCT_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_HH_PCT"
+                },
+                {
+                  "id": "siItnRegPopByAreaPctD",
+                  "name": "DSS_SI_ITN_REG_POP_BY_AREA_PCT_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_POP_PCT"
+                },
+                {
+                  "id": "siItnRegCoverageByAreaD",
+                  "name": "DSS_SI_ITN_REG_COVERAGE_BY_AREA_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_COUNT"
+                }
+              ]
+            },
+            {
+              "id": 5009,
+              "name": "DSS_SI_ITN_V_REG_COMMUNITIES",
+              "label": "DSS_SI_ITN_V_REG_COMMUNITIES",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegCommunitiesByAreaD",
+                  "name": "DSS_SI_ITN_REG_COMMUNITIES_BY_AREA_D",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -1606,23 +2055,67 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_OVERVIEW",
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
           "vizArray": [
             {
-              "id": 207,
-              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
+              "id": 5010,
+              "name": "DSS_SI_ITN_V_REG_DAILY",
+              "label": "DSS_SI_ITN_V_REG_DAILY",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegDaily",
+                  "name": "DSS_SI_ITN_REG_DAILY",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_DAILY"
+                },
+                {
+                  "id": "siItnRegDailyCum",
+                  "name": "DSS_SI_ITN_REG_DAILY_CUM",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_CUMULATIVE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_SI_ITN_TAB_REGISTRATION",
+          "vizArray": [
+            {
+              "id": 5011,
+              "name": "DSS_SI_ITN_V_REG_SUMMARY",
+              "label": "DSS_SI_ITN_V_REG_SUMMARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "daysInventoryStockLastsDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+                  "id": "siItnRegSummaryD",
+                  "name": "DSS_SI_ITN_REG_SUMMARY_D",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "table",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "SI_ITN_BY_AREA"
+                },
+                {
+                  "id": "siItnRegSummaryByDay",
+                  "name": "DSS_SI_ITN_REG_SUMMARY_BY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_BY_DAY"
                 }
               ]
             }
@@ -1630,61 +2123,23 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 2111,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERED_RD",
-              "vizType": "metric-collection",
+              "id": 5012,
+              "name": "DSS_SI_ITN_V_DISTRIBUTOR_SYNC",
+              "label": "DSS_SI_ITN_V_DISTRIBUTOR_SYNC",
+              "vizType": "bannercard",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdHouseholdsCoveredChartDistrictPercentBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_HOUSEHOLD_REGISTERED_COVERAGE_PERCENT",
+                  "id": "siItnDstDistributorSyncD",
+                  "name": "DSS_SI_ITN_DST_DISTRIBUTOR_SYNC_D",
                   "code": "",
-                  "chartType": "metric",
+                  "chartType": "table",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdHouseholdsCoveredChartDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_NATIONAL_NUMBER_OF_HOUSEHOLDS_REGISTERED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
-                }
-              ]
-            },
-            {
-              "id": 2121,
-              "name": "DSS_HEALTH_POPULATION_COVERED_RD",
-              "label": "DSS_HEALTH_POPULATION_COVERED_RD",
-              "vizType": "metric-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "rdPopulationChartDistrictPercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT_PERCENT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
-                },
-                {
-                  "id": "rdPopulationChartDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_POPULATION_COVERED_DISTRICT",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
+                  "headers": []
                 }
               ]
             }
@@ -1692,33 +2147,141 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 2131,
-              "name": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
-              "label": "DSS_HEALTH_BEDNETS_DISTRIBUTED",
-              "vizType": "chart",
-              "noUnit": false,
+              "id": 5013,
+              "name": "DSS_SI_ITN_V_DST_HOUSEHOLDS",
+              "label": "DSS_SI_ITN_V_DST_HOUSEHOLDS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdBednetsDistributedChartDistrictPercentBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT_PERCENT",
+                  "id": "siItnDstServed",
+                  "name": "DSS_SI_ITN_DST_SERVED",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "PERCENT"
+                  "headers": []
                 },
                 {
-                  "id": "rdBednetsDistributedChartDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_R_D_BEDNETS_DISTRIBUTED_DISTRICT",
+                  "id": "siItnDstEligible",
+                  "name": "DSS_SI_ITN_DST_ELIGIBLE",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "NUMBER"
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstCoverage",
+                  "name": "DSS_SI_ITN_DST_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5014,
+              "name": "DSS_SI_ITN_V_DST_NETS",
+              "label": "DSS_SI_ITN_V_DST_NETS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstNetsTotal",
+                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegItnRequired",
+                  "name": "DSS_SI_ITN_REG_ITN_REQUIRED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetsCoverage",
+                  "name": "DSS_SI_ITN_DST_NETS_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetGap",
+                  "name": "DSS_SI_ITN_DST_NET_GAP",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5015,
+              "name": "DSS_SI_ITN_V_DST_POPULATION",
+              "label": "DSS_SI_ITN_V_DST_POPULATION",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstPopTotal",
+                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopCoverageD",
+                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_D",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5016,
+              "name": "DSS_SI_ITN_V_DST_TOKENS",
+              "label": "DSS_SI_ITN_V_DST_TOKENS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegTokens",
+                  "name": "DSS_SI_ITN_REG_TOKENS",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstRedemption",
+                  "name": "DSS_SI_ITN_DST_REDEMPTION",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstUnredeemed",
+                  "name": "DSS_SI_ITN_DST_UNREDEEMED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             }
@@ -1726,60 +2289,51 @@
         },
         {
           "row": 3,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 2171,
-              "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
-              "label": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
+              "id": 5017,
+              "name": "DSS_SI_ITN_V_DST_COVERAGE",
+              "label": "DSS_SI_ITN_V_DST_COVERAGE",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "householdsCoverageHeatMapDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_HOUSEHOLDS_COVERAGE_HEATMAP_DISTRICT",
+                  "id": "siItnDstCoverageByAreaPctD",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_PCT_D",
                   "code": "",
-                  "chartType": "heatmap",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": [],
-                  "tabName": "HOUSEHOLD"
+                  "tabName": "SI_ITN_HH_PCT"
                 },
                 {
-                  "id": "populationCoverageHeatMapDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_POPULATION_COVERAGE_HEATMAP_DISTRICT",
+                  "id": "siItnDstCoverageByAreaPopPctD",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_POP_PCT_D",
                   "code": "",
-                  "chartType": "heatmap",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": [],
-                  "tabName": "POPULATION"
+                  "tabName": "SI_ITN_POP_PCT"
                 },
                 {
-                  "id": "bednetsCoverageHeatMapDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_BEDNETS_COVERAGE_HEATMAP_DISTRICT",
+                  "id": "siItnDstCoverageByAreaNetsPctD",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_NETS_PCT_D",
                   "code": "",
-                  "chartType": "heatmap",
+                  "chartType": "bar",
                   "filter": "",
                   "headers": [],
-                  "tabName": "BEDNETS"
-                }
-              ]
-            },
-            {
-              "id": 2181,
-              "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
-              "label": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
-              "vizType": "latlong",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
+                  "tabName": "SI_ITN_NETS_PCT"
+                },
                 {
-                  "id": "householdsVisitedLatLongPointsBednetsICCD",
-                  "name": "DSS_HEALTH_RD_HH_VISITED_LATLONG",
+                  "id": "siItnDstCoverageByAreaD",
+                  "name": "DSS_SI_ITN_DST_COVERAGE_BY_AREA_D",
                   "code": "",
-                  "chartType": "points",
+                  "chartType": "bar",
                   "filter": "",
-                  "headers": []
+                  "headers": [],
+                  "tabName": "SI_ITN_COUNT"
                 }
               ]
             }
@@ -1787,41 +2341,22 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 2115,
-              "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
-              "label": "DSS_HEALTH_ACTUAL_VS_PLANNED_LINE_GRAPH",
+              "id": 5018,
+              "name": "DSS_SI_ITN_V_DST_BY_DP",
+              "label": "DSS_SI_ITN_V_DST_BY_DP",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "actualVsPlannedHouseholdLineGraphDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_HOUSEHOLD_LINE_GRAPH_DISTRICT",
+                  "id": "siItnDstByDp",
+                  "name": "DSS_SI_ITN_DST_BY_DP",
                   "code": "",
-                  "chartType": "line",
+                  "chartType": "table",
                   "filter": "",
-                  "tabName": "Household",
-                  "headers": []
-                },
-                {
-                  "id": "actualVsPlannedPopulationLineGraphDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_POPULATION_LINE_GRAPH_DISTRICT",
-                  "code": "",
-                  "chartType": "line",
-                  "filter": "",
-                  "tabName": "Population",
-                  "headers": []
-                },
-                {
-                  "id": "actualVsPlannedBednetsLineGraphDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_ACTUAL_VS_PLANNED_BEDNETS_LINE_GRAPH_DISTRICT",
-                  "code": "",
-                  "chartType": "line",
-                  "filter": "",
-                  "tabName": "Bednets",
                   "headers": []
                 }
               ]
@@ -1830,21 +2365,185 @@
         },
         {
           "row": 5,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
           "vizArray": [
             {
-              "id": 2117,
-              "name": "DSS_HEALTH_UNCOVERED_POPULATION",
-              "label": "DSS_HEALTH_UNCOVERED_POPULATION",
+              "id": 5019,
+              "name": "DSS_SI_ITN_V_DST_DAILY",
+              "label": "DSS_SI_ITN_V_DST_DAILY",
               "vizType": "chart",
               "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "rdUncoveredPopulationDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_UNCOVERED_POPULATION_DISTRICT",
+                  "id": "siItnDstDaily",
+                  "name": "DSS_SI_ITN_DST_DAILY",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_DAILY"
+                },
+                {
+                  "id": "siItnDstDailyCum",
+                  "name": "DSS_SI_ITN_DST_DAILY_CUM",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_CUMULATIVE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 6,
+          "name": "DSS_SI_ITN_TAB_DISTRIBUTION",
+          "vizArray": [
+            {
+              "id": 5020,
+              "name": "DSS_SI_ITN_V_DST_SUMMARY",
+              "label": "DSS_SI_ITN_V_DST_SUMMARY",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstSummaryD",
+                  "name": "DSS_SI_ITN_DST_SUMMARY_D",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_BY_AREA"
+                },
+                {
+                  "id": "siItnDstSummaryByDay",
+                  "name": "DSS_SI_ITN_DST_SUMMARY_BY_DAY",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_BY_DAY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5021,
+              "name": "DSS_SI_ITN_V_INV_HEADLINE",
+              "label": "DSS_SI_ITN_V_INV_HEADLINE",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkHeadline",
+                  "name": "DSS_SI_ITN_STK_HEADLINE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5022,
+              "name": "DSS_SI_ITN_V_INV_LEG_COUNTRY",
+              "label": "DSS_SI_ITN_V_INV_LEG_COUNTRY",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegCountry",
+                  "name": "DSS_SI_ITN_STK_LEG_COUNTRY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5023,
+              "name": "DSS_SI_ITN_V_INV_LEG_DISTRICT",
+              "label": "DSS_SI_ITN_V_INV_LEG_DISTRICT",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegDistrict",
+                  "name": "DSS_SI_ITN_STK_LEG_DISTRICT",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5024,
+              "name": "DSS_SI_ITN_V_INV_LEG_PHU",
+              "label": "DSS_SI_ITN_V_INV_LEG_PHU",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegPhu",
+                  "name": "DSS_SI_ITN_STK_LEG_PHU",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 5,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5025,
+              "name": "DSS_SI_ITN_V_INV_LEG_DP",
+              "label": "DSS_SI_ITN_V_INV_LEG_DP",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegDp",
+                  "name": "DSS_SI_ITN_STK_LEG_DP",
+                  "code": "",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -1854,33 +2553,171 @@
         },
         {
           "row": 6,
-          "name": "DSS_HEALTH_REGISTRATION_DELIVERY",
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
           "vizArray": [
             {
-              "id": 2161,
-              "name": "DSS_HEALTH_DELIVERY_SUMMARY_BY_AP",
-              "label": "DSS_HEALTH_DELIVERY_SUMMARY_BY_AP",
+              "id": 5026,
+              "name": "DSS_SI_ITN_V_INV_LEG_CDD",
+              "label": "DSS_SI_ITN_V_INV_LEG_CDD",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLegCdd",
+                  "name": "DSS_SI_ITN_STK_LEG_CDD",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 7,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5027,
+              "name": "DSS_SI_ITN_V_INV_IN_HAND",
+              "label": "DSS_SI_ITN_V_INV_IN_HAND",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkInHand",
+                  "name": "DSS_SI_ITN_STK_IN_HAND",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 8,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5028,
+              "name": "DSS_SI_ITN_V_INV_BY_AREA",
+              "label": "DSS_SI_ITN_V_INV_BY_AREA",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "summaryByAdministrativeProvinceBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_BY_AP",
+                  "id": "siItnStkByAreaD",
+                  "name": "DSS_SI_ITN_STK_BY_AREA_D",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 9,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5029,
+              "name": "DSS_SI_ITN_V_INV_STATUS",
+              "label": "DSS_SI_ITN_V_INV_STATUS",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkStatusByLevel",
+                  "name": "DSS_SI_ITN_STK_STATUS_BY_LEVEL",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5030,
+              "name": "DSS_SI_ITN_V_INV_USAGE",
+              "label": "DSS_SI_ITN_V_INV_USAGE",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkUsageByAreaD",
+                  "name": "DSS_SI_ITN_STK_USAGE_BY_AREA_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
                   "headers": [],
-                  "tabName": "BOUNDARY"
+                  "tabName": "SI_ITN_USAGE"
                 },
                 {
-                  "id": "summaryByAdministrativeProvinceDayBednetsICCD",
-                  "name": "DSS_HEALTH_SUMMARY_BY_DISTRICT_DAY",
+                  "id": "siItnStkReturnRateByAreaD",
+                  "name": "DSS_SI_ITN_STK_RETURN_RATE_BY_AREA_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_RETURN_RATE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 10,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5031,
+              "name": "DSS_SI_ITN_V_INV_LOSS_BY_AREA",
+              "label": "DSS_SI_ITN_V_INV_LOSS_BY_AREA",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkLossByAreaD",
+                  "name": "DSS_SI_ITN_STK_LOSS_BY_AREA_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 11,
+          "name": "DSS_SI_ITN_TAB_INVENTORY",
+          "vizArray": [
+            {
+              "id": 5032,
+              "name": "DSS_SI_ITN_V_INV_PENDING",
+              "label": "DSS_SI_ITN_V_INV_PENDING",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnStkPending",
+                  "name": "DSS_SI_ITN_STK_PENDING",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "DAYWISE"
+                  "headers": []
                 }
               ]
             }
@@ -1888,19 +2725,71 @@
         },
         {
           "row": 1,
-          "name": "DSS_KIBANA_MAPS",
+          "name": "DSS_SI_ITN_TAB_MAPS",
           "vizArray": [
             {
-              "id": 401,
-              "name": "DSS_HEALTH_KIBANA_SCREEN",
-              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "id": 5033,
+              "name": "DSS_SI_ITN_V_LEAFLET",
+              "label": "DSS_SI_ITN_V_LEAFLET",
+              "vizType": "leafletMap",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnMapRegCoverageD",
+                  "name": "DSS_SI_ITN_MAP_REG_COVERAGE_D",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_REG"
+                },
+                {
+                  "id": "siItnMapDstCoverageD",
+                  "name": "DSS_SI_ITN_MAP_DST_COVERAGE_D",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_DST"
+                },
+                {
+                  "id": "siItnMapPopCoverageD",
+                  "name": "DSS_SI_ITN_MAP_POP_COVERAGE_D",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_POP"
+                },
+                {
+                  "id": "siItnMapNetsCoverageD",
+                  "name": "DSS_SI_ITN_MAP_NETS_COVERAGE_D",
+                  "code": "",
+                  "chartType": "leafletHeatMap",
+                  "filter": "",
+                  "headers": [],
+                  "tabName": "SI_ITN_MAP_NETS"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_MAPS",
+          "vizArray": [
+            {
+              "id": 5034,
+              "name": "DSS_SI_ITN_V_MAP_1",
+              "label": "DSS_SI_ITN_V_MAP_1",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "householdsRegisteredMapBednetsICCDistrict",
-                  "name": "DASHBOARD_MAP_HOUSEHOLDS_REGISTERED",
+                  "name": "DSS_SI_ITN_V_MAP_1",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bo-households-registered-map",
@@ -1913,20 +2802,20 @@
           ]
         },
         {
-          "row": 2,
-          "name": "DSS_KIBANA_MAPS",
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_MAPS",
           "vizArray": [
             {
-              "id": 412,
-              "name": "DSS_HEALTH_KIBANA_SCREEN",
-              "label": "DSS_HEALTH_KIBANA_SCREEN",
+              "id": 5035,
+              "name": "DSS_SI_ITN_V_MAP_2",
+              "label": "DSS_SI_ITN_V_MAP_2",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "householdsRedeemedITNsMapBednetsICCDistrict",
-                  "name": "DASHBOARD_MAP_HOUSEHOLDS_ITNS_DELIVERED",
+                  "name": "DSS_SI_ITN_V_MAP_2",
                   "code": "",
                   "moduleName": "llin",
                   "pageName": "bo-households-itns-delivered-map",
@@ -1940,37 +2829,61 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 221,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_AP",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_AP",
+              "id": 5036,
+              "name": "DSS_SI_ITN_V_CMP_RECEIVED",
+              "label": "DSS_SI_ITN_V_CMP_RECEIVED",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnCmpTiles",
+                  "name": "DSS_SI_ITN_CMP_TILES",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
+          "vizArray": [
+            {
+              "id": 5037,
+              "name": "DSS_SI_ITN_V_COMPLAINTS_BY_STATUS",
+              "label": "DSS_SI_ITN_V_COMPLAINTS_BY_STATUS",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByAPTotalBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_AP_TOTAL",
+                  "id": "siItnCmpByStatus",
+                  "name": "DSS_SI_ITN_CMP_BY_STATUS",
                   "code": "",
-                  "chartType": "bar",
+                  "chartType": "donut",
                   "filter": "",
                   "headers": []
                 }
               ]
             },
             {
-              "id": 222,
-              "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
-              "label": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+              "id": 5038,
+              "name": "DSS_SI_ITN_V_CMP_BY_TYPE",
+              "label": "DSS_SI_ITN_V_CMP_BY_TYPE",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "totalComplaintsRegisteredByTypeBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_TOTAL_COMPLAINTS_BY_TYPE",
+                  "id": "siItnCmpByType",
+                  "name": "DSS_SI_ITN_CMP_BY_TYPE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -1981,62 +2894,20 @@
           ]
         },
         {
-          "row": 2,
-          "name": "DSS_HEALTH_COMPLAINTS",
-          "vizArray": [
-            {
-              "id": 223,
-              "name": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_DISTRICT",
-              "label": "DSS_HEALTH_COMPLAINTS_BREAKDOWN_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "complaintsByStatusBreakdownDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_BREAKDOWN_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 224,
-              "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_DISTRICT",
-              "label": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_DISTRICT",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "complaintsByTypeBreakdownDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_BY_TYPE_BREAKDOWN_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            }
-          ]
-        },
-        {
           "row": 3,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 352,
-              "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
-              "label": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+              "id": 5039,
+              "name": "DSS_SI_ITN_V_CMP_BY_AREA",
+              "label": "DSS_SI_ITN_V_CMP_BY_AREA",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "ComplaintsShareByAPBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_COMPLAINTS_BY_BOUNDARY",
+                  "id": "siItnCmpByAreaD",
+                  "name": "DSS_SI_ITN_CMP_BY_AREA_D",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -2045,16 +2916,16 @@
               ]
             },
             {
-              "id": 351,
-              "name": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_DISTRICT",
-              "label": "DSS_HEALTH_COMPLAINTS_AVG_TIME_BY_DISTRICT",
+              "id": 5040,
+              "name": "DSS_SI_ITN_V_CMP_SHARE",
+              "label": "DSS_SI_ITN_V_CMP_SHARE",
               "vizType": "chart",
-              "noUnit": true,
+              "noUnit": false,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "averageResolutionTimeDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_AVERAGE_RESOLUTION_TIME_DISTRICT",
+                  "id": "siItnCmpShareByAreaD",
+                  "name": "DSS_SI_ITN_CMP_SHARE_BY_AREA_D",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -2066,33 +2937,41 @@
         },
         {
           "row": 4,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 226,
-              "name": "DSS_HEALTH_COMPLAINTS_SUMMARY",
-              "label": "DSS_HEALTH_COMPLAINTS_SUMMARY",
+              "id": 5041,
+              "name": "DSS_SI_ITN_V_CMP_RESOLUTION",
+              "label": "DSS_SI_ITN_V_CMP_RESOLUTION",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnCmpAvgResolutionD",
+                  "name": "DSS_SI_ITN_CMP_AVG_RESOLUTION_D",
+                  "code": "",
+                  "chartType": "bar",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5042,
+              "name": "DSS_SI_ITN_V_CMP_TYPE_BY_AREA",
+              "label": "DSS_SI_ITN_V_CMP_TYPE_BY_AREA",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "complaintsByStatusSummaryDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DISTRICT",
+                  "id": "siItnCmpTypeByAreaD",
+                  "name": "DSS_SI_ITN_CMP_TYPE_BY_AREA_D",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
-                  "headers": [],
-                  "tabName": "BOUNDARY"
-                },
-                {
-                  "id": "complaintsByStatusSummaryDayBednetsICCD",
-                  "name": "DSS_HEALTH_COMPLAINTS_STATUS_SUMMARY_DAY",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": [],
-                  "tabName": "DAYWISE"
+                  "headers": []
                 }
               ]
             }
@@ -2100,19 +2979,37 @@
         },
         {
           "row": 5,
-          "name": "DSS_HEALTH_COMPLAINTS",
+          "name": "DSS_SI_ITN_TAB_COMPLAINTS",
           "vizArray": [
             {
-              "id": 227,
-              "name": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
-              "label": "DSS_HEALTH_COMPLAINTS_OPEN_SUMMARY",
+              "id": 5043,
+              "name": "DSS_SI_ITN_V_CMP_SUMMARY",
+              "label": "DSS_SI_ITN_V_CMP_SUMMARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "openComplaintsSummaryByAPBednetsICCD",
-                  "name": "DSS_HEALTH_OPEN_COMPLAINTS_SUMMARY_BY_AP",
+                  "id": "siItnCmpSummaryD",
+                  "name": "DSS_SI_ITN_CMP_SUMMARY_D",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5044,
+              "name": "DSS_SI_ITN_V_CMP_OPEN_AGE",
+              "label": "DSS_SI_ITN_V_CMP_OPEN_AGE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnCmpOpenAgeD",
+                  "name": "DSS_SI_ITN_CMP_OPEN_AGE_D",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -2124,39 +3021,21 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_INVENTORY",
+          "name": "DSS_SI_ITN_TAB_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 241,
-              "name": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "label": "DSS_HEALTH_DAYS_INVENTORY_CAN_LAST",
-              "vizType": "chart",
+              "id": 5045,
+              "name": "DSS_SI_ITN_V_TEAMS",
+              "label": "DSS_SI_ITN_V_TEAMS",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "daysInventoryStockLastsDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_OVERVIEW_DAYS_INVENTORY_CAN_LAST_DISTRICT",
+                  "id": "siItnWfTiles",
+                  "name": "DSS_SI_ITN_WF_TILES",
                   "code": "",
-                  "chartType": "bar",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 242,
-              "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
-              "label": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND",
-              "vizType": "chart",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "inventoryStockInHandDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_STOCK_IN_HAND_DISTRICT",
-                  "code": "",
-                  "chartType": "bar",
+                  "chartType": "metric",
                   "filter": "",
                   "headers": []
                 }
@@ -2166,59 +3045,19 @@
         },
         {
           "row": 2,
-          "name": "DSS_HEALTH_INVENTORY",
+          "name": "DSS_SI_ITN_TAB_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 244,
-              "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-              "label": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-              "vizType": "latlong",
+              "id": 5046,
+              "name": "DSS_SI_ITN_V_REG_TEAMS",
+              "label": "DSS_SI_ITN_V_REG_TEAMS",
+              "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "warehouseDistributionLatLongPointsBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "points",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableAvlRcvdDispDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableDaysStockLastsDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableAvlRcvdDispFacilitiesBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableStockStatusDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
-                  "code": "",
-                  "chartType": "table",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "warehouseDistributionLatLongTableWarNumDistrictWiseProvincialBoardBednetsICCD",
-                  "name": "DSS_HEALTH_WH_DISTRIBUTION_LATLONG",
+                  "id": "siItnWfRegistrars",
+                  "name": "DSS_SI_ITN_WF_REGISTRARS",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -2230,19 +3069,19 @@
         },
         {
           "row": 3,
-          "name": "DSS_HEALTH_INVENTORY",
+          "name": "DSS_SI_ITN_TAB_TEAM_PERFORMANCE",
           "vizArray": [
             {
-              "id": 243,
-              "name": "DSS_HEALTH_INVENTORY_SUMMARY",
-              "label": "DSS_HEALTH_INVENTORY_SUMMARY",
+              "id": 5047,
+              "name": "DSS_SI_ITN_V_DST_TEAMS",
+              "label": "DSS_SI_ITN_V_DST_TEAMS",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "InventorySummaryByApBednetsICCD",
-                  "name": "DSS_HEALTH_INVENTORY_SUMMARY_BY_AP",
+                  "id": "siItnWfDistributors",
+                  "name": "DSS_SI_ITN_WF_DISTRIBUTORS",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -2254,19 +3093,43 @@
         },
         {
           "row": 1,
-          "name": "DSS_HEALTH_SUPERVISION",
+          "name": "DSS_SI_ITN_TAB_DATA_QUALITY",
           "vizArray": [
             {
-              "id": 262,
-              "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
-              "label": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
-              "vizType": "chart",
+              "id": 5048,
+              "name": "DSS_SI_ITN_V_DQ_CARDS",
+              "label": "DSS_SI_ITN_V_DQ_CARDS",
+              "vizType": "cards-list",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "userSyncRateByDistrictBednetsICCD",
-                  "name": "DSS_HEALTH_SUPERVISION_USER_SYNC_RATE_BY_DISTRICT",
+                  "id": "siItnDqTiles",
+                  "name": "DSS_SI_ITN_DQ_TILES",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_DATA_QUALITY",
+          "vizArray": [
+            {
+              "id": 5049,
+              "name": "DSS_SI_ITN_V_DQ_BY_AREA",
+              "label": "DSS_SI_ITN_V_DQ_BY_AREA",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDqByAreaD",
+                  "name": "DSS_SI_ITN_DQ_BY_AREA_D",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -2277,30 +3140,147 @@
           ]
         },
         {
-          "row": 1,
-          "name": "DSS_HEALTH_CUSTOM_REPORT",
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_DATA_QUALITY",
           "vizArray": [
             {
-              "id": 265,
-              "name": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
-              "label": "DSS_HEALTH_CUSTOM_SUMMARY_REPORT",
+              "id": 5050,
+              "name": "DSS_SI_ITN_V_DQ_SUMMARY",
+              "label": "DSS_SI_ITN_V_DQ_SUMMARY",
               "vizType": "chart",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
-                  "id": "userSyncRateByDistrictBednetsICCD",
-                  "name": "CUSTOM_ITN_SUMMARY_REPORT",
+                  "id": "siItnDqSummaryD",
+                  "name": "DSS_SI_ITN_DQ_SUMMARY_D",
                   "code": "",
-                  "moduleName": "llin",
-                  "pageName": "itn-summary-report",
-                  "chartType": "kibanaComponent",
+                  "chartType": "table",
                   "filter": "",
                   "headers": []
                 }
               ]
             }
           ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 5051,
+              "name": "DSS_SI_ITN_V_SYS_USERS",
+              "label": "DSS_SI_ITN_V_SYS_USERS",
+              "vizType": "cards-list",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnSysTiles",
+                  "name": "DSS_SI_ITN_SYS_TILES",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 2,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 5052,
+              "name": "DSS_SI_ITN_V_SYS_TREND",
+              "label": "DSS_SI_ITN_V_SYS_TREND",
+              "vizType": "chart",
+              "noUnit": false,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnSysSyncTrend",
+                  "name": "DSS_SI_ITN_SYS_SYNC_TREND",
+                  "code": "",
+                  "chartType": "line",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 5053,
+              "name": "DSS_SI_ITN_V_SYS_USER_TABLE",
+              "label": "DSS_SI_ITN_V_SYS_USER_TABLE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnSysUserTable",
+                  "name": "DSS_SI_ITN_SYS_USER_TABLE",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 4,
+          "name": "DSS_SI_ITN_TAB_SYNC",
+          "vizArray": [
+            {
+              "id": 5054,
+              "name": "DSS_SI_ITN_V_REG_SYNC_TABLE",
+              "label": "DSS_SI_ITN_V_REG_SYNC_TABLE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegRegistrarSyncTableD",
+                  "name": "DSS_SI_ITN_REG_REGISTRAR_SYNC_TABLE_D",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 5055,
+              "name": "DSS_SI_ITN_V_DST_SYNC_TABLE",
+              "label": "DSS_SI_ITN_V_DST_SYNC_TABLE",
+              "vizType": "chart",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstDistributorSyncTableD",
+                  "name": "DSS_SI_ITN_DST_DISTRIBUTOR_SYNC_TABLE_D",
+                  "code": "",
+                  "chartType": "table",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 1,
+          "name": "DSS_SI_ITN_TAB_CUSTOM",
+          "vizArray": []
         }
       ]
     }
