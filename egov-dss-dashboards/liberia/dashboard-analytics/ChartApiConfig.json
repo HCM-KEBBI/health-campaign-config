@@ -77627,5 +77627,417 @@
         ]
       }
     ]
+  },
+  "liItnNRegHhToday": {
+    "chartName": "DSS_LI_ITN_N_REG_HH_TODAY",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Households registered today"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): households registered, synced today",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-household-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_Households_registered_today\":{\"filter\":{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now/d\"}}},\"aggs\":{\"Households registered today\":{\"value_count\":{\"field\":\"Data.household.id.keyword\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNDstPopToday": {
+    "chartName": "DSS_LI_ITN_N_DST_POP_TODAY",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Population reached today"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): people in households that received nets, synced today",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-task-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_Population_reached_today\":{\"filter\":{\"bool\":{\"filter\":[{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"ADMINISTRATION_SUCCESS\"}},{\"term\":{\"Data.isDelivered\":true}}]}},{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now/d\"}}}]}},\"aggs\":{\"Population reached today\":{\"sum\":{\"field\":\"Data.memberCount\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNDstHhToday": {
+    "chartName": "DSS_LI_ITN_N_DST_HH_TODAY",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Households administered today"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): households administered, synced today",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-task-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_Households_administered_today\":{\"filter\":{\"bool\":{\"filter\":[{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"ADMINISTRATION_SUCCESS\"}},{\"term\":{\"Data.isDelivered\":true}}]}},{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now/d\"}}}]}},\"aggs\":{\"Households administered today\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.householdId.keyword\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNDstItnTarget": {
+    "chartName": "DSS_LI_ITN_N_DST_ITN_TARGET",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "ITN target"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): microplan nets (PRODUCT) target, sum of County targets (as Borno)",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_ITN_target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.County.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"ITN target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNDstItnTargetCoverage": {
+    "chartName": "DSS_LI_ITN_N_DST_ITN_TARGET_COVERAGE",
+    "chartType": "metric",
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Nets distributed",
+      "ITN target"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): nets distributed ÷ ITN target",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-task-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_Nets_distributed\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"ADMINISTRATION_SUCCESS\"}},{\"term\":{\"Data.isDelivered\":true}}]}},\"aggs\":{\"Nets distributed\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_ITN_target\":{\"filter\":{\"bool\":{\"must\":[{\"term\":{\"Data.targetType.keyword\":\"PRODUCT\"}},{\"exists\":{\"field\":\"Data.boundaryHierarchy.County.keyword\"}}],\"must_not\":[{\"exists\":{\"field\":\"Data.boundaryHierarchy.District.keyword\"}}]}},\"aggs\":{\"ITN target\":{\"sum\":{\"field\":\"Data.overallTarget\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNDstNetsToday": {
+    "chartName": "DSS_LI_ITN_N_DST_NETS_TODAY",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Nets distributed today"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): nets given to households, synced today",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-task-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_Nets_distributed_today\":{\"filter\":{\"bool\":{\"filter\":[{\"bool\":{\"must\":[{\"term\":{\"Data.role.keyword\":\"DISTRIBUTOR\"}},{\"term\":{\"Data.administrationStatus.keyword\":\"ADMINISTRATION_SUCCESS\"}},{\"term\":{\"Data.isDelivered\":true}}]}},{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now/d\"}}}]}},\"aggs\":{\"Nets distributed today\":{\"sum\":{\"field\":\"Data.quantity\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNUsersCreated": {
+    "chartName": "DSS_LI_ITN_N_USERS_CREATED",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Users created"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): distinct users assigned to the campaign",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-staff-index-v1",
+        "aggrQuery": "{\"aggs\":{\"Users created\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.userId.keyword\"}}}}"
+      }
+    ]
+  },
+  "liItnNUsersSynced": {
+    "chartName": "DSS_LI_ITN_N_USERS_SYNCED",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Users synced"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): distinct users who synced (sync data has no campaign number: all Liberia users)",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-user-sync-index-v1",
+        "aggrQuery": "{\"aggs\":{\"Users synced\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.syncedUserId.keyword\"}}}}"
+      }
+    ]
+  },
+  "liItnNUsersSyncedPct": {
+    "chartName": "DSS_LI_ITN_N_USERS_SYNCED_PCT",
+    "chartType": "metric",
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "percentage",
+    "aggregationPaths": [
+      "Users synced",
+      "Users created"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): users synced ÷ users created",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-user-sync-index-v1",
+        "aggrQuery": "{\"aggs\":{\"Users synced\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.syncedUserId.keyword\"}}}}"
+      },
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-staff-index-v1",
+        "aggrQuery": "{\"aggs\":{\"Users created\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.userId.keyword\"}}}}"
+      }
+    ]
+  },
+  "liItnNUsersActiveToday": {
+    "chartName": "DSS_LI_ITN_N_USERS_ACTIVE_TODAY",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Users active today"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): distinct users who synced today",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-user-sync-index-v1",
+        "aggrQuery": "{\"aggs\":{\"F_Users_active_today\":{\"filter\":{\"range\":{\"Data.syncedTimeStamp\":{\"gte\":\"now/d\"}}},\"aggs\":{\"Users active today\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.syncedUserId.keyword\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNCmpReceived": {
+    "chartName": "DSS_LI_ITN_N_CMP_RECEIVED",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Complaints received"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): all complaints for the campaign",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-transformer-pgr-services",
+        "aggrQuery": "{\"aggs\":{\"Complaints received\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}"
+      }
+    ]
+  },
+  "liItnNCmpOpen": {
+    "chartName": "DSS_LI_ITN_N_CMP_OPEN",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Open complaints"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): complaints not resolved or rejected",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-transformer-pgr-services",
+        "aggrQuery": "{\"aggs\":{\"F_Open_complaints\":{\"filter\":{\"bool\":{\"must_not\":[{\"terms\":{\"Data.service.applicationStatus.keyword\":[\"RESOLVED\",\"REJECTED\"]}}]}},\"aggs\":{\"Open complaints\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNCmpResolved": {
+    "chartName": "DSS_LI_ITN_N_CMP_RESOLVED",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Resolved complaints"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): resolved complaints",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-transformer-pgr-services",
+        "aggrQuery": "{\"aggs\":{\"F_Resolved_complaints\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"RESOLVED\"}},\"aggs\":{\"Resolved complaints\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNCmpRejected": {
+    "chartName": "DSS_LI_ITN_N_CMP_REJECTED",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Rejected complaints"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): rejected complaints",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-transformer-pgr-services",
+        "aggrQuery": "{\"aggs\":{\"F_Rejected_complaints\":{\"filter\":{\"term\":{\"Data.service.applicationStatus.keyword\":\"REJECTED\"}},\"aggs\":{\"Rejected complaints\":{\"value_count\":{\"field\":\"Data.service.id.keyword\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNCampaignElapsed": {
+    "chartName": "DSS_LI_ITN_N_CAMPAIGN_ELAPSED",
+    "chartType": "metric",
+    "valueType": "percentage",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Campaign time elapsed"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): campaign day ÷ campaign length × 100 (live from project start / end dates)",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-index-v1",
+        "aggrQuery": "{\"aggs\":{\"all\":{\"filters\":{\"filters\":{\"all\":{\"match_all\":{}}}},\"aggs\":{\"st\":{\"min\":{\"field\":\"Data.startDate\"}},\"en\":{\"max\":{\"field\":\"Data.endDate\"}},\"Campaign time elapsed\":{\"bucket_script\":{\"buckets_path\":{\"s\":\"st\",\"e\":\"en\"},\"script\":\"double now = new Date().getTime(); double total = Math.round((params.e - params.s) / 86400000.0); if (total <= 0) return 0; double day = Math.floor((now - params.s) / 86400000.0) + 1; double v = Math.max(0, Math.min(100, day / total * 100)); return Math.round(v * 100) / 100.0;\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNCampaignDaysLeft": {
+    "chartName": "DSS_LI_ITN_N_CAMPAIGN_DAYS_LEFT",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Days left"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): days until the campaign end date (live)",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-project-index-v1",
+        "aggrQuery": "{\"aggs\":{\"all\":{\"filters\":{\"filters\":{\"all\":{\"match_all\":{}}}},\"aggs\":{\"st\":{\"min\":{\"field\":\"Data.startDate\"}},\"en\":{\"max\":{\"field\":\"Data.endDate\"}},\"Days left\":{\"bucket_script\":{\"buckets_path\":{\"s\":\"st\",\"e\":\"en\"},\"script\":\"double now = new Date().getTime(); return Math.max(0, Math.floor((params.e - now) / 86400000.0));\"}}}}}}"
+      }
+    ]
+  },
+  "liItnNDistrictsActive": {
+    "chartName": "DSS_LI_ITN_N_DISTRICTS_ACTIVE",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Districts with activity"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): districts with at least one registration",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-household-index-v1",
+        "aggrQuery": "{\"aggs\":{\"Districts with activity\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.boundaryHierarchy.District.keyword\"}}}}"
+      }
+    ]
+  },
+  "liItnNCommunitiesReached": {
+    "chartName": "DSS_LI_ITN_N_COMMUNITIES_REACHED",
+    "chartType": "metric",
+    "valueType": "number",
+    "drillChart": "none",
+    "documentType": "_doc",
+    "action": "",
+    "aggregationPaths": [
+      "Communities reached"
+    ],
+    "insight": {},
+    "_comment": "Liberia national page (level-one): communities (by code) with at least one registration",
+    "queries": [
+      {
+        "module": "COMMON",
+        "dateRefField": "",
+        "requestQueryMap": "{\"campaignNumber\":\"Data.campaignNumber.keyword\",\"projectTypeId\":\"Data.projectTypeId.keyword\",\"country\":\"Data.boundaryHierarchy.country.keyword\",\"county\":\"Data.boundaryHierarchy.County.keyword\",\"district\":\"Data.boundaryHierarchy.District.keyword\"}",
+        "indexName": "liberia-household-index-v1",
+        "aggrQuery": "{\"aggs\":{\"Communities reached\":{\"cardinality\":{\"precision_threshold\":40000,\"field\":\"Data.boundaryHierarchyCode.Community.keyword\"}}}}"
+      }
+    ]
   }
 }
