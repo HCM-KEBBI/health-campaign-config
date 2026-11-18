@@ -9295,16 +9295,16 @@
           "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
-              "id": 3001,
-              "name": "DSS_SI_ITN_V_CARDS_REGISTRATION",
-              "label": "DSS_SI_ITN_V_CARDS_REGISTRATION",
+              "id": 3201,
+              "name": "DSS_LI_ITN_V_N_HH_REGISTRATION",
+              "label": "DSS_LI_ITN_V_N_HH_REGISTRATION",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
               "charts": [
                 {
                   "id": "siItnRegHhTotal",
-                  "name": "DSS_SI_ITN_REG_HH_TOTAL",
+                  "name": "DSS_ITN_REG_HH_TOTAL",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -9325,13 +9325,97 @@
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
+                },
+                {
+                  "id": "liItnNRegHhToday",
+                  "name": "DSS_LI_ITN_N_REG_HH_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
                 }
               ]
             },
             {
-              "id": 3002,
-              "name": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
-              "label": "DSS_SI_ITN_V_CARDS_DISTRIBUTION",
+              "id": 3202,
+              "name": "DSS_LI_ITN_V_N_POP_REGISTERED",
+              "label": "DSS_LI_ITN_V_N_POP_REGISTERED",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnRegPopTotal",
+                  "name": "DSS_ITN_REG_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegPopTargetN",
+                  "name": "DSS_SI_ITN_REG_POP_TARGET_N",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegPopCoverageP",
+                  "name": "DSS_ITN_REG_POP_COVERAGE_P",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnRegAvgHhSize",
+                  "name": "DSS_ITN_REG_AVG_HH_SIZE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3203,
+              "name": "DSS_LI_ITN_V_N_POP_COVERED",
+              "label": "DSS_LI_ITN_V_N_POP_COVERED",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "siItnDstPopTotal",
+                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstPopCoverageN",
+                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_N",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNDstPopToday",
+                  "name": "DSS_LI_ITN_N_DST_POP_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3204,
+              "name": "DSS_LI_ITN_V_N_HH_DISTRIBUTION",
+              "label": "DSS_LI_ITN_V_N_HH_DISTRIBUTION",
               "vizType": "stacked-collection",
               "noUnit": true,
               "isCollapsible": false,
@@ -9359,78 +9443,10 @@
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
-                }
-              ]
-            },
-            {
-              "id": 3003,
-              "name": "DSS_SI_ITN_V_CARDS_NETS",
-              "label": "DSS_SI_ITN_V_CARDS_NETS",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "siItnDstNetsTotal",
-                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
                 },
                 {
-                  "id": "siItnRegItnRequired",
-                  "name": "DSS_SI_ITN_REG_ITN_REQUIRED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "siItnDstNetsCoverage",
-                  "name": "DSS_SI_ITN_DST_NETS_COVERAGE",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 3004,
-              "name": "DSS_SI_ITN_V_CARDS_POPULATION",
-              "label": "DSS_SI_ITN_V_CARDS_POPULATION",
-              "vizType": "stacked-collection",
-              "noUnit": true,
-              "isCollapsible": false,
-              "charts": [
-                {
-                  "id": "siItnRegPopTotal",
-                  "name": "DSS_SI_ITN_REG_POP_TOTAL",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "siItnDstPopTotal",
-                  "name": "DSS_SI_ITN_DST_POP_TOTAL",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "siItnRegPopTargetN",
-                  "name": "DSS_SI_ITN_REG_POP_TARGET_N",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "siItnDstPopCoverageN",
-                  "name": "DSS_SI_ITN_DST_POP_COVERAGE_N",
+                  "id": "liItnNDstHhToday",
+                  "name": "DSS_LI_ITN_N_DST_HH_TODAY",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -9442,6 +9458,180 @@
         },
         {
           "row": 2,
+          "name": "DSS_SI_ITN_TAB_OVERVIEW",
+          "vizArray": [
+            {
+              "id": 3205,
+              "name": "DSS_LI_ITN_V_N_NETS",
+              "label": "DSS_LI_ITN_V_N_NETS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "liItnNDstItnTarget",
+                  "name": "DSS_LI_ITN_N_DST_ITN_TARGET",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "siItnDstNetsTotal",
+                  "name": "DSS_SI_ITN_DST_NETS_TOTAL",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNDstItnTargetCoverage",
+                  "name": "DSS_LI_ITN_N_DST_ITN_TARGET_COVERAGE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNDstNetsToday",
+                  "name": "DSS_LI_ITN_N_DST_NETS_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3206,
+              "name": "DSS_LI_ITN_V_N_USERS",
+              "label": "DSS_LI_ITN_V_N_USERS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "liItnNUsersCreated",
+                  "name": "DSS_LI_ITN_N_USERS_CREATED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNUsersSynced",
+                  "name": "DSS_LI_ITN_N_USERS_SYNCED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNUsersSyncedPct",
+                  "name": "DSS_LI_ITN_N_USERS_SYNCED_PCT",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNUsersActiveToday",
+                  "name": "DSS_LI_ITN_N_USERS_ACTIVE_TODAY",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3207,
+              "name": "DSS_LI_ITN_V_N_COMPLAINTS",
+              "label": "DSS_LI_ITN_V_N_COMPLAINTS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "liItnNCmpReceived",
+                  "name": "DSS_LI_ITN_N_CMP_RECEIVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNCmpOpen",
+                  "name": "DSS_LI_ITN_N_CMP_OPEN",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNCmpResolved",
+                  "name": "DSS_LI_ITN_N_CMP_RESOLVED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNCmpRejected",
+                  "name": "DSS_LI_ITN_N_CMP_REJECTED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            },
+            {
+              "id": 3208,
+              "name": "DSS_LI_ITN_V_N_PROGRESS",
+              "label": "DSS_LI_ITN_V_N_PROGRESS",
+              "vizType": "stacked-collection",
+              "noUnit": true,
+              "isCollapsible": false,
+              "charts": [
+                {
+                  "id": "liItnNCampaignElapsed",
+                  "name": "DSS_LI_ITN_N_CAMPAIGN_ELAPSED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNCampaignDaysLeft",
+                  "name": "DSS_LI_ITN_N_CAMPAIGN_DAYS_LEFT",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNDistrictsActive",
+                  "name": "DSS_LI_ITN_N_DISTRICTS_ACTIVE",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                },
+                {
+                  "id": "liItnNCommunitiesReached",
+                  "name": "DSS_LI_ITN_N_COMMUNITIES_REACHED",
+                  "code": "",
+                  "chartType": "metric",
+                  "filter": "",
+                  "headers": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "row": 3,
           "name": "DSS_SI_ITN_TAB_OVERVIEW",
           "vizArray": [
             {
