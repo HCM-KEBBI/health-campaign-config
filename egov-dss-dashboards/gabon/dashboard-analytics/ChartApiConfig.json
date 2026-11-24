@@ -64652,7 +64652,7 @@
       "totalManagers"
     ],
     "insight": {},
-    "_comment": "Total warehouse managers assigned. Queries os-project-staff-index-v1 for all users with role=WAREHOUSE_MANAGER that have a country boundary hierarchy entry. Returns value_count of Data.userId.keyword. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card (total warehouses)."
+    "_comment": "Total warehouse managers assigned in Gabon."
   },
   "commodityWarehouseManagerSynced": {
     "chartName": "DSS_COMMODITY_WAREHOUSE_MANAGER_SYNCED",
@@ -64668,7 +64668,7 @@
       },
       {
         "module": "COMMON",
-        "dateRefField": "Data.syncedTimeStamp",
+        "dateRefField": "",
         "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "gabon-user-sync-index-v1",
         "transformData": "linearAggregation",
@@ -64723,7 +64723,7 @@
       "syncRate"
     ],
     "insight": {},
-    "_comment": "Warehouse manager sync rate. Queries os-project-staff-index-v1 for total WAREHOUSE_MANAGER count and os-user-sync-index-v1 for unique synced managers. Merges to compute syncRate = (syncedManagers / totalManagers) * 100. Used by useWarehouseManagerSync.js → CommodityDashboard.js for the Data Sync card."
+    "_comment": "Gabon warehouse manager sync rate."
   },
   "commodityFacilityStockBalance": {
     "chartName": "DSS_COMMODITY_FACILITY_STOCK_BALANCE",
