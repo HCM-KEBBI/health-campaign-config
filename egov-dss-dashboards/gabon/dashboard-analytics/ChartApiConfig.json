@@ -52052,7 +52052,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.@timestamp",
-        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
         "indexName": "gabon-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"Stock Received\":{\"terms\":{\"field\":\"Data.transactingFacilityName.keyword\",\"size\":500},\"aggs\":{\"Received Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
       }
@@ -52092,7 +52092,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.@timestamp",
-        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
         "indexName": "gabon-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"ISSUED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"terms\":{\"Data.additionalDetails.status.keyword\":[\"ACCEPTED\",\"IN_TRANSIT\"]}}]}},\"aggs\":{\"Stock Issued\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500},\"aggs\":{\"Issued Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
       }
@@ -52132,7 +52132,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.@timestamp",
-        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.additionalDetails.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
+        "requestQueryMap": "{\"state\":\"Data.boundaryHierarchy.State.keyword\",\"lga\":\"Data.boundaryHierarchy.lga.keyword\",\"campaignNumber\":\"Data.campaignNumber.keyword\",\"cycleIndex\":\"Data.additionalDetails.cycleIndex.keyword\"}",
         "indexName": "gabon-stock-index-v1",
         "aggrQuery": "{\"size\":0,\"query\":{\"bool\":{\"filter\":[{\"term\":{\"Data.additionalDetails.stockEntryType.keyword\":\"RETURNED\"}},{\"term\":{\"Data.eventType.keyword\":\"DISPATCHED\"}},{\"term\":{\"Data.additionalDetails.status.keyword\":\"ACCEPTED\"}}]}},\"aggs\":{\"Stock Returned\":{\"terms\":{\"field\":\"Data.facilityName.keyword\",\"size\":500},\"aggs\":{\"Returned Quantity\":{\"sum\":{\"field\":\"Data.physicalCount\"}}}}}}"
       }
@@ -64731,7 +64731,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.dateOfEntry",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.additionalDetails.campaignNumber.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\"}",
         "indexName": "gabon-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "stockBalanceTransformer",
@@ -64780,7 +64780,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.dateOfEntry",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.additionalDetails.campaignNumber.keyword\", \"facilityId\": \"Data.facilityId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"facilityId\": \"Data.facilityId.keyword\"}",
         "indexName": "gabon-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "facilityStockTransformer",
@@ -64789,7 +64789,7 @@
       {
         "module": "COMMON",
         "dateRefField": "Data.dateOfEntry",
-        "requestQueryMap": "{\"campaignNumber\": \"Data.additionalDetails.campaignNumber.keyword\", \"facilityId\": \"Data.transactingFacilityId.keyword\"}",
+        "requestQueryMap": "{\"campaignNumber\": \"Data.campaignNumber.keyword\", \"facilityId\": \"Data.transactingFacilityId.keyword\"}",
         "indexName": "gabon-stock-index-v1",
         "transformData": "rawDocuments",
         "transformKey": "transactingStockTransformer",
