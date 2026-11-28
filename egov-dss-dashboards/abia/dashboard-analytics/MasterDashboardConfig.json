@@ -1729,7 +1729,7 @@
                   "headers": []
                 },
                 {
-                  "id": "totalHouseholdCoverageProvinceBednetsICCD",
+                  "id": "totalHouseholdCoverageDistrictBednetsICCD",
                   "name": "DSS_HEALTH_OVERVIEW_TOTAL_COVERAGE_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
@@ -1763,7 +1763,7 @@
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationTargetedProvinceBednetsICCD",
+                  "id": "overviewPopulationTargetedDistrictBednetsICCD",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_TARGETED",
                   "code": "",
                   "chartType": "metric",
@@ -1771,7 +1771,7 @@
                   "headers": []
                 },
                 {
-                  "id": "overviewPopulationCoverageAchievedProvinceBednetsICCD",
+                  "id": "overviewPopulationCoverageAchievedDistrictBednetsICCD",
                   "name": "DSS_HEALTH_OVERVIEW_POPULATION_COVERAGE_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
@@ -1805,7 +1805,7 @@
                   "headers": []
                 },
                 {
-                  "id": "bednetsTargetProvinceBednetsICCD",
+                  "id": "bednetsTargetDistrictBednetsICCD",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_TARGET",
                   "code": "",
                   "chartType": "metric",
@@ -1813,7 +1813,7 @@
                   "headers": []
                 },
                 {
-                  "id": "bednetsDistributionCoverageProvinceBednetsICCD",
+                  "id": "bednetsDistributionCoverageDistrictBednetsICCD",
                   "name": "DSS_HEALTH_NATIONAL_BED_NETS_COVERAGE",
                   "code": "",
                   "chartType": "metric",
