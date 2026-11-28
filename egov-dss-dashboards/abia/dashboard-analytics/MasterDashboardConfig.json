@@ -1721,7 +1721,7 @@
                   "headers": []
                 },
                 {
-                  "id": "householdVisitsTargetProvinceBednetsICCD",
+                  "id": "householdVisitsTargetDistrictBednetsICCD",
                   "name": "DSS_HEALTH_OVERVIEW_TARGET_HOUSEHOLD_VISITS",
                   "code": "",
                   "chartType": "metric",
